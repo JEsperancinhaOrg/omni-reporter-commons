@@ -1,0 +1,3209 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><!DOCTYPE report PUBLIC "-//JACOCO//DTD Report 1.1//EN"
+        "report.dtd">
+<report name="Omni Coverage Reporter Maven Plugin">
+    <sessioninfo id="Joaos-MacBook-Pro.local-ec04fd5" start="1641545763127" dump="1641545771918"/>
+    <package name="org/jesperancinha/plugins/omni/reporter/domain">
+        <class name="org/jesperancinha/plugins/omni/reporter/domain/SourceFile" sourcefilename="CoverallsDaos.kt">
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Integer;[Ljava/lang/Integer;Ljava/lang/String;)V"
+                    line="21">
+                <counter type="INSTRUCTION" missed="0" covered="30"/>
+                <counter type="LINE" missed="0" covered="6"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Integer;[Ljava/lang/Integer;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V"
+                    line="21">
+                <counter type="INSTRUCTION" missed="0" covered="25"/>
+                <counter type="LINE" missed="0" covered="3"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getName" desc="()Ljava/lang/String;" line="22">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getSourceDigest" desc="()Ljava/lang/String;" line="23">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getCoverage" desc="()[Ljava/lang/Integer;" line="25">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getBranches" desc="()[Ljava/lang/Integer;" line="27">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getSource" desc="()Ljava/lang/String;" line="29">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="equals" desc="(Ljava/lang/Object;)Z" line="32">
+                <counter type="INSTRUCTION" missed="57" covered="0"/>
+                <counter type="BRANCH" missed="14" covered="0"/>
+                <counter type="LINE" missed="8" covered="0"/>
+                <counter type="COMPLEXITY" missed="8" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="hashCode" desc="()I" line="43">
+                <counter type="INSTRUCTION" missed="45" covered="0"/>
+                <counter type="BRANCH" missed="2" covered="0"/>
+                <counter type="LINE" missed="6" covered="0"/>
+                <counter type="COMPLEXITY" missed="2" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="102" covered="70"/>
+            <counter type="BRANCH" missed="16" covered="0"/>
+            <counter type="LINE" missed="14" covered="10"/>
+            <counter type="COMPLEXITY" missed="10" covered="7"/>
+            <counter type="METHOD" missed="2" covered="7"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/domain/JsonMappingConfiguration"
+               sourcefilename="ApiDaos.kt">
+            <method name="&lt;init&gt;" desc="()V" line="23">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="&lt;clinit&gt;" desc="()V" line="25">
+                <counter type="INSTRUCTION" missed="0" covered="19"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="3" covered="19"/>
+            <counter type="LINE" missed="1" covered="1"/>
+            <counter type="COMPLEXITY" missed="1" covered="1"/>
+            <counter type="METHOD" missed="1" covered="1"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/domain/Head" sourcefilename="CoverallsDaos.kt">
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V"
+                    line="58">
+                <counter type="INSTRUCTION" missed="0" covered="21"/>
+                <counter type="LINE" missed="0" covered="7"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V"
+                    line="58">
+                <counter type="INSTRUCTION" missed="10" covered="29"/>
+                <counter type="LINE" missed="5" covered="3"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getId" desc="()Ljava/lang/String;" line="59">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getAuthorName" desc="()Ljava/lang/String;" line="60">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getAuthorEmail" desc="()Ljava/lang/String;" line="61">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getCommitterName" desc="()Ljava/lang/String;" line="62">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getCommitterEmail" desc="()Ljava/lang/String;" line="63">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getMessage" desc="()Ljava/lang/String;" line="64">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="10" covered="68"/>
+            <counter type="LINE" missed="0" covered="8"/>
+            <counter type="COMPLEXITY" missed="0" covered="8"/>
+            <counter type="METHOD" missed="0" covered="8"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/domain/CodacyClient" sourcefilename="CodacyDaos.kt">
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/String;Ljava/lang/String;Lorg/jesperancinha/plugins/omni/reporter/parsers/Language;Lorg/eclipse/jgit/lib/Repository;)V"
+                    line="18">
+                <counter type="INSTRUCTION" missed="24" covered="0"/>
+                <counter type="LINE" missed="5" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/String;Ljava/lang/String;Lorg/jesperancinha/plugins/omni/reporter/parsers/Language;Lorg/eclipse/jgit/lib/Repository;ILkotlin/jvm/internal/DefaultConstructorMarker;)V"
+                    line="18">
+                <counter type="INSTRUCTION" missed="12" covered="0"/>
+                <counter type="LINE" missed="3" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getToken" desc="()Ljava/lang/String;" line="19">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getUrl" desc="()Ljava/lang/String;" line="20">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getLanguage" desc="()Lorg/jesperancinha/plugins/omni/reporter/parsers/Language;" line="21">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getRepo" desc="()Lorg/eclipse/jgit/lib/Repository;" line="22">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="submit" desc="(Ljava/util/List;)V" line="26">
+                <counter type="INSTRUCTION" missed="95" covered="0"/>
+                <counter type="LINE" missed="23" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="143" covered="0"/>
+            <counter type="LINE" missed="29" covered="0"/>
+            <counter type="COMPLEXITY" missed="7" covered="0"/>
+            <counter type="METHOD" missed="7" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/domain/CoverallsReport" sourcefilename="CoverallsDaos.kt">
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lorg/jesperancinha/plugins/omni/reporter/domain/Git;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V"
+                    line="72">
+                <counter type="INSTRUCTION" missed="0" covered="45"/>
+                <counter type="LINE" missed="0" covered="12"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lorg/jesperancinha/plugins/omni/reporter/domain/Git;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V"
+                    line="72">
+                <counter type="INSTRUCTION" missed="7" covered="55"/>
+                <counter type="LINE" missed="2" covered="9"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getRepoToken" desc="()Ljava/lang/String;" line="73">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getServiceName" desc="()Ljava/lang/String;" line="74">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getSourceFiles" desc="()Ljava/util/List;" line="75">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getGit" desc="()Lorg/jesperancinha/plugins/omni/reporter/domain/Git;" line="77">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getServiceNumber" desc="()Ljava/lang/String;" line="79">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getServiceJobId" desc="()Ljava/lang/String;" line="81">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getServicePullRequest" desc="()Ljava/lang/String;" line="83">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getParallel" desc="()Ljava/lang/Boolean;" line="85">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getFlagName" desc="()Ljava/lang/String;" line="87">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getCommitSha" desc="()Ljava/lang/String;" line="89">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getRunAt" desc="()Ljava/lang/String;" line="91">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="7" covered="133"/>
+            <counter type="LINE" missed="0" covered="21"/>
+            <counter type="COMPLEXITY" missed="0" covered="13"/>
+            <counter type="METHOD" missed="0" covered="13"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/domain/Remote" sourcefilename="CoverallsDaos.kt">
+            <method name="&lt;init&gt;" desc="(Ljava/lang/String;Ljava/lang/String;)V" line="67">
+                <counter type="INSTRUCTION" missed="0" covered="15"/>
+                <counter type="LINE" missed="0" covered="3"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getName" desc="()Ljava/lang/String;" line="68">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getUrl" desc="()Ljava/lang/String;" line="69">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="0" covered="21"/>
+            <counter type="LINE" missed="0" covered="3"/>
+            <counter type="COMPLEXITY" missed="0" covered="3"/>
+            <counter type="METHOD" missed="0" covered="3"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/domain/CoverallsResponse"
+               sourcefilename="CoverallsDaos.kt">
+            <method name="&lt;init&gt;" desc="(Ljava/lang/String;ZLjava/lang/String;)V" line="15">
+                <counter type="INSTRUCTION" missed="15" covered="0"/>
+                <counter type="LINE" missed="4" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getMessage" desc="()Ljava/lang/String;" line="16">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getError" desc="()Z" line="17">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getUrl" desc="()Ljava/lang/String;" line="18">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="24" covered="0"/>
+            <counter type="LINE" missed="4" covered="0"/>
+            <counter type="COMPLEXITY" missed="4" covered="0"/>
+            <counter type="METHOD" missed="4" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/domain/ApiClient" sourcefilename="ApiDaos.kt"/>
+        <class name="org/jesperancinha/plugins/omni/reporter/domain/ApiDaosKt" sourcefilename="ApiDaos.kt">
+            <method name="getJacksonXMLMapper" desc="()Lcom/fasterxml/jackson/databind/ObjectMapper;" line="13">
+                <counter type="INSTRUCTION" missed="0" covered="2"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="&lt;clinit&gt;" desc="()V" line="13">
+                <counter type="INSTRUCTION" missed="0" covered="28"/>
+                <counter type="LINE" missed="0" covered="5"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="0" covered="30"/>
+            <counter type="LINE" missed="0" covered="5"/>
+            <counter type="COMPLEXITY" missed="0" covered="2"/>
+            <counter type="METHOD" missed="0" covered="2"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/domain/CoverallsClient$Companion"
+               sourcefilename="CoverallsDaos.kt"/>
+        <class name="org/jesperancinha/plugins/omni/reporter/domain/Git" sourcefilename="CoverallsDaos.kt">
+            <method name="&lt;init&gt;"
+                    desc="(Lorg/jesperancinha/plugins/omni/reporter/domain/Head;Ljava/lang/String;Ljava/util/List;)V"
+                    line="52">
+                <counter type="INSTRUCTION" missed="0" covered="12"/>
+                <counter type="LINE" missed="0" covered="4"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="&lt;init&gt;"
+                    desc="(Lorg/jesperancinha/plugins/omni/reporter/domain/Head;Ljava/lang/String;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V"
+                    line="52">
+                <counter type="INSTRUCTION" missed="21" covered="0"/>
+                <counter type="LINE" missed="5" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getHead" desc="()Lorg/jesperancinha/plugins/omni/reporter/domain/Head;" line="53">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getBranch" desc="()Ljava/lang/String;" line="54">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getRemotes" desc="()Ljava/util/List;" line="55">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="21" covered="21"/>
+            <counter type="LINE" missed="1" covered="4"/>
+            <counter type="COMPLEXITY" missed="1" covered="4"/>
+            <counter type="METHOD" missed="1" covered="4"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/domain/ApiDaosKt$readValue$$inlined$readValue$1"
+               sourcefilename="Extensions.kt">
+            <method name="&lt;init&gt;" desc="()V" line="43">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="3" covered="0"/>
+            <counter type="LINE" missed="1" covered="0"/>
+            <counter type="COMPLEXITY" missed="1" covered="0"/>
+            <counter type="METHOD" missed="1" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/domain/CoverallsClient" sourcefilename="CoverallsDaos.kt">
+            <method name="&lt;init&gt;" desc="(Ljava/lang/String;Ljava/lang/String;)V" line="94">
+                <counter type="INSTRUCTION" missed="15" covered="0"/>
+                <counter type="LINE" missed="3" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getUrl" desc="()Ljava/lang/String;" line="95">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getToken" desc="()Ljava/lang/String;" line="96">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="submit"
+                    desc="(Lorg/jesperancinha/plugins/omni/reporter/domain/CoverallsReport;)Lorg/jesperancinha/plugins/omni/reporter/domain/CoverallsResponse;"
+                    line="99">
+                <counter type="INSTRUCTION" missed="172" covered="0"/>
+                <counter type="BRANCH" missed="10" covered="0"/>
+                <counter type="LINE" missed="22" covered="0"/>
+                <counter type="COMPLEXITY" missed="6" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="&lt;clinit&gt;" desc="()V" line="126">
+                <counter type="INSTRUCTION" missed="22" covered="0"/>
+                <counter type="LINE" missed="3" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="215" covered="0"/>
+            <counter type="BRANCH" missed="10" covered="0"/>
+            <counter type="LINE" missed="28" covered="0"/>
+            <counter type="COMPLEXITY" missed="10" covered="0"/>
+            <counter type="METHOD" missed="5" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/domain/CodecovDaos" sourcefilename="CodecovDaos.kt">
+            <method name="&lt;init&gt;" desc="(Ljava/lang/String;Ljava/lang/String;)V" line="6">
+                <counter type="INSTRUCTION" missed="15" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getUrl" desc="()Ljava/lang/String;" line="6">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getToken" desc="()Ljava/lang/String;" line="6">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="submit" desc="(Ljava/lang/String;)Ljava/lang/String;" line="8">
+                <counter type="INSTRUCTION" missed="10" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="31" covered="0"/>
+            <counter type="LINE" missed="2" covered="0"/>
+            <counter type="COMPLEXITY" missed="4" covered="0"/>
+            <counter type="METHOD" missed="4" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/domain/JsonMappingConfiguration$Companion"
+               sourcefilename="ApiDaos.kt">
+            <method name="getObjectMapper" desc="()Lcom/fasterxml/jackson/databind/ObjectMapper;" line="25">
+                <counter type="INSTRUCTION" missed="0" covered="2"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="0" covered="2"/>
+            <counter type="LINE" missed="0" covered="1"/>
+            <counter type="COMPLEXITY" missed="0" covered="1"/>
+            <counter type="METHOD" missed="0" covered="1"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <sourcefile name="CoverallsDaos.kt">
+            <line nr="15" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="16" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="17" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="18" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="21" mi="0" ci="25" mb="0" cb="0"/>
+            <line nr="22" mi="0" ci="6" mb="0" cb="0"/>
+            <line nr="23" mi="0" ci="6" mb="0" cb="0"/>
+            <line nr="24" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="25" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="26" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="27" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="28" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="29" mi="0" ci="5" mb="0" cb="0"/>
+            <line nr="32" mi="5" ci="0" mb="2" cb="0"/>
+            <line nr="33" mi="5" ci="0" mb="2" cb="0"/>
+            <line nr="34" mi="9" ci="0" mb="2" cb="0"/>
+            <line nr="35" mi="9" ci="0" mb="2" cb="0"/>
+            <line nr="36" mi="9" ci="0" mb="2" cb="0"/>
+            <line nr="37" mi="9" ci="0" mb="2" cb="0"/>
+            <line nr="38" mi="9" ci="0" mb="2" cb="0"/>
+            <line nr="39" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="43" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="44" mi="8" ci="0" mb="0" cb="0"/>
+            <line nr="45" mi="8" ci="0" mb="0" cb="0"/>
+            <line nr="46" mi="8" ci="0" mb="0" cb="0"/>
+            <line nr="47" mi="15" ci="0" mb="2" cb="0"/>
+            <line nr="48" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="50" mi="0" ci="1" mb="0" cb="0"/>
+            <line nr="52" mi="14" ci="3" mb="0" cb="0"/>
+            <line nr="53" mi="2" ci="6" mb="0" cb="0"/>
+            <line nr="54" mi="2" ci="6" mb="0" cb="0"/>
+            <line nr="55" mi="2" ci="6" mb="0" cb="0"/>
+            <line nr="56" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="58" mi="0" ci="29" mb="0" cb="0"/>
+            <line nr="59" mi="2" ci="6" mb="0" cb="0"/>
+            <line nr="60" mi="2" ci="6" mb="0" cb="0"/>
+            <line nr="61" mi="2" ci="6" mb="0" cb="0"/>
+            <line nr="62" mi="2" ci="6" mb="0" cb="0"/>
+            <line nr="63" mi="2" ci="6" mb="0" cb="0"/>
+            <line nr="64" mi="0" ci="8" mb="0" cb="0"/>
+            <line nr="65" mi="0" ci="1" mb="0" cb="0"/>
+            <line nr="67" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="68" mi="0" ci="6" mb="0" cb="0"/>
+            <line nr="69" mi="0" ci="6" mb="0" cb="0"/>
+            <line nr="72" mi="0" ci="43" mb="0" cb="0"/>
+            <line nr="73" mi="0" ci="6" mb="0" cb="0"/>
+            <line nr="74" mi="0" ci="6" mb="0" cb="0"/>
+            <line nr="75" mi="5" ci="6" mb="0" cb="0"/>
+            <line nr="76" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="77" mi="2" ci="3" mb="0" cb="0"/>
+            <line nr="78" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="79" mi="0" ci="5" mb="0" cb="0"/>
+            <line nr="80" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="81" mi="0" ci="5" mb="0" cb="0"/>
+            <line nr="82" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="83" mi="0" ci="5" mb="0" cb="0"/>
+            <line nr="84" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="85" mi="0" ci="5" mb="0" cb="0"/>
+            <line nr="86" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="87" mi="0" ci="5" mb="0" cb="0"/>
+            <line nr="88" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="89" mi="0" ci="5" mb="0" cb="0"/>
+            <line nr="90" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="91" mi="0" ci="5" mb="0" cb="0"/>
+            <line nr="92" mi="0" ci="1" mb="0" cb="0"/>
+            <line nr="94" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="95" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="96" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="99" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="100" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="101" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="102" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="103" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="104" mi="3" ci="0" mb="2" cb="0"/>
+            <line nr="105" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="107" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="108" mi="51" ci="0" mb="2" cb="0"/>
+            <line nr="109" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="110" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="111" mi="13" ci="0" mb="0" cb="0"/>
+            <line nr="112" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="113" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="114" mi="11" ci="0" mb="0" cb="0"/>
+            <line nr="115" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="116" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="117" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="118" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="119" mi="8" ci="0" mb="2" cb="0"/>
+            <line nr="120" mi="14" ci="0" mb="4" cb="0"/>
+            <line nr="121" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="126" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="127" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="128" mi="9" ci="0" mb="0" cb="0"/>
+            <counter type="INSTRUCTION" missed="379" covered="313"/>
+            <counter type="BRANCH" missed="26" covered="0"/>
+            <counter type="LINE" missed="47" covered="46"/>
+            <counter type="COMPLEXITY" missed="25" covered="35"/>
+            <counter type="METHOD" missed="12" covered="35"/>
+            <counter type="CLASS" missed="2" covered="5"/>
+        </sourcefile>
+        <sourcefile name="CodacyDaos.kt">
+            <line nr="18" mi="12" ci="0" mb="0" cb="0"/>
+            <line nr="19" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="20" mi="8" ci="0" mb="0" cb="0"/>
+            <line nr="21" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="22" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="26" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="27" mi="11" ci="0" mb="0" cb="0"/>
+            <line nr="28" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="29" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="30" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="31" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="32" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="33" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="34" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="35" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="36" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="37" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="40" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="41" mi="15" ci="0" mb="0" cb="0"/>
+            <line nr="43" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="44" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="45" mi="12" ci="0" mb="0" cb="0"/>
+            <line nr="46" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="47" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="48" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="49" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="52" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="53" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="54" mi="1" ci="0" mb="0" cb="0"/>
+            <counter type="INSTRUCTION" missed="143" covered="0"/>
+            <counter type="LINE" missed="29" covered="0"/>
+            <counter type="COMPLEXITY" missed="7" covered="0"/>
+            <counter type="METHOD" missed="7" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </sourcefile>
+        <sourcefile name="ApiDaos.kt">
+            <line nr="13" mi="0" ci="17" mb="0" cb="0"/>
+            <line nr="14" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="15" mi="0" ci="2" mb="0" cb="0"/>
+            <line nr="16" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="17" mi="0" ci="5" mb="0" cb="0"/>
+            <line nr="23" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="25" mi="0" ci="16" mb="0" cb="0"/>
+            <counter type="INSTRUCTION" missed="3" covered="51"/>
+            <counter type="LINE" missed="1" covered="6"/>
+            <counter type="COMPLEXITY" missed="1" covered="4"/>
+            <counter type="METHOD" missed="1" covered="4"/>
+            <counter type="CLASS" missed="0" covered="3"/>
+        </sourcefile>
+        <sourcefile name="CodecovDaos.kt">
+            <line nr="6" mi="15" ci="0" mb="0" cb="0"/>
+            <line nr="8" mi="4" ci="0" mb="0" cb="0"/>
+            <counter type="INSTRUCTION" missed="31" covered="0"/>
+            <counter type="LINE" missed="2" covered="0"/>
+            <counter type="COMPLEXITY" missed="4" covered="0"/>
+            <counter type="METHOD" missed="4" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </sourcefile>
+        <sourcefile name="Extensions.kt">
+            <line nr="43" mi="3" ci="0" mb="0" cb="0"/>
+            <counter type="INSTRUCTION" missed="3" covered="0"/>
+            <counter type="LINE" missed="1" covered="0"/>
+            <counter type="COMPLEXITY" missed="1" covered="0"/>
+            <counter type="METHOD" missed="1" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </sourcefile>
+        <counter type="INSTRUCTION" missed="559" covered="364"/>
+        <counter type="BRANCH" missed="26" covered="0"/>
+        <counter type="LINE" missed="80" covered="52"/>
+        <counter type="COMPLEXITY" missed="38" covered="39"/>
+        <counter type="METHOD" missed="25" covered="39"/>
+        <counter type="CLASS" missed="5" covered="8"/>
+    </package>
+    <package name="org/jesperancinha/plugins/omni/reporter/pipelines">
+        <class name="org/jesperancinha/plugins/omni/reporter/pipelines/PipelineImpl$Companion$findAllVariables$1"
+               sourcefilename="Pipelines.kt">
+            <method name="invoke" desc="(Ljava/lang/String;)Ljava/lang/CharSequence;" line="59">
+                <counter type="INSTRUCTION" missed="0" covered="24"/>
+                <counter type="BRANCH" missed="1" covered="1"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="1" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="0" covered="24"/>
+            <counter type="BRANCH" missed="1" covered="1"/>
+            <counter type="LINE" missed="0" covered="1"/>
+            <counter type="COMPLEXITY" missed="1" covered="1"/>
+            <counter type="METHOD" missed="0" covered="1"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/pipelines/GitHubPipeline$3" sourcefilename="Pipelines.kt">
+            <method name="invoke" desc="()Ljava/lang/String;" line="78">
+                <counter type="INSTRUCTION" missed="4" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="4" covered="0"/>
+            <counter type="LINE" missed="1" covered="0"/>
+            <counter type="COMPLEXITY" missed="1" covered="0"/>
+            <counter type="METHOD" missed="1" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/pipelines/GitHubPipeline$2" sourcefilename="Pipelines.kt">
+            <method name="invoke" desc="()Ljava/lang/String;" line="75">
+                <counter type="INSTRUCTION" missed="4" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="4" covered="0"/>
+            <counter type="LINE" missed="1" covered="0"/>
+            <counter type="COMPLEXITY" missed="1" covered="0"/>
+            <counter type="METHOD" missed="1" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/pipelines/GitHubPipeline$1" sourcefilename="Pipelines.kt">
+            <method name="invoke" desc="()Ljava/lang/String;" line="73">
+                <counter type="INSTRUCTION" missed="2" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="2" covered="0"/>
+            <counter type="LINE" missed="1" covered="0"/>
+            <counter type="COMPLEXITY" missed="1" covered="0"/>
+            <counter type="METHOD" missed="1" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/pipelines/GitLabPipeline$Companion"
+               sourcefilename="Pipelines.kt"/>
+        <class name="org/jesperancinha/plugins/omni/reporter/pipelines/GitLabPipeline$1" sourcefilename="Pipelines.kt">
+            <method name="invoke" desc="()Ljava/lang/String;" line="89">
+                <counter type="INSTRUCTION" missed="2" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="2" covered="0"/>
+            <counter type="LINE" missed="1" covered="0"/>
+            <counter type="COMPLEXITY" missed="1" covered="0"/>
+            <counter type="METHOD" missed="1" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/pipelines/GitLabPipeline$2" sourcefilename="Pipelines.kt">
+            <method name="invoke" desc="()Ljava/lang/String;" line="91">
+                <counter type="INSTRUCTION" missed="4" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="4" covered="0"/>
+            <counter type="LINE" missed="1" covered="0"/>
+            <counter type="COMPLEXITY" missed="1" covered="0"/>
+            <counter type="METHOD" missed="1" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/pipelines/GitLabPipeline$3" sourcefilename="Pipelines.kt">
+            <method name="invoke" desc="()Ljava/lang/String;" line="94">
+                <counter type="INSTRUCTION" missed="4" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="4" covered="0"/>
+            <counter type="LINE" missed="1" covered="0"/>
+            <counter type="COMPLEXITY" missed="1" covered="0"/>
+            <counter type="METHOD" missed="1" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/pipelines/GitHubPipeline" sourcefilename="Pipelines.kt">
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V" line="72">
+                <counter type="INSTRUCTION" missed="18" covered="0"/>
+                <counter type="LINE" missed="6" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V"
+                    line="72">
+                <counter type="INSTRUCTION" missed="36" covered="0"/>
+                <counter type="LINE" missed="6" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getServiceName" desc="()Ljava/lang/String;" line="73">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getServiceNumber" desc="()Ljava/lang/String;" line="74">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getServiceJobId" desc="()Ljava/lang/String;" line="77">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getBranchName" desc="()Ljava/lang/String;" line="80">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="66" covered="0"/>
+            <counter type="LINE" missed="7" covered="0"/>
+            <counter type="COMPLEXITY" missed="6" covered="0"/>
+            <counter type="METHOD" missed="6" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/pipelines/LocalPipeline$Companion"
+               sourcefilename="Pipelines.kt"/>
+        <class name="org/jesperancinha/plugins/omni/reporter/pipelines/Pipeline" sourcefilename="Pipelines.kt"/>
+        <class name="org/jesperancinha/plugins/omni/reporter/pipelines/PipelineImpl$Companion"
+               sourcefilename="Pipelines.kt">
+            <method name="getCurrentPipeline" desc="()Lorg/jesperancinha/plugins/omni/reporter/pipelines/Pipeline;"
+                    line="51">
+                <counter type="INSTRUCTION" missed="2" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="findAllVariables$omni_coveragereporter_maven_plugin" desc="()Ljava/lang/String;" line="59">
+                <counter type="INSTRUCTION" missed="0" covered="14"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="findSystemVariableValue$omni_coveragereporter_maven_plugin"
+                    desc="(Ljava/lang/String;)Ljava/lang/String;" line="62">
+                <counter type="INSTRUCTION" missed="16" covered="13"/>
+                <counter type="BRANCH" missed="3" covered="1"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="2" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="findServiceName$omni_coveragereporter_maven_plugin"
+                    desc="(Lkotlin/jvm/functions/Function0;)Ljava/lang/String;" line="64">
+                <counter type="INSTRUCTION" missed="0" covered="13"/>
+                <counter type="BRANCH" missed="1" covered="1"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="1" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="findServiceNumber$omni_coveragereporter_maven_plugin"
+                    desc="(Lkotlin/jvm/functions/Function0;)Ljava/lang/String;" line="66">
+                <counter type="INSTRUCTION" missed="13" covered="0"/>
+                <counter type="BRANCH" missed="2" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="2" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="findServiceJobId$omni_coveragereporter_maven_plugin"
+                    desc="(Lkotlin/jvm/functions/Function0;)Ljava/lang/String;" line="68">
+                <counter type="INSTRUCTION" missed="0" covered="13"/>
+                <counter type="BRANCH" missed="1" covered="1"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="1" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="31" covered="53"/>
+            <counter type="BRANCH" missed="7" covered="3"/>
+            <counter type="LINE" missed="2" covered="4"/>
+            <counter type="COMPLEXITY" missed="7" covered="4"/>
+            <counter type="METHOD" missed="2" covered="4"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/pipelines/LocalPipeline$1" sourcefilename="Pipelines.kt">
+            <method name="invoke" desc="()Ljava/lang/String;" line="106">
+                <counter type="INSTRUCTION" missed="0" covered="2"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="0" covered="2"/>
+            <counter type="LINE" missed="0" covered="1"/>
+            <counter type="COMPLEXITY" missed="0" covered="1"/>
+            <counter type="METHOD" missed="0" covered="1"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/pipelines/LocalPipeline$2" sourcefilename="Pipelines.kt">
+            <method name="invoke" desc="()Ljava/lang/String;" line="108">
+                <counter type="INSTRUCTION" missed="0" covered="2"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="0" covered="2"/>
+            <counter type="LINE" missed="0" covered="1"/>
+            <counter type="COMPLEXITY" missed="0" covered="1"/>
+            <counter type="METHOD" missed="0" covered="1"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/pipelines/GitHubPipeline$Companion"
+               sourcefilename="Pipelines.kt"/>
+        <class name="org/jesperancinha/plugins/omni/reporter/pipelines/PipelinesKt" sourcefilename="Pipelines.kt">
+            <method name="&lt;clinit&gt;" desc="()V" line="14">
+                <counter type="INSTRUCTION" missed="0" covered="57"/>
+                <counter type="LINE" missed="0" covered="12"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="0" covered="57"/>
+            <counter type="LINE" missed="0" covered="12"/>
+            <counter type="COMPLEXITY" missed="0" covered="1"/>
+            <counter type="METHOD" missed="0" covered="1"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/pipelines/PipelineImpl" sourcefilename="Pipelines.kt">
+            <method name="&lt;init&gt;" desc="()V" line="41">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="toString" desc="()Ljava/lang/String;" line="43">
+                <counter type="INSTRUCTION" missed="0" covered="25"/>
+                <counter type="LINE" missed="0" covered="5"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="&lt;clinit&gt;" desc="()V" line="51">
+                <counter type="INSTRUCTION" missed="22" covered="46"/>
+                <counter type="BRANCH" missed="2" covered="2"/>
+                <counter type="LINE" missed="0" covered="7"/>
+                <counter type="COMPLEXITY" missed="2" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="22" covered="74"/>
+            <counter type="BRANCH" missed="2" covered="2"/>
+            <counter type="LINE" missed="0" covered="13"/>
+            <counter type="COMPLEXITY" missed="2" covered="3"/>
+            <counter type="METHOD" missed="0" covered="3"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/pipelines/GitLabPipeline" sourcefilename="Pipelines.kt">
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V" line="88">
+                <counter type="INSTRUCTION" missed="18" covered="0"/>
+                <counter type="LINE" missed="6" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V"
+                    line="88">
+                <counter type="INSTRUCTION" missed="36" covered="0"/>
+                <counter type="LINE" missed="6" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getServiceName" desc="()Ljava/lang/String;" line="89">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getServiceNumber" desc="()Ljava/lang/String;" line="90">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getServiceJobId" desc="()Ljava/lang/String;" line="93">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getBranchName" desc="()Ljava/lang/String;" line="96">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="66" covered="0"/>
+            <counter type="LINE" missed="7" covered="0"/>
+            <counter type="COMPLEXITY" missed="6" covered="0"/>
+            <counter type="METHOD" missed="6" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/pipelines/LocalPipeline" sourcefilename="Pipelines.kt">
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V" line="105">
+                <counter type="INSTRUCTION" missed="0" covered="18"/>
+                <counter type="LINE" missed="0" covered="6"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V"
+                    line="105">
+                <counter type="INSTRUCTION" missed="0" covered="36"/>
+                <counter type="LINE" missed="0" covered="6"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getServiceName" desc="()Ljava/lang/String;" line="106">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getServiceNumber" desc="()Ljava/lang/String;" line="107">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getServiceJobId" desc="()Ljava/lang/String;" line="108">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getBranchName" desc="()Ljava/lang/String;" line="109">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="0" covered="66"/>
+            <counter type="LINE" missed="0" covered="7"/>
+            <counter type="COMPLEXITY" missed="0" covered="6"/>
+            <counter type="METHOD" missed="0" covered="6"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <sourcefile name="Pipelines.kt">
+            <line nr="14" mi="0" ci="8" mb="0" cb="0"/>
+            <line nr="15" mi="0" ci="7" mb="0" cb="0"/>
+            <line nr="16" mi="0" ci="2" mb="0" cb="0"/>
+            <line nr="18" mi="0" ci="22" mb="0" cb="0"/>
+            <line nr="19" mi="0" ci="2" mb="0" cb="0"/>
+            <line nr="20" mi="0" ci="2" mb="0" cb="0"/>
+            <line nr="23" mi="0" ci="2" mb="0" cb="0"/>
+            <line nr="24" mi="0" ci="2" mb="0" cb="0"/>
+            <line nr="25" mi="0" ci="2" mb="0" cb="0"/>
+            <line nr="28" mi="0" ci="2" mb="0" cb="0"/>
+            <line nr="29" mi="0" ci="2" mb="0" cb="0"/>
+            <line nr="31" mi="0" ci="4" mb="0" cb="0"/>
+            <line nr="41" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="43" mi="0" ci="13" mb="0" cb="0"/>
+            <line nr="44" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="46" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="47" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="48" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="51" mi="2" ci="1" mb="0" cb="0"/>
+            <line nr="52" mi="11" ci="4" mb="1" cb="1"/>
+            <line nr="53" mi="11" ci="4" mb="1" cb="1"/>
+            <line nr="54" mi="0" ci="11" mb="0" cb="0"/>
+            <line nr="55" mi="0" ci="8" mb="0" cb="0"/>
+            <line nr="56" mi="0" ci="12" mb="0" cb="0"/>
+            <line nr="57" mi="0" ci="1" mb="0" cb="0"/>
+            <line nr="59" mi="0" ci="35" mb="1" cb="1"/>
+            <line nr="62" mi="16" ci="10" mb="3" cb="1"/>
+            <line nr="64" mi="0" ci="10" mb="1" cb="1"/>
+            <line nr="66" mi="10" ci="0" mb="2" cb="0"/>
+            <line nr="68" mi="0" ci="10" mb="1" cb="1"/>
+            <line nr="72" mi="19" ci="0" mb="0" cb="0"/>
+            <line nr="73" mi="13" ci="0" mb="0" cb="0"/>
+            <line nr="74" mi="11" ci="0" mb="0" cb="0"/>
+            <line nr="75" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="77" mi="11" ci="0" mb="0" cb="0"/>
+            <line nr="78" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="80" mi="8" ci="0" mb="0" cb="0"/>
+            <line nr="81" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="86" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="88" mi="19" ci="0" mb="0" cb="0"/>
+            <line nr="89" mi="13" ci="0" mb="0" cb="0"/>
+            <line nr="90" mi="11" ci="0" mb="0" cb="0"/>
+            <line nr="91" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="93" mi="11" ci="0" mb="0" cb="0"/>
+            <line nr="94" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="96" mi="8" ci="0" mb="0" cb="0"/>
+            <line nr="97" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="103" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="105" mi="0" ci="19" mb="0" cb="0"/>
+            <line nr="106" mi="0" ci="13" mb="0" cb="0"/>
+            <line nr="107" mi="0" ci="11" mb="0" cb="0"/>
+            <line nr="108" mi="0" ci="13" mb="0" cb="0"/>
+            <line nr="109" mi="0" ci="8" mb="0" cb="0"/>
+            <line nr="110" mi="0" ci="2" mb="0" cb="0"/>
+            <line nr="118" mi="0" ci="1" mb="0" cb="0"/>
+            <counter type="INSTRUCTION" missed="205" covered="278"/>
+            <counter type="BRANCH" missed="10" covered="6"/>
+            <counter type="LINE" missed="19" covered="36"/>
+            <counter type="COMPLEXITY" missed="28" covered="17"/>
+            <counter type="METHOD" missed="20" covered="17"/>
+            <counter type="CLASS" missed="8" covered="7"/>
+        </sourcefile>
+        <counter type="INSTRUCTION" missed="205" covered="278"/>
+        <counter type="BRANCH" missed="10" covered="6"/>
+        <counter type="LINE" missed="19" covered="36"/>
+        <counter type="COMPLEXITY" missed="28" covered="17"/>
+        <counter type="METHOD" missed="20" covered="17"/>
+        <counter type="CLASS" missed="8" covered="7"/>
+    </package>
+    <package name="org/jesperancinha/plugins/omni/reporter/repository">
+        <class name="org/jesperancinha/plugins/omni/reporter/repository/GitRepository"
+               sourcefilename="GitRepository.kt">
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/io/File;Lorg/jesperancinha/plugins/omni/reporter/pipelines/Pipeline;)V" line="15">
+                <counter type="INSTRUCTION" missed="0" covered="124"/>
+                <counter type="BRANCH" missed="1" covered="1"/>
+                <counter type="LINE" missed="0" covered="16"/>
+                <counter type="COMPLEXITY" missed="1" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getGit" desc="()Lorg/jesperancinha/plugins/omni/reporter/domain/Git;" line="37">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="0" covered="127"/>
+            <counter type="BRANCH" missed="1" covered="1"/>
+            <counter type="LINE" missed="0" covered="16"/>
+            <counter type="COMPLEXITY" missed="1" covered="2"/>
+            <counter type="METHOD" missed="0" covered="2"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <sourcefile name="GitRepository.kt">
+            <line nr="15" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="17" mi="0" ci="9" mb="0" cb="0"/>
+            <line nr="19" mi="0" ci="9" mb="0" cb="0"/>
+            <line nr="20" mi="0" ci="5" mb="0" cb="0"/>
+            <line nr="21" mi="0" ci="9" mb="0" cb="0"/>
+            <line nr="22" mi="0" ci="5" mb="0" cb="0"/>
+            <line nr="23" mi="0" ci="2" mb="0" cb="0"/>
+            <line nr="24" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="25" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="26" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="27" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="28" mi="0" ci="2" mb="0" cb="0"/>
+            <line nr="32" mi="0" ci="10" mb="1" cb="1"/>
+            <line nr="34" mi="0" ci="12" mb="0" cb="0"/>
+            <line nr="35" mi="0" ci="29" mb="0" cb="0"/>
+            <line nr="37" mi="0" ci="14" mb="0" cb="0"/>
+            <counter type="INSTRUCTION" missed="0" covered="127"/>
+            <counter type="BRANCH" missed="1" covered="1"/>
+            <counter type="LINE" missed="0" covered="16"/>
+            <counter type="COMPLEXITY" missed="1" covered="2"/>
+            <counter type="METHOD" missed="0" covered="2"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </sourcefile>
+        <counter type="INSTRUCTION" missed="0" covered="127"/>
+        <counter type="BRANCH" missed="1" covered="1"/>
+        <counter type="LINE" missed="0" covered="16"/>
+        <counter type="COMPLEXITY" missed="1" covered="2"/>
+        <counter type="METHOD" missed="0" covered="2"/>
+        <counter type="CLASS" missed="0" covered="1"/>
+    </package>
+    <package name="org/jesperancinha/plugins/omni/reporter/domain/jacoco">
+        <class name="org/jesperancinha/plugins/omni/reporter/domain/jacoco/Method" sourcefilename="OmniJacocoDomain.kt">
+            <method name="&lt;init&gt;" desc="(Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V"
+                    line="36">
+                <counter type="INSTRUCTION" missed="0" covered="18"/>
+                <counter type="LINE" missed="0" covered="5"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V"
+                    line="36">
+                <counter type="INSTRUCTION" missed="27" covered="0"/>
+                <counter type="LINE" missed="6" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getCounters" desc="()Ljava/util/List;" line="38">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getName" desc="()Ljava/lang/String;" line="39">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getDesc" desc="()Ljava/lang/String;" line="40">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getLine" desc="()Ljava/lang/String;" line="41">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="39" covered="18"/>
+            <counter type="LINE" missed="2" covered="5"/>
+            <counter type="COMPLEXITY" missed="5" covered="1"/>
+            <counter type="METHOD" missed="5" covered="1"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/domain/jacoco/Package"
+               sourcefilename="OmniJacocoDomain.kt">
+            <method name="&lt;init&gt;" desc="(Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/lang/String;)V"
+                    line="44">
+                <counter type="INSTRUCTION" missed="0" covered="24"/>
+                <counter type="LINE" missed="0" covered="5"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V"
+                    line="44">
+                <counter type="INSTRUCTION" missed="4" covered="23"/>
+                <counter type="LINE" missed="2" covered="4"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getClazzs" desc="()Ljava/util/List;" line="46">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getSourcefiles" desc="()Ljava/util/List;" line="48">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getCounters" desc="()Ljava/util/List;" line="50">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getName" desc="()Ljava/lang/String;" line="51">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="4" covered="59"/>
+            <counter type="LINE" missed="0" covered="9"/>
+            <counter type="COMPLEXITY" missed="0" covered="6"/>
+            <counter type="METHOD" missed="0" covered="6"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/domain/jacoco/Class" sourcefilename="OmniJacocoDomain.kt">
+            <method name="&lt;init&gt;" desc="(Ljava/util/List;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;)V"
+                    line="11">
+                <counter type="INSTRUCTION" missed="0" covered="21"/>
+                <counter type="LINE" missed="0" covered="5"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/util/List;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V"
+                    line="11">
+                <counter type="INSTRUCTION" missed="4" covered="23"/>
+                <counter type="LINE" missed="2" covered="4"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getMethods" desc="()Ljava/util/List;" line="13">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getCounters" desc="()Ljava/util/List;" line="15">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getName" desc="()Ljava/lang/String;" line="16">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getSourcefilename" desc="()Ljava/lang/String;" line="17">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="16" covered="44"/>
+            <counter type="LINE" missed="0" covered="8"/>
+            <counter type="COMPLEXITY" missed="4" covered="2"/>
+            <counter type="METHOD" missed="4" covered="2"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/domain/jacoco/Counter"
+               sourcefilename="OmniJacocoDomain.kt">
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V" line="20">
+                <counter type="INSTRUCTION" missed="0" covered="15"/>
+                <counter type="LINE" missed="0" covered="5"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V"
+                    line="20">
+                <counter type="INSTRUCTION" missed="6" covered="21"/>
+                <counter type="LINE" missed="3" covered="3"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getValue" desc="()Ljava/lang/String;" line="21">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getType" desc="()Ljava/lang/String;" line="22">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getMissed" desc="()Ljava/lang/String;" line="23">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getCovered" desc="()Ljava/lang/String;" line="24">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="18" covered="36"/>
+            <counter type="LINE" missed="0" covered="6"/>
+            <counter type="COMPLEXITY" missed="4" covered="2"/>
+            <counter type="METHOD" missed="4" covered="2"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/domain/jacoco/Line" sourcefilename="OmniJacocoDomain.kt">
+            <method name="&lt;init&gt;" desc="(Ljava/lang/String;IIIII)V" line="27">
+                <counter type="INSTRUCTION" missed="0" covered="21"/>
+                <counter type="LINE" missed="0" covered="7"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="&lt;init&gt;" desc="(Ljava/lang/String;IIIIIILkotlin/jvm/internal/DefaultConstructorMarker;)V"
+                    line="27">
+                <counter type="INSTRUCTION" missed="0" covered="29"/>
+                <counter type="LINE" missed="0" covered="6"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getValue" desc="()Ljava/lang/String;" line="28">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getNr" desc="()I" line="29">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getMi" desc="()I" line="30">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getCi" desc="()I" line="31">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getMb" desc="()I" line="32">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getCb" desc="()I" line="33">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="0" covered="68"/>
+            <counter type="LINE" missed="0" covered="8"/>
+            <counter type="COMPLEXITY" missed="0" covered="8"/>
+            <counter type="METHOD" missed="0" covered="8"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/domain/jacoco/Sourcefile"
+               sourcefilename="OmniJacocoDomain.kt">
+            <method name="&lt;init&gt;" desc="(Ljava/util/List;Ljava/util/List;Ljava/lang/String;)V" line="61">
+                <counter type="INSTRUCTION" missed="0" covered="18"/>
+                <counter type="LINE" missed="0" covered="4"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/util/List;Ljava/util/List;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V"
+                    line="61">
+                <counter type="INSTRUCTION" missed="2" covered="19"/>
+                <counter type="LINE" missed="1" covered="4"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getLines" desc="()Ljava/util/List;" line="63">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getCounters" desc="()Ljava/util/List;" line="65">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getName" desc="()Ljava/lang/String;" line="66">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="2" covered="46"/>
+            <counter type="LINE" missed="0" covered="7"/>
+            <counter type="COMPLEXITY" missed="0" covered="5"/>
+            <counter type="METHOD" missed="0" covered="5"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/domain/jacoco/Report" sourcefilename="OmniJacocoDomain.kt">
+            <method name="&lt;init&gt;"
+                    desc="(Lorg/jesperancinha/plugins/omni/reporter/domain/jacoco/Sessioninfo;Ljava/util/List;Ljava/util/List;Ljava/lang/String;)V"
+                    line="69">
+                <counter type="INSTRUCTION" missed="0" covered="21"/>
+                <counter type="LINE" missed="0" covered="6"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="&lt;init&gt;"
+                    desc="(Lorg/jesperancinha/plugins/omni/reporter/domain/jacoco/Sessioninfo;Ljava/util/List;Ljava/util/List;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V"
+                    line="71">
+                <counter type="INSTRUCTION" missed="2" covered="25"/>
+                <counter type="LINE" missed="1" covered="5"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getSessioninfo" desc="()Lorg/jesperancinha/plugins/omni/reporter/domain/jacoco/Sessioninfo;"
+                    line="72">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getPackages" desc="()Ljava/util/List;" line="74">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getCounters" desc="()Ljava/util/List;" line="76">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getName" desc="()Ljava/lang/String;" line="77">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="2" covered="58"/>
+            <counter type="LINE" missed="0" covered="9"/>
+            <counter type="COMPLEXITY" missed="0" covered="6"/>
+            <counter type="METHOD" missed="0" covered="6"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/domain/jacoco/Sessioninfo"
+               sourcefilename="OmniJacocoDomain.kt">
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V" line="54">
+                <counter type="INSTRUCTION" missed="0" covered="15"/>
+                <counter type="LINE" missed="0" covered="5"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V"
+                    line="54">
+                <counter type="INSTRUCTION" missed="0" covered="27"/>
+                <counter type="LINE" missed="0" covered="6"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getValue" desc="()Ljava/lang/String;" line="55">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getId" desc="()Ljava/lang/String;" line="56">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getStart" desc="()Ljava/lang/String;" line="57">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getDump" desc="()Ljava/lang/String;" line="58">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="12" covered="42"/>
+            <counter type="LINE" missed="0" covered="6"/>
+            <counter type="COMPLEXITY" missed="4" covered="2"/>
+            <counter type="METHOD" missed="4" covered="2"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <sourcefile name="OmniJacocoDomain.kt">
+            <line nr="11" mi="0" ci="21" mb="0" cb="0"/>
+            <line nr="12" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="13" mi="3" ci="2" mb="0" cb="0"/>
+            <line nr="14" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="15" mi="3" ci="2" mb="0" cb="0"/>
+            <line nr="16" mi="5" ci="3" mb="0" cb="0"/>
+            <line nr="17" mi="5" ci="3" mb="0" cb="0"/>
+            <line nr="18" mi="0" ci="1" mb="0" cb="0"/>
+            <line nr="20" mi="0" ci="21" mb="0" cb="0"/>
+            <line nr="21" mi="3" ci="5" mb="0" cb="0"/>
+            <line nr="22" mi="5" ci="3" mb="0" cb="0"/>
+            <line nr="23" mi="5" ci="3" mb="0" cb="0"/>
+            <line nr="24" mi="5" ci="3" mb="0" cb="0"/>
+            <line nr="25" mi="0" ci="1" mb="0" cb="0"/>
+            <line nr="27" mi="0" ci="23" mb="0" cb="0"/>
+            <line nr="28" mi="0" ci="8" mb="0" cb="0"/>
+            <line nr="29" mi="0" ci="6" mb="0" cb="0"/>
+            <line nr="30" mi="0" ci="8" mb="0" cb="0"/>
+            <line nr="31" mi="0" ci="6" mb="0" cb="0"/>
+            <line nr="32" mi="0" ci="8" mb="0" cb="0"/>
+            <line nr="33" mi="0" ci="8" mb="0" cb="0"/>
+            <line nr="34" mi="0" ci="1" mb="0" cb="0"/>
+            <line nr="36" mi="18" ci="3" mb="0" cb="0"/>
+            <line nr="37" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="38" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="39" mi="5" ci="3" mb="0" cb="0"/>
+            <line nr="40" mi="5" ci="3" mb="0" cb="0"/>
+            <line nr="41" mi="5" ci="3" mb="0" cb="0"/>
+            <line nr="42" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="44" mi="0" ci="21" mb="0" cb="0"/>
+            <line nr="45" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="46" mi="0" ci="5" mb="0" cb="0"/>
+            <line nr="47" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="48" mi="2" ci="3" mb="0" cb="0"/>
+            <line nr="49" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="50" mi="0" ci="5" mb="0" cb="0"/>
+            <line nr="51" mi="2" ci="6" mb="0" cb="0"/>
+            <line nr="52" mi="0" ci="1" mb="0" cb="0"/>
+            <line nr="54" mi="0" ci="21" mb="0" cb="0"/>
+            <line nr="55" mi="3" ci="5" mb="0" cb="0"/>
+            <line nr="56" mi="3" ci="5" mb="0" cb="0"/>
+            <line nr="57" mi="3" ci="5" mb="0" cb="0"/>
+            <line nr="58" mi="3" ci="5" mb="0" cb="0"/>
+            <line nr="59" mi="0" ci="1" mb="0" cb="0"/>
+            <line nr="61" mi="0" ci="17" mb="0" cb="0"/>
+            <line nr="62" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="63" mi="0" ci="5" mb="0" cb="0"/>
+            <line nr="64" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="65" mi="0" ci="5" mb="0" cb="0"/>
+            <line nr="66" mi="2" ci="6" mb="0" cb="0"/>
+            <line nr="67" mi="0" ci="1" mb="0" cb="0"/>
+            <line nr="69" mi="0" ci="2" mb="0" cb="0"/>
+            <line nr="71" mi="0" ci="19" mb="0" cb="0"/>
+            <line nr="72" mi="0" ci="8" mb="0" cb="0"/>
+            <line nr="73" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="74" mi="2" ci="3" mb="0" cb="0"/>
+            <line nr="75" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="76" mi="0" ci="5" mb="0" cb="0"/>
+            <line nr="77" mi="0" ci="8" mb="0" cb="0"/>
+            <line nr="78" mi="0" ci="1" mb="0" cb="0"/>
+            <counter type="INSTRUCTION" missed="93" covered="371"/>
+            <counter type="LINE" missed="2" covered="58"/>
+            <counter type="COMPLEXITY" missed="17" covered="32"/>
+            <counter type="METHOD" missed="17" covered="32"/>
+            <counter type="CLASS" missed="0" covered="8"/>
+        </sourcefile>
+        <counter type="INSTRUCTION" missed="93" covered="371"/>
+        <counter type="LINE" missed="2" covered="58"/>
+        <counter type="COMPLEXITY" missed="17" covered="32"/>
+        <counter type="METHOD" missed="17" covered="32"/>
+        <counter type="CLASS" missed="0" covered="8"/>
+    </package>
+    <package name="org/jesperancinha/plugins/omni/reporter/transformers">
+        <class name="org/jesperancinha/plugins/omni/reporter/transformers/JacocoParserToCoveralls$parseInput$$inlined$readValue$1"
+               sourcefilename="Extensions.kt">
+            <method name="&lt;init&gt;" desc="()V" line="43">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="0" covered="3"/>
+            <counter type="LINE" missed="0" covered="1"/>
+            <counter type="COMPLEXITY" missed="0" covered="1"/>
+            <counter type="METHOD" missed="0" covered="1"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/transformers/JacocoParserToCoveralls$parseInput$4"
+               sourcefilename="CoverallsTransformer.kt">
+            <method name="invoke" desc="(Lkotlin/Pair;)Lorg/jesperancinha/plugins/omni/reporter/domain/SourceFile;"
+                    line="110">
+                <counter type="INSTRUCTION" missed="15" covered="118"/>
+                <counter type="BRANCH" missed="4" covered="4"/>
+                <counter type="LINE" missed="1" covered="11"/>
+                <counter type="COMPLEXITY" missed="4" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="15" covered="118"/>
+            <counter type="BRANCH" missed="4" covered="4"/>
+            <counter type="LINE" missed="1" covered="11"/>
+            <counter type="COMPLEXITY" missed="4" covered="1"/>
+            <counter type="METHOD" missed="0" covered="1"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/transformers/JacocoParserToCoveralls$parseInput$3"
+               sourcefilename="CoverallsTransformer.kt">
+            <method name="invoke" desc="(Lkotlin/Pair;)Ljava/lang/Boolean;" line="109">
+                <counter type="INSTRUCTION" missed="0" covered="14"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="0" covered="14"/>
+            <counter type="LINE" missed="0" covered="1"/>
+            <counter type="COMPLEXITY" missed="0" covered="1"/>
+            <counter type="METHOD" missed="0" covered="1"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/transformers/JacocoParserToCoveralls$parseInput$2"
+               sourcefilename="CoverallsTransformer.kt">
+            <method name="invoke" desc="(Lkotlin/Pair;)Ljava/util/List;" line="98">
+                <counter type="INSTRUCTION" missed="7" covered="72"/>
+                <counter type="BRANCH" missed="2" covered="2"/>
+                <counter type="LINE" missed="1" covered="8"/>
+                <counter type="COMPLEXITY" missed="2" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="7" covered="72"/>
+            <counter type="BRANCH" missed="2" covered="2"/>
+            <counter type="LINE" missed="1" covered="8"/>
+            <counter type="COMPLEXITY" missed="2" covered="1"/>
+            <counter type="METHOD" missed="0" covered="1"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/transformers/NullSourceFileException"
+               sourcefilename="CoverallsTransformer.kt">
+            <method name="&lt;init&gt;" desc="()V" line="169">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="3" covered="0"/>
+            <counter type="LINE" missed="1" covered="0"/>
+            <counter type="COMPLEXITY" missed="1" covered="0"/>
+            <counter type="METHOD" missed="1" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/transformers/JacocoParserToCoveralls$parseInput$1"
+               sourcefilename="CoverallsTransformer.kt">
+            <method name="invoke" desc="(Lorg/jesperancinha/plugins/omni/reporter/domain/jacoco/Package;)Lkotlin/Pair;"
+                    line="97">
+                <counter type="INSTRUCTION" missed="0" covered="9"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="0" covered="9"/>
+            <counter type="LINE" missed="0" covered="1"/>
+            <counter type="COMPLEXITY" missed="0" covered="1"/>
+            <counter type="METHOD" missed="0" covered="1"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/transformers/JacocoParserToCodacy$parseInput$lambda-2$$inlined$readValue$1"
+               sourcefilename="Extensions.kt">
+            <method name="&lt;init&gt;" desc="()V" line="43">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="3" covered="0"/>
+            <counter type="LINE" missed="1" covered="0"/>
+            <counter type="COMPLEXITY" missed="1" covered="0"/>
+            <counter type="METHOD" missed="1" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/transformers/OmniReporterParserImpl"
+               sourcefilename="Transformer.kt">
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/String;Lorg/jesperancinha/plugins/omni/reporter/pipelines/Pipeline;Ljava/io/File;Z)V"
+                    line="14">
+                <counter type="INSTRUCTION" missed="0" covered="33"/>
+                <counter type="LINE" missed="0" covered="6"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/String;Lorg/jesperancinha/plugins/omni/reporter/pipelines/Pipeline;Ljava/io/File;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V"
+                    line="14">
+                <counter type="INSTRUCTION" missed="12" covered="0"/>
+                <counter type="LINE" missed="3" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getToken$omni_coveragereporter_maven_plugin" desc="()Ljava/lang/String;" line="15">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getPipeline$omni_coveragereporter_maven_plugin"
+                    desc="()Lorg/jesperancinha/plugins/omni/reporter/pipelines/Pipeline;" line="16">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getRoot$omni_coveragereporter_maven_plugin" desc="()Ljava/io/File;" line="17">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getIncludeBranchCoverage$omni_coveragereporter_maven_plugin" desc="()Z" line="18">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getGitRepository" desc="()Lorg/jesperancinha/plugins/omni/reporter/repository/GitRepository;"
+                    line="20">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="12" covered="48"/>
+            <counter type="LINE" missed="1" covered="6"/>
+            <counter type="COMPLEXITY" missed="1" covered="6"/>
+            <counter type="METHOD" missed="1" covered="6"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/transformers/CoverallsTransformerKt"
+               sourcefilename="CoverallsTransformer.kt">
+            <method name="getToBranchCoverageArray" desc="(Ljava/util/List;)[Ljava/lang/Integer;" line="21">
+                <counter type="INSTRUCTION" missed="0" covered="87"/>
+                <counter type="BRANCH" missed="0" covered="4"/>
+                <counter type="LINE" missed="0" covered="11"/>
+                <counter type="COMPLEXITY" missed="0" covered="3"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="toCoverageArray" desc="(Ljava/util/List;I)[Ljava/lang/Integer;" line="33">
+                <counter type="INSTRUCTION" missed="12" covered="109"/>
+                <counter type="BRANCH" missed="6" covered="10"/>
+                <counter type="LINE" missed="1" covered="9"/>
+                <counter type="COMPLEXITY" missed="6" covered="3"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="mergeTo"
+                    desc="(Lorg/jesperancinha/plugins/omni/reporter/domain/SourceFile;Lorg/jesperancinha/plugins/omni/reporter/domain/SourceFile;)Lorg/jesperancinha/plugins/omni/reporter/domain/SourceFile;"
+                    line="160">
+                <counter type="INSTRUCTION" missed="14" covered="74"/>
+                <counter type="BRANCH" missed="4" covered="6"/>
+                <counter type="LINE" missed="0" covered="7"/>
+                <counter type="COMPLEXITY" missed="4" covered="2"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="26" covered="270"/>
+            <counter type="BRANCH" missed="10" covered="20"/>
+            <counter type="LINE" missed="1" covered="27"/>
+            <counter type="COMPLEXITY" missed="10" covered="8"/>
+            <counter type="METHOD" missed="0" covered="3"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/transformers/SourceCodeFile"
+               sourcefilename="CoverallsTransformer.kt">
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/io/File;Ljava/lang/String;Lorg/jesperancinha/plugins/omni/reporter/domain/jacoco/Sourcefile;)V"
+                    line="46">
+                <counter type="INSTRUCTION" missed="2" covered="29"/>
+                <counter type="BRANCH" missed="1" covered="1"/>
+                <counter type="LINE" missed="0" covered="2"/>
+                <counter type="COMPLEXITY" missed="1" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="2" covered="29"/>
+            <counter type="BRANCH" missed="1" covered="1"/>
+            <counter type="LINE" missed="0" covered="2"/>
+            <counter type="COMPLEXITY" missed="1" covered="1"/>
+            <counter type="METHOD" missed="0" covered="1"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/transformers/JacocoParserToCoveralls$failOnUnknownPredicateFilePack$1"
+               sourcefilename="CoverallsTransformer.kt">
+            <method name="invoke" desc="(Ljava/util/List;Ljava/util/List;)Ljava/lang/Boolean;" line="79">
+                <counter type="INSTRUCTION" missed="79" covered="0"/>
+                <counter type="BRANCH" missed="6" covered="0"/>
+                <counter type="LINE" missed="11" covered="0"/>
+                <counter type="COMPLEXITY" missed="4" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="79" covered="0"/>
+            <counter type="BRANCH" missed="6" covered="0"/>
+            <counter type="LINE" missed="11" covered="0"/>
+            <counter type="COMPLEXITY" missed="4" covered="0"/>
+            <counter type="METHOD" missed="1" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/transformers/JacocoParserToCodacy"
+               sourcefilename="CodacyTransformer.kt">
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/String;Lorg/jesperancinha/plugins/omni/reporter/pipelines/Pipeline;Ljava/io/File;)V"
+                    line="15">
+                <counter type="INSTRUCTION" missed="21" covered="0"/>
+                <counter type="LINE" missed="3" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getLanguages" desc="()Ljava/util/List;" line="21">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="setLanguages" desc="(Ljava/util/List;)V" line="21">
+                <counter type="INSTRUCTION" missed="7" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="parseInput" desc="(Ljava/io/File;Ljava/util/List;)Ljava/io/File;" line="23">
+                <counter type="INSTRUCTION" missed="103" covered="0"/>
+                <counter type="BRANCH" missed="12" covered="0"/>
+                <counter type="LINE" missed="12" covered="0"/>
+                <counter type="COMPLEXITY" missed="7" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="134" covered="0"/>
+            <counter type="BRANCH" missed="12" covered="0"/>
+            <counter type="LINE" missed="15" covered="0"/>
+            <counter type="COMPLEXITY" missed="10" covered="0"/>
+            <counter type="METHOD" missed="4" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/transformers/JacocoParserToCoveralls$Companion"
+               sourcefilename="CoverallsTransformer.kt"/>
+        <class name="org/jesperancinha/plugins/omni/reporter/transformers/JacocoParserToCoveralls"
+               sourcefilename="CoverallsTransformer.kt">
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/String;Lorg/jesperancinha/plugins/omni/reporter/pipelines/Pipeline;Ljava/io/File;ZZZ)V"
+                    line="50">
+                <counter type="INSTRUCTION" missed="3" covered="38"/>
+                <counter type="BRANCH" missed="1" covered="1"/>
+                <counter type="LINE" missed="0" covered="7"/>
+                <counter type="COMPLEXITY" missed="1" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getUseCoverallsCount" desc="()Z" line="56">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getCoverallsReport$omni_coveragereporter_maven_plugin"
+                    desc="()Lorg/jesperancinha/plugins/omni/reporter/domain/CoverallsReport;" line="60">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="setCoverallsReport$omni_coveragereporter_maven_plugin"
+                    desc="(Lorg/jesperancinha/plugins/omni/reporter/domain/CoverallsReport;)V" line="60">
+                <counter type="INSTRUCTION" missed="0" covered="4"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getFailOnUnknownPredicate" desc="()Lkotlin/jvm/functions/Function1;" line="64">
+                <counter type="INSTRUCTION" missed="0" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getFailOnUnknownPredicateFilePack" desc="()Lkotlin/jvm/functions/Function2;" line="78">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="parseInput"
+                    desc="(Ljava/io/InputStream;Ljava/util/List;)Lorg/jesperancinha/plugins/omni/reporter/domain/CoverallsReport;"
+                    line="95">
+                <counter type="INSTRUCTION" missed="17" covered="189"/>
+                <counter type="BRANCH" missed="7" covered="11"/>
+                <counter type="LINE" missed="0" covered="29"/>
+                <counter type="COMPLEXITY" missed="7" covered="3"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="&lt;clinit&gt;" desc="()V" line="155">
+                <counter type="INSTRUCTION" missed="0" covered="9"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="23" covered="249"/>
+            <counter type="BRANCH" missed="8" covered="12"/>
+            <counter type="LINE" missed="0" covered="39"/>
+            <counter type="COMPLEXITY" missed="9" covered="9"/>
+            <counter type="METHOD" missed="1" covered="7"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/transformers/JacocoParserToCoveralls$failOnUnknownPredicate$1"
+               sourcefilename="CoverallsTransformer.kt">
+            <method name="invoke" desc="(Ljava/io/File;)Ljava/lang/Boolean;" line="66">
+                <counter type="INSTRUCTION" missed="15" covered="0"/>
+                <counter type="BRANCH" missed="2" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="2" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="15" covered="0"/>
+            <counter type="BRANCH" missed="2" covered="0"/>
+            <counter type="LINE" missed="1" covered="0"/>
+            <counter type="COMPLEXITY" missed="2" covered="0"/>
+            <counter type="METHOD" missed="1" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/transformers/JacocoParserToCoveralls$failOnUnknownPredicate$2"
+               sourcefilename="CoverallsTransformer.kt">
+            <method name="invoke" desc="(Ljava/io/File;)Ljava/lang/Boolean;" line="68">
+                <counter type="INSTRUCTION" missed="16" covered="10"/>
+                <counter type="BRANCH" missed="1" covered="1"/>
+                <counter type="LINE" missed="2" covered="2"/>
+                <counter type="COMPLEXITY" missed="1" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="16" covered="10"/>
+            <counter type="BRANCH" missed="1" covered="1"/>
+            <counter type="LINE" missed="2" covered="2"/>
+            <counter type="COMPLEXITY" missed="1" covered="1"/>
+            <counter type="METHOD" missed="0" covered="1"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/transformers/OmniReportParser"
+               sourcefilename="Transformer.kt"/>
+        <sourcefile name="CoverallsTransformer.kt">
+            <line nr="21" mi="0" ci="5" mb="0" cb="0"/>
+            <line nr="22" mi="0" ci="14" mb="0" cb="2"/>
+            <line nr="23" mi="0" ci="26" mb="0" cb="2"/>
+            <line nr="24" mi="0" ci="5" mb="0" cb="0"/>
+            <line nr="25" mi="0" ci="6" mb="0" cb="0"/>
+            <line nr="26" mi="0" ci="11" mb="0" cb="0"/>
+            <line nr="27" mi="0" ci="8" mb="0" cb="0"/>
+            <line nr="28" mi="0" ci="8" mb="0" cb="0"/>
+            <line nr="29" mi="0" ci="2" mb="0" cb="0"/>
+            <line nr="30" mi="0" ci="1" mb="0" cb="0"/>
+            <line nr="31" mi="0" ci="1" mb="0" cb="0"/>
+            <line nr="33" mi="0" ci="5" mb="0" cb="0"/>
+            <line nr="34" mi="1" ci="8" mb="2" cb="2"/>
+            <line nr="35" mi="7" ci="47" mb="3" cb="5"/>
+            <line nr="36" mi="0" ci="25" mb="0" cb="2"/>
+            <line nr="37" mi="0" ci="5" mb="0" cb="0"/>
+            <line nr="38" mi="2" ci="14" mb="1" cb="1"/>
+            <line nr="39" mi="0" ci="2" mb="0" cb="0"/>
+            <line nr="40" mi="0" ci="2" mb="0" cb="0"/>
+            <line nr="42" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="44" mi="0" ci="1" mb="0" cb="0"/>
+            <line nr="46" mi="0" ci="1" mb="0" cb="0"/>
+            <line nr="47" mi="2" ci="22" mb="1" cb="1"/>
+            <line nr="50" mi="0" ci="1" mb="0" cb="0"/>
+            <line nr="56" mi="0" ci="6" mb="0" cb="0"/>
+            <line nr="58" mi="0" ci="6" mb="0" cb="0"/>
+            <line nr="60" mi="0" ci="7" mb="0" cb="0"/>
+            <line nr="62" mi="0" ci="6" mb="0" cb="0"/>
+            <line nr="64" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="65" mi="3" ci="4" mb="1" cb="1"/>
+            <line nr="66" mi="12" ci="0" mb="2" cb="0"/>
+            <line nr="67" mi="0" ci="2" mb="0" cb="0"/>
+            <line nr="68" mi="0" ci="3" mb="1" cb="1"/>
+            <line nr="69" mi="13" ci="0" mb="0" cb="0"/>
+            <line nr="70" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="72" mi="0" ci="4" mb="0" cb="0"/>
+            <line nr="78" mi="3" ci="7" mb="0" cb="0"/>
+            <line nr="79" mi="16" ci="0" mb="0" cb="0"/>
+            <line nr="80" mi="19" ci="0" mb="4" cb="0"/>
+            <line nr="81" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="82" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="83" mi="13" ci="0" mb="0" cb="0"/>
+            <line nr="84" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="85" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="86" mi="3" ci="0" mb="2" cb="0"/>
+            <line nr="87" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="88" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="90" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="95" mi="0" ci="4" mb="0" cb="0"/>
+            <line nr="96" mi="0" ci="1" mb="0" cb="0"/>
+            <line nr="97" mi="0" ci="9" mb="0" cb="0"/>
+            <line nr="98" mi="0" ci="15" mb="0" cb="0"/>
+            <line nr="99" mi="0" ci="9" mb="0" cb="0"/>
+            <line nr="100" mi="0" ci="5" mb="0" cb="0"/>
+            <line nr="101" mi="0" ci="11" mb="0" cb="0"/>
+            <line nr="102" mi="0" ci="28" mb="1" cb="1"/>
+            <line nr="103" mi="0" ci="1" mb="0" cb="0"/>
+            <line nr="104" mi="0" ci="5" mb="1" cb="1"/>
+            <line nr="105" mi="7" ci="0" mb="0" cb="0"/>
+            <line nr="107" mi="0" ci="2" mb="0" cb="0"/>
+            <line nr="109" mi="0" ci="17" mb="0" cb="0"/>
+            <line nr="110" mi="0" ci="14" mb="0" cb="0"/>
+            <line nr="111" mi="8" ci="48" mb="1" cb="1"/>
+            <line nr="112" mi="0" ci="17" mb="0" cb="0"/>
+            <line nr="113" mi="0" ci="5" mb="0" cb="0"/>
+            <line nr="114" mi="0" ci="4" mb="0" cb="0"/>
+            <line nr="115" mi="2" ci="6" mb="2" cb="2"/>
+            <line nr="116" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="118" mi="0" ci="6" mb="0" cb="0"/>
+            <line nr="119" mi="0" ci="8" mb="0" cb="0"/>
+            <line nr="120" mi="0" ci="1" mb="0" cb="0"/>
+            <line nr="121" mi="2" ci="8" mb="1" cb="1"/>
+            <line nr="122" mi="0" ci="4" mb="0" cb="0"/>
+            <line nr="126" mi="0" ci="1" mb="0" cb="0"/>
+            <line nr="127" mi="0" ci="1" mb="0" cb="0"/>
+            <line nr="128" mi="0" ci="4" mb="0" cb="0"/>
+            <line nr="129" mi="0" ci="4" mb="0" cb="0"/>
+            <line nr="130" mi="0" ci="19" mb="0" cb="2"/>
+            <line nr="131" mi="0" ci="5" mb="0" cb="0"/>
+            <line nr="132" mi="0" ci="14" mb="0" cb="0"/>
+            <line nr="133" mi="0" ci="11" mb="0" cb="0"/>
+            <line nr="134" mi="0" ci="1" mb="0" cb="0"/>
+            <line nr="135" mi="0" ci="2" mb="0" cb="0"/>
+            <line nr="136" mi="0" ci="18" mb="0" cb="0"/>
+            <line nr="137" mi="0" ci="3" mb="0" cb="2"/>
+            <line nr="138" mi="0" ci="13" mb="0" cb="0"/>
+            <line nr="139" mi="0" ci="4" mb="0" cb="0"/>
+            <line nr="140" mi="0" ci="5" mb="0" cb="0"/>
+            <line nr="141" mi="2" ci="8" mb="1" cb="1"/>
+            <line nr="142" mi="2" ci="8" mb="1" cb="1"/>
+            <line nr="143" mi="0" ci="5" mb="0" cb="0"/>
+            <line nr="144" mi="0" ci="5" mb="0" cb="0"/>
+            <line nr="147" mi="4" ci="8" mb="2" cb="2"/>
+            <line nr="148" mi="4" ci="12" mb="2" cb="2"/>
+            <line nr="151" mi="5" ci="4" mb="1" cb="1"/>
+            <line nr="152" mi="0" ci="1" mb="0" cb="0"/>
+            <line nr="155" mi="0" ci="4" mb="0" cb="0"/>
+            <line nr="160" mi="11" ci="16" mb="3" cb="3"/>
+            <line nr="161" mi="0" ci="3" mb="0" cb="0"/>
+            <line nr="162" mi="0" ci="10" mb="0" cb="0"/>
+            <line nr="163" mi="0" ci="5" mb="0" cb="0"/>
+            <line nr="164" mi="3" ci="28" mb="1" cb="3"/>
+            <line nr="165" mi="0" ci="2" mb="0" cb="0"/>
+            <line nr="166" mi="0" ci="10" mb="0" cb="0"/>
+            <line nr="169" mi="3" ci="0" mb="0" cb="0"/>
+            <counter type="INSTRUCTION" missed="186" covered="771"/>
+            <counter type="BRANCH" missed="34" covered="40"/>
+            <counter type="LINE" missed="18" covered="87"/>
+            <counter type="COMPLEXITY" missed="34" covered="23"/>
+            <counter type="METHOD" missed="4" covered="16"/>
+            <counter type="CLASS" missed="3" covered="8"/>
+        </sourcefile>
+        <sourcefile name="Extensions.kt">
+            <line nr="43" mi="3" ci="3" mb="0" cb="0"/>
+            <counter type="INSTRUCTION" missed="3" covered="3"/>
+            <counter type="LINE" missed="0" covered="1"/>
+            <counter type="COMPLEXITY" missed="1" covered="1"/>
+            <counter type="METHOD" missed="1" covered="1"/>
+            <counter type="CLASS" missed="1" covered="1"/>
+        </sourcefile>
+        <sourcefile name="CodacyTransformer.kt">
+            <line nr="15" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="19" mi="8" ci="0" mb="0" cb="0"/>
+            <line nr="21" mi="10" ci="0" mb="0" cb="0"/>
+            <line nr="23" mi="8" ci="0" mb="0" cb="0"/>
+            <line nr="24" mi="9" ci="0" mb="0" cb="0"/>
+            <line nr="25" mi="9" ci="0" mb="0" cb="0"/>
+            <line nr="26" mi="9" ci="0" mb="0" cb="0"/>
+            <line nr="27" mi="7" ci="0" mb="0" cb="0"/>
+            <line nr="28" mi="17" ci="0" mb="4" cb="0"/>
+            <line nr="29" mi="17" ci="0" mb="4" cb="0"/>
+            <line nr="30" mi="17" ci="0" mb="4" cb="0"/>
+            <line nr="31" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="34" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="35" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="36" mi="1" ci="0" mb="0" cb="0"/>
+            <counter type="INSTRUCTION" missed="134" covered="0"/>
+            <counter type="BRANCH" missed="12" covered="0"/>
+            <counter type="LINE" missed="15" covered="0"/>
+            <counter type="COMPLEXITY" missed="10" covered="0"/>
+            <counter type="METHOD" missed="4" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </sourcefile>
+        <sourcefile name="Transformer.kt">
+            <line nr="14" mi="9" ci="3" mb="0" cb="0"/>
+            <line nr="15" mi="0" ci="6" mb="0" cb="0"/>
+            <line nr="16" mi="0" ci="6" mb="0" cb="0"/>
+            <line nr="17" mi="0" ci="6" mb="0" cb="0"/>
+            <line nr="18" mi="2" ci="6" mb="0" cb="0"/>
+            <line nr="20" mi="0" ci="12" mb="0" cb="0"/>
+            <line nr="21" mi="1" ci="0" mb="0" cb="0"/>
+            <counter type="INSTRUCTION" missed="12" covered="48"/>
+            <counter type="LINE" missed="1" covered="6"/>
+            <counter type="COMPLEXITY" missed="1" covered="6"/>
+            <counter type="METHOD" missed="1" covered="6"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </sourcefile>
+        <counter type="INSTRUCTION" missed="335" covered="822"/>
+        <counter type="BRANCH" missed="46" covered="40"/>
+        <counter type="LINE" missed="34" covered="94"/>
+        <counter type="COMPLEXITY" missed="46" covered="30"/>
+        <counter type="METHOD" missed="10" covered="23"/>
+        <counter type="CLASS" missed="5" covered="10"/>
+    </package>
+    <package name="org/jesperancinha/plugins/omni/reporter">
+        <class name="org/jesperancinha/plugins/omni/reporter/CoverallsUrlNotConfiguredException"
+               sourcefilename="OmniReporterMojo.kt">
+            <method name="&lt;init&gt;" desc="()V" line="146">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="3" covered="0"/>
+            <counter type="LINE" missed="1" covered="0"/>
+            <counter type="COMPLEXITY" missed="1" covered="0"/>
+            <counter type="METHOD" missed="1" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/CoverallsReportNotGeneratedException"
+               sourcefilename="OmniReporterMojo.kt">
+            <method name="&lt;init&gt;" desc="()V" line="148">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="3" covered="0"/>
+            <counter type="LINE" missed="1" covered="0"/>
+            <counter type="COMPLEXITY" missed="1" covered="0"/>
+            <counter type="METHOD" missed="1" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/OmniReporterMojo$Companion"
+               sourcefilename="OmniReporterMojo.kt"/>
+        <class name="org/jesperancinha/plugins/omni/reporter/HelpMojo" sourcefilename="HelpMojo.java">
+            <method name="&lt;init&gt;" desc="()V" line="27">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="build" desc="()Lorg/w3c/dom/Document;" line="67">
+                <counter type="INSTRUCTION" missed="44" covered="0"/>
+                <counter type="LINE" missed="11" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="execute" desc="()V" line="95">
+                <counter type="INSTRUCTION" missed="154" covered="0"/>
+                <counter type="BRANCH" missed="20" covered="0"/>
+                <counter type="LINE" missed="31" covered="0"/>
+                <counter type="COMPLEXITY" missed="11" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="isNotEmpty" desc="(Ljava/lang/String;)Z" line="160">
+                <counter type="INSTRUCTION" missed="9" covered="0"/>
+                <counter type="BRANCH" missed="4" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="3" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getValue" desc="(Lorg/w3c/dom/Node;Ljava/lang/String;)Ljava/lang/String;" line="166">
+                <counter type="INSTRUCTION" missed="5" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getSingleChild" desc="(Lorg/w3c/dom/Node;Ljava/lang/String;)Lorg/w3c/dom/Node;" line="172">
+                <counter type="INSTRUCTION" missed="28" covered="0"/>
+                <counter type="BRANCH" missed="4" covered="0"/>
+                <counter type="LINE" missed="6" covered="0"/>
+                <counter type="COMPLEXITY" missed="3" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="findNamedChild" desc="(Lorg/w3c/dom/Node;Ljava/lang/String;)Ljava/util/List;" line="186">
+                <counter type="INSTRUCTION" missed="30" covered="0"/>
+                <counter type="BRANCH" missed="4" covered="0"/>
+                <counter type="LINE" missed="7" covered="0"/>
+                <counter type="COMPLEXITY" missed="3" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="findSingleChild" desc="(Lorg/w3c/dom/Node;Ljava/lang/String;)Lorg/w3c/dom/Node;" line="202">
+                <counter type="INSTRUCTION" missed="24" covered="0"/>
+                <counter type="BRANCH" missed="4" covered="0"/>
+                <counter type="LINE" missed="6" covered="0"/>
+                <counter type="COMPLEXITY" missed="3" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="writeGoal" desc="(Ljava/lang/StringBuilder;Ljava/lang/String;Lorg/w3c/dom/Element;)V"
+                    line="217">
+                <counter type="INSTRUCTION" missed="116" covered="0"/>
+                <counter type="BRANCH" missed="20" covered="0"/>
+                <counter type="LINE" missed="23" covered="0"/>
+                <counter type="COMPLEXITY" missed="11" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="writeParameter" desc="(Ljava/lang/StringBuilder;Lorg/w3c/dom/Node;Lorg/w3c/dom/Node;)V"
+                    line="257">
+                <counter type="INSTRUCTION" missed="97" covered="0"/>
+                <counter type="BRANCH" missed="16" covered="0"/>
+                <counter type="LINE" missed="21" covered="0"/>
+                <counter type="COMPLEXITY" missed="9" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="repeat" desc="(Ljava/lang/String;I)Ljava/lang/String;" line="303">
+                <counter type="INSTRUCTION" missed="22" covered="0"/>
+                <counter type="BRANCH" missed="2" covered="0"/>
+                <counter type="LINE" missed="4" covered="0"/>
+                <counter type="COMPLEXITY" missed="2" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="append" desc="(Ljava/lang/StringBuilder;Ljava/lang/String;I)V" line="323">
+                <counter type="INSTRUCTION" missed="24" covered="0"/>
+                <counter type="BRANCH" missed="2" covered="0"/>
+                <counter type="LINE" missed="4" covered="0"/>
+                <counter type="COMPLEXITY" missed="2" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="toLines" desc="(Ljava/lang/String;III)Ljava/util/List;" line="341">
+                <counter type="INSTRUCTION" missed="37" covered="0"/>
+                <counter type="BRANCH" missed="2" covered="0"/>
+                <counter type="LINE" missed="6" covered="0"/>
+                <counter type="COMPLEXITY" missed="2" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="toLines" desc="(Ljava/util/List;Ljava/lang/String;II)V" line="365">
+                <counter type="INSTRUCTION" missed="104" covered="0"/>
+                <counter type="BRANCH" missed="12" covered="0"/>
+                <counter type="LINE" missed="19" covered="0"/>
+                <counter type="COMPLEXITY" missed="7" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getIndentLevel" desc="(Ljava/lang/String;)I" line="414">
+                <counter type="INSTRUCTION" missed="40" covered="0"/>
+                <counter type="BRANCH" missed="10" covered="0"/>
+                <counter type="LINE" missed="8" covered="0"/>
+                <counter type="COMPLEXITY" missed="6" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getPropertyFromExpression" desc="(Ljava/lang/String;)Ljava/lang/String;" line="432">
+                <counter type="INSTRUCTION" missed="26" covered="0"/>
+                <counter type="BRANCH" missed="8" covered="0"/>
+                <counter type="LINE" missed="4" covered="0"/>
+                <counter type="COMPLEXITY" missed="5" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="763" covered="0"/>
+            <counter type="BRANCH" missed="108" covered="0"/>
+            <counter type="LINE" missed="153" covered="0"/>
+            <counter type="COMPLEXITY" missed="70" covered="0"/>
+            <counter type="METHOD" missed="16" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/OmniReporterMojo" sourcefilename="OmniReporterMojo.kt">
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/io/File;ZZZZZZZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/apache/maven/project/MavenProject;Ljava/util/List;)V"
+                    line="23">
+                <counter type="INSTRUCTION" missed="54" covered="0"/>
+                <counter type="LINE" missed="18" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/io/File;ZZZZZZZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/apache/maven/project/MavenProject;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V"
+                    line="23">
+                <counter type="INSTRUCTION" missed="99" covered="0"/>
+                <counter type="LINE" missed="18" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getCoverallsUrl" desc="()Ljava/lang/String;" line="25">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="setCoverallsUrl" desc="(Ljava/lang/String;)V" line="25">
+                <counter type="INSTRUCTION" missed="4" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getCodacyUrl" desc="()Ljava/lang/String;" line="27">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="setCodacyUrl" desc="(Ljava/lang/String;)V" line="27">
+                <counter type="INSTRUCTION" missed="4" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getSourceEncoding" desc="()Ljava/lang/String;" line="29">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="setSourceEncoding" desc="(Ljava/lang/String;)V" line="29">
+                <counter type="INSTRUCTION" missed="4" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getProjectBaseDir" desc="()Ljava/io/File;" line="31">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="setProjectBaseDir" desc="(Ljava/io/File;)V" line="31">
+                <counter type="INSTRUCTION" missed="4" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getFailOnNoEncoding" desc="()Z" line="33">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="setFailOnNoEncoding" desc="(Z)V" line="33">
+                <counter type="INSTRUCTION" missed="4" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getFailOnUnknown" desc="()Z" line="35">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="setFailOnUnknown" desc="(Z)V" line="35">
+                <counter type="INSTRUCTION" missed="4" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getFailOnReportNotFound" desc="()Z" line="37">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="setFailOnReportNotFound" desc="(Z)V" line="37">
+                <counter type="INSTRUCTION" missed="4" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getFailOnReportSendingError" desc="()Z" line="39">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="setFailOnReportSendingError" desc="(Z)V" line="39">
+                <counter type="INSTRUCTION" missed="4" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getIgnoreTestBuildDirectory" desc="()Z" line="41">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="setIgnoreTestBuildDirectory" desc="(Z)V" line="41">
+                <counter type="INSTRUCTION" missed="4" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getUseCoverallsCount" desc="()Z" line="43">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="setUseCoverallsCount" desc="(Z)V" line="43">
+                <counter type="INSTRUCTION" missed="4" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getBranchCoverage" desc="()Z" line="45">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="setBranchCoverage" desc="(Z)V" line="45">
+                <counter type="INSTRUCTION" missed="4" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getCoverallsToken" desc="()Ljava/lang/String;" line="47">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="setCoverallsToken" desc="(Ljava/lang/String;)V" line="47">
+                <counter type="INSTRUCTION" missed="4" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getCodecovToken" desc="()Ljava/lang/String;" line="49">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="setCodecovToken" desc="(Ljava/lang/String;)V" line="49">
+                <counter type="INSTRUCTION" missed="4" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getCodacyToken" desc="()Ljava/lang/String;" line="51">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="setCodacyToken" desc="(Ljava/lang/String;)V" line="51">
+                <counter type="INSTRUCTION" missed="4" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getProject" desc="()Lorg/apache/maven/project/MavenProject;" line="53">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="setProject" desc="(Lorg/apache/maven/project/MavenProject;)V" line="53">
+                <counter type="INSTRUCTION" missed="4" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getExtraSourceFolders" desc="()Ljava/util/List;" line="55">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="execute" desc="()V" line="59">
+                <counter type="INSTRUCTION" missed="311" covered="0"/>
+                <counter type="BRANCH" missed="18" covered="0"/>
+                <counter type="LINE" missed="52" covered="0"/>
+                <counter type="COMPLEXITY" missed="10" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="logLine" desc="()V" line="119">
+                <counter type="INSTRUCTION" missed="14" covered="0"/>
+                <counter type="LINE" missed="3" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="checkToken" desc="(Ljava/lang/String;)Ljava/lang/String;" line="123">
+                <counter type="INSTRUCTION" missed="12" covered="0"/>
+                <counter type="BRANCH" missed="2" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="2" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="&lt;clinit&gt;" desc="()V" line="126">
+                <counter type="INSTRUCTION" missed="9" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="607" covered="0"/>
+            <counter type="BRANCH" missed="20" covered="0"/>
+            <counter type="LINE" missed="92" covered="0"/>
+            <counter type="COMPLEXITY" missed="47" covered="0"/>
+            <counter type="METHOD" missed="37" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/OmniReporterMojoKt" sourcefilename="OmniReporterMojo.kt">
+            <method name="getFindAllSearchFolders" desc="(Lorg/apache/maven/project/MavenProject;)Ljava/util/List;"
+                    line="14">
+                <counter type="INSTRUCTION" missed="44" covered="0"/>
+                <counter type="BRANCH" missed="6" covered="0"/>
+                <counter type="LINE" missed="4" covered="0"/>
+                <counter type="COMPLEXITY" missed="4" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="isSupported" desc="(Ljava/lang/String;)Z" line="20">
+                <counter type="INSTRUCTION" missed="7" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="injectExtraSourceFiles" desc="(Ljava/util/List;Ljava/util/List;)Ljava/util/List;" line="133">
+                <counter type="INSTRUCTION" missed="61" covered="0"/>
+                <counter type="BRANCH" missed="4" covered="0"/>
+                <counter type="LINE" missed="8" covered="0"/>
+                <counter type="COMPLEXITY" missed="3" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="112" covered="0"/>
+            <counter type="BRANCH" missed="10" covered="0"/>
+            <counter type="LINE" missed="13" covered="0"/>
+            <counter type="COMPLEXITY" missed="8" covered="0"/>
+            <counter type="METHOD" missed="3" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/ProjectDirectoryNotFoundException"
+               sourcefilename="OmniReporterMojo.kt">
+            <method name="&lt;init&gt;" desc="()V" line="144">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="3" covered="0"/>
+            <counter type="LINE" missed="1" covered="0"/>
+            <counter type="COMPLEXITY" missed="1" covered="0"/>
+            <counter type="METHOD" missed="1" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <sourcefile name="HelpMojo.java">
+            <line nr="27" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="67" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="68" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="70" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="71" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="72" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="74" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="76" mi="7" ci="0" mb="0" cb="0"/>
+            <line nr="78" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="80" mi="7" ci="0" mb="0" cb="0"/>
+            <line nr="82" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="84" mi="7" ci="0" mb="0" cb="0"/>
+            <line nr="95" mi="3" ci="0" mb="2" cb="0"/>
+            <line nr="97" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="98" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="100" mi="3" ci="0" mb="2" cb="0"/>
+            <line nr="102" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="103" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="106" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="108" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="109" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="112" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="113" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="114" mi="9" ci="0" mb="0" cb="0"/>
+            <line nr="115" mi="7" ci="0" mb="4" cb="0"/>
+            <line nr="117" mi="8" ci="0" mb="0" cb="0"/>
+            <line nr="121" mi="3" ci="0" mb="2" cb="0"/>
+            <line nr="123" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="127" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="130" mi="7" ci="0" mb="0" cb="0"/>
+            <line nr="131" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="134" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="136" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="138" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="140" mi="7" ci="0" mb="4" cb="0"/>
+            <line nr="142" mi="14" ci="0" mb="2" cb="0"/>
+            <line nr="143" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="146" mi="10" ci="0" mb="2" cb="0"/>
+            <line nr="148" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="149" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="151" mi="4" ci="0" mb="2" cb="0"/>
+            <line nr="153" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="155" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="160" mi="9" ci="0" mb="4" cb="0"/>
+            <line nr="166" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="172" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="173" mi="3" ci="0" mb="2" cb="0"/>
+            <line nr="175" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="177" mi="4" ci="0" mb="2" cb="0"/>
+            <line nr="179" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="181" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="186" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="187" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="188" mi="8" ci="0" mb="2" cb="0"/>
+            <line nr="190" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="191" mi="5" ci="0" mb="2" cb="0"/>
+            <line nr="193" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="196" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="202" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="203" mi="3" ci="0" mb="2" cb="0"/>
+            <line nr="205" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="207" mi="4" ci="0" mb="2" cb="0"/>
+            <line nr="209" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="211" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="217" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="218" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="219" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="220" mi="12" ci="0" mb="6" cb="0"/>
+            <line nr="222" mi="7" ci="0" mb="0" cb="0"/>
+            <line nr="223" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="224" mi="6" ci="0" mb="4" cb="0"/>
+            <line nr="226" mi="7" ci="0" mb="0" cb="0"/>
+            <line nr="227" mi="5" ci="0" mb="4" cb="0"/>
+            <line nr="229" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="230" mi="7" ci="0" mb="0" cb="0"/>
+            <line nr="233" mi="2" ci="0" mb="2" cb="0"/>
+            <line nr="235" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="237" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="239" mi="3" ci="0" mb="2" cb="0"/>
+            <line nr="241" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="242" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="243" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="244" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="246" mi="10" ci="0" mb="2" cb="0"/>
+            <line nr="248" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="249" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="252" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="257" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="258" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="260" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="261" mi="2" ci="0" mb="2" cb="0"/>
+            <line nr="263" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="266" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="267" mi="6" ci="0" mb="4" cb="0"/>
+            <line nr="269" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="271" mi="7" ci="0" mb="0" cb="0"/>
+            <line nr="272" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="273" mi="6" ci="0" mb="4" cb="0"/>
+            <line nr="275" mi="7" ci="0" mb="0" cb="0"/>
+            <line nr="276" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="278" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="279" mi="6" ci="0" mb="2" cb="0"/>
+            <line nr="281" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="283" mi="6" ci="0" mb="4" cb="0"/>
+            <line nr="285" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="286" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="289" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="290" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="303" mi="8" ci="0" mb="0" cb="0"/>
+            <line nr="305" mi="7" ci="0" mb="2" cb="0"/>
+            <line nr="307" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="310" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="323" mi="16" ci="0" mb="2" cb="0"/>
+            <line nr="325" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="326" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="327" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="341" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="343" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="345" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="347" mi="16" ci="0" mb="2" cb="0"/>
+            <line nr="349" mi="7" ci="0" mb="0" cb="0"/>
+            <line nr="352" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="365" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="366" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="368" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="370" mi="16" ci="0" mb="2" cb="0"/>
+            <line nr="372" mi="3" ci="0" mb="2" cb="0"/>
+            <line nr="374" mi="7" ci="0" mb="2" cb="0"/>
+            <line nr="376" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="377" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="378" mi="9" ci="0" mb="0" cb="0"/>
+            <line nr="382" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="386" mi="8" ci="0" mb="2" cb="0"/>
+            <line nr="388" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="389" mi="3" ci="0" mb="2" cb="0"/>
+            <line nr="391" mi="12" ci="0" mb="0" cb="0"/>
+            <line nr="393" mi="3" ci="0" mb="2" cb="0"/>
+            <line nr="395" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="399" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="403" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="404" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="414" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="415" mi="13" ci="0" mb="4" cb="0"/>
+            <line nr="417" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="419" mi="15" ci="0" mb="4" cb="0"/>
+            <line nr="421" mi="5" ci="0" mb="2" cb="0"/>
+            <line nr="423" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="424" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="427" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="432" mi="12" ci="0" mb="6" cb="0"/>
+            <line nr="433" mi="4" ci="0" mb="2" cb="0"/>
+            <line nr="436" mi="8" ci="0" mb="0" cb="0"/>
+            <line nr="439" mi="2" ci="0" mb="0" cb="0"/>
+            <counter type="INSTRUCTION" missed="763" covered="0"/>
+            <counter type="BRANCH" missed="108" covered="0"/>
+            <counter type="LINE" missed="153" covered="0"/>
+            <counter type="COMPLEXITY" missed="70" covered="0"/>
+            <counter type="METHOD" missed="16" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </sourcefile>
+        <sourcefile name="OmniReporterMojo.kt">
+            <line nr="14" mi="18" ci="0" mb="4" cb="0"/>
+            <line nr="15" mi="17" ci="0" mb="2" cb="0"/>
+            <line nr="16" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="17" mi="8" ci="0" mb="0" cb="0"/>
+            <line nr="20" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="23" mi="67" ci="0" mb="0" cb="0"/>
+            <line nr="24" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="25" mi="9" ci="0" mb="0" cb="0"/>
+            <line nr="26" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="27" mi="9" ci="0" mb="0" cb="0"/>
+            <line nr="28" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="29" mi="9" ci="0" mb="0" cb="0"/>
+            <line nr="30" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="31" mi="9" ci="0" mb="0" cb="0"/>
+            <line nr="32" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="33" mi="9" ci="0" mb="0" cb="0"/>
+            <line nr="34" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="35" mi="9" ci="0" mb="0" cb="0"/>
+            <line nr="36" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="37" mi="9" ci="0" mb="0" cb="0"/>
+            <line nr="38" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="39" mi="9" ci="0" mb="0" cb="0"/>
+            <line nr="40" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="41" mi="9" ci="0" mb="0" cb="0"/>
+            <line nr="42" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="43" mi="9" ci="0" mb="0" cb="0"/>
+            <line nr="44" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="45" mi="9" ci="0" mb="0" cb="0"/>
+            <line nr="46" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="47" mi="9" ci="0" mb="0" cb="0"/>
+            <line nr="48" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="49" mi="9" ci="0" mb="0" cb="0"/>
+            <line nr="50" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="51" mi="9" ci="0" mb="0" cb="0"/>
+            <line nr="52" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="53" mi="9" ci="0" mb="0" cb="0"/>
+            <line nr="54" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="55" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="56" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="59" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="60" mi="66" ci="0" mb="6" cb="0"/>
+            <line nr="61" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="64" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="65" mi="18" ci="0" mb="4" cb="0"/>
+            <line nr="66" mi="11" ci="0" mb="2" cb="0"/>
+            <line nr="67" mi="11" ci="0" mb="2" cb="0"/>
+            <line nr="69" mi="7" ci="0" mb="0" cb="0"/>
+            <line nr="71" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="72" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="73" mi="8" ci="0" mb="0" cb="0"/>
+            <line nr="74" mi="8" ci="0" mb="0" cb="0"/>
+            <line nr="75" mi="8" ci="0" mb="0" cb="0"/>
+            <line nr="76" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="77" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="78" mi="7" ci="0" mb="0" cb="0"/>
+            <line nr="79" mi="7" ci="0" mb="0" cb="0"/>
+            <line nr="80" mi="7" ci="0" mb="0" cb="0"/>
+            <line nr="81" mi="7" ci="0" mb="0" cb="0"/>
+            <line nr="82" mi="7" ci="0" mb="0" cb="0"/>
+            <line nr="83" mi="7" ci="0" mb="0" cb="0"/>
+            <line nr="84" mi="7" ci="0" mb="0" cb="0"/>
+            <line nr="85" mi="17" ci="0" mb="0" cb="0"/>
+            <line nr="86" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="88" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="90" mi="10" ci="0" mb="2" cb="0"/>
+            <line nr="91" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="92" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="93" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="94" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="95" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="96" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="97" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="98" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="99" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="100" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="101" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="102" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="103" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="104" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="106" mi="10" ci="0" mb="2" cb="0"/>
+            <line nr="107" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="108" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="109" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="110" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="111" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="112" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="113" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="114" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="115" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="116" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="117" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="119" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="120" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="121" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="123" mi="12" ci="0" mb="2" cb="0"/>
+            <line nr="126" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="130" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="133" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="134" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="135" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="136" mi="24" ci="0" mb="4" cb="0"/>
+            <line nr="138" mi="17" ci="0" mb="0" cb="0"/>
+            <line nr="139" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="140" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="141" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="144" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="146" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="148" mi="3" ci="0" mb="0" cb="0"/>
+            <counter type="INSTRUCTION" missed="728" covered="0"/>
+            <counter type="BRANCH" missed="30" covered="0"/>
+            <counter type="LINE" missed="108" covered="0"/>
+            <counter type="COMPLEXITY" missed="58" covered="0"/>
+            <counter type="METHOD" missed="43" covered="0"/>
+            <counter type="CLASS" missed="5" covered="0"/>
+        </sourcefile>
+        <counter type="INSTRUCTION" missed="1491" covered="0"/>
+        <counter type="BRANCH" missed="138" covered="0"/>
+        <counter type="LINE" missed="261" covered="0"/>
+        <counter type="COMPLEXITY" missed="128" covered="0"/>
+        <counter type="METHOD" missed="59" covered="0"/>
+        <counter type="CLASS" missed="6" covered="0"/>
+    </package>
+    <package name="org/jesperancinha/plugins/omni/reporter/processors">
+        <class name="org/jesperancinha/plugins/omni/reporter/processors/CodacyProcessor$Companion"
+               sourcefilename="Processor.kt"/>
+        <class name="org/jesperancinha/plugins/omni/reporter/processors/Processor" sourcefilename="Processor.kt">
+            <method name="&lt;init&gt;" desc="(Z)V" line="21">
+                <counter type="INSTRUCTION" missed="16" covered="0"/>
+                <counter type="BRANCH" missed="2" covered="0"/>
+                <counter type="LINE" missed="4" covered="0"/>
+                <counter type="COMPLEXITY" missed="2" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getSupportedPredicate" desc="()Lkotlin/jvm/functions/Function2;" line="26">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="19" covered="0"/>
+            <counter type="BRANCH" missed="2" covered="0"/>
+            <counter type="LINE" missed="5" covered="0"/>
+            <counter type="COMPLEXITY" missed="3" covered="0"/>
+            <counter type="METHOD" missed="2" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/processors/CoverallsReportsProcessor$Companion"
+               sourcefilename="Processor.kt"/>
+        <class name="org/jesperancinha/plugins/omni/reporter/processors/CodacyProcessor" sourcefilename="Processor.kt">
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/String;Ljava/lang/String;Lorg/jesperancinha/plugins/omni/reporter/pipelines/Pipeline;Ljava/util/List;Ljava/io/File;ZZ)V"
+                    line="110">
+                <counter type="INSTRUCTION" missed="31" covered="0"/>
+                <counter type="LINE" missed="8" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="processReports" desc="()V" line="120">
+                <counter type="INSTRUCTION" missed="240" covered="0"/>
+                <counter type="BRANCH" missed="14" covered="0"/>
+                <counter type="LINE" missed="34" covered="0"/>
+                <counter type="COMPLEXITY" missed="8" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="&lt;clinit&gt;" desc="()V" line="166">
+                <counter type="INSTRUCTION" missed="9" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="280" covered="0"/>
+            <counter type="BRANCH" missed="14" covered="0"/>
+            <counter type="LINE" missed="43" covered="0"/>
+            <counter type="COMPLEXITY" missed="10" covered="0"/>
+            <counter type="METHOD" missed="3" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/processors/Processor$supportedPredicate$2"
+               sourcefilename="Processor.kt">
+            <method name="invoke" desc="(Ljava/lang/String;Ljava/io/File;)Ljava/lang/Boolean;" line="29">
+                <counter type="INSTRUCTION" missed="9" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="9" covered="0"/>
+            <counter type="LINE" missed="1" covered="0"/>
+            <counter type="COMPLEXITY" missed="1" covered="0"/>
+            <counter type="METHOD" missed="1" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/processors/Processor$supportedPredicate$1"
+               sourcefilename="Processor.kt">
+            <method name="invoke" desc="(Ljava/lang/String;Ljava/io/File;)Ljava/lang/Boolean;" line="28">
+                <counter type="INSTRUCTION" missed="26" covered="0"/>
+                <counter type="BRANCH" missed="2" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="2" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="26" covered="0"/>
+            <counter type="BRANCH" missed="2" covered="0"/>
+            <counter type="LINE" missed="1" covered="0"/>
+            <counter type="COMPLEXITY" missed="2" covered="0"/>
+            <counter type="METHOD" missed="1" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/processors/ProcessorKt" sourcefilename="Processor.kt">
+            <method name="toReportFiles" desc="(Ljava/util/List;Lkotlin/jvm/functions/Function2;)Ljava/util/List;"
+                    line="99">
+                <counter type="INSTRUCTION" missed="88" covered="0"/>
+                <counter type="BRANCH" missed="14" covered="0"/>
+                <counter type="LINE" missed="9" covered="0"/>
+                <counter type="COMPLEXITY" missed="8" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="88" covered="0"/>
+            <counter type="BRANCH" missed="14" covered="0"/>
+            <counter type="LINE" missed="9" covered="0"/>
+            <counter type="COMPLEXITY" missed="8" covered="0"/>
+            <counter type="METHOD" missed="1" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/processors/CoverallsReportsProcessor"
+               sourcefilename="Processor.kt">
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/String;Ljava/lang/String;Lorg/jesperancinha/plugins/omni/reporter/pipelines/Pipeline;Ljava/util/List;Ljava/io/File;ZZZZZZ)V"
+                    line="32">
+                <counter type="INSTRUCTION" missed="43" covered="0"/>
+                <counter type="LINE" missed="12" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="processReports" desc="()V" line="47">
+                <counter type="INSTRUCTION" missed="186" covered="0"/>
+                <counter type="BRANCH" missed="18" covered="0"/>
+                <counter type="LINE" missed="36" covered="0"/>
+                <counter type="COMPLEXITY" missed="10" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="&lt;clinit&gt;" desc="()V" line="94">
+                <counter type="INSTRUCTION" missed="9" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="238" covered="0"/>
+            <counter type="BRANCH" missed="18" covered="0"/>
+            <counter type="LINE" missed="49" covered="0"/>
+            <counter type="COMPLEXITY" missed="12" covered="0"/>
+            <counter type="METHOD" missed="3" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <sourcefile name="Processor.kt">
+            <line nr="21" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="22" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="26" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="27" mi="8" ci="0" mb="2" cb="0"/>
+            <line nr="28" mi="20" ci="0" mb="2" cb="0"/>
+            <line nr="29" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="32" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="33" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="34" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="35" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="36" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="37" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="38" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="39" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="40" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="41" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="42" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="44" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="47" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="49" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="50" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="51" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="52" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="53" mi="9" ci="0" mb="2" cb="0"/>
+            <line nr="54" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="55" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="56" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="59" mi="7" ci="0" mb="0" cb="0"/>
+            <line nr="60" mi="19" ci="0" mb="4" cb="0"/>
+            <line nr="61" mi="11" ci="0" mb="0" cb="0"/>
+            <line nr="62" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="63" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="64" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="65" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="66" mi="22" ci="0" mb="0" cb="0"/>
+            <line nr="67" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="69" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="71" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="72" mi="14" ci="0" mb="2" cb="0"/>
+            <line nr="73" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="74" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="75" mi="12" ci="0" mb="2" cb="0"/>
+            <line nr="76" mi="7" ci="0" mb="2" cb="0"/>
+            <line nr="77" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="78" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="81" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="82" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="83" mi="9" ci="0" mb="2" cb="0"/>
+            <line nr="84" mi="10" ci="0" mb="2" cb="0"/>
+            <line nr="85" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="86" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="87" mi="3" ci="0" mb="2" cb="0"/>
+            <line nr="88" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="91" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="94" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="99" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="100" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="101" mi="27" ci="0" mb="4" cb="0"/>
+            <line nr="102" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="103" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="104" mi="27" ci="0" mb="8" cb="0"/>
+            <line nr="105" mi="17" ci="0" mb="2" cb="0"/>
+            <line nr="106" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="107" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="110" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="111" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="112" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="113" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="114" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="115" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="116" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="118" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="120" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="122" mi="8" ci="0" mb="0" cb="0"/>
+            <line nr="123" mi="19" ci="0" mb="4" cb="0"/>
+            <line nr="124" mi="11" ci="0" mb="0" cb="0"/>
+            <line nr="125" mi="8" ci="0" mb="0" cb="0"/>
+            <line nr="126" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="127" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="128" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="129" mi="9" ci="0" mb="2" cb="0"/>
+            <line nr="131" mi="22" ci="0" mb="0" cb="0"/>
+            <line nr="132" mi="9" ci="0" mb="0" cb="0"/>
+            <line nr="133" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="137" mi="9" ci="0" mb="0" cb="0"/>
+            <line nr="139" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="140" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="141" mi="16" ci="0" mb="2" cb="0"/>
+            <line nr="142" mi="21" ci="0" mb="0" cb="0"/>
+            <line nr="144" mi="16" ci="0" mb="4" cb="0"/>
+            <line nr="146" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="147" mi="14" ci="0" mb="0" cb="0"/>
+            <line nr="148" mi="20" ci="0" mb="0" cb="0"/>
+            <line nr="149" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="150" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="151" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="152" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="153" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="154" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="155" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="156" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="157" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="158" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="159" mi="3" ci="0" mb="2" cb="0"/>
+            <line nr="160" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="163" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="166" mi="4" ci="0" mb="0" cb="0"/>
+            <counter type="INSTRUCTION" missed="660" covered="0"/>
+            <counter type="BRANCH" missed="50" covered="0"/>
+            <counter type="LINE" missed="107" covered="0"/>
+            <counter type="COMPLEXITY" missed="36" covered="0"/>
+            <counter type="METHOD" missed="11" covered="0"/>
+            <counter type="CLASS" missed="6" covered="0"/>
+        </sourcefile>
+        <counter type="INSTRUCTION" missed="660" covered="0"/>
+        <counter type="BRANCH" missed="50" covered="0"/>
+        <counter type="LINE" missed="107" covered="0"/>
+        <counter type="COMPLEXITY" missed="36" covered="0"/>
+        <counter type="METHOD" missed="11" covered="0"/>
+        <counter type="CLASS" missed="6" covered="0"/>
+    </package>
+    <package name="org/jesperancinha/plugins/omni/reporter/parsers">
+        <class name="org/jesperancinha/plugins/omni/reporter/parsers/ParsersKt$toFileDigest$1"
+               sourcefilename="Parsers.kt">
+            <method name="invoke" desc="(B)Ljava/lang/CharSequence;" line="13">
+                <counter type="INSTRUCTION" missed="0" covered="21"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="0" covered="21"/>
+            <counter type="LINE" missed="0" covered="1"/>
+            <counter type="COMPLEXITY" missed="0" covered="1"/>
+            <counter type="METHOD" missed="0" covered="1"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/parsers/Language" sourcefilename="Parsers.kt">
+            <method name="&lt;clinit&gt;" desc="()V" line="17">
+                <counter type="INSTRUCTION" missed="21" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="21" covered="0"/>
+            <counter type="LINE" missed="1" covered="0"/>
+            <counter type="COMPLEXITY" missed="1" covered="0"/>
+            <counter type="METHOD" missed="1" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/plugins/omni/reporter/parsers/ParsersKt" sourcefilename="Parsers.kt">
+            <method name="getMessageDigester" desc="()Ljava/security/MessageDigest;" line="6">
+                <counter type="INSTRUCTION" missed="2" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="isBranch" desc="(Lorg/jesperancinha/plugins/omni/reporter/domain/jacoco/Line;)Z" line="9">
+                <counter type="INSTRUCTION" missed="0" covered="13"/>
+                <counter type="BRANCH" missed="1" covered="3"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="1" covered="2"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="getToFileDigest" desc="(Ljava/lang/String;)Ljava/lang/String;" line="12">
+                <counter type="INSTRUCTION" missed="0" covered="41"/>
+                <counter type="LINE" missed="0" covered="3"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <method name="&lt;clinit&gt;" desc="()V" line="6">
+                <counter type="INSTRUCTION" missed="0" covered="9"/>
+                <counter type="LINE" missed="0" covered="1"/>
+                <counter type="COMPLEXITY" missed="0" covered="1"/>
+                <counter type="METHOD" missed="0" covered="1"/>
+            </method>
+            <counter type="INSTRUCTION" missed="2" covered="63"/>
+            <counter type="BRANCH" missed="1" covered="3"/>
+            <counter type="LINE" missed="0" covered="5"/>
+            <counter type="COMPLEXITY" missed="2" covered="4"/>
+            <counter type="METHOD" missed="1" covered="3"/>
+            <counter type="CLASS" missed="0" covered="1"/>
+        </class>
+        <sourcefile name="Parsers.kt">
+            <line nr="6" mi="2" ci="9" mb="0" cb="0"/>
+            <line nr="9" mi="0" ci="10" mb="1" cb="3"/>
+            <line nr="12" mi="0" ci="18" mb="0" cb="0"/>
+            <line nr="13" mi="0" ci="39" mb="0" cb="0"/>
+            <line nr="14" mi="0" ci="2" mb="0" cb="0"/>
+            <line nr="17" mi="21" ci="0" mb="0" cb="0"/>
+            <counter type="INSTRUCTION" missed="23" covered="84"/>
+            <counter type="BRANCH" missed="1" covered="3"/>
+            <counter type="LINE" missed="1" covered="5"/>
+            <counter type="COMPLEXITY" missed="3" covered="5"/>
+            <counter type="METHOD" missed="2" covered="4"/>
+            <counter type="CLASS" missed="1" covered="2"/>
+        </sourcefile>
+        <counter type="INSTRUCTION" missed="23" covered="84"/>
+        <counter type="BRANCH" missed="1" covered="3"/>
+        <counter type="LINE" missed="1" covered="5"/>
+        <counter type="COMPLEXITY" missed="3" covered="5"/>
+        <counter type="METHOD" missed="2" covered="4"/>
+        <counter type="CLASS" missed="1" covered="2"/>
+    </package>
+    <counter type="INSTRUCTION" missed="3366" covered="2046"/>
+    <counter type="BRANCH" missed="272" covered="50"/>
+    <counter type="LINE" missed="504" covered="261"/>
+    <counter type="COMPLEXITY" missed="297" covered="125"/>
+    <counter type="METHOD" missed="144" covered="117"/>
+    <counter type="CLASS" missed="31" covered="36"/>
+</report>

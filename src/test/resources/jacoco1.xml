@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><!DOCTYPE report PUBLIC "-//JACOCO//DTD Report 1.1//EN"
+        "report.dtd">
+<report name="Advanced Library Management Reactive MVC">
+    <sessioninfo id="Joaos-MacBook-Pro.local-66d76734" start="1640992441569" dump="1640992441859"/>
+    <package name="org/jesperancinha/management/reactive/repository">
+        <class name="org/jesperancinha/management/reactive/repository/BookRepository"
+               sourcefilename="BookRepository.kt"/>
+        <sourcefile name="BookRepository.kt"/>
+    </package>
+    <package name="org/jesperancinha/management">
+        <class name="org/jesperancinha/management/AdvancedReactiveLibraryService"
+               sourcefilename="AdvancedReactiveLibraryService.kt">
+            <method name="&lt;init&gt;" desc="()V" line="6">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="2" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="3" covered="0"/>
+            <counter type="LINE" missed="2" covered="0"/>
+            <counter type="COMPLEXITY" missed="1" covered="0"/>
+            <counter type="METHOD" missed="1" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/management/AdvancedReactiveLibraryService$Companion"
+               sourcefilename="AdvancedReactiveLibraryService.kt">
+            <method name="main" desc="([Ljava/lang/String;)V" line="11">
+                <counter type="INSTRUCTION" missed="12" covered="0"/>
+                <counter type="LINE" missed="2" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="12" covered="0"/>
+            <counter type="LINE" missed="2" covered="0"/>
+            <counter type="COMPLEXITY" missed="1" covered="0"/>
+            <counter type="METHOD" missed="1" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <sourcefile name="AdvancedReactiveLibraryService.kt">
+            <line nr="6" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="7" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="11" mi="7" ci="0" mb="0" cb="0"/>
+            <line nr="12" mi="1" ci="0" mb="0" cb="0"/>
+            <counter type="INSTRUCTION" missed="15" covered="0"/>
+            <counter type="LINE" missed="4" covered="0"/>
+            <counter type="COMPLEXITY" missed="2" covered="0"/>
+            <counter type="METHOD" missed="2" covered="0"/>
+            <counter type="CLASS" missed="2" covered="0"/>
+        </sourcefile>
+        <counter type="INSTRUCTION" missed="15" covered="0"/>
+        <counter type="LINE" missed="4" covered="0"/>
+        <counter type="COMPLEXITY" missed="2" covered="0"/>
+        <counter type="METHOD" missed="2" covered="0"/>
+        <counter type="CLASS" missed="2" covered="0"/>
+    </package>
+    <package name="org/jesperancinha/management/reactive/controller">
+        <class name="org/jesperancinha/management/reactive/controller/AdvancedLibraryBookController"
+               sourcefilename="AdvancedLibraryBookController.kt">
+            <method name="&lt;init&gt;"
+                    desc="(Lorg/jesperancinha/management/reactive/service/AdvancedLibraryBookService;)V" line="11">
+                <counter type="INSTRUCTION" missed="9" covered="0"/>
+                <counter type="LINE" missed="3" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="create" desc="(Lorg/jesperancinha/management/dtos/BookDto;)Lreactor/core/publisher/Mono;"
+                    line="19">
+                <counter type="INSTRUCTION" missed="8" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="update" desc="(Lorg/jesperancinha/management/dtos/BookDto;)Lreactor/core/publisher/Mono;"
+                    line="24">
+                <counter type="INSTRUCTION" missed="8" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getBook" desc="(J)Lreactor/core/publisher/Mono;" line="29">
+                <counter type="INSTRUCTION" missed="5" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="30" covered="0"/>
+            <counter type="LINE" missed="6" covered="0"/>
+            <counter type="COMPLEXITY" missed="4" covered="0"/>
+            <counter type="METHOD" missed="4" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <sourcefile name="AdvancedLibraryBookController.kt">
+            <line nr="11" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="13" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="14" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="19" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="24" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="29" mi="5" ci="0" mb="0" cb="0"/>
+            <counter type="INSTRUCTION" missed="30" covered="0"/>
+            <counter type="LINE" missed="6" covered="0"/>
+            <counter type="COMPLEXITY" missed="4" covered="0"/>
+            <counter type="METHOD" missed="4" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </sourcefile>
+        <counter type="INSTRUCTION" missed="30" covered="0"/>
+        <counter type="LINE" missed="6" covered="0"/>
+        <counter type="COMPLEXITY" missed="4" covered="0"/>
+        <counter type="METHOD" missed="4" covered="0"/>
+        <counter type="CLASS" missed="1" covered="0"/>
+    </package>
+    <package name="org/jesperancinha/management/reactive/service">
+        <class name="org/jesperancinha/management/reactive/service/AdvancedLibraryBookService"
+               sourcefilename="AdvancedReactiveLibraryBookService.kt">
+            <method name="&lt;init&gt;" desc="(Lorg/jesperancinha/management/reactive/repository/BookRepository;)V"
+                    line="13">
+                <counter type="INSTRUCTION" missed="9" covered="0"/>
+                <counter type="LINE" missed="3" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getBookById" desc="(J)Lreactor/core/publisher/Mono;" line="19">
+                <counter type="INSTRUCTION" missed="13" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="save" desc="(Lorg/jesperancinha/management/dtos/BookDto;)Lreactor/core/publisher/Mono;"
+                    line="23">
+                <counter type="INSTRUCTION" missed="20" covered="0"/>
+                <counter type="LINE" missed="3" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="create" desc="(Lorg/jesperancinha/management/dtos/BookDto;)Lreactor/core/publisher/Mono;"
+                    line="29">
+                <counter type="INSTRUCTION" missed="25" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getBookById$lambda-0"
+                    desc="(Lorg/jesperancinha/management/reactive/domain/Book;)Lorg/jesperancinha/management/dtos/BookDto;"
+                    line="19">
+                <counter type="INSTRUCTION" missed="6" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="save$lambda-2$lambda-1"
+                    desc="(Lorg/jesperancinha/management/reactive/domain/Book;)Lorg/jesperancinha/management/dtos/BookDto;"
+                    line="24">
+                <counter type="INSTRUCTION" missed="6" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="save$lambda-2"
+                    desc="(Lorg/jesperancinha/management/reactive/service/AdvancedLibraryBookService;Lorg/jesperancinha/management/dtos/BookDto;Ljava/lang/Throwable;)V"
+                    line="24">
+                <counter type="INSTRUCTION" missed="25" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="save$lambda-3"
+                    desc="(Lorg/jesperancinha/management/reactive/domain/Book;)Lorg/jesperancinha/management/dtos/BookDto;"
+                    line="25">
+                <counter type="INSTRUCTION" missed="6" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="create$lambda-4"
+                    desc="(Lorg/jesperancinha/management/reactive/domain/Book;)Lorg/jesperancinha/management/dtos/BookDto;"
+                    line="29">
+                <counter type="INSTRUCTION" missed="6" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="116" covered="0"/>
+            <counter type="LINE" missed="8" covered="0"/>
+            <counter type="COMPLEXITY" missed="9" covered="0"/>
+            <counter type="METHOD" missed="9" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <class name="org/jesperancinha/management/reactive/service/AdvancedReactiveLibraryBookServiceKt"
+               sourcefilename="AdvancedReactiveLibraryBookService.kt">
+            <method name="getToData"
+                    desc="(Lorg/jesperancinha/management/dtos/BookDto;)Lorg/jesperancinha/management/reactive/domain/Book;"
+                    line="35">
+                <counter type="INSTRUCTION" missed="14" covered="0"/>
+                <counter type="LINE" missed="5" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getToDto"
+                    desc="(Lorg/jesperancinha/management/reactive/domain/Book;)Lorg/jesperancinha/management/dtos/BookDto;"
+                    line="45">
+                <counter type="INSTRUCTION" missed="10" covered="0"/>
+                <counter type="LINE" missed="4" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="24" covered="0"/>
+            <counter type="LINE" missed="9" covered="0"/>
+            <counter type="COMPLEXITY" missed="2" covered="0"/>
+            <counter type="METHOD" missed="2" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <sourcefile name="AdvancedReactiveLibraryBookService.kt">
+            <line nr="13" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="14" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="15" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="19" mi="19" ci="0" mb="0" cb="0"/>
+            <line nr="23" mi="6" ci="0" mb="0" cb="0"/>
+            <line nr="24" mi="30" ci="0" mb="0" cb="0"/>
+            <line nr="25" mi="12" ci="0" mb="0" cb="0"/>
+            <line nr="29" mi="28" ci="0" mb="0" cb="0"/>
+            <line nr="35" mi="7" ci="0" mb="0" cb="0"/>
+            <line nr="36" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="37" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="38" mi="1" ci="0" mb="0" cb="0"/>
+            <line nr="39" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="45" mi="4" ci="0" mb="0" cb="0"/>
+            <line nr="46" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="47" mi="2" ci="0" mb="0" cb="0"/>
+            <line nr="48" mi="2" ci="0" mb="0" cb="0"/>
+            <counter type="INSTRUCTION" missed="140" covered="0"/>
+            <counter type="LINE" missed="17" covered="0"/>
+            <counter type="COMPLEXITY" missed="11" covered="0"/>
+            <counter type="METHOD" missed="11" covered="0"/>
+            <counter type="CLASS" missed="2" covered="0"/>
+        </sourcefile>
+        <counter type="INSTRUCTION" missed="140" covered="0"/>
+        <counter type="LINE" missed="17" covered="0"/>
+        <counter type="COMPLEXITY" missed="11" covered="0"/>
+        <counter type="METHOD" missed="11" covered="0"/>
+        <counter type="CLASS" missed="2" covered="0"/>
+    </package>
+    <package name="org/jesperancinha/management/reactive/domain">
+        <class name="org/jesperancinha/management/reactive/domain/Book" sourcefilename="Book.kt">
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/Long;Ljava/lang/String;Lorg/jesperancinha/management/dtos/SourceType;JLjava/lang/Boolean;)V"
+                    line="15">
+                <counter type="INSTRUCTION" missed="29" covered="0"/>
+                <counter type="LINE" missed="7" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="&lt;init&gt;"
+                    desc="(Ljava/lang/Long;Ljava/lang/String;Lorg/jesperancinha/management/dtos/SourceType;JLjava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V"
+                    line="15">
+                <counter type="INSTRUCTION" missed="26" covered="0"/>
+                <counter type="LINE" missed="5" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getId" desc="()Ljava/lang/Long;" line="18">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getTitle" desc="()Ljava/lang/String;" line="20">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getSource" desc="()Lorg/jesperancinha/management/dtos/SourceType;" line="22">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getTimestamp" desc="()J" line="24">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getNewField" desc="()Ljava/lang/Boolean;" line="26">
+                <counter type="INSTRUCTION" missed="3" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="setNewField" desc="(Ljava/lang/Boolean;)V" line="26">
+                <counter type="INSTRUCTION" missed="4" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="1" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="getId" desc="()Ljava/lang/Integer;" line="30">
+                <counter type="INSTRUCTION" missed="11" covered="0"/>
+                <counter type="BRANCH" missed="2" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="2" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <method name="isNew" desc="()Z" line="33">
+                <counter type="INSTRUCTION" missed="9" covered="0"/>
+                <counter type="BRANCH" missed="2" covered="0"/>
+                <counter type="LINE" missed="1" covered="0"/>
+                <counter type="COMPLEXITY" missed="2" covered="0"/>
+                <counter type="METHOD" missed="1" covered="0"/>
+            </method>
+            <counter type="INSTRUCTION" missed="94" covered="0"/>
+            <counter type="BRANCH" missed="4" covered="0"/>
+            <counter type="LINE" missed="15" covered="0"/>
+            <counter type="COMPLEXITY" missed="12" covered="0"/>
+            <counter type="METHOD" missed="10" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </class>
+        <sourcefile name="Book.kt">
+            <line nr="15" mi="17" ci="0" mb="0" cb="0"/>
+            <line nr="16" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="18" mi="5" ci="0" mb="0" cb="0"/>
+            <line nr="19" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="20" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="21" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="22" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="23" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="24" mi="7" ci="0" mb="0" cb="0"/>
+            <line nr="25" mi="3" ci="0" mb="0" cb="0"/>
+            <line nr="26" mi="10" ci="0" mb="0" cb="0"/>
+            <line nr="27" mi="7" ci="0" mb="0" cb="0"/>
+            <line nr="30" mi="11" ci="0" mb="2" cb="0"/>
+            <line nr="33" mi="9" ci="0" mb="2" cb="0"/>
+            <line nr="34" mi="1" ci="0" mb="0" cb="0"/>
+            <counter type="INSTRUCTION" missed="94" covered="0"/>
+            <counter type="BRANCH" missed="4" covered="0"/>
+            <counter type="LINE" missed="15" covered="0"/>
+            <counter type="COMPLEXITY" missed="12" covered="0"/>
+            <counter type="METHOD" missed="10" covered="0"/>
+            <counter type="CLASS" missed="1" covered="0"/>
+        </sourcefile>
+        <counter type="INSTRUCTION" missed="94" covered="0"/>
+        <counter type="BRANCH" missed="4" covered="0"/>
+        <counter type="LINE" missed="15" covered="0"/>
+        <counter type="COMPLEXITY" missed="12" covered="0"/>
+        <counter type="METHOD" missed="10" covered="0"/>
+        <counter type="CLASS" missed="1" covered="0"/>
+    </package>
+    <counter type="INSTRUCTION" missed="279" covered="0"/>
+    <counter type="BRANCH" missed="4" covered="0"/>
+    <counter type="LINE" missed="42" covered="0"/>
+    <counter type="COMPLEXITY" missed="29" covered="0"/>
+    <counter type="METHOD" missed="27" covered="0"/>
+    <counter type="CLASS" missed="6" covered="0"/>
+</report>
