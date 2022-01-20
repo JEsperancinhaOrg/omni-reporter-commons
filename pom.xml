@@ -8,5 +8,6 @@
     <artifactId>omni-coveragereporter-commons</artifactId>
     <version>0.0.0</version>
 
+    <packaging>jar</packaging>
     
 </project>
