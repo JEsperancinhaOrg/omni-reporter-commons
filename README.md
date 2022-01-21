@@ -55,11 +55,11 @@ I hope you enjoyed this repository. If you did, you can optionally please buy me
 ## Coverage report Graphs
 
 <div align="center">
-<img width="30%" src="https://codecov.io/gh/JEsperancinhaOrg/omni-reporter-maven-plugin/branch/main/graphs/sunburst.svg"/>
-<img width="30%" src="https://codecov.io/gh/JEsperancinhaOrg/omni-reporter-maven-plugin/branch/main/graphs/tree.svg"/>
+<img width="30%" src="https://codecov.io/gh/JEsperancinhaOrg/omni-reporter-commons/branch/main/graphs/sunburst.svg"/>
+<img width="30%" src="https://codecov.io/gh/JEsperancinhaOrg/omni-reporter-commons/branch/main/graphs/tree.svg"/>
 </div>
 <div align="center">
-<img width="60%" src="https://codecov.io/gh/JEsperancinhaOrg/omni-reporter-maven-plugin/branch/main/graphs/icicle.svg"/>
+<img width="60%" src="https://codecov.io/gh/JEsperancinhaOrg/omni-reporter-commons/branch/main/graphs/icicle.svg"/>
 </div>
 
 
