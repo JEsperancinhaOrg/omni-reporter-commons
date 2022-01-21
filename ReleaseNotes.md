@@ -1,6 +1,6 @@
 # Omni Reporter Commons Release Notes
 
-#### Release 0.0.0 - Inception Release
+#### Release 0.0.0 - 2022/01/21
 
 Below the stripped line, you'll find the release roadmap for the [omni-reporter-maven-plugin](https://github.com/JEsperancinhaOrg/omni-reporter-maven-plugin).
 
