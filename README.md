@@ -60,6 +60,7 @@ Please have a look at the documentation in these repos to see the possibilities 
 25. Line Coverage
 
 To be up to date with the changes please check the [ReleaseNotes](./ReleaseNotes.md) document.
+
 ## Buy me a coffee
 
 I hope you enjoyed this repository. If you did, you can optionally please buy me a coffee, which supports me to constantly improve and make new free content regularly for everyone. Thank you so much!
