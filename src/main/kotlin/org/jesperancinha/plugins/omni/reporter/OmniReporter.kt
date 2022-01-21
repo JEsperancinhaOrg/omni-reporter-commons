@@ -1,7 +1,5 @@
 package org.jesperancinha.plugins.omni.reporter
 
-import java.io.File
-
 class ProjectDirectoryNotFoundException : RuntimeException()
 
 class CoverallsUrlNotConfiguredException : RuntimeException()
