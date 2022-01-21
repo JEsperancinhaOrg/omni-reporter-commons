@@ -7,12 +7,17 @@
 [![javadoc](https://javadoc.io/badge2/org.jesperancinha.plugins/omni-reporter-commons/javadoc.svg)](https://javadoc.io/doc/org.jesperancinha.plugins/omni-reporter-commons)
 [![GitHub License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
 
+[![omni-reporter-commons](https://github.com/JEsperancinhaOrg/omni-reporter-commons/actions/workflows/omni-reporter-commons.yml/badge.svg)](https://github.com/JEsperancinhaOrg/omni-reporter-commons/actions/workflows/omni-reporter-commons.yml)
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/b69f88ded9114d0797dd68c0ca51f0c5)](https://www.codacy.com/gh/JEsperancinhaOrg/omni-reporter-commons/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JEsperancinhaOrg/omni-reporter-commons&amp;utm_campaign=Badge_Grade)
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/b69f88ded9114d0797dd68c0ca51f0c5)](https://www.codacy.com/gh/JEsperancinhaOrg/omni-reporter-commons/dashboard?utm_source=github.com&utm_medium=referral&utm_content=JEsperancinhaOrg/omni-reporter-commons&utm_campaign=Badge_Coverage)
 [![codecov](https://codecov.io/gh/JEsperancinhaOrg/omni-reporter-commons/branch/main/graph/badge.svg?token=v0fqcS93fY)](https://codecov.io/gh/JEsperancinhaOrg/omni-reporter-commons)
 [![Coverage Status](https://coveralls.io/repos/github/JEsperancinhaOrg/omni-reporter-commons/badge.svg?branch=main)](https://coveralls.io/github/JEsperancinhaOrg/omni-reporter-commons?branch=main)
+
+[![GitHub language count](https://img.shields.io/github/languages/count/JEsperancinhaOrg/omni-reporter-commons.svg)](#)
+[![GitHub top language](https://img.shields.io/github/languages/top/JEsperancinhaOrg/omni-reporter-commons.svg)](#)
+[![GitHub top language](https://img.shields.io/github/languages/code-size/JEsperancinhaOrg/omni-reporter-commons.svg)](#)
 
 Common Library Supporting the Maven and Gradle plugins of the same name
 
