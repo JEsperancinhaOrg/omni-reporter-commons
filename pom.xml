@@ -354,7 +354,7 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>${maven-javadoc-plugin.version}</version>
                 <configuration>
-                    <sourcepath>${project.basedir}/src/main/java</sourcepath>
+                    <sourcepath>${project.basedir}/src/main/kotlin</sourcepath>
                 </configuration>
             </plugin>
             <plugin>
