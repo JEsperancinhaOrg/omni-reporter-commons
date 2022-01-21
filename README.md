@@ -1,5 +1,7 @@
 # omni-reporter-commons
 
+[![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=omni-reporter-commons&color=informational)](https://github.com/JEsperancinhaOrg/omni-reporter-commons)
+
 Common Library Supporting the Maven and Gradle plugins of the same name
 
 ## How to use
