@@ -6,6 +6,8 @@ Below the stripped line, you'll find the release roadmap for the [omni-reporter-
 
 This library has its origins in this plugin. All the code has been moved to this library in order to be able to share code between the maven, gradle and future plugins.
 
+NOTE: Version 0.0.0 of this library is to be released as the inception version. Full test coverage and improvements will follow in upcoming versions.
+
 ---
 
 ## Release notes from Omni Reporter Maven Plugin
