@@ -22,11 +22,17 @@ class IncompleteCodacyApiTokenConfigurationException : RuntimeException()
 
 class CoverallsTokenNotFoundException : RuntimeException()
 
+/**
+ * Definition of the Project
+ */
 interface OmniProject {
     val compileSourceRoots: List<String>?
     val build: OmniBuild?
 }
 
+/**
+ * Definition of the Build
+ */
 interface OmniBuild {
     val testOutputDirectory: String
     val directory: String

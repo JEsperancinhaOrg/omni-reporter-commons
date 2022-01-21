@@ -9,6 +9,9 @@ internal val httpTransport: HttpTransport = NetHttpTransport()
 
 internal val httpRequestFactory: HttpRequestFactory = httpTransport.createRequestFactory()
 
+/**
+ * Common interface for client API's
+ */
 internal interface ApiClient<REPORT, RESPONSE> {
     val token: String?
     val apiToken: CodacyApiTokenConfig?
