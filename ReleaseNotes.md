@@ -1,5 +1,10 @@
 # Omni Reporter Commons Release Notes
 
+#### Release 0.0.1 - 2022/01/22
+
+It was found that under certain circumstances (i.e. use of Gradle INFO level), the Http Google Clients lets client logs output go to the console. This represents a security risk because access keys to the coverage API's would be exposed in that way.
+This release covers that and avoids this way of credentials being exposed in the logs.
+
 #### Release 0.0.0 - 2022/01/21
 
 Below the stripped line, you'll find the release roadmap for the [omni-reporter-maven-plugin](https://github.com/JEsperancinhaOrg/omni-reporter-maven-plugin).

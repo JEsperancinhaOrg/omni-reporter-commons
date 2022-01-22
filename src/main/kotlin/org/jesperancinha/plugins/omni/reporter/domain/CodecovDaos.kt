@@ -75,6 +75,7 @@ class CodecovClient(
         }
         val httpRequest = httpRequestFactory.buildPostRequest(genericUrl, emptyContent)
         httpRequest.headers.accept = ContentType.TEXT_PLAIN.mimeType
+        httpRequest.isLoggingEnabled = false
         val redactedURL = genericUrl.toURL().toExternalForm().redact(token)
         logger.info("Sending report to codecov server at $redactedURL")
         val httpResponse = httpRequest?.execute()
@@ -83,6 +84,7 @@ class CodecovClient(
         val reportContent: HttpContent = ByteArrayContent(ContentType.TEXT_PLAIN.mimeType, report.toByteArray())
         val httpRequestToS3 = httpRequestFactory.buildPutRequest(GenericUrl(s3UploadUrl), reportContent)
         httpRequestToS3.headers.contentType = ContentType.TEXT_PLAIN.mimeType
+        httpRequestToS3.isLoggingEnabled = false
         logger.info("Report is being sent to Codecov's S3 servert")
         logger.debug("Sending report to Codecov's S3 server at ${s3UploadUrl.redact(token)}")
         logger.info("Your report will then be visible at $viewUrl")

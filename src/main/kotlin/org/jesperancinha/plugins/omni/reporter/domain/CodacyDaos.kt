@@ -101,6 +101,7 @@ open class CodacyClient(
         apiToken?.apply {
             httpRequest.headers["api-token"] = this.codacyApiToken
         }
+        httpRequest.isLoggingEnabled = false
         val httpResponse = httpRequest?.execute()
         val readAllBytes = httpResponse?.content?.readAllBytes() ?: byteArrayOf()
         return readJsonValue(readAllBytes)
@@ -118,6 +119,7 @@ open class CodacyClient(
         val httpRequest = httpRequestFactory.buildPostRequest(GenericUrl(codacyReportUrl), content)
         httpRequest.headers.contentType = ContentType.APPLICATION_JSON.mimeType
         httpRequest.headers["project-token"] = token
+        httpRequest.isLoggingEnabled = false
         val httpResponse = httpRequest?.execute()
         val readAllBytes = httpResponse?.content?.readAllBytes() ?: byteArrayOf()
         return readJsonValue(readAllBytes)
@@ -142,6 +144,7 @@ open class CodacyClient(
         apiToken?.apply {
             httpRequest.headers["api-token"] = this.codacyApiToken
         }
+        httpRequest.isLoggingEnabled = false
         val httpResponse = httpRequest?.execute()
         val readAllBytes = httpResponse?.content?.readAllBytes() ?: byteArrayOf()
         return readJsonValue(readAllBytes)
@@ -156,6 +159,7 @@ open class CodacyClient(
         )
         httpRequest.headers.contentType = ContentType.APPLICATION_JSON.mimeType
         httpRequest.headers["project-token"] = token
+        httpRequest.isLoggingEnabled = false
         val httpResponse = httpRequest?.execute()
         val readAllBytes = httpResponse?.content?.readAllBytes() ?: byteArrayOf()
         return readJsonValue(readAllBytes)

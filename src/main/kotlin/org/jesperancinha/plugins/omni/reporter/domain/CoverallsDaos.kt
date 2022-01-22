@@ -119,6 +119,7 @@ open class CoverallsClient(
         content.addPart(part)
         logger.info("Sending reporting to Coveralls at $url")
         val httpRequest = httpRequestFactory.buildPostRequest(url, content)
+        httpRequest.isLoggingEnabled = false
         val httpResponse = httpRequest?.execute()
         val readAllBytes = httpResponse?.content?.readAllBytes() ?: byteArrayOf()
         return readJsonValue(readAllBytes)
