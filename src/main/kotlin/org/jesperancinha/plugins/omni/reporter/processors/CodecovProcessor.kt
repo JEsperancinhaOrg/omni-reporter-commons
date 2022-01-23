@@ -13,7 +13,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import java.io.File
 
-private const val CODACY_EOF = "\n<<<<<< EOF\n"
+private const val CODECOV_EOF = "\n<<<<<< EOF\n"
 
 /**
  * Created by jofisaes on 09/01/2022
@@ -49,8 +49,8 @@ class CodecovProcessor(
                     )
                 }
             }
-            .joinToString(CODACY_EOF)
-            .plus(CODACY_EOF)
+            .joinToString(CODECOV_EOF)
+            .plus(CODECOV_EOF)
 
         if (codacyReportsAggregate.trim().isEmpty()) {
             if (failOnReportNotFound) {
@@ -87,7 +87,6 @@ class CodecovProcessor(
     override fun reportNotFoundErrorMessage(): String {
         return "Codacy report was not generated! This usually means that no reports have been found."
     }
-
 
     override fun reportNotSentErrorMessage(): String? {
         return "Failed sending Codacy report!"
