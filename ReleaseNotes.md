@@ -1,5 +1,10 @@
 # Omni Reporter Commons Release Notes
 
+#### Release 0.0.2 - Upcoming
+
+1. Support for Python and JavaScript
+2. Support for CoveragePy and LCov
+
 #### Release 0.0.1 - 2022/01/22
 
 It was found that under certain circumstances (i.e. use of Gradle INFO level), the Http Google Clients lets client logs output go to the console. This represents a security risk because access keys to the coverage API's would be exposed in that way.
