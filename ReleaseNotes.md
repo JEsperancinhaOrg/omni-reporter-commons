@@ -2,10 +2,17 @@
 
 #### Release 0.0.2 - Upcoming
 
+###### Features
+
 1. Support for Python and JavaScript
 2. Support for CoveragePy and LCov
 3. Support for Jacoco.exec files
 4. Support for Group Coverage with Branch Coverage (mostly Coveralls)
+
+###### Bugs
+
+1. Root Path fix for internal elements
+
 
 #### Release 0.0.1 - 2022/01/22
 
