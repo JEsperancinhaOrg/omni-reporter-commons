@@ -4,6 +4,8 @@
 
 1. Support for Python and JavaScript
 2. Support for CoveragePy and LCov
+3. Support for Jacoco.exec files
+4. Support for Group Coverage with Branch Coverage (mostly Coveralls)
 
 #### Release 0.0.1 - 2022/01/22
 
