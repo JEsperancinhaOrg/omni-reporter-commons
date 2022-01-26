@@ -3,10 +3,10 @@ package org.jesperancinha.plugins.omni.reporter.parsers
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
-import org.jesperancinha.plugins.omni.reporter.domain.jacoco.Line
-import org.jesperancinha.plugins.omni.reporter.domain.jacoco.Package
-import org.jesperancinha.plugins.omni.reporter.domain.jacoco.Report
-import org.jesperancinha.plugins.omni.reporter.domain.jacoco.Sourcefile
+import org.jesperancinha.plugins.omni.reporter.domain.reports.Line
+import org.jesperancinha.plugins.omni.reporter.domain.reports.Package
+import org.jesperancinha.plugins.omni.reporter.domain.reports.Report
+import org.jesperancinha.plugins.omni.reporter.domain.reports.Sourcefile
 import org.jesperancinha.plugins.omni.reporter.pipelines.LocalPipeline
 import org.jesperancinha.plugins.omni.reporter.transformers.JacocoParserToCoveralls
 import org.jesperancinha.plugins.omni.reporter.utils.Utils.Companion.root

@@ -1,7 +1,7 @@
 package org.jesperancinha.plugins.omni.reporter.transformers
 
-import org.jesperancinha.plugins.omni.reporter.domain.CodacyApiTokenConfig
-import org.jesperancinha.plugins.omni.reporter.domain.jacoco.Sourcefile
+import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyApiTokenConfig
+import org.jesperancinha.plugins.omni.reporter.domain.reports.Sourcefile
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import org.jesperancinha.plugins.omni.reporter.repository.GitRepository
 import org.slf4j.LoggerFactory

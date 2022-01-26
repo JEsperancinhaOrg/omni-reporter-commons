@@ -1,6 +1,7 @@
 package org.jesperancinha.plugins.omni.reporter.domain
 
 import io.kotest.matchers.nulls.shouldNotBeNull
+import org.jesperancinha.plugins.omni.reporter.domain.api.CoverallsClient
 import org.jesperancinha.plugins.omni.reporter.parsers.writeSnakeCaseJsonValueAsString
 import org.jesperancinha.plugins.omni.reporter.pipelines.LocalPipeline
 import org.jesperancinha.plugins.omni.reporter.transformers.JacocoParserToCoveralls

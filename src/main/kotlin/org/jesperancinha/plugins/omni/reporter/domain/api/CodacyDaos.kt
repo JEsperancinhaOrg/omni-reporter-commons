@@ -1,4 +1,4 @@
-package org.jesperancinha.plugins.omni.reporter.domain
+package org.jesperancinha.plugins.omni.reporter.domain.api
 
 import com.google.api.client.http.ByteArrayContent
 import com.google.api.client.http.GenericUrl

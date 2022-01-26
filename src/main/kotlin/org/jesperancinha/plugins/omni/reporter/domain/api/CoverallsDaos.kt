@@ -1,4 +1,4 @@
-package org.jesperancinha.plugins.omni.reporter.domain
+package org.jesperancinha.plugins.omni.reporter.domain.api
 
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonInclude.Include
@@ -7,7 +7,7 @@ import com.google.api.client.http.GenericUrl
 import com.google.api.client.http.HttpHeaders
 import com.google.api.client.http.MultipartContent
 import org.apache.http.entity.ContentType.APPLICATION_OCTET_STREAM
-import org.jesperancinha.plugins.omni.reporter.domain.jacoco.Line
+import org.jesperancinha.plugins.omni.reporter.domain.reports.Line
 import org.jesperancinha.plugins.omni.reporter.parsers.readJsonValue
 import org.jesperancinha.plugins.omni.reporter.parsers.writeSnakeCaseJsonValueAsString
 import org.slf4j.LoggerFactory

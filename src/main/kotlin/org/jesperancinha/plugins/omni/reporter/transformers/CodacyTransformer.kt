@@ -1,13 +1,13 @@
 package org.jesperancinha.plugins.omni.reporter.transformers
 
 import org.jesperancinha.plugins.omni.reporter.ProjectDirectoryNotFoundException
-import org.jesperancinha.plugins.omni.reporter.domain.CodacyApiTokenConfig
-import org.jesperancinha.plugins.omni.reporter.domain.CodacyFileReport
-import org.jesperancinha.plugins.omni.reporter.domain.CodacyReport
-import org.jesperancinha.plugins.omni.reporter.domain.jacoco.Line
-import org.jesperancinha.plugins.omni.reporter.domain.jacoco.Report
-import org.jesperancinha.plugins.omni.reporter.domain.jacoco.Sourcefile
-import org.jesperancinha.plugins.omni.reporter.domain.jacoco.readReport
+import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyApiTokenConfig
+import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyFileReport
+import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyReport
+import org.jesperancinha.plugins.omni.reporter.domain.reports.Line
+import org.jesperancinha.plugins.omni.reporter.domain.reports.Report
+import org.jesperancinha.plugins.omni.reporter.domain.reports.Sourcefile
+import org.jesperancinha.plugins.omni.reporter.domain.reports.readReport
 import org.jesperancinha.plugins.omni.reporter.parsers.Language
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import java.io.File

@@ -5,8 +5,8 @@ import org.jesperancinha.plugins.omni.reporter.CodacyReportNotGeneratedException
 import org.jesperancinha.plugins.omni.reporter.CodecovUrlNotConfiguredException
 import org.jesperancinha.plugins.omni.reporter.OmniProject
 import org.jesperancinha.plugins.omni.reporter.ProjectDirectoryNotFoundException
-import org.jesperancinha.plugins.omni.reporter.domain.CodecovClient
-import org.jesperancinha.plugins.omni.reporter.domain.redact
+import org.jesperancinha.plugins.omni.reporter.domain.api.CodecovClient
+import org.jesperancinha.plugins.omni.reporter.domain.api.redact
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import org.jesperancinha.plugins.omni.reporter.transformers.AllParserToCodecov
 import org.slf4j.Logger

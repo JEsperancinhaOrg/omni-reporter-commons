@@ -6,10 +6,10 @@ import org.jesperancinha.plugins.omni.reporter.CodacyReportNotGeneratedException
 import org.jesperancinha.plugins.omni.reporter.CodacyUrlNotConfiguredException
 import org.jesperancinha.plugins.omni.reporter.OmniProject
 import org.jesperancinha.plugins.omni.reporter.ProjectDirectoryNotFoundException
-import org.jesperancinha.plugins.omni.reporter.domain.CodacyApiTokenConfig
-import org.jesperancinha.plugins.omni.reporter.domain.CodacyClient
-import org.jesperancinha.plugins.omni.reporter.domain.CodacyReport
-import org.jesperancinha.plugins.omni.reporter.domain.redact
+import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyApiTokenConfig
+import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyClient
+import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyReport
+import org.jesperancinha.plugins.omni.reporter.domain.api.redact
 import org.jesperancinha.plugins.omni.reporter.parsers.Language
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import org.jesperancinha.plugins.omni.reporter.transformers.JacocoParserToCodacy

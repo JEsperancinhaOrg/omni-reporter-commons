@@ -1,4 +1,4 @@
-package org.jesperancinha.plugins.omni.reporter.domain
+package org.jesperancinha.plugins.omni.reporter.domain.api
 
 import com.google.api.client.http.ByteArrayContent
 import com.google.api.client.http.GenericUrl
@@ -8,7 +8,7 @@ import org.apache.http.entity.ContentType
 import org.eclipse.jgit.lib.Constants
 import org.eclipse.jgit.lib.Repository
 import org.eclipse.jgit.revwalk.RevWalk
-import org.jesperancinha.plugins.omni.reporter.domain.CodecovEndpoint.V4
+import org.jesperancinha.plugins.omni.reporter.domain.api.CodecovEndpoint.V4
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import org.slf4j.LoggerFactory
 

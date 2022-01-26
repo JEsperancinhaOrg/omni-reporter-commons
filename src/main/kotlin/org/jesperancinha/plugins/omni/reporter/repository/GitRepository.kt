@@ -3,9 +3,9 @@ package org.jesperancinha.plugins.omni.reporter.repository
 import org.eclipse.jgit.lib.Constants.HEAD
 import org.eclipse.jgit.lib.RepositoryBuilder
 import org.eclipse.jgit.revwalk.RevWalk
-import org.jesperancinha.plugins.omni.reporter.domain.Git
-import org.jesperancinha.plugins.omni.reporter.domain.Head
-import org.jesperancinha.plugins.omni.reporter.domain.Remote
+import org.jesperancinha.plugins.omni.reporter.domain.api.Git
+import org.jesperancinha.plugins.omni.reporter.domain.api.Head
+import org.jesperancinha.plugins.omni.reporter.domain.api.Remote
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import java.io.File
 

@@ -5,6 +5,7 @@ import io.kotest.matchers.collections.shouldHaveAtLeastSize
 import io.kotest.matchers.collections.shouldNotBeEmpty
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
+import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyReport
 import org.jesperancinha.plugins.omni.reporter.parsers.Language.KOTLIN
 import org.jesperancinha.plugins.omni.reporter.parsers.camelCaseJsonObjectMapper
 import org.jesperancinha.plugins.omni.reporter.pipelines.GitHubPipeline

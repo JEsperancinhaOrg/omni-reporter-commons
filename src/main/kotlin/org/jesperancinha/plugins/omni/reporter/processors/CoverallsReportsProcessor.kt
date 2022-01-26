@@ -4,7 +4,7 @@ import org.jesperancinha.plugins.omni.reporter.CoverallsReportNotGeneratedExcept
 import org.jesperancinha.plugins.omni.reporter.CoverallsUrlNotConfiguredException
 import org.jesperancinha.plugins.omni.reporter.OmniProject
 import org.jesperancinha.plugins.omni.reporter.ProjectDirectoryNotFoundException
-import org.jesperancinha.plugins.omni.reporter.domain.CoverallsClient
+import org.jesperancinha.plugins.omni.reporter.domain.api.CoverallsClient
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import org.jesperancinha.plugins.omni.reporter.transformers.JacocoParserToCoveralls
 import org.slf4j.LoggerFactory

@@ -1,7 +1,7 @@
 package org.jesperancinha.plugins.omni.reporter.pipelines
 
-import org.jesperancinha.plugins.omni.reporter.domain.CUSTOM
-import org.jesperancinha.plugins.omni.reporter.domain.GITLAB
+import org.jesperancinha.plugins.omni.reporter.domain.api.CUSTOM
+import org.jesperancinha.plugins.omni.reporter.domain.api.GITLAB
 import org.jesperancinha.plugins.omni.reporter.pipelines.GitHubPipeline.Companion.GITHUB_REPOSITORY
 import org.jesperancinha.plugins.omni.reporter.pipelines.GitHubPipeline.Companion.GITHUB_RUN_ID
 import org.jesperancinha.plugins.omni.reporter.pipelines.GitHubPipeline.Companion.GITHUB_RUN_NUMBER

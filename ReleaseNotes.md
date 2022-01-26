@@ -9,6 +9,7 @@
 3. Support for [Jacoco.exec](https://www.jacoco.org/jacoco/) files
 4. Support for [OpenClover](https://openclover.org/index)
 5. Support for Group Coverage with Branch Coverage (mostly Coveralls)
+6. Source encoding gets automatically chosen unless we configure flag `failOnNoEncoding` to `true`
 
 ###### Bugs
 

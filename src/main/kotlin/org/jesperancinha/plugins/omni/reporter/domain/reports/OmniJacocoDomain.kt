@@ -1,11 +1,11 @@
-package org.jesperancinha.plugins.omni.reporter.domain.jacoco
+package org.jesperancinha.plugins.omni.reporter.domain.reports
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonRootName
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement
 import org.jesperancinha.plugins.omni.reporter.JacocoXmlParsingErrorException
-import org.jesperancinha.plugins.omni.reporter.domain.jacoco.OmniJacocoDomain.Companion.logger
+import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniJacocoDomain.Companion.logger
 import org.jesperancinha.plugins.omni.reporter.parsers.readXmlValue
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

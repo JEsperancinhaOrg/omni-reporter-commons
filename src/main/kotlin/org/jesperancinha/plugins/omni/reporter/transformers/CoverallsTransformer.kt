@@ -3,11 +3,11 @@ package org.jesperancinha.plugins.omni.reporter.transformers
 import org.jesperancinha.plugins.omni.reporter.CoverallsTokenNotFoundException
 import org.jesperancinha.plugins.omni.reporter.NullSourceFileException
 import org.jesperancinha.plugins.omni.reporter.ProjectDirectoryNotFoundException
-import org.jesperancinha.plugins.omni.reporter.domain.CoverallsReport
-import org.jesperancinha.plugins.omni.reporter.domain.CoverallsSourceFile
-import org.jesperancinha.plugins.omni.reporter.domain.isBranch
-import org.jesperancinha.plugins.omni.reporter.domain.jacoco.Line
-import org.jesperancinha.plugins.omni.reporter.domain.jacoco.readJacocoPackages
+import org.jesperancinha.plugins.omni.reporter.domain.api.CoverallsReport
+import org.jesperancinha.plugins.omni.reporter.domain.api.CoverallsSourceFile
+import org.jesperancinha.plugins.omni.reporter.domain.api.isBranch
+import org.jesperancinha.plugins.omni.reporter.domain.reports.Line
+import org.jesperancinha.plugins.omni.reporter.domain.reports.readJacocoPackages
 import org.jesperancinha.plugins.omni.reporter.parsers.toFileDigest
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import java.io.File

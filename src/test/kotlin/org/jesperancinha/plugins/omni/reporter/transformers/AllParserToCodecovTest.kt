@@ -5,8 +5,8 @@ import io.kotest.matchers.nulls.shouldBeNull
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldHaveLength
-import org.jesperancinha.plugins.omni.reporter.domain.jacoco.Package
-import org.jesperancinha.plugins.omni.reporter.domain.jacoco.Report
+import org.jesperancinha.plugins.omni.reporter.domain.reports.Package
+import org.jesperancinha.plugins.omni.reporter.domain.reports.Report
 import org.jesperancinha.plugins.omni.reporter.parsers.readXmlValue
 import org.jesperancinha.plugins.omni.reporter.pipelines.GitLabPipeline
 import org.jesperancinha.plugins.omni.reporter.utils.Utils.Companion.root

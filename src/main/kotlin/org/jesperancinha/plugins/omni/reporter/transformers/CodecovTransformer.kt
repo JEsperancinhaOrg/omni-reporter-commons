@@ -1,8 +1,8 @@
 package org.jesperancinha.plugins.omni.reporter.transformers
 
 import org.jesperancinha.plugins.omni.reporter.CodecovPackageNotFoundException
-import org.jesperancinha.plugins.omni.reporter.domain.jacoco.Package
-import org.jesperancinha.plugins.omni.reporter.domain.jacoco.Report
+import org.jesperancinha.plugins.omni.reporter.domain.reports.Package
+import org.jesperancinha.plugins.omni.reporter.domain.reports.Report
 import org.jesperancinha.plugins.omni.reporter.parsers.readXmlValue
 import org.jesperancinha.plugins.omni.reporter.parsers.xmlObjectMapper
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
