@@ -240,7 +240,7 @@
       }
     },
     {
-      "filename": "org/jesperancinha/plugins/omni/reporter/domain/jacoco/OmniJacocoDomain.kt",
+      "filename": "org/jesperancinha/plugins/omni/reporter/domain/reports/OmniJacocoDomain.kt",
       "total": 96,
       "coverage": {
         "69": 1,

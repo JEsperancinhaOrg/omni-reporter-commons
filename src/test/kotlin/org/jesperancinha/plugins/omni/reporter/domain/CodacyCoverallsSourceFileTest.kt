@@ -10,9 +10,10 @@ import org.jesperancinha.plugins.omni.reporter.parsers.Language.KOTLIN
 import org.jesperancinha.plugins.omni.reporter.parsers.camelCaseJsonObjectMapper
 import org.jesperancinha.plugins.omni.reporter.pipelines.GitHubPipeline
 import org.jesperancinha.plugins.omni.reporter.transformers.JacocoParserToCodacy
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import kotlin.io.path.toPath
-
+@Disabled
 internal class CodacyCoverallsSourceFileTest {
 
     @Test
