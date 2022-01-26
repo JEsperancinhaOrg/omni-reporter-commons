@@ -4,10 +4,11 @@
 
 ###### Features
 
-1. Support for Python and JavaScript
-2. Support for CoveragePy and LCov
-3. Support for Jacoco.exec files
-4. Support for Group Coverage with Branch Coverage (mostly Coveralls)
+1. Support for [CoveragePy](https://coverage.readthedocs.io/)
+2. Support for [LCov](https://wiki.documentfoundation.org/Development/Lcov)
+3. Support for [Jacoco.exec](https://www.jacoco.org/jacoco/) files
+4. Support for [OpenClover](https://openclover.org/index)
+5. Support for Group Coverage with Branch Coverage (mostly Coveralls)
 
 ###### Bugs
 
