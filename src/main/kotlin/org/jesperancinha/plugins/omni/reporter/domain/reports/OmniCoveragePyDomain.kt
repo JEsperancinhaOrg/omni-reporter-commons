@@ -1,5 +1,12 @@
 package org.jesperancinha.plugins.omni.reporter.domain.reports
 
+import org.jesperancinha.plugins.omni.reporter.JacocoXmlParsingErrorException
+import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniCoveragePyDomain.Companion.logger
+import org.jesperancinha.plugins.omni.reporter.parsers.readJsonValue
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
+import java.io.InputStream
+
 
 data class Summary(
     val covered_lines: Int = 0,
@@ -36,8 +43,23 @@ data class CoveragePyFile(
 /**
  * Created by jofisaes on 26/01/2022
  */
-data class OmniCoveragePyDomain(
+data class OmniCoveragePy(
     val meta: Meta,
     val files: Map<String, CoveragePyFile>,
     val totals: Totals
 )
+
+class OmniCoveragePyDomain {
+    companion object {
+        val logger: Logger = LoggerFactory.getLogger(OmniCoveragePyDomain::class.java)
+    }
+}
+
+fun InputStream.readCoveragePyReport(failOnJsonParseError: Boolean = false) =
+    readJsonValue<OmniCoveragePy>(this).apply {
+        if (files.isEmpty()) {
+            logger.warn("Failed to process CoveragePy file!")
+            if (failOnJsonParseError)
+                throw JacocoXmlParsingErrorException()
+        }
+    }

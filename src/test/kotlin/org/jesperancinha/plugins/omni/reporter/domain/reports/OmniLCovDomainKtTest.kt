@@ -15,6 +15,5 @@ internal class OmniLCovDomainKtTest {
         val readLCovReport = lcovFileStream.readLCovReport()
 
         readLCovReport.shouldNotBeNull()
-
     }
 }

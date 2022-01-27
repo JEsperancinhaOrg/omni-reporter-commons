@@ -16,6 +16,8 @@ class CodecovPackageNotFoundException(override val message: String? = null) : Ru
 
 class JacocoXmlParsingErrorException : RuntimeException()
 
+class CoveragePyJsonParsingErrorException : RuntimeException()
+
 class NullSourceFileException : RuntimeException()
 
 class IncompleteCodacyApiTokenConfigurationException : RuntimeException()
