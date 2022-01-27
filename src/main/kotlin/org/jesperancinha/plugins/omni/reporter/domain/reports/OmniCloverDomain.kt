@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonRootName
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement
+import org.jesperancinha.plugins.omni.reporter.JacocoXmlParsingErrorException
+import java.io.InputStream
 
 
 data class CloverLine(
@@ -44,7 +46,7 @@ data class Project(
     @JacksonXmlProperty(localName = "name", isAttribute = true)
     val name: String,
     val metrics: Metrics,
-    @JsonProperty("package")
+    @JsonProperty("file")
     val files: List<CloverFile> = emptyList(),
 )
 
@@ -60,3 +62,13 @@ data class OmniCloverReport(
     val clover: String,
     val project: Project
 )
+
+
+fun InputStream.readCloverReport(failOnXmlParseError: Boolean = false) =
+    org.jesperancinha.plugins.omni.reporter.parsers.readXmlValue<OmniCloverReport>(this).apply {
+        if (project.files.isEmpty()) {
+            OmniJacocoDomain.logger.warn("Failed to process Clover file!")
+            if (failOnXmlParseError)
+                throw JacocoXmlParsingErrorException()
+        }
+    }
