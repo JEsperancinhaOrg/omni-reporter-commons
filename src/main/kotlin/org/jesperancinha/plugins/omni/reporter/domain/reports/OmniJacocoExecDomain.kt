@@ -29,11 +29,9 @@ class OmniJacocoReportParserCommand(
         val loader = ExecFileLoader()
         if (execFiles.isEmpty()) {
             logger.warn("No exec files requested!")
+            return Report()
         } else {
-            execFiles.forEach {
-                it.absolutePath
-                loader.load(it)
-            }
+            execFiles.forEach { loader.load(it) }
         }
         val builder = CoverageBuilder()
         val analyzer = Analyzer(loader.executionDataStore, builder)
