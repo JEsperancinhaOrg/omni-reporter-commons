@@ -28,4 +28,6 @@ abstract class ApiClientImpl<REPORT, RESPONSE> : ApiClient<REPORT, RESPONSE> {
 
 internal const val REDACTED = "REDACTED"
 
+internal const val TEMP_DIR_VARIABLE = "java.io.tmpdir"
+
 fun String.redact(token: String?): String = token?.let { replace(token, REDACTED) } ?: this

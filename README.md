@@ -81,6 +81,7 @@ I hope you enjoyed this repository. If you did, you can optionally please buy me
 
 ## References
 
+- [Jacoco Open Source Code](https://github.com/jacoco/jacoco)
 - [What does each line of the lcov output file mean?](https://giters.com/linux-test-project/lcov/issues/113)
 - [Codacy Coverage Reporter](https://github.com/codacy/codacy-coverage-reporter)
 - [Jackson Module](https://medium.com/@foxjstephen/how-to-actually-parse-xml-in-java-kotlin-221a9309e6e8)

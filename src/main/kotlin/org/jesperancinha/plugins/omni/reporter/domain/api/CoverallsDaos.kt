@@ -128,7 +128,6 @@ open class CoverallsClient(
 
     companion object {
         private const val COVERALLS_FILE = "coveralls.json"
-        private const val TEMP_DIR_VARIABLE = "java.io.tmpdir"
         private val logger = LoggerFactory.getLogger(CoverallsClient::class.java)
     }
 }

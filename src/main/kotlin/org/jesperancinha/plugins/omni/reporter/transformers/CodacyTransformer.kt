@@ -7,7 +7,7 @@ import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyReport
 import org.jesperancinha.plugins.omni.reporter.domain.reports.Line
 import org.jesperancinha.plugins.omni.reporter.domain.reports.Report
 import org.jesperancinha.plugins.omni.reporter.domain.reports.Sourcefile
-import org.jesperancinha.plugins.omni.reporter.domain.reports.readReport
+import org.jesperancinha.plugins.omni.reporter.domain.reports.readJacocoReport
 import org.jesperancinha.plugins.omni.reporter.parsers.Language
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import java.io.File
@@ -54,7 +54,7 @@ class JacocoParserToCodacy(
     private val failOnUnknownPredicateFilePack = createFailOnUnknownPredicateFilePack(failOnUnknown)
 
     override fun parseInput(input: InputStream, compiledSourcesDirs: List<File>): CodacyReport {
-        val report = input.readReport(failOnXmlParseError)
+        val report = input.readJacocoReport(failOnXmlParseError)
         return report.packages
             .asSequence()
             .map { it.name to it.sourcefiles }

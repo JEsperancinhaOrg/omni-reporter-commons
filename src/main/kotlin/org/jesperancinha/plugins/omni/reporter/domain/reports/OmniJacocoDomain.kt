@@ -115,7 +115,7 @@ fun InputStream.readJacocoPackages(failOnXmlParseError: Boolean) =
         }
     }
 
-fun InputStream.readReport(failOnXmlParseError: Boolean) =
+fun InputStream.readJacocoReport(failOnXmlParseError: Boolean) =
     readXmlValue<Report>(this).apply {
         if (packages.isEmpty()) {
             logger.warn("Failed to process Jacoco file!")

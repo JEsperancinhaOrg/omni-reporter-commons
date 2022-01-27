@@ -9,7 +9,7 @@ import org.jesperancinha.plugins.omni.reporter.JacocoXmlParsingErrorException
 import org.jesperancinha.plugins.omni.reporter.domain.api.*
 import org.jesperancinha.plugins.omni.reporter.domain.reports.Report
 import org.jesperancinha.plugins.omni.reporter.domain.reports.readJacocoPackages
-import org.jesperancinha.plugins.omni.reporter.domain.reports.readReport
+import org.jesperancinha.plugins.omni.reporter.domain.reports.readJacocoReport
 import org.jesperancinha.plugins.omni.reporter.parsers.readXmlValue
 import org.jesperancinha.plugins.omni.reporter.parsers.writeSnakeCaseJsonValueAsString
 import org.junit.jupiter.api.Test
@@ -32,7 +32,7 @@ internal class DomainTest {
     fun `should not fail if failOnXmlParseError is false when parsing report`() {
         val inputStream = javaClass.getResourceAsStream("/jacoco-bad.xml")
         inputStream.shouldNotBeNull()
-        val readValue = inputStream.readReport(false)
+        val readValue = inputStream.readJacocoReport(false)
         readValue.shouldNotBeNull()
         readValue.packages.shouldNotBeNull()
         readValue.packages.shouldBeEmpty()
@@ -51,7 +51,7 @@ internal class DomainTest {
     fun `should fail if failOnXmlParseError is true when parsing report`() {
         val inputStream = javaClass.getResourceAsStream("/jacoco-bad.xml")
         inputStream.shouldNotBeNull()
-        shouldThrow<JacocoXmlParsingErrorException> { inputStream.readReport(true) }
+        shouldThrow<JacocoXmlParsingErrorException> { inputStream.readJacocoReport(true) }
     }
 
     @Test
