@@ -1,4 +1,4 @@
-package org.jesperancinha.plugins.omni.reporter.domain
+package org.jesperancinha.plugins.omni.reporter.domain.reports
 
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.collections.shouldBeEmpty
@@ -7,14 +7,11 @@ import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
 import org.jesperancinha.plugins.omni.reporter.JacocoXmlParsingErrorException
 import org.jesperancinha.plugins.omni.reporter.domain.api.*
-import org.jesperancinha.plugins.omni.reporter.domain.reports.Report
-import org.jesperancinha.plugins.omni.reporter.domain.reports.readJacocoPackages
-import org.jesperancinha.plugins.omni.reporter.domain.reports.readJacocoReport
 import org.jesperancinha.plugins.omni.reporter.parsers.readXmlValue
 import org.jesperancinha.plugins.omni.reporter.parsers.writeSnakeCaseJsonValueAsString
 import org.junit.jupiter.api.Test
 
-internal class DomainTest {
+internal class JacocoDomainTest {
     @Test
     fun `should parse basic JacocoReport`() {
         val inputStream = javaClass.getResourceAsStream("/jacoco.xml")
