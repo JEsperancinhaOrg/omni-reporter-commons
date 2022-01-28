@@ -52,12 +52,28 @@ internal fun List<OmniProject?>.toReportFiles(
                                 report
                             )
                         } == true) {
+                        val projectBuildDirectory = File(project.build?.directory ?: throw ProjectDirectoryNotFoundException())
                         when {
-                            report.name.startsWith("jacoco") && report.extension == "xml" -> OmniJacocoFileAdapter(report, failOnXmlParseError, root)
-                            report.name.startsWith("") && report.extension == "exec" -> OmniJacocoExecFileAdapter(report)
+                            report.name.startsWith("jacoco") && report.extension == "xml" -> {
+                                OmniJacocoFileAdapter(
+                                    report,
+                                    failOnXmlParseError,
+                                    root,
+                                    projectBuildDirectory
+                                )
+                            }
+                            report.name.startsWith("") && report.extension == "exec" -> OmniJacocoExecFileAdapter(
+                                report,
+                                failOnXmlParseError,
+                                root,
+                                projectBuildDirectory                            )
                             report.name.startsWith("lcov") && report.extension == "info" -> OmniLCovFileAdapter(report)
-                            report.name.startsWith("clover") && report.extension == "xml" -> OmniCloverFileAdapter(report)
-                            report.name.startsWith("coverage") && report.extension == "json" -> OmniCoveragePyFileAdapter(report)
+                            report.name.startsWith("clover") && report.extension == "xml" -> OmniCloverFileAdapter(
+                                report
+                            )
+                            report.name.startsWith("coverage") && report.extension == "json" -> OmniCoveragePyFileAdapter(
+                                report
+                            )
                             else -> null
                         }
                     } else null

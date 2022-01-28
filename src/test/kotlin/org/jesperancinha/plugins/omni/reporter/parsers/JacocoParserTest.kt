@@ -73,15 +73,15 @@ internal class JacocoParserTest {
         jacocoResult.writeText(xmlObjectMapper.writeValueAsString(report))
 
         print(jacocoResult)
-        jacocoParser.parseInput(OmniJacocoFileAdapter(jacocoResult, false, root), listOf(root))
+        jacocoParser.parseInput(OmniJacocoFileAdapter(jacocoResult, false, root, root), listOf(root))
             .sourceFiles[0].coverage shouldBe arrayOf(20, 22, null, null, null)
 
-        jacocoParser.parseInput(OmniJacocoFileAdapter(jacocoResult, false, root), listOf(root))
+        jacocoParser.parseInput(OmniJacocoFileAdapter(jacocoResult, false, root, root), listOf(root))
             .sourceFiles[0].coverage shouldBe arrayOf(40, 44, null, null, null)
 
-        jacocoParser.parseInput(OmniJacocoFileAdapter(jacocoResult, false, root), listOf(root))
+        jacocoParser.parseInput(OmniJacocoFileAdapter(jacocoResult, false, root, root), listOf(root))
 
-        val sourceFiles = jacocoParser.parseInput(OmniJacocoFileAdapter(jacocoResult, false, root)
+        val sourceFiles = jacocoParser.parseInput(OmniJacocoFileAdapter(jacocoResult, false, root, root)
         ).sourceFiles
 
         sourceFiles.shouldNotBeNull()

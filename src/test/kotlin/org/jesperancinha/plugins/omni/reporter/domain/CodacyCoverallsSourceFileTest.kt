@@ -56,7 +56,7 @@ internal class CodacyCoverallsSourceFileTest {
             language = KOTLIN
         ).parseInput(
             OmniJacocoFileAdapter(
-                jacocoFileResource, false, root
+                jacocoFileResource, false, root, root
             ), listOf(root)
         ).let {
             val reportResult = it.copy(

@@ -30,7 +30,7 @@ internal class CoverallsClientTest {
         )
 
         val report = jacocoParser.parseInput(
-            OmniJacocoFileAdapter(jacocoReport, false, root), listOf(root)
+            OmniJacocoFileAdapter(jacocoReport, false, root, root), listOf(root)
         )
         logger.info(writeSnakeCaseJsonValueAsString(report))
 

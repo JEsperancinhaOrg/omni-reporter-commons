@@ -33,7 +33,7 @@ internal class AllParserToCodecovTest {
             root = root,
             failOnUnknown = false
         ).parseInput(
-            OmniJacocoFileAdapter(jacocoFile, false, root),
+            OmniJacocoFileAdapter(jacocoFile, false, root, root),
             listOf(resource.toURI().toPath().toFile())
         )
 
