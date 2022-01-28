@@ -22,24 +22,24 @@ data class CloverFile(
     val name: String,
     @JacksonXmlProperty(localName = "path", isAttribute = true)
     val path: String,
-    val metrics: Metrics? = null,
+    val metrics: Metrics = Metrics(),
     @JsonProperty("line")
-    val line: List<CloverLine> = emptyList()
+    val cloverLines: List<CloverLine> = emptyList()
 )
 
 data class Metrics(
     @JacksonXmlProperty(localName = "statements", isAttribute = true)
-    val statements: Int,
+    val statements: Int = 0,
     @JacksonXmlProperty(localName = "coveredstatements", isAttribute = true)
-    val coveredstatements: Int,
+    val coveredstatements: Int = 0,
     @JacksonXmlProperty(localName = "conditionals", isAttribute = true)
-    val conditionals: Int,
+    val conditionals: Int = 0,
     @JacksonXmlProperty(localName = "coveredconditionals", isAttribute = true)
-    val coveredconditionals: Int,
+    val coveredconditionals: Int = 0,
     @JacksonXmlProperty(localName = "methods", isAttribute = true)
-    val methods: Int,
+    val methods: Int = 0,
     @JacksonXmlProperty(localName = "coveredmethods", isAttribute = true)
-    val coveredmethods: Int
+    val coveredmethods: Int = 0
 )
 
 data class Project(

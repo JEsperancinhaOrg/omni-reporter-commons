@@ -10,6 +10,13 @@ import org.jesperancinha.plugins.omni.reporter.transformers.SourceCodeFile
 import java.io.File
 import kotlin.math.max
 
+
+/**
+ * TODO: Coveralls Branch Extension Function From Clover
+ */
+private val  List<CloverLine>.fromCloverToBranchCoverageArray: Array<Int?>
+    get() = emptyArray()
+
 /**
  * TODO: Coveralls Branch Extension Function From LCov
  */
@@ -65,6 +72,22 @@ private fun List<LineData?>.fromLCovToCoverallsCoverage(lines: Int): Array<Int?>
 }
 
 /**
+ * Coveralls Line Extension Function From Clover
+ */
+private fun List<CloverLine?>.fromCloverToCoverallsCoverage(lines: Int): Array<Int?> = let {
+    if (isNotEmpty()) {
+        val calculatedLength = map { it?.num ?: 0 }.maxOf { it }
+        val coverageArray = Array<Int?>(max(lines, calculatedLength)) { null }
+        forEach { line ->
+            line?.let { coverageArray[line.num - 1] = line.count }
+        }
+        coverageArray
+    } else {
+        emptyArray()
+    }
+}
+
+/**
  * Codacy Line Extension Function from Jacoco
  */
 val List<Line?>.fromJacocoToCodacyCoverage: MutableMap<String, Int>
@@ -83,12 +106,27 @@ private val List<LineData>.fromLCovToCodacyCoverage: MutableMap<String, Int>
         mutableMapOf()
     }
 
+private val List<CloverLine>.fromCloverToCodacyCoverage: MutableMap<String, Int>
+    get()  = if (isNotEmpty()) {
+        filterNotNull().associate { line -> line.num.toString() to if (line.count > 0) 1 else 0 }
+            .toMutableMap()
+    } else {
+        mutableMapOf()
+    }
+
+
+/**
+ * Codacy Percentage Extension Function
+ */
+private val CloverFile.calculateLinePercentage: Int
+    get() = (metrics.coveredstatements * 100) / metrics.statements
+
 
 /**
  * Codacy Percentage Extension Function
  */
 private val OmniLCovReport.calculateLinePercentage: Int
-    get() = (linesFound * 100) / linesHit
+    get() = (linesHit * 100) / linesFound
 
 /**
  * Codacy Percentage Extension Function
@@ -282,12 +320,37 @@ class OmniCloverReportFileAdapter(
         root.toPath()
             .relativize(File(reportFile.path).toPath()).toString()
 
-    override fun toCoveralls(sourceCodeFile: SourceCodeFile): CoverallsSourceFile? {
-        TODO("Not yet implemented")
+    override fun toCoveralls(sourceCodeFile: SourceCodeFile): CoverallsSourceFile?  {
+        val sourceCodeText = sourceCodeFile.bufferedReader().use { it.readText() }
+        val lines = sourceCodeText.split("\n").size
+        val coverage = reportFile.cloverLines.fromCloverToCoverallsCoverage(lines)
+        val branchCoverage = reportFile.cloverLines.fromCloverToBranchCoverageArray
+        return if (coverage.isEmpty()) {
+            null
+        } else {
+            CoverallsSourceFile(
+                name = sourceCodeFile.toRelativeString(root),
+                coverage = coverage,
+                branches = if (includeBranchCoverage) branchCoverage else emptyArray(),
+                sourceDigest = sourceCodeText.toFileDigest,
+            )
+        }
     }
+
 
     override fun toCodacy(sourceCodeFile: SourceCodeFile): CodacyFileReport? {
-        TODO("Not yet implemented")
+        val coverage = reportFile.cloverLines.fromCloverToCodacyCoverage
+        return if (coverage.isEmpty() || !reportFile.path.endsWith(
+                language?.ext ?: throw LanguageNotConfiguredException()
+            )
+        ) {
+            null
+        } else {
+            CodacyFileReport(
+                filename = "${sourceCodeFile.packageName}/${name()}".replace("//", "/"),
+                total = reportFile.calculateLinePercentage,
+                coverage = coverage
+            )
+        }
     }
-
 }
