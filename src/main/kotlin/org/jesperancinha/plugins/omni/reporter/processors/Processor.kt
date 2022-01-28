@@ -67,7 +67,12 @@ internal fun List<OmniProject?>.toReportFiles(
                                 failOnXmlParseError,
                                 root,
                                 projectBuildDirectory                            )
-                            report.name.startsWith("lcov") && report.extension == "info" -> OmniLCovFileAdapter(report)
+                            report.name.startsWith("lcov") && report.extension == "info" -> OmniLCovFileAdapter(
+                                report,
+                                failOnXmlParseError,
+                                root,
+                                projectBuildDirectory
+                            )
                             report.name.startsWith("clover") && report.extension == "xml" -> OmniCloverFileAdapter(
                                 report
                             )

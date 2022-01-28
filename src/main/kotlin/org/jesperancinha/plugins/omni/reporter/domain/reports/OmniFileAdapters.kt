@@ -39,11 +39,12 @@ class OmniJacocoFileAdapter(
     val projectBuildDirectory: File,
     private val includeBranchCoverage: Boolean = false,
 ) : OmniFileAdapter(report) {
-    override fun getParentAdapter(): OmniReportParentFileAdapter = OmniJacocoReportParentFileAdapter(
-        report.inputStream().readJacocoReport(failOnXmlParseError),
-        root,
-        includeBranchCoverage,
-    )
+    override fun getParentAdapter(): OmniReportParentFileAdapter =
+        OmniJacocoReportParentFileAdapter(
+            report.inputStream().readJacocoReport(failOnXmlParseError),
+            root,
+            includeBranchCoverage,
+        )
 }
 
 class OmniJacocoExecFileAdapter(
@@ -70,11 +71,19 @@ class OmniJacocoExecFileAdapter(
 }
 
 
-class OmniLCovFileAdapter(override val report: File) : OmniFileAdapter(report) {
-    override fun getParentAdapter(): OmniReportParentFileAdapter {
-        TODO("Not yet implemented")
-    }
-
+class OmniLCovFileAdapter(
+    override val report: File,
+    val failOnXmlParseError: Boolean = false,
+    val root: File,
+    val projectBuildDirectory: File,
+    private val includeBranchCoverage: Boolean = false
+) : OmniFileAdapter(report) {
+    override fun getParentAdapter(): OmniLCovReportParentFileAdapter =
+        OmniLCovReportParentFileAdapter(
+            report.inputStream().readLCovReport(failOnXmlParseError),
+            root,
+            includeBranchCoverage,
+        )
 }
 
 class OmniCloverFileAdapter(override val report: File) : OmniFileAdapter(report) {
