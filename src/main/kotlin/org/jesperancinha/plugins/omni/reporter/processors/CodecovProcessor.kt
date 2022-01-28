@@ -44,7 +44,7 @@ class CodecovProcessor(
                         root = projectBaseDir ?: throw ProjectDirectoryNotFoundException(),
                         failOnUnknown = failOnUnknown
                     ).parseInput(
-                        report.inputStream(),
+                        report,
                         project.compileSourceRoots?.map { file -> File(file) } ?: emptyList()
                     )
                 }

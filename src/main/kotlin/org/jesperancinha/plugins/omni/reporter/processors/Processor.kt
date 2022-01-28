@@ -2,20 +2,20 @@ package org.jesperancinha.plugins.omni.reporter.processors
 
 import org.jesperancinha.plugins.omni.reporter.OmniProject
 import org.jesperancinha.plugins.omni.reporter.ProjectDirectoryNotFoundException
+import org.jesperancinha.plugins.omni.reporter.domain.reports.*
 import java.io.File
-
-private val String.isSupported: Boolean
-    get() = equals("xml")
 
 private val CODECOV_SUPPORTED_REPORTS = arrayOf(
     "jacoco" to "xml",
     "lcov" to "txt",
+    "lcov" to "info",
     "gcov" to "txt",
     "golang" to "txt",
     "lcov" to "txt",
     "coverage" to "xml",
     "cobertura" to "xml"
 )
+
 
 /**
  * Created by jofisaes on 05/01/2022
@@ -35,28 +35,39 @@ abstract class Processor(
         } else { _, _ -> true }
 }
 
-internal fun List<OmniProject?>.toJacocoReportFiles(supportedPredicate: (String, File) -> Boolean): Map<OmniProject, List<File>> =
+internal fun List<OmniProject?>.toReportFiles(
+    supportedPredicate: (String, File) -> Boolean,
+    failOnXmlParseError: Boolean,
+    root: File
+): Map<OmniProject, List<OmniFileAdapter>> =
     this.filterNotNull()
         .map { project ->
             project to File(project.build?.directory ?: throw ProjectDirectoryNotFoundException())
                 .walkTopDown()
                 .toList()
-                .filter { report ->
-                    report.isFile
-                            && report.name.startsWith("jacoco")
-                            && report.extension.isSupported
-                            && project.build?.let { build ->
-                        supportedPredicate(
-                            build.testOutputDirectory,
-                            report
-                        )
-                    } ?: false
+                .mapNotNull { report ->
+                    if (report.isFile && project.build?.let { build ->
+                            supportedPredicate(
+                                build.testOutputDirectory,
+                                report
+                            )
+                        } == true) {
+                        when {
+                            report.name.startsWith("jacoco") && report.extension == "xml" -> OmniJacocoFileAdapter(report, failOnXmlParseError, root)
+                            report.name.startsWith("") && report.extension == "exec" -> OmniJacocoExecFileAdapter(report)
+                            report.name.startsWith("lcov") && report.extension == "info" -> OmniLCovFileAdapter(report)
+                            report.name.startsWith("clover") && report.extension == "xml" -> OmniCloverFileAdapter(report)
+                            report.name.startsWith("coverage") && report.extension == "json" -> OmniCoveragePyFileAdapter(report)
+                            else -> null
+                        }
+                    } else null
+
                 }
                 .distinct()
         }.distinct()
         .toMap()
 
-internal fun List<OmniProject?>.toAllCodecovSupportedFiles(supportedPredicate: (String, File) -> Boolean): List<Pair<OmniProject, List<File>>> =
+internal fun List<OmniProject?>.toAllCodecovSupportedFiles(supportedPredicate: (String, File) -> Boolean): List<Pair<OmniProject, List<OmniGenericFileAdapter>>> =
     this.filterNotNull()
         .map { project ->
             project to File(project.build?.directory ?: throw ProjectDirectoryNotFoundException()).walkTopDown()
@@ -70,5 +81,7 @@ internal fun List<OmniProject?>.toAllCodecovSupportedFiles(supportedPredicate: (
                             report
                         )
                     } ?: false
-                }.distinct()
+                }
+                .map { OmniGenericFileAdapter(it) }
+                .distinct()
         }.distinct()

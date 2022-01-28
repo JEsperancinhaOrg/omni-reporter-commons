@@ -6,7 +6,7 @@ import org.jesperancinha.plugins.omni.reporter.OmniProject
 import org.jesperancinha.plugins.omni.reporter.ProjectDirectoryNotFoundException
 import org.jesperancinha.plugins.omni.reporter.domain.api.CoverallsClient
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
-import org.jesperancinha.plugins.omni.reporter.transformers.JacocoParserToCoveralls
+import org.jesperancinha.plugins.omni.reporter.transformers.ReportingParserToCoveralls
 import org.slf4j.LoggerFactory
 import java.io.File
 
@@ -31,8 +31,8 @@ class CoverallsReportsProcessor(
     override fun processReports() {
         logger.info("* Omni Reporting to Coveralls started!")
 
-        val jacocoParser =
-            JacocoParserToCoveralls(
+        val reportingParserToCoveralls =
+            ReportingParserToCoveralls(
                 token = coverallsToken,
                 pipeline = currentPipeline,
                 root = projectBaseDir ?: throw ProjectDirectoryNotFoundException(),
@@ -42,13 +42,13 @@ class CoverallsReportsProcessor(
                 failOnXmlParseError = failOnXmlParseError
             )
 
-        allProjects.toJacocoReportFiles(supportedPredicate)
+        allProjects.toReportFiles(supportedPredicate, failOnXmlParseError, projectBaseDir)
             .filter { (project, _) -> project.compileSourceRoots != null }
             .forEach { (project, reports) ->
                 reports.forEach { report ->
                     logger.info("Parsing file: $report")
-                    jacocoParser.parseInput(
-                        report.inputStream(),
+                    reportingParserToCoveralls.parseInput(
+                        report,
                         project.compileSourceRoots?.map { file -> File(file) } ?: emptyList()
                     )
                 }
@@ -59,7 +59,7 @@ class CoverallsReportsProcessor(
             CoverallsClient(coverallsUrl ?: throw CoverallsUrlNotConfiguredException(), coverallsToken)
         try {
 
-            val coverallsReport = jacocoParser.coverallsReport
+            val coverallsReport = reportingParserToCoveralls.coverallsReport
 
             coverallsReport?.let {
                 if (it.sourceFiles.isEmpty()) return

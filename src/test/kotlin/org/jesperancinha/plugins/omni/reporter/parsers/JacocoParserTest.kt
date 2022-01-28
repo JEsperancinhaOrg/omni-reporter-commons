@@ -3,17 +3,16 @@ package org.jesperancinha.plugins.omni.reporter.parsers
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
-import org.jesperancinha.plugins.omni.reporter.domain.reports.Line
-import org.jesperancinha.plugins.omni.reporter.domain.reports.Package
-import org.jesperancinha.plugins.omni.reporter.domain.reports.Report
-import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniJacocoSourcefile
+import org.jesperancinha.plugins.omni.reporter.domain.api.TEMP_DIR_VARIABLE
+import org.jesperancinha.plugins.omni.reporter.domain.reports.*
 import org.jesperancinha.plugins.omni.reporter.pipelines.LocalPipeline
-import org.jesperancinha.plugins.omni.reporter.transformers.JacocoParserToCoveralls
+import org.jesperancinha.plugins.omni.reporter.transformers.ReportingParserToCoveralls
 import org.jesperancinha.plugins.omni.reporter.utils.Utils.Companion.root
 import org.junit.jupiter.api.Test
+import java.io.File
 
 internal class JacocoParserTest {
-    private val jacocoParser = JacocoParserToCoveralls(
+    private val jacocoParser = ReportingParserToCoveralls(
         "token",
         LocalPipeline(),
         root,
@@ -24,6 +23,7 @@ internal class JacocoParserTest {
 
     @Test
     fun parseSourceFile() {
+        val tmpdir = System.getProperty(TEMP_DIR_VARIABLE)
 
 
         val element = Line(
@@ -69,12 +69,19 @@ internal class JacocoParserTest {
 
         val report = Report(packages = listOf(pack, pack2))
 
-        jacocoParser.parseInput(xmlObjectMapper.writeValueAsString(report).byteInputStream(), listOf(root))
-        jacocoParser.parseInput(xmlObjectMapper.writeValueAsString(report).byteInputStream(), listOf(root))
+        val jacocoResult = File(tmpdir, "jacoco_test.xml")
+        jacocoResult.writeText(xmlObjectMapper.writeValueAsString(report))
 
-        val sourceFiles = jacocoParser.parseInput(
-            xmlObjectMapper.writeValueAsString(report).byteInputStream(),
-            listOf(root)
+        print(jacocoResult)
+        jacocoParser.parseInput(OmniJacocoFileAdapter(jacocoResult, false, root), listOf(root))
+            .sourceFiles[0].coverage shouldBe arrayOf(20, 22, null, null, null)
+
+        jacocoParser.parseInput(OmniJacocoFileAdapter(jacocoResult, false, root), listOf(root))
+            .sourceFiles[0].coverage shouldBe arrayOf(40, 44, null, null, null)
+
+        jacocoParser.parseInput(OmniJacocoFileAdapter(jacocoResult, false, root), listOf(root))
+
+        val sourceFiles = jacocoParser.parseInput(OmniJacocoFileAdapter(jacocoResult, false, root)
         ).sourceFiles
 
         sourceFiles.shouldNotBeNull()
@@ -82,7 +89,7 @@ internal class JacocoParserTest {
         val sourceFile = sourceFiles[0]
         sourceFile.name.shouldNotBeNull()
         sourceFile.sourceDigest.shouldNotBeNull()
-        sourceFile.coverage shouldBe arrayOf(50, 55, null, null, null)
+        sourceFile.coverage shouldBe arrayOf(60, 66, null, null, null)
 //        sourceFile.branches shouldBe arrayOf(2, 5, 3, 11)
 //        sourceFile.source shouldBe File(root, "Racoons.kt").bufferedReader().use { it.readText() }
     }

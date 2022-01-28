@@ -5,6 +5,7 @@ import io.kotest.matchers.nulls.shouldBeNull
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldHaveLength
+import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniJacocoFileAdapter
 import org.jesperancinha.plugins.omni.reporter.domain.reports.Package
 import org.jesperancinha.plugins.omni.reporter.domain.reports.Report
 import org.jesperancinha.plugins.omni.reporter.parsers.readXmlValue
@@ -19,8 +20,10 @@ internal class AllParserToCodecovTest {
     @Test
     @Disabled
     fun `should return String without parsing`() {
-        val resourceAsStream = javaClass.getResourceAsStream("/jacoco-for-codacy.xml")
-        resourceAsStream.shouldNotBeNull()
+        val resourceJacocoCodacy = javaClass.getResource("/jacoco-for-codacy.xml")
+        resourceJacocoCodacy.shouldNotBeNull()
+        val jacocoFile = resourceJacocoCodacy.toURI().toPath().toFile()
+        jacocoFile.shouldNotBeNull()
         val resource = javaClass.getResource("/src/main/kotlin")
         resource.shouldNotBeNull()
 
@@ -30,7 +33,7 @@ internal class AllParserToCodecovTest {
             root = root,
             failOnUnknown = false
         ).parseInput(
-            resourceAsStream,
+            OmniJacocoFileAdapter(jacocoFile, false, root),
             listOf(resource.toURI().toPath().toFile())
         )
 

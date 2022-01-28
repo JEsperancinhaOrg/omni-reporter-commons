@@ -6,6 +6,7 @@ import io.kotest.matchers.collections.shouldNotBeEmpty
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyReport
+import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniJacocoFileAdapter
 import org.jesperancinha.plugins.omni.reporter.parsers.Language.KOTLIN
 import org.jesperancinha.plugins.omni.reporter.parsers.camelCaseJsonObjectMapper
 import org.jesperancinha.plugins.omni.reporter.pipelines.GitHubPipeline
@@ -13,6 +14,7 @@ import org.jesperancinha.plugins.omni.reporter.transformers.JacocoParserToCodacy
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import kotlin.io.path.toPath
+
 @Disabled
 internal class CodacyCoverallsSourceFileTest {
 
@@ -38,8 +40,10 @@ internal class CodacyCoverallsSourceFileTest {
         inputStream.shouldNotBeNull()
         val codacyReport = camelCaseJsonObjectMapper.readValue<CodacyReport>(inputStream)
 
-        val inputJacocoStream = javaClass.getResourceAsStream("/jacoco-for-codacy.xml")
-        inputJacocoStream.shouldNotBeNull()
+        val jacocoResource = javaClass.getResource("/jacoco-for-codacy.xml")
+        jacocoResource.shouldNotBeNull()
+        val jacocoFileResource = jacocoResource.toURI().toPath().toFile()
+        jacocoFileResource.shouldNotBeNull()
 
         val resource = javaClass.getResource("/")
         resource.shouldNotBeNull()
@@ -50,7 +54,11 @@ internal class CodacyCoverallsSourceFileTest {
             root = root,
             failOnUnknown = false,
             language = KOTLIN
-        ).parseInput(inputJacocoStream, listOf(root)).let {
+        ).parseInput(
+            OmniJacocoFileAdapter(
+                jacocoFileResource, false, root
+            ), listOf(root)
+        ).let {
             val reportResult = it.copy(
                 fileReports = it.fileReports.sortedBy { name -> name.filename }.toTypedArray()
                     .map { fileReport ->

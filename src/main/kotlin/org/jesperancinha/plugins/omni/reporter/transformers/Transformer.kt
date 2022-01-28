@@ -1,7 +1,7 @@
 package org.jesperancinha.plugins.omni.reporter.transformers
 
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyApiTokenConfig
-import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniJacocoSourcefile
+import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniFileAdapter
 import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniReportFileAdapter
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import org.jesperancinha.plugins.omni.reporter.repository.GitRepository
@@ -32,7 +32,7 @@ fun Sequence<Pair<String?, List<OmniReportFileAdapter>>>.mapToGenericSourceCodeF
  * Created by jofisaes on 05/01/2022
  */
 interface OmniReportParser<INPUT, OUTPUT> {
-    fun parseInput(input: INPUT, compiledSourcesDirs: List<File> = emptyList()): OUTPUT
+    fun parseInput(input: OmniFileAdapter, compiledSourcesDirs: List<File> = emptyList()): OUTPUT
 }
 
 abstract class OmniReporterParserImpl<INPUT, OUTPUT>(

@@ -4,6 +4,7 @@ import org.jesperancinha.plugins.omni.reporter.ProjectDirectoryNotFoundException
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyApiTokenConfig
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyFileReport
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyReport
+import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniFileAdapter
 import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniJacocoReportParentFileAdapter
 import org.jesperancinha.plugins.omni.reporter.domain.reports.readJacocoReport
 import org.jesperancinha.plugins.omni.reporter.parsers.Language
@@ -37,14 +38,9 @@ class JacocoParserToCodacy(
      */
     private val failOnUnknownPredicateFilePack = createFailOnUnknownPredicateFilePack(failOnUnknown)
 
-    override fun parseInput(input: InputStream, compiledSourcesDirs: List<File>): CodacyReport {
-        val parentReportAdapter = OmniJacocoReportParentFileAdapter(
-            input.readJacocoReport(failOnXmlParseError),
-            root,
-            includeBranchCoverage,
-            language
-        )
-        return parentReportAdapter.parseAllFiles()
+    override fun parseInput(input: OmniFileAdapter, compiledSourcesDirs: List<File>): CodacyReport {
+        val parentAdapter = input.getParentAdapter()
+        return parentAdapter.parseAllFiles()
             .mapToGenericSourceCodeFiles(compiledSourcesDirs, failOnUnknownPredicateFilePack)
             .filter { (sourceCodeFile) -> failOnUnknownPredicate(sourceCodeFile) }
             .map { (sourceCodeFile, omniReportFileAdapter) -> omniReportFileAdapter.toCodacy(sourceCodeFile) }
@@ -61,7 +57,7 @@ class JacocoParserToCodacy(
                 nonExisting.forEach { codacySources[it.filename] = it }
                 if (codacyReport == null) {
                     codacyReport = CodacyReport(
-                        total = parentReportAdapter.calculateTotalPercentage(),
+                        total = parentAdapter.calculateTotalPercentage(),
                         fileReports = fileReports.toTypedArray()
                     )
                 } else {

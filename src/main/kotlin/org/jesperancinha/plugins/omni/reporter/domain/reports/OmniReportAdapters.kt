@@ -76,8 +76,14 @@ interface OmniReportFileAdapter {
 }
 
 interface OmniReportParentFileAdapter {
-    fun parseAllFiles(): Any
+    fun parseAllFiles(): Sequence<Pair<String, List<OmniReportFileAdapter>>>
     fun calculateTotalPercentage(): Int
+}
+
+class OmniGenericReportParentFileAdapter : OmniReportParentFileAdapter {
+    override fun parseAllFiles(): Sequence<Pair<String, List<OmniReportFileAdapter>>> = emptySequence()
+
+    override fun calculateTotalPercentage(): Int = 0
 
 }
 

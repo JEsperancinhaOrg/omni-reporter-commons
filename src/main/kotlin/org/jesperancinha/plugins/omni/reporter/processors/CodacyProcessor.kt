@@ -38,7 +38,11 @@ class CodacyProcessor(
         val repo = RepositoryBuilder().findGitDir(projectBaseDir).build()
 
         Language.values().forEach { language ->
-            val reportsPerLanguage = allProjects.toJacocoReportFiles(supportedPredicate)
+            val reportsPerLanguage = allProjects.toReportFiles(
+                supportedPredicate,
+                failOnXmlParseError,
+                projectBaseDir ?: throw ProjectDirectoryNotFoundException()
+            )
                 .filter { (project, _) -> project.compileSourceRoots != null }
                 .flatMap { (project, reports) ->
                     reports.map { report ->
@@ -52,7 +56,7 @@ class CodacyProcessor(
                             failOnXmlParseError = failOnXmlParseError,
                             language = language
                         ).parseInput(
-                            report.inputStream(),
+                            report,
                             project.compileSourceRoots?.map { file -> File(file) } ?: emptyList()
                         )
                     }
