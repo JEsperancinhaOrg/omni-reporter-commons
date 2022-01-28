@@ -6,7 +6,7 @@ import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyFileReport
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyReport
 import org.jesperancinha.plugins.omni.reporter.domain.reports.Line
 import org.jesperancinha.plugins.omni.reporter.domain.reports.Report
-import org.jesperancinha.plugins.omni.reporter.domain.reports.Sourcefile
+import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniJacocoSourcefile
 import org.jesperancinha.plugins.omni.reporter.domain.reports.readJacocoReport
 import org.jesperancinha.plugins.omni.reporter.parsers.Language
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
@@ -14,7 +14,7 @@ import java.io.File
 import java.io.InputStream
 
 
-private val Sourcefile.calculateLinePercentage: Int
+private val OmniJacocoSourcefile.calculateLinePercentage: Int
     get() = counters.first { it.type == "LINE" }.run { (covered * 100) / (covered + missed) }
 
 private val Report.calculateTotalPercentage: Int
@@ -58,7 +58,7 @@ class JacocoParserToCodacy(
         return report.packages
             .asSequence()
             .map { it.name to it.sourcefiles }
-            .filterExistingFiles(compiledSourcesDirs, failOnUnknownPredicateFilePack)
+            .mapToGenericSourceCodeFiles(compiledSourcesDirs, failOnUnknownPredicateFilePack)
             .filter { (sourceCodeFile) -> failOnUnknownPredicate(sourceCodeFile) }
             .map { (sourceCodeFile, sourceFile) ->
                 val coverage = sourceFile.lines.toCodacyCoverage

@@ -35,10 +35,11 @@ abstract class Processor(
         } else { _, _ -> true }
 }
 
-internal fun List<OmniProject?>.toJacocoReportFiles(supportedPredicate: (String, File) -> Boolean): List<Pair<OmniProject, List<File>>> =
+internal fun List<OmniProject?>.toJacocoReportFiles(supportedPredicate: (String, File) -> Boolean): Map<OmniProject, List<File>> =
     this.filterNotNull()
         .map { project ->
-            project to File(project.build?.directory ?: throw ProjectDirectoryNotFoundException()).walkTopDown()
+            project to File(project.build?.directory ?: throw ProjectDirectoryNotFoundException())
+                .walkTopDown()
                 .toList()
                 .filter { report ->
                     report.isFile
@@ -50,8 +51,10 @@ internal fun List<OmniProject?>.toJacocoReportFiles(supportedPredicate: (String,
                             report
                         )
                     } ?: false
-                }.distinct()
+                }
+                .distinct()
         }.distinct()
+        .toMap()
 
 internal fun List<OmniProject?>.toAllCodecovSupportedFiles(supportedPredicate: (String, File) -> Boolean): List<Pair<OmniProject, List<File>>> =
     this.filterNotNull()

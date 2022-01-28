@@ -63,7 +63,7 @@ data class Package(
     @JsonProperty("class")
     val clazzs: List<Class> = emptyList(),
     @JsonProperty("sourcefile")
-    val sourcefiles: List<Sourcefile> = emptyList(),
+    val sourcefiles: List<OmniJacocoSourcefile> = emptyList(),
     @JsonProperty("counter")
     val counters: List<Counter> = emptyList(),
     @JacksonXmlProperty(localName = "name", isAttribute = true)
@@ -79,7 +79,7 @@ data class Sessioninfo(
     val dump: String? = null
 )
 
-data class Sourcefile(
+data class OmniJacocoSourcefile(
     @JsonProperty("line")
     val lines: List<Line> = emptyList(),
     @JsonProperty("counter")

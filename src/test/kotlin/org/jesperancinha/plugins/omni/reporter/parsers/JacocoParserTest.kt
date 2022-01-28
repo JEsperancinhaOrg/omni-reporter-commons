@@ -6,7 +6,7 @@ import io.kotest.matchers.shouldBe
 import org.jesperancinha.plugins.omni.reporter.domain.reports.Line
 import org.jesperancinha.plugins.omni.reporter.domain.reports.Package
 import org.jesperancinha.plugins.omni.reporter.domain.reports.Report
-import org.jesperancinha.plugins.omni.reporter.domain.reports.Sourcefile
+import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniJacocoSourcefile
 import org.jesperancinha.plugins.omni.reporter.pipelines.LocalPipeline
 import org.jesperancinha.plugins.omni.reporter.transformers.JacocoParserToCoveralls
 import org.jesperancinha.plugins.omni.reporter.utils.Utils.Companion.root
@@ -36,7 +36,7 @@ internal class JacocoParserTest {
             cb = 3,
             mb = 2
         )
-        val sourcefile = Sourcefile(
+        val omniJacocoSourcefile = OmniJacocoSourcefile(
             name = "Racoons.kt",
             lines = listOf(element, element2)
         )
@@ -52,19 +52,19 @@ internal class JacocoParserTest {
             cb = 3,
             mb = 2
         )
-        val sourcefile2 = Sourcefile(
+        val omniJacocoSourcefile2 = OmniJacocoSourcefile(
             name = "Racoons.kt",
             lines = listOf(element21, element22)
         )
 
         val pack = Package(
             name = "/",
-            sourcefiles = listOf(sourcefile)
+            sourcefiles = listOf(omniJacocoSourcefile)
         )
 
         val pack2 = Package(
             name = "/",
-            sourcefiles = listOf(sourcefile2)
+            sourcefiles = listOf(omniJacocoSourcefile2)
         )
 
         val report = Report(packages = listOf(pack, pack2))

@@ -69,7 +69,7 @@ class JacocoParserToCoveralls(
         input.readJacocoPackages(failOnXmlParseError)
             .asSequence()
             .map { it.name to it.sourcefiles }
-            .filterExistingFiles(compiledSourcesDirs, failOnUnknownPredicateFilePack)
+            .mapToGenericSourceCodeFiles(compiledSourcesDirs, failOnUnknownPredicateFilePack)
             .filter { (sourceCodeFile) -> failOnUnknownPredicate(sourceCodeFile) }
             .map { (sourceCodeFile, sourceFile) ->
                 val sourceCodeText = sourceCodeFile.bufferedReader().use { it.readText() }
