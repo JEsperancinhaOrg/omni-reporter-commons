@@ -60,6 +60,13 @@ private val OmniJacocoSourcefile.calculateLinePercentage: Int
     get() = counters.first { it.type == "LINE" }.run { (covered * 100) / (covered + missed) }
 
 /**
+ * Codacy Total Percentage Extension Function
+ */
+private val Report.calculateTotalPercentage: Int
+    get() = counters.first { it.type == "LINE" }.run { (covered * 100) / (covered + missed) }
+
+
+/**
  * Created by jofisaes on 28/01/2022
  */
 interface OmniReportFileAdapter {
@@ -67,6 +74,37 @@ interface OmniReportFileAdapter {
     fun toCoveralls(sourceCodeFile: SourceCodeFile): CoverallsSourceFile?
     fun toCodacy(sourceCodeFile: SourceCodeFile): CodacyFileReport?
 }
+
+interface OmniReportParentFileAdapter {
+    fun parseAllFiles(): Any
+    fun calculateTotalPercentage(): Int
+
+}
+
+class OmniJacocoReportParentFileAdapter(
+    private val reportFile: Report,
+    val root: File,
+    private val includeBranchCoverage: Boolean = false,
+    private val language: Language? = null
+) : OmniReportParentFileAdapter {
+    override fun parseAllFiles(): Sequence<Pair<String, List<OmniReportFileAdapter>>> {
+        return reportFile.packages
+            .asSequence()
+            .map {
+                it.name to it.sourcefiles.map { report ->
+                    OmniJacocoReportFileAdapter(
+                        report,
+                        root,
+                        includeBranchCoverage,
+                        language
+                    )
+                }
+            }
+    }
+
+    override fun calculateTotalPercentage() = reportFile.calculateTotalPercentage
+}
+
 
 class OmniJacocoReportFileAdapter(
     private val reportFile: OmniJacocoSourcefile,
@@ -94,7 +132,10 @@ class OmniJacocoReportFileAdapter(
 
     override fun toCodacy(sourceCodeFile: SourceCodeFile): CodacyFileReport? {
         val coverage = reportFile.lines.toCodacyCoverage
-        return if (coverage.isEmpty() || !reportFile.name.endsWith(language?.ext ?: throw LanguageNotConfiguredException())) {
+        return if (coverage.isEmpty() || !reportFile.name.endsWith(
+                language?.ext ?: throw LanguageNotConfiguredException()
+            )
+        ) {
             null
         } else {
             CodacyFileReport(

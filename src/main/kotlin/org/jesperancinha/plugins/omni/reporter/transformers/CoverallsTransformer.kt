@@ -5,11 +5,8 @@ import org.jesperancinha.plugins.omni.reporter.NullSourceFileException
 import org.jesperancinha.plugins.omni.reporter.ProjectDirectoryNotFoundException
 import org.jesperancinha.plugins.omni.reporter.domain.api.CoverallsReport
 import org.jesperancinha.plugins.omni.reporter.domain.api.CoverallsSourceFile
-import org.jesperancinha.plugins.omni.reporter.domain.api.isBranch
-import org.jesperancinha.plugins.omni.reporter.domain.reports.Line
-import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniJacocoReportFileAdapter
-import org.jesperancinha.plugins.omni.reporter.domain.reports.readJacocoPackages
-import org.jesperancinha.plugins.omni.reporter.parsers.toFileDigest
+import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniJacocoReportParentFileAdapter
+import org.jesperancinha.plugins.omni.reporter.domain.reports.readJacocoReport
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import java.io.File
 import java.io.InputStream
@@ -40,9 +37,11 @@ class JacocoParserToCoveralls(
     private val failOnUnknownPredicateFilePack = createFailOnUnknownPredicateFilePack(failOnUnknown)
 
     override fun parseInput(input: InputStream, compiledSourcesDirs: List<File>): CoverallsReport =
-        input.readJacocoPackages(failOnXmlParseError)
-            .asSequence()
-            .map { it.name to it.sourcefiles.map { report -> OmniJacocoReportFileAdapter(report, root, includeBranchCoverage) } }
+        OmniJacocoReportParentFileAdapter(
+            input.readJacocoReport(failOnXmlParseError),
+            root,
+            includeBranchCoverage,
+        ).parseAllFiles()
             .mapToGenericSourceCodeFiles(compiledSourcesDirs, failOnUnknownPredicateFilePack)
             .filter { (sourceCodeFile) -> failOnUnknownPredicate(sourceCodeFile) }
             .map { (sourceCodeFile, omniReportFileAdapter) -> omniReportFileAdapter.toCoveralls(sourceCodeFile) }

@@ -4,16 +4,12 @@ import org.jesperancinha.plugins.omni.reporter.ProjectDirectoryNotFoundException
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyApiTokenConfig
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyFileReport
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyReport
-import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniJacocoReportFileAdapter
-import org.jesperancinha.plugins.omni.reporter.domain.reports.Report
+import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniJacocoReportParentFileAdapter
 import org.jesperancinha.plugins.omni.reporter.domain.reports.readJacocoReport
 import org.jesperancinha.plugins.omni.reporter.parsers.Language
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import java.io.File
 import java.io.InputStream
-
-private val Report.calculateTotalPercentage: Int
-    get() = counters.first { it.type == "LINE" }.run { (covered * 100) / (covered + missed) }
 
 /**
  * Created by jofisaes on 05/01/2022
@@ -42,19 +38,13 @@ class JacocoParserToCodacy(
     private val failOnUnknownPredicateFilePack = createFailOnUnknownPredicateFilePack(failOnUnknown)
 
     override fun parseInput(input: InputStream, compiledSourcesDirs: List<File>): CodacyReport {
-        val report = input.readJacocoReport(failOnXmlParseError)
-        return report.packages
-            .asSequence()
-            .map {
-                it.name to it.sourcefiles.map { report ->
-                    OmniJacocoReportFileAdapter(
-                        report,
-                        root,
-                        includeBranchCoverage,
-                        language
-                    )
-                }
-            }
+        val parentReportAdapter = OmniJacocoReportParentFileAdapter(
+            input.readJacocoReport(failOnXmlParseError),
+            root,
+            includeBranchCoverage,
+            language
+        )
+        return parentReportAdapter.parseAllFiles()
             .mapToGenericSourceCodeFiles(compiledSourcesDirs, failOnUnknownPredicateFilePack)
             .filter { (sourceCodeFile) -> failOnUnknownPredicate(sourceCodeFile) }
             .map { (sourceCodeFile, omniReportFileAdapter) -> omniReportFileAdapter.toCodacy(sourceCodeFile) }
@@ -71,7 +61,7 @@ class JacocoParserToCodacy(
                 nonExisting.forEach { codacySources[it.filename] = it }
                 if (codacyReport == null) {
                     codacyReport = CodacyReport(
-                        total = report.calculateTotalPercentage,
+                        total = parentReportAdapter.calculateTotalPercentage(),
                         fileReports = fileReports.toTypedArray()
                     )
                 } else {
