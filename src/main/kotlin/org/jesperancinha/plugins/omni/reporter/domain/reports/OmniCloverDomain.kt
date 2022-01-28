@@ -22,7 +22,9 @@ data class CloverFile(
     val name: String,
     @JacksonXmlProperty(localName = "path", isAttribute = true)
     val path: String,
-    val line: CloverLine
+    val metrics: Metrics? = null,
+    @JsonProperty("line")
+    val line: List<CloverLine> = emptyList()
 )
 
 data class Metrics(

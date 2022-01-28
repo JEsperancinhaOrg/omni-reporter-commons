@@ -86,10 +86,19 @@ class OmniLCovFileAdapter(
         )
 }
 
-class OmniCloverFileAdapter(override val report: File) : OmniFileAdapter(report) {
-    override fun getParentAdapter(): OmniReportParentFileAdapter {
-        TODO("Not yet implemented")
-    }
+class OmniCloverFileAdapter(
+    override val report: File,
+    val failOnXmlParseError: Boolean = false,
+    val root: File,
+    val projectBuildDirectory: File,
+    private val includeBranchCoverage: Boolean = false
+
+) : OmniFileAdapter(report) {
+    override fun getParentAdapter(): OmniReportParentFileAdapter =
+        OmniCloverReportParentFileAdapter(
+            report.inputStream().readCloverReport(failOnXmlParseError),
+            root,
+            includeBranchCoverage)
 
 }
 

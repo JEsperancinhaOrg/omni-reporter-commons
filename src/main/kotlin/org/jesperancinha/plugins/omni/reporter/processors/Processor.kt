@@ -74,7 +74,10 @@ internal fun List<OmniProject?>.toReportFiles(
                                 projectBuildDirectory
                             )
                             report.name.startsWith("clover") && report.extension == "xml" -> OmniCloverFileAdapter(
-                                report
+                                report,
+                                failOnXmlParseError,
+                                root,
+                                projectBuildDirectory
                             )
                             report.name.startsWith("coverage") && report.extension == "json" -> OmniCoveragePyFileAdapter(
                                 report

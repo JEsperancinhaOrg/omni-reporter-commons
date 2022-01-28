@@ -77,7 +77,8 @@ val List<Line?>.fromJacocoToCodacyCoverage: MutableMap<String, Int>
 
 private val List<LineData>.fromLCovToCodacyCoverage: MutableMap<String, Int>
     get() = if (isNotEmpty()) {
-        filterNotNull().associate { line -> line.lineNumber.toString() to if (line.hitCount > 0) 1 else 0 }.toMutableMap()
+        filterNotNull().associate { line -> line.lineNumber.toString() to if (line.hitCount > 0) 1 else 0 }
+            .toMutableMap()
     } else {
         mutableMapOf()
     }
@@ -87,7 +88,7 @@ private val List<LineData>.fromLCovToCodacyCoverage: MutableMap<String, Int>
  * Codacy Percentage Extension Function
  */
 private val OmniLCovReport.calculateLinePercentage: Int
-    get()  = (linesFound * 100)/ linesHit
+    get() = (linesFound * 100) / linesHit
 
 /**
  * Codacy Percentage Extension Function
@@ -195,11 +196,17 @@ class OmniLCovReportParentFileAdapter(
     private val includeBranchCoverage: Boolean = false,
 ) : OmniReportParentFileAdapter {
     override fun parseAllFiles(): Sequence<Pair<String, List<OmniReportFileAdapter>>> =
-        listOf("" to report.map { OmniLCovReportFileAdapter(it, root) }).asSequence()
+        listOf("" to report.map {
+            OmniLCovReportFileAdapter(
+                it,
+                root,
+                includeBranchCoverage = includeBranchCoverage
+            )
+        }).asSequence()
 
 
     override fun calculateTotalPercentage(): Int =
-        (report.sumOf { it.linesHit } * 100 )/ report.sumOf { it.linesFound }
+        (report.sumOf { it.linesHit } * 100) / report.sumOf { it.linesFound }
 
 }
 
@@ -241,6 +248,46 @@ class OmniLCovReportFileAdapter(
                 coverage = coverage
             )
         }
+    }
+}
+
+class OmniCloverReportParentFileAdapter(
+    private val report: OmniCloverReport,
+    val root: File,
+    private val includeBranchCoverage: Boolean = false,
+) : OmniReportParentFileAdapter {
+    override fun parseAllFiles(): Sequence<Pair<String, List<OmniReportFileAdapter>>> =
+        listOf("" to report.project.files
+            .map {
+                OmniCloverReportFileAdapter(
+                    it,
+                    root,
+                    includeBranchCoverage = includeBranchCoverage
+                )
+            }).asSequence()
+
+
+    override fun calculateTotalPercentage(): Int =
+        (report.project.metrics.coveredstatements * 100) / report.project.metrics.statements
+
+}
+
+class OmniCloverReportFileAdapter(
+    private val reportFile: CloverFile,
+    val root: File,
+    private val includeBranchCoverage: Boolean = false,
+    private val language: Language? = null
+) : OmniReportFileAdapter {
+    override fun name(): String =
+        root.toPath()
+            .relativize(File(reportFile.path).toPath()).toString()
+
+    override fun toCoveralls(sourceCodeFile: SourceCodeFile): CoverallsSourceFile? {
+        TODO("Not yet implemented")
+    }
+
+    override fun toCodacy(sourceCodeFile: SourceCodeFile): CodacyFileReport? {
+        TODO("Not yet implemented")
     }
 
 }
