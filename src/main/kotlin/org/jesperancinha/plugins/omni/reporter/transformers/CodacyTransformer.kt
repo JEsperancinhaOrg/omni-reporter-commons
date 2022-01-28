@@ -4,10 +4,7 @@ import org.jesperancinha.plugins.omni.reporter.ProjectDirectoryNotFoundException
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyApiTokenConfig
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyFileReport
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyReport
-import org.jesperancinha.plugins.omni.reporter.domain.reports.Line
-import org.jesperancinha.plugins.omni.reporter.domain.reports.Report
-import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniJacocoSourcefile
-import org.jesperancinha.plugins.omni.reporter.domain.reports.readJacocoReport
+import org.jesperancinha.plugins.omni.reporter.domain.reports.*
 import org.jesperancinha.plugins.omni.reporter.parsers.Language
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import java.io.File
@@ -57,7 +54,7 @@ class JacocoParserToCodacy(
         val report = input.readJacocoReport(failOnXmlParseError)
         return report.packages
             .asSequence()
-            .map { it.name to it.sourcefiles }
+            .map { it.name to it.sourcefiles.map { OmniJacocoReportFileAdapter(it) } }
             .mapToGenericSourceCodeFiles(compiledSourcesDirs, failOnUnknownPredicateFilePack)
             .filter { (sourceCodeFile) -> failOnUnknownPredicate(sourceCodeFile) }
             .map { (sourceCodeFile, sourceFile) ->

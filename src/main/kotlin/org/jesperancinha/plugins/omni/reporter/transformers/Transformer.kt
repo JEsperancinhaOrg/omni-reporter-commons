@@ -2,19 +2,20 @@ package org.jesperancinha.plugins.omni.reporter.transformers
 
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyApiTokenConfig
 import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniJacocoSourcefile
+import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniReportFileAdapter
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import org.jesperancinha.plugins.omni.reporter.repository.GitRepository
 import org.slf4j.LoggerFactory
 import java.io.File
 import java.io.FileNotFoundException
 
-class SourceCodeFile(projectBaseDir: File, val packageName: String?, sourceFile: OmniJacocoSourcefile) :
-    File(projectBaseDir, "${(packageName ?: "").replace("//", "/")}/${sourceFile.name}")
+class SourceCodeFile(projectBaseDir: File, val packageName: String?, sourceFile: OmniReportFileAdapter) :
+    File(projectBaseDir, "${(packageName ?: "").replace("//", "/")}/${sourceFile.name()}")
 
-fun Sequence<Pair<String?, List<OmniJacocoSourcefile>>>.mapToGenericSourceCodeFiles(
+fun Sequence<Pair<String?, List<OmniReportFileAdapter>>>.mapToGenericSourceCodeFiles(
     compiledSourcesDirs: List<File>,
-    failOnUnknownPredicateFilePack: (List<Pair<SourceCodeFile, OmniJacocoSourcefile>>, List<OmniJacocoSourcefile>) -> Boolean
-): Sequence<Pair<SourceCodeFile, OmniJacocoSourcefile>> = flatMap { (packageName, sourceFiles) ->
+    failOnUnknownPredicateFilePack: (List<Pair<SourceCodeFile, OmniReportFileAdapter>>, List<OmniReportFileAdapter>) -> Boolean
+): Sequence<Pair<SourceCodeFile, OmniReportFileAdapter>> = flatMap { (packageName, sourceFiles) ->
     val foundSources = sourceFiles.map { omniJacocoSourceFile ->
         compiledSourcesDirs.map { compiledSourcesDir ->
             SourceCodeFile(compiledSourcesDir, packageName, omniJacocoSourceFile)
@@ -47,12 +48,12 @@ abstract class OmniReporterParserImpl<INPUT, OUTPUT>(
         private val logger = LoggerFactory.getLogger(OmniReporterParserImpl::class.java)
 
         internal fun createFailOnUnknownPredicateFilePack(failOnUnknown: Boolean) =
-            { foundSources: List<Pair<SourceCodeFile, OmniJacocoSourcefile>>, sourceFiles: List<OmniJacocoSourcefile> ->
+            { foundSources: List<Pair<SourceCodeFile, OmniReportFileAdapter>>, sourceFiles: List<OmniReportFileAdapter> ->
                 val jacocoSourcesFound = foundSources.map { (_, foundJacocoFile) -> foundJacocoFile }
                 val sourceFilesNotFound = sourceFiles.filter { !jacocoSourcesFound.contains(it) }
                 sourceFilesNotFound
                     .forEach { foundSource ->
-                        logger.warn("File ${foundSource.name} has not been found. Please activate flag `failOnUnknown` in your maven configuration if you want reporting to fail in these cases.")
+                        logger.warn("File ${foundSource.name()} has not been found. Please activate flag `failOnUnknown` in your maven configuration if you want reporting to fail in these cases.")
                         logger.warn("Files not found are not included in the complete coverage report. They are sometimes included in the report due to bugs from reporting frameworks and in those cases it is safe to ignore them")
                     }
                 if (failOnUnknown) {

@@ -4,12 +4,14 @@
 
 ###### Features
 
-1. Support for [CoveragePy](https://coverage.readthedocs.io/)
-2. Support for [LCov](https://wiki.documentfoundation.org/Development/Lcov)
-3. Support for [Jacoco.exec](https://www.jacoco.org/jacoco/) files
-4. Support for [OpenClover](https://openclover.org/index)
-5. Support for Group Coverage with Branch Coverage (mostly Coveralls)
-6. Source encoding gets automatically chosen unless we configure flag `failOnNoEncoding` to `true`
+1. Reports in the same folder are merged and average. (We assume thart if there are different reports in the same folder, it only means that there are different brands in there.)
+2. Exclude report option (Since the above, may be difficult to manage in some situations, we can then use this option to exclude a report that for some reason we don't want to consider for the overall coverage calculation)
+3. Support for [CoveragePy](https://coverage.readthedocs.io/)
+4. Support for [LCov](https://wiki.documentfoundation.org/Development/Lcov)
+5. Support for [Jacoco.exec](https://www.jacoco.org/jacoco/) files
+6. Support for [OpenClover](https://openclover.org/index)
+7. Support for Group Coverage with Branch Coverage (mostly Coveralls)
+8. Source encoding gets automatically chosen unless we configure flag `failOnNoEncoding` to `true`
 
 ###### Bugs
 

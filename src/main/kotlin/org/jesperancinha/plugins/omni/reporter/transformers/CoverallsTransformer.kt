@@ -7,39 +7,13 @@ import org.jesperancinha.plugins.omni.reporter.domain.api.CoverallsReport
 import org.jesperancinha.plugins.omni.reporter.domain.api.CoverallsSourceFile
 import org.jesperancinha.plugins.omni.reporter.domain.api.isBranch
 import org.jesperancinha.plugins.omni.reporter.domain.reports.Line
+import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniJacocoReportFileAdapter
 import org.jesperancinha.plugins.omni.reporter.domain.reports.readJacocoPackages
 import org.jesperancinha.plugins.omni.reporter.parsers.toFileDigest
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import java.io.File
 import java.io.InputStream
 import kotlin.math.max
-
-
-private val List<Line>.toBranchCoverageArray: Array<Int?>
-    get() = let {
-        val branchesArray = filter { isBranch(it) }
-        val coverageArray = Array<Int?>(branchesArray.size * 4) { null }
-        branchesArray.forEachIndexed { lineNumber, line ->
-            coverageArray[lineNumber] = line.nr
-            coverageArray[lineNumber + 1] = line.mb + line.cb
-            coverageArray[lineNumber + 2] = line.cb
-            coverageArray[lineNumber + 3] = line.ci
-        }
-        coverageArray
-    }
-
-private fun List<Line?>.toCoverallsCoverage(lines: Int): Array<Int?> = let {
-    if (isNotEmpty()) {
-        val calculatedLength = map { it?.nr ?: 0 }.maxOf { it }
-        val coverageArray = Array<Int?>(max(lines, calculatedLength)) { null }
-        forEach { line ->
-            line?.let { coverageArray[line.nr - 1] = line.ci }
-        }
-        coverageArray
-    } else {
-        emptyArray()
-    }
-}
 
 class JacocoParserToCoveralls(
     token: String,
@@ -68,25 +42,10 @@ class JacocoParserToCoveralls(
     override fun parseInput(input: InputStream, compiledSourcesDirs: List<File>): CoverallsReport =
         input.readJacocoPackages(failOnXmlParseError)
             .asSequence()
-            .map { it.name to it.sourcefiles }
+            .map { it.name to it.sourcefiles.map { report -> OmniJacocoReportFileAdapter(report, root, includeBranchCoverage) } }
             .mapToGenericSourceCodeFiles(compiledSourcesDirs, failOnUnknownPredicateFilePack)
             .filter { (sourceCodeFile) -> failOnUnknownPredicate(sourceCodeFile) }
-            .map { (sourceCodeFile, sourceFile) ->
-                val sourceCodeText = sourceCodeFile.bufferedReader().use { it.readText() }
-                val lines = sourceCodeText.split("\n").size
-                val coverage = sourceFile.lines.toCoverallsCoverage(lines)
-                val branchCoverage = sourceFile.lines.toBranchCoverageArray
-                if (coverage.isEmpty()) {
-                    null
-                } else {
-                    CoverallsSourceFile(
-                        name = sourceCodeFile.toRelativeString(root),
-                        coverage = coverage,
-                        branches = if (includeBranchCoverage) branchCoverage else emptyArray(),
-                        sourceDigest = sourceCodeText.toFileDigest,
-                    )
-                }
-            }
+            .map { (sourceCodeFile, omniReportFileAdapter) -> omniReportFileAdapter.toCoveralls(sourceCodeFile) }
             .filterNotNull()
             .toList()
             .let { sourceFiles ->
