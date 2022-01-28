@@ -4,25 +4,16 @@ import org.jesperancinha.plugins.omni.reporter.ProjectDirectoryNotFoundException
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyApiTokenConfig
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyFileReport
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyReport
-import org.jesperancinha.plugins.omni.reporter.domain.reports.*
+import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniJacocoReportFileAdapter
+import org.jesperancinha.plugins.omni.reporter.domain.reports.Report
+import org.jesperancinha.plugins.omni.reporter.domain.reports.readJacocoReport
 import org.jesperancinha.plugins.omni.reporter.parsers.Language
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import java.io.File
 import java.io.InputStream
 
-
-private val OmniJacocoSourcefile.calculateLinePercentage: Int
-    get() = counters.first { it.type == "LINE" }.run { (covered * 100) / (covered + missed) }
-
 private val Report.calculateTotalPercentage: Int
     get() = counters.first { it.type == "LINE" }.run { (covered * 100) / (covered + missed) }
-
-val List<Line?>.toCodacyCoverage: MutableMap<String, Int>
-    get() = if (isNotEmpty()) {
-        filterNotNull().associate { line -> line.nr.toString() to if (line.ci > 0) 1 else 0 }.toMutableMap()
-    } else {
-        mutableMapOf()
-    }
 
 /**
  * Created by jofisaes on 05/01/2022
@@ -54,21 +45,19 @@ class JacocoParserToCodacy(
         val report = input.readJacocoReport(failOnXmlParseError)
         return report.packages
             .asSequence()
-            .map { it.name to it.sourcefiles.map { OmniJacocoReportFileAdapter(it) } }
-            .mapToGenericSourceCodeFiles(compiledSourcesDirs, failOnUnknownPredicateFilePack)
-            .filter { (sourceCodeFile) -> failOnUnknownPredicate(sourceCodeFile) }
-            .map { (sourceCodeFile, sourceFile) ->
-                val coverage = sourceFile.lines.toCodacyCoverage
-                if (coverage.isEmpty() || !sourceFile.name.endsWith(language.ext)) {
-                    null
-                } else {
-                    CodacyFileReport(
-                        filename = "${sourceCodeFile.packageName}/${sourceFile.name}".replace("//", "/"),
-                        total = sourceFile.calculateLinePercentage,
-                        coverage = coverage
+            .map {
+                it.name to it.sourcefiles.map { report ->
+                    OmniJacocoReportFileAdapter(
+                        report,
+                        root,
+                        includeBranchCoverage,
+                        language
                     )
                 }
             }
+            .mapToGenericSourceCodeFiles(compiledSourcesDirs, failOnUnknownPredicateFilePack)
+            .filter { (sourceCodeFile) -> failOnUnknownPredicate(sourceCodeFile) }
+            .map { (sourceCodeFile, omniReportFileAdapter) -> omniReportFileAdapter.toCodacy(sourceCodeFile) }
             .filterNotNull()
             .toList()
             .let { fileReports ->

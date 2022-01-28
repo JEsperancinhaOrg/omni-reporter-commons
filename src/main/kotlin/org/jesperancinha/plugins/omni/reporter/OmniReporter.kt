@@ -24,6 +24,7 @@ class IncompleteCodacyApiTokenConfigurationException : RuntimeException()
 
 class CoverallsTokenNotFoundException : RuntimeException()
 
+class LanguageNotConfiguredException : RuntimeException()
 /**
  * Definition of the Project
  */

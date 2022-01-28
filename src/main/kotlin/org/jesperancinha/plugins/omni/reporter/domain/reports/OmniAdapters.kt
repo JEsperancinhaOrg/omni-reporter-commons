@@ -1,13 +1,19 @@
 package org.jesperancinha.plugins.omni.reporter.domain.reports
 
+import org.jesperancinha.plugins.omni.reporter.LanguageNotConfiguredException
+import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyFileReport
 import org.jesperancinha.plugins.omni.reporter.domain.api.CoverallsSourceFile
 import org.jesperancinha.plugins.omni.reporter.domain.api.isBranch
+import org.jesperancinha.plugins.omni.reporter.parsers.Language
 import org.jesperancinha.plugins.omni.reporter.parsers.toFileDigest
 import org.jesperancinha.plugins.omni.reporter.transformers.SourceCodeFile
 import java.io.File
 import kotlin.math.max
 
 
+/**
+ * Coveralls Branch Extension Function
+ */
 private val List<Line>.toBranchCoverageArray: Array<Int?>
     get() = let {
         val branchesArray = filter { isBranch(it) }
@@ -21,6 +27,9 @@ private val List<Line>.toBranchCoverageArray: Array<Int?>
         coverageArray
     }
 
+/**
+ * Coveralls Line Extension Function
+ */
 private fun List<Line?>.toCoverallsCoverage(lines: Int): Array<Int?> = let {
     if (isNotEmpty()) {
         val calculatedLength = map { it?.nr ?: 0 }.maxOf { it }
@@ -34,6 +43,21 @@ private fun List<Line?>.toCoverallsCoverage(lines: Int): Array<Int?> = let {
     }
 }
 
+/**
+ * Codacy Line Extension Function
+ */
+val List<Line?>.toCodacyCoverage: MutableMap<String, Int>
+    get() = if (isNotEmpty()) {
+        filterNotNull().associate { line -> line.nr.toString() to if (line.ci > 0) 1 else 0 }.toMutableMap()
+    } else {
+        mutableMapOf()
+    }
+
+/**
+ * Codacy Percentage Extension Function
+ */
+private val OmniJacocoSourcefile.calculateLinePercentage: Int
+    get() = counters.first { it.type == "LINE" }.run { (covered * 100) / (covered + missed) }
 
 /**
  * Created by jofisaes on 28/01/2022
@@ -41,12 +65,14 @@ private fun List<Line?>.toCoverallsCoverage(lines: Int): Array<Int?> = let {
 interface OmniReportFileAdapter {
     fun name(): String
     fun toCoveralls(sourceCodeFile: SourceCodeFile): CoverallsSourceFile?
+    fun toCodacy(sourceCodeFile: SourceCodeFile): CodacyFileReport?
 }
 
 class OmniJacocoReportFileAdapter(
     private val reportFile: OmniJacocoSourcefile,
     val root: File,
-    private val includeBranchCoverage: Boolean = false
+    private val includeBranchCoverage: Boolean = false,
+    private val language: Language? = null
 ) : OmniReportFileAdapter {
     override fun name() = reportFile.name
     override fun toCoveralls(sourceCodeFile: SourceCodeFile): CoverallsSourceFile? {
@@ -54,10 +80,10 @@ class OmniJacocoReportFileAdapter(
         val lines = sourceCodeText.split("\n").size
         val coverage = reportFile.lines.toCoverallsCoverage(lines)
         val branchCoverage = reportFile.lines.toBranchCoverageArray
-        if (coverage.isEmpty()) {
-            return null
+        return if (coverage.isEmpty()) {
+            null
         } else {
-            return CoverallsSourceFile(
+            CoverallsSourceFile(
                 name = sourceCodeFile.toRelativeString(root),
                 coverage = coverage,
                 branches = if (includeBranchCoverage) branchCoverage else emptyArray(),
@@ -65,5 +91,19 @@ class OmniJacocoReportFileAdapter(
             )
         }
     }
+
+    override fun toCodacy(sourceCodeFile: SourceCodeFile): CodacyFileReport? {
+        val coverage = reportFile.lines.toCodacyCoverage
+        return if (coverage.isEmpty() || !reportFile.name.endsWith(language?.ext ?: throw LanguageNotConfiguredException())) {
+            null
+        } else {
+            CodacyFileReport(
+                filename = "${sourceCodeFile.packageName}/${reportFile.name}".replace("//", "/"),
+                total = reportFile.calculateLinePercentage,
+                coverage = coverage
+            )
+        }
+    }
 }
+
 
