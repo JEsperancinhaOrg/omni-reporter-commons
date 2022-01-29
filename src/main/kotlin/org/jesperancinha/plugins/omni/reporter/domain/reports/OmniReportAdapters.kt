@@ -10,7 +10,6 @@ import org.jesperancinha.plugins.omni.reporter.transformers.SourceCodeFile
 import java.io.File
 import kotlin.math.max
 
-
 /**
  * TODO: Coveralls Branch Extension Function From Clover
  */
@@ -134,6 +133,13 @@ private val List<CloverLine>.fromCloverToCodacyCoverage: MutableMap<String, Int>
     }
 
 
+private val CoveragePyFile.fromCoveragePyToCodacyCoverage: MutableMap<String, Int>
+    get() = (missingLines.map { it.toString() to 0 } + executedLines.map { it.toString() to 1 })
+        .sortedBy { (line, _) -> line }
+        .toMap()
+        .toMutableMap()
+
+
 /**
  * Codacy Percentage Extension Function
  */
@@ -159,6 +165,11 @@ private val OmniJacocoSourcefile.calculateLinePercentage: Int
 private val Report.calculateTotalPercentage: Int
     get() = counters.first { it.type == "LINE" }.run { (covered * 100) / (covered + missed) }
 
+/**
+ * Codacy Total Percentage Extension Function
+ */
+private val Map.Entry<String, CoveragePyFile>.calculateLinePercentage: Int
+    get() = (value.summary.covered_lines * 100) / value.summary.num_statements
 
 /**
  * Created by jofisaes on 28/01/2022
@@ -422,20 +433,19 @@ class OmniCoveragePyReportFileAdapter(
 
 
     override fun toCodacy(sourceCodeFile: SourceCodeFile): CodacyFileReport? {
-      TODO()
-//        val coverage = reportFile.cloverLines.fromCoveragePyToCodacyCoverage
-//        return if (coverage.isEmpty() || !reportFile.path.endsWith(
-//                language?.ext ?: throw LanguageNotConfiguredException()
-//            )
-//        ) {
-//            null
-//        } else {
-//            CodacyFileReport(
-//                filename = "${sourceCodeFile.packageName}/${name()}".replace("//", "/"),
-//                total = reportFile.calculateLinePercentage,
-//                coverage = coverage
-//            )
-//        }
+        val coverage = reportFile.value.fromCoveragePyToCodacyCoverage
+        return if (coverage.isEmpty() || !reportFile.key.endsWith(
+                language?.ext ?: throw LanguageNotConfiguredException()
+            )
+        ) {
+            null
+        } else {
+            CodacyFileReport(
+                filename = "${sourceCodeFile.packageName}/${name()}".replace("//", "/"),
+                total = reportFile.calculateLinePercentage,
+                coverage = coverage
+            )
+        }
     }
 }
 
