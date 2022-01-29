@@ -5,12 +5,30 @@ import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniFileAdapter
 import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniReportFileAdapter
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import org.jesperancinha.plugins.omni.reporter.repository.GitRepository
+import org.jesperancinha.plugins.omni.reporter.transformers.SourceCodeFile.Companion.logger
+import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import java.io.File
 import java.io.FileNotFoundException
 
-class SourceCodeFile(projectBaseDir: File, val packageName: String?, sourceFile: OmniReportFileAdapter) :
-    File(projectBaseDir, "${(packageName ?: "").replace("//", "/")}/${sourceFile.name()}")
+class SourceCodeFile(sourcesDir: File, val packageName: String?, sourceFile: OmniReportFileAdapter) :
+    File(
+        (sourceFile.name().split("../").size-2)
+            .let {
+                var dir = sourcesDir
+                for (i in 0 until it) {
+                    dir = dir.parentFile
+                }
+                dir
+            },
+        "${(packageName ?: "").replace("//", "/")}//${
+            sourceFile.name().split("../").last()
+        }"
+    ) {
+    companion object {
+        val logger: Logger = LoggerFactory.getLogger(SourceCodeFile::class.java)
+    }
+}
 
 fun Sequence<Pair<String?, List<OmniReportFileAdapter>>>.mapToGenericSourceCodeFiles(
     compiledSourcesDirs: List<File>,
@@ -19,7 +37,10 @@ fun Sequence<Pair<String?, List<OmniReportFileAdapter>>>.mapToGenericSourceCodeF
     val foundSources = sourceFiles.map { omniJacocoSourceFile ->
         compiledSourcesDirs.map { compiledSourcesDir ->
             SourceCodeFile(compiledSourcesDir, packageName, omniJacocoSourceFile)
-        }.filter { it.exists() }.map { sourceCodeFile -> sourceCodeFile to omniJacocoSourceFile }
+        }.filter {
+            logger.info("- Checking if file ${it.absolutePath} exists...")
+            it.exists()
+        }.map { sourceCodeFile -> sourceCodeFile to omniJacocoSourceFile }
     }.flatten()
     if (foundSources.size != sourceFiles.size) {
         failOnUnknownPredicateFilePack(foundSources, sourceFiles)
@@ -53,8 +74,8 @@ abstract class OmniReporterParserImpl<INPUT, OUTPUT>(
                 val sourceFilesNotFound = sourceFiles.filter { !jacocoSourcesFound.contains(it) }
                 sourceFilesNotFound
                     .forEach { foundSource ->
-                        logger.warn("File ${foundSource.name()} has not been found. Please activate flag `failOnUnknown` in your maven configuration if you want reporting to fail in these cases.")
-                        logger.warn("Files not found are not included in the complete coverage report. They are sometimes included in the report due to bugs from reporting frameworks and in those cases it is safe to ignore them")
+                        logger.warn("createFailOnUnknownPredicateFilePack -> File ${foundSource.name()} has not been found. Please activate flag `failOnUnknown` in your maven configuration if you want reporting to fail in these cases.")
+                        logger.warn("createFailOnUnknownPredicateFilePack -> Files not found are not included in the complete coverage report. They are sometimes included in the report due to bugs from reporting frameworks and in those cases it is safe to ignore them")
                     }
                 if (failOnUnknown) {
                     logger.error("Stopping build due to one or more files not being found")
@@ -67,8 +88,8 @@ abstract class OmniReporterParserImpl<INPUT, OUTPUT>(
             if (!file.exists()) throw FileNotFoundException(file.absolutePath) else true
         } else { file: File ->
             if (!file.exists()) {
-                logger.warn("File ${file.absolutePath} has not been found. Please activate flag `failOnUnknown` in your maven configuration if you want reporting to fail in these cases.")
-                logger.warn("Files not found are not included in the complete coverage report. They are sometimes included in the report due to bugs from reporting frameworks and in those cases it is safe to ignore them")
+                logger.warn("createFailOnUnknownPredicate -> File ${file.absolutePath} has not been found. Please activate flag `failOnUnknown` in your maven configuration if you want reporting to fail in these cases.")
+                logger.warn("createFailOnUnknownPredicate -> Files not found are not included in the complete coverage report. They are sometimes included in the report due to bugs from reporting frameworks and in those cases it is safe to ignore them")
             }
             file.exists()
         }

@@ -19,7 +19,7 @@ internal class OmniCloverReportFileAdapterTest {
         val resource = javaClass.getResource("/src/app/App.tsx")
         resource.shouldNotBeNull()
         val appFile = resource.toURI().toPath().absolutePathString()
-        val omniCloverReportFileAdapter = OmniCloverReportFileAdapter(CloverFile(name = "name", path = appFile), root)
+        val omniCloverReportFileAdapter = OmniCloverReportFileAdapter(CloverFile(name = "name", path = appFile), root, root)
 
         omniCloverReportFileAdapter.name() shouldBe "src/app/App.tsx"
     }

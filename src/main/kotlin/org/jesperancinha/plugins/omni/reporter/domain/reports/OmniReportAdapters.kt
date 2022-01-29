@@ -7,7 +7,9 @@ import org.jesperancinha.plugins.omni.reporter.domain.api.isBranch
 import org.jesperancinha.plugins.omni.reporter.parsers.Language
 import org.jesperancinha.plugins.omni.reporter.parsers.toFileDigest
 import org.jesperancinha.plugins.omni.reporter.transformers.SourceCodeFile
+import org.slf4j.LoggerFactory
 import java.io.File
+import java.util.logging.Logger
 import kotlin.math.max
 
 /**
@@ -322,6 +324,7 @@ class OmniLCovReportFileAdapter(
 class OmniCloverReportParentFileAdapter(
     private val report: OmniCloverReport,
     val root: File,
+    val projectBuildDirectory: File,
     private val includeBranchCoverage: Boolean = false,
 ) : OmniReportParentFileAdapter {
     override fun parseAllFiles(): Sequence<Pair<String, List<OmniReportFileAdapter>>> =
@@ -330,6 +333,7 @@ class OmniCloverReportParentFileAdapter(
                 OmniCloverReportFileAdapter(
                     it,
                     root,
+                    projectBuildDirectory,
                     includeBranchCoverage = includeBranchCoverage
                 )
             }).asSequence()
@@ -343,14 +347,16 @@ class OmniCloverReportParentFileAdapter(
 class OmniCloverReportFileAdapter(
     private val reportFile: CloverFile,
     val root: File,
+    val projectBuildDirectory: File,
     private val includeBranchCoverage: Boolean = false,
     private val language: Language? = null
 ) : OmniReportFileAdapter {
     override fun name(): String =
-        root.toPath()
+        projectBuildDirectory.toPath()
             .relativize(File(reportFile.path).toPath()).toString()
 
     override fun toCoveralls(sourceCodeFile: SourceCodeFile): CoverallsSourceFile? {
+        logger.info("- Processing file ${sourceCodeFile.absolutePath}")
         val sourceCodeText = sourceCodeFile.bufferedReader().use { it.readText() }
         val lines = sourceCodeText.split("\n").size
         val coverage = reportFile.cloverLines.fromCloverToCoverallsCoverage(lines)
@@ -382,6 +388,10 @@ class OmniCloverReportFileAdapter(
                 coverage = coverage
             )
         }
+    }
+
+    companion object {
+        val logger: org.slf4j.Logger = LoggerFactory.getLogger(OmniCloverReportFileAdapter::class.java)
     }
 }
 

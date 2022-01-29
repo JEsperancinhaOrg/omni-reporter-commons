@@ -102,6 +102,7 @@ class OmniCloverFileAdapter(
         OmniCloverReportParentFileAdapter(
             report.inputStream().readCloverReport(failOnXmlParseError),
             root,
+            projectBuildDirectory,
             includeBranchCoverage
         )
 }
