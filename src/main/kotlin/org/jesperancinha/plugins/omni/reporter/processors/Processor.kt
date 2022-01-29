@@ -80,7 +80,10 @@ internal fun List<OmniProject?>.toReportFiles(
                                 projectBuildDirectory
                             )
                             report.name.startsWith("coverage") && report.extension == "json" -> OmniCoveragePyFileAdapter(
-                                report
+                                report,
+                                failOnXmlParseError,
+                                root,
+                                projectBuildDirectory
                             )
                             else -> null
                         }

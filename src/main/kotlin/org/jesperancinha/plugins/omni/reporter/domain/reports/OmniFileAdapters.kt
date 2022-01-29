@@ -5,7 +5,6 @@ import org.jesperancinha.plugins.omni.reporter.domain.api.TEMP_DIR_VARIABLE
 import java.io.File
 import java.util.*
 
-
 internal val JAR_FILE_PATTERNS = listOf(".*classes\\.jar$", ".*libs\\/.*\\.jar$")
 
 /**
@@ -70,7 +69,6 @@ class OmniJacocoExecFileAdapter(
         }
 }
 
-
 class OmniLCovFileAdapter(
     override val report: File,
     val failOnXmlParseError: Boolean = false,
@@ -100,7 +98,6 @@ class OmniCloverFileAdapter(
             root,
             includeBranchCoverage
         )
-
 }
 
 class OmniCoveragePyFileAdapter(
@@ -117,5 +114,4 @@ class OmniCoveragePyFileAdapter(
             root,
             includeBranchCoverage
         )
-
 }
