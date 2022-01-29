@@ -98,13 +98,24 @@ class OmniCloverFileAdapter(
         OmniCloverReportParentFileAdapter(
             report.inputStream().readCloverReport(failOnXmlParseError),
             root,
-            includeBranchCoverage)
+            includeBranchCoverage
+        )
 
 }
 
-class OmniCoveragePyFileAdapter(override val report: File) : OmniFileAdapter(report) {
-    override fun getParentAdapter(): OmniReportParentFileAdapter {
-        TODO("Not yet implemented")
-    }
+class OmniCoveragePyFileAdapter(
+    override val report: File,
+    val failOnXmlParseError: Boolean = false,
+    val root: File,
+    val projectBuildDirectory: File,
+    private val includeBranchCoverage: Boolean = false
+
+) : OmniFileAdapter(report) {
+    override fun getParentAdapter(): OmniCoveragePyReportParentFileAdapter =
+        OmniCoveragePyReportParentFileAdapter(
+            report.inputStream().readCoveragePyReport(failOnXmlParseError),
+            root,
+            includeBranchCoverage
+        )
 
 }
