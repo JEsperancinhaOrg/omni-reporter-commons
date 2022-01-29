@@ -29,10 +29,16 @@ abstract class Processor(
 
     open fun reportNotSentErrorMessage(): String? = null
 
-    val supportedPredicate =
-        if (ignoreTestBuildDirectory) { testDirectory: String, report: File ->
-            !report.absolutePath.contains(testDirectory)
-        } else { _, _ -> true }
+    internal val supportedPredicate = supportedPredicate(ignoreTestBuildDirectory)
+
+
+    companion object {
+        fun supportedPredicate(ignoreTestBuildDirectory: Boolean) =
+            if (ignoreTestBuildDirectory) { testDirectory: String, report: File ->
+                (report.parentFile.absolutePath == testDirectory ||
+                        !report.absolutePath.contains(testDirectory))
+            } else { _, _ -> true }
+    }
 }
 
 internal fun List<OmniProject?>.toReportFiles(
@@ -52,7 +58,8 @@ internal fun List<OmniProject?>.toReportFiles(
                                 report
                             )
                         } == true) {
-                        val projectBuildDirectory = File(project.build?.directory ?: throw ProjectDirectoryNotFoundException())
+                        val projectBuildDirectory =
+                            File(project.build?.directory ?: throw ProjectDirectoryNotFoundException())
                         when {
                             report.name.startsWith("jacoco") && report.extension == "xml" -> {
                                 OmniJacocoFileAdapter(
@@ -66,7 +73,8 @@ internal fun List<OmniProject?>.toReportFiles(
                                 report,
                                 failOnXmlParseError,
                                 root,
-                                projectBuildDirectory                            )
+                                projectBuildDirectory
+                            )
                             report.name.startsWith("lcov") && report.extension == "info" -> OmniLCovFileAdapter(
                                 report,
                                 failOnXmlParseError,
