@@ -23,6 +23,12 @@ abstract class OmniFileAdapter(
     open val report: File
 ) {
     abstract fun getParentAdapter(): OmniReportParentFileAdapter
+    fun isValid() = try {
+        getParentAdapter()
+        true
+    } catch (ex: Exception) {
+        false
+    }
 }
 
 class OmniGenericFileAdapter(

@@ -94,7 +94,7 @@ internal fun List<OmniProject?>.toReportFiles(
                                 projectBuildDirectory
                             )
                             else -> null
-                        }
+                        }?.let { if (it.isValid()) it else null }
                     } else null
 
                 }
