@@ -9,7 +9,6 @@ import org.jesperancinha.plugins.omni.reporter.parsers.toFileDigest
 import org.jesperancinha.plugins.omni.reporter.transformers.SourceCodeFile
 import org.slf4j.LoggerFactory
 import java.io.File
-import java.util.logging.Logger
 import kotlin.math.max
 
 /**
@@ -95,7 +94,7 @@ private fun List<CloverLine?>.fromCloverToCoverallsCoverage(lines: Int): Array<I
 }
 
 private fun CoveragePyFile.fromCoveragePyToCoverallsCoverage(lines: Int): Array<Int?> {
-    val calculatedLength = max(executedLines.maxOf { it }, missingLines.maxOf { it })
+    val calculatedLength = max(executedLines.maxOfOrNull { it } ?: 0, missingLines.maxOfOrNull { it } ?: 0)
     val coverageArray = Array<Int?>(max(lines, calculatedLength)) { null }
     executedLines.forEach { line ->
         coverageArray[line - 1] = 1
@@ -425,6 +424,9 @@ class OmniCoveragePyReportFileAdapter(
     override fun name(): String = reportFile.key
 
     override fun toCoveralls(sourceCodeFile: SourceCodeFile): CoverallsSourceFile? {
+        if (sourceCodeFile.absolutePath.endsWith("__init__.py") || sourceCodeFile.name.startsWith("_test")) {
+            return null
+        }
         val sourceCodeText = sourceCodeFile.bufferedReader().use { it.readText() }
         val lines = sourceCodeText.split("\n").size
         val coverage = reportFile.value.fromCoveragePyToCoverallsCoverage(lines)
