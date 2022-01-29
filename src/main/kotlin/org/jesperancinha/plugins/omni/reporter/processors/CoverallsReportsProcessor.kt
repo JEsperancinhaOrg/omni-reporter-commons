@@ -46,7 +46,7 @@ class CoverallsReportsProcessor(
             .filter { (project, _) -> project.compileSourceRoots != null }
             .forEach { (project, reports) ->
                 reports.forEach { report ->
-                    logger.info("Parsing file: $report")
+                    logger.info("Parsing file: ${report.report.absolutePath}")
                     reportingParserToCoveralls.parseInput(
                         report,
                         project.compileSourceRoots?.map { file -> File(file) } ?: emptyList()
