@@ -109,7 +109,7 @@ private fun mapReportFile(
 
 internal fun List<OmniProject?>.toAllCodecovSupportedFiles(
     supportedPredicate: (String, File) -> Boolean,
-    root:File
+    root: File
 ): List<Pair<OmniProject, List<OmniFileAdapter>>> =
     this.filterNotNull()
         .map { project ->
@@ -125,6 +125,8 @@ internal fun List<OmniProject?>.toAllCodecovSupportedFiles(
                         )
                     } ?: false
                 }
-                .mapNotNull { report -> mapReportFile(report, project, supportedPredicate, false, root) }
+                .map { report ->
+                    mapReportFile(report, project, supportedPredicate, false, root) ?: OmniGenericFileAdapter(report)
+                }
                 .distinct()
         }.distinct()
