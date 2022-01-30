@@ -26,36 +26,22 @@ internal class JacocoDomainTest {
     }
 
     @Test
-    fun `should not fail if failOnXmlParseError is false when parsing report`() {
+    fun `should not fail when parsing report`() {
         val inputStream = javaClass.getResourceAsStream("/jacoco-bad.xml")
         inputStream.shouldNotBeNull()
-        val readValue = inputStream.readJacocoReport(false)
+        val readValue = inputStream.readJacocoReport()
         readValue.shouldNotBeNull()
         readValue.packages.shouldNotBeNull()
         readValue.packages.shouldBeEmpty()
     }
 
     @Test
-    fun `should not fail if failOnXmlParseError is false when parsing packages`() {
+    fun `should not fail when parsing packages`() {
         val inputStream = javaClass.getResourceAsStream("/jacoco-bad.xml")
         inputStream.shouldNotBeNull()
-        val readValue = inputStream.readJacocoPackages(false)
+        val readValue = inputStream.readJacocoPackages()
         readValue.shouldNotBeNull()
         readValue.shouldBeEmpty()
-    }
-
-    @Test
-    fun `should fail if failOnXmlParseError is true when parsing report`() {
-        val inputStream = javaClass.getResourceAsStream("/jacoco-bad.xml")
-        inputStream.shouldNotBeNull()
-        shouldThrow<JacocoXmlParsingErrorException> { inputStream.readJacocoReport(true) }
-    }
-
-    @Test
-    fun `should fail if failOnXmlParseError is true when parsing packages`() {
-        val inputStream = javaClass.getResourceAsStream("/jacoco-bad.xml")
-        inputStream.shouldNotBeNull()
-        shouldThrow<JacocoXmlParsingErrorException> { inputStream.readJacocoPackages(true) }
     }
 
     @Test

@@ -8,6 +8,7 @@ import io.kotest.matchers.string.shouldHaveLength
 import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniJacocoFileAdapter
 import org.jesperancinha.plugins.omni.reporter.domain.reports.Package
 import org.jesperancinha.plugins.omni.reporter.domain.reports.Report
+import org.jesperancinha.plugins.omni.reporter.domain.reports.findNewPackageName
 import org.jesperancinha.plugins.omni.reporter.parsers.readXmlValue
 import org.jesperancinha.plugins.omni.reporter.pipelines.GitLabPipeline
 import org.jesperancinha.plugins.omni.reporter.utils.Utils.Companion.root
@@ -50,12 +51,7 @@ internal class AllParserToCodecovTest {
     @Test
     fun `should use original package name when file is not found in sources list`() {
 
-        val packageName = AllParserToCodecov(
-            token = "token",
-            pipeline = GitLabPipeline(),
-            root = root,
-            failOnUnknown = false
-        ).findNewPackageName(Package(name = "test"), listOf())
+        val packageName = findNewPackageName(root, Package(name = "test"), listOf())
 
         packageName.shouldBeNull()
     }

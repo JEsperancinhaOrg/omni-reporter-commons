@@ -38,7 +38,7 @@ fun Sequence<Pair<String?, List<OmniReportFileAdapter>>>.mapToGenericSourceCodeF
         compiledSourcesDirs.map { compiledSourcesDir ->
             SourceCodeFile(compiledSourcesDir, packageName, omniJacocoSourceFile)
         }.filter {
-            logger.info("- Checking if file ${it.absolutePath} exists...")
+            logger.debug("- Checking if file ${it.absolutePath} exists...")
             it.exists()
         }.map { sourceCodeFile -> sourceCodeFile to omniJacocoSourceFile }
     }.flatten()

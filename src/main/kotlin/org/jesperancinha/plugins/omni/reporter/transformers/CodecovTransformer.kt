@@ -1,11 +1,8 @@
 package org.jesperancinha.plugins.omni.reporter.transformers
 
-import org.jesperancinha.plugins.omni.reporter.CodecovPackageNotFoundException
 import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniFileAdapter
-import org.jesperancinha.plugins.omni.reporter.domain.reports.Package
 import org.jesperancinha.plugins.omni.reporter.domain.reports.Report
 import org.jesperancinha.plugins.omni.reporter.parsers.readXmlValue
-import org.jesperancinha.plugins.omni.reporter.parsers.xmlObjectMapper
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -30,31 +27,7 @@ class AllParserToCodecov(
     includeBranchCoverage: Boolean = false,
 ) : OmniReporterParserImpl<InputStream, String>
     (token = token, pipeline = pipeline, root = root, includeBranchCoverage = includeBranchCoverage) {
-    override fun parseInput(input: OmniFileAdapter, compiledSourcesDirs: List<File>): String {
-        try {
-            val report: Report = readXmlValue(input.report.inputStream())
-            if (report.packages.isEmpty()) {
-                return input.report.bufferedReader().readText()
-            }
-            val copy = report.copy(
-                packages = report.packages.mapNotNull { p: Package ->
-                    val newName = findNewPackageName(p, compiledSourcesDirs)
-                    newName?.let { p.copy(name = newName) }
-                        ?: if (failOnUnknown) throw CodecovPackageNotFoundException(p.name) else null
-                }
-            )
-            return xmlObjectMapper.writeValueAsString(copy)
-        } catch (ex: Exception) {
-            return input.report.bufferedReader().readText()
-        }
-    }
-
-    internal fun findNewPackageName(p: Package, compiledSourcesDirs: List<File>) =
-        compiledSourcesDirs
-            .map { File(it, p.name) }
-            .filter { file -> file.exists() }
-            .map { file -> file.toRelativeString(root) }
-            .firstOrNull()
+    override fun parseInput(input: OmniFileAdapter, compiledSourcesDirs: List<File>): String =  input.generatePayload(failOnUnknown, compiledSourcesDirs)
 
     companion object {
         val logger: Logger = LoggerFactory.getLogger(AllParserToCodecov::class.java)

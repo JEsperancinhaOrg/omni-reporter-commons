@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonRootName
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement
-import org.jesperancinha.plugins.omni.reporter.JacocoXmlParsingErrorException
 import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniJacocoDomain.Companion.logger
 import org.jesperancinha.plugins.omni.reporter.parsers.readXmlValue
 import org.slf4j.Logger
@@ -106,20 +105,16 @@ class OmniJacocoDomain {
     }
 }
 
-fun InputStream.readJacocoPackages(failOnXmlParseError: Boolean) =
+fun InputStream.readJacocoPackages() =
     readXmlValue<Report>(this).packages.apply {
         if (isEmpty()) {
-            logger.warn("Failed to process Jacoco file!")
-            if (failOnXmlParseError)
-                throw JacocoXmlParsingErrorException()
+            logger.warn("Found empty package list for Jacoco File while reading packages")
         }
     }
 
-fun InputStream.readJacocoReport(failOnXmlParseError: Boolean) =
+fun InputStream.readJacocoReport() =
     readXmlValue<Report>(this).apply {
         if (packages.isEmpty()) {
-            logger.warn("Failed to process Jacoco file!")
-            if (failOnXmlParseError)
-                throw JacocoXmlParsingErrorException()
+            logger.warn("Found empty package list for Jacoco File while reading parent")
         }
     }

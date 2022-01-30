@@ -62,12 +62,7 @@ class CodacyProcessor(
                     }
                 }
                 .filter {
-                    if (it.fileReports.isEmpty()) {
-                        if (failOnReportNotFound) throw CodacyReportNotGeneratedException() else {
-                            logger.warn("Codacy report was not generated! This usually means that no jacoco.xml reports have been found.")
-                        }
-                        false
-                    } else true
+                    it.fileReports.isNotEmpty()
                 }
 
             logger.info("- Found ${reportsPerLanguage.size} reports for language ${language.lang}")

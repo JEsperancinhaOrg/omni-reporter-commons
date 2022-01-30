@@ -51,58 +51,66 @@ internal fun List<OmniProject?>.toReportFiles(
             project to File(project.build?.directory ?: throw ProjectDirectoryNotFoundException())
                 .walkTopDown()
                 .toList()
-                .mapNotNull { report ->
-                    if (report.isFile && project.build?.let { build ->
-                            supportedPredicate(
-                                build.testOutputDirectory,
-                                report
-                            )
-                        } == true) {
-                        val projectBuildDirectory =
-                            File(project.build?.directory ?: throw ProjectDirectoryNotFoundException())
-                        when {
-                            report.name.startsWith("jacoco") && report.extension == "xml" -> {
-                                OmniJacocoFileAdapter(
-                                    report,
-                                    failOnXmlParseError,
-                                    root,
-                                    projectBuildDirectory
-                                )
-                            }
-                            report.name.startsWith("") && report.extension == "exec" -> OmniJacocoExecFileAdapter(
-                                report,
-                                failOnXmlParseError,
-                                root,
-                                projectBuildDirectory
-                            )
-                            report.name.startsWith("lcov") && report.extension == "info" -> OmniLCovFileAdapter(
-                                report,
-                                failOnXmlParseError,
-                                root,
-                                projectBuildDirectory
-                            )
-                            report.name.startsWith("clover") && report.extension == "xml" -> OmniCloverFileAdapter(
-                                report,
-                                failOnXmlParseError,
-                                root,
-                                projectBuildDirectory
-                            )
-                            report.name.startsWith("coverage") && report.extension == "json" -> OmniCoveragePyFileAdapter(
-                                report,
-                                failOnXmlParseError,
-                                root,
-                                projectBuildDirectory
-                            )
-                            else -> null
-                        }?.let { if (it.isValid()) it else null }
-                    } else null
-
-                }
+                .mapNotNull { report -> mapReportFile(report, project, supportedPredicate, failOnXmlParseError, root) }
                 .distinct()
         }.distinct()
         .toMap()
 
-internal fun List<OmniProject?>.toAllCodecovSupportedFiles(supportedPredicate: (String, File) -> Boolean): List<Pair<OmniProject, List<OmniGenericFileAdapter>>> =
+private fun mapReportFile(
+    report: File,
+    project: OmniProject,
+    supportedPredicate: (String, File) -> Boolean,
+    failOnXmlParseError: Boolean,
+    root: File
+) = if (report.isFile && project.build?.let { build ->
+        supportedPredicate(
+            build.testOutputDirectory,
+            report
+        )
+    } == true) {
+    val projectBuildDirectory =
+        File(project.build?.directory ?: throw ProjectDirectoryNotFoundException())
+    when {
+        report.name.startsWith("jacoco") && report.extension == "xml" -> {
+            OmniJacocoFileAdapter(
+                report,
+                failOnXmlParseError,
+                root,
+                projectBuildDirectory
+            )
+        }
+        report.name.startsWith("") && report.extension == "exec" -> OmniJacocoExecFileAdapter(
+            report,
+            failOnXmlParseError,
+            root,
+            projectBuildDirectory
+        )
+        report.name.startsWith("lcov") && report.extension == "info" -> OmniLCovFileAdapter(
+            report,
+            failOnXmlParseError,
+            root,
+            projectBuildDirectory
+        )
+        report.name.startsWith("clover") && report.extension == "xml" -> OmniCloverFileAdapter(
+            report,
+            failOnXmlParseError,
+            root,
+            projectBuildDirectory
+        )
+        report.name.startsWith("coverage") && report.extension == "json" -> OmniCoveragePyFileAdapter(
+            report,
+            failOnXmlParseError,
+            root,
+            projectBuildDirectory
+        )
+        else -> null
+    }?.let { if (it.isValid()) it else null }
+} else null
+
+internal fun List<OmniProject?>.toAllCodecovSupportedFiles(
+    supportedPredicate: (String, File) -> Boolean,
+    root:File
+): List<Pair<OmniProject, List<OmniFileAdapter>>> =
     this.filterNotNull()
         .map { project ->
             project to File(project.build?.directory ?: throw ProjectDirectoryNotFoundException()).walkTopDown()
@@ -117,6 +125,6 @@ internal fun List<OmniProject?>.toAllCodecovSupportedFiles(supportedPredicate: (
                         )
                     } ?: false
                 }
-                .map { OmniGenericFileAdapter(it) }
+                .mapNotNull { report -> mapReportFile(report, project, supportedPredicate, false, root) }
                 .distinct()
         }.distinct()

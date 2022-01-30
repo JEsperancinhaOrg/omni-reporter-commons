@@ -23,7 +23,7 @@ class CodecovProcessor(
     private val codecovUrl: String?,
     private val currentPipeline: Pipeline,
     private val allProjects: List<OmniProject?>,
-    private val projectBaseDir: File?,
+    private val projectBaseDir: File,
     private val failOnReportNotFound: Boolean,
     private val failOnReportSending: Boolean,
     private val failOnUnknown: Boolean,
@@ -33,7 +33,7 @@ class CodecovProcessor(
         logger.info("* Omni Reporting to Codecov started!")
 
         val repo = RepositoryBuilder().findGitDir(projectBaseDir).build()
-        val codacyReportsAggregate = allProjects.toAllCodecovSupportedFiles(supportedPredicate)
+        val codacyReportsAggregate = allProjects.toAllCodecovSupportedFiles(supportedPredicate, projectBaseDir)
             .filter { (project, _) -> project.compileSourceRoots != null }
             .flatMap { (project, reports) ->
                 reports.map { report ->
@@ -41,7 +41,7 @@ class CodecovProcessor(
                     AllParserToCodecov(
                         token = token,
                         pipeline = currentPipeline,
-                        root = projectBaseDir ?: throw ProjectDirectoryNotFoundException(),
+                        root = projectBaseDir,
                         failOnUnknown = failOnUnknown
                     ).parseInput(
                         report,
