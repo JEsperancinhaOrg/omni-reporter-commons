@@ -37,7 +37,7 @@ class CodecovProcessor(
             .filter { (project, _) -> project.compileSourceRoots != null }
             .flatMap { (project, reports) ->
                 reports.map { report ->
-                    logger.info("Parsing file: ${report.report.absolutePath}")
+                    logger.info("- Parsing file: ${report.report.absolutePath}")
                     AllParserToCodecov(
                         token = token,
                         pipeline = currentPipeline,
