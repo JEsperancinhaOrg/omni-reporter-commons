@@ -5,8 +5,6 @@ import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyApiTokenConfig
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyFileReport
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyReport
 import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniFileAdapter
-import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniJacocoReportParentFileAdapter
-import org.jesperancinha.plugins.omni.reporter.domain.reports.readJacocoReport
 import org.jesperancinha.plugins.omni.reporter.parsers.Language
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import java.io.File
@@ -43,7 +41,7 @@ class JacocoParserToCodacy(
         return parentAdapter.parseAllFiles()
             .mapToGenericSourceCodeFiles(compiledSourcesDirs, failOnUnknownPredicateFilePack)
             .filter { (sourceCodeFile) -> failOnUnknownPredicate(sourceCodeFile) }
-            .map { (sourceCodeFile, omniReportFileAdapter) -> omniReportFileAdapter.toCodacy(sourceCodeFile) }
+            .map { (sourceCodeFile, omniReportFileAdapter) -> omniReportFileAdapter.toCodacy(sourceCodeFile, language) }
             .filterNotNull()
             .toList()
             .let { fileReports ->

@@ -3,9 +3,8 @@ package org.jesperancinha.plugins.omni.reporter.transformers
 import io.kotest.matchers.booleans.shouldBeTrue
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyFileReport
 import org.jesperancinha.plugins.omni.reporter.domain.api.CoverallsSourceFile
-import org.jesperancinha.plugins.omni.reporter.domain.reports.CloverFile
-import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniCloverReportFileAdapter
 import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniReportFileAdapter
+import org.jesperancinha.plugins.omni.reporter.parsers.Language
 import org.jesperancinha.plugins.omni.reporter.utils.Utils.Companion.root
 import org.junit.jupiter.api.Test
 import java.io.File
@@ -32,7 +31,7 @@ class OmniCloverReportFileTestAdapter : OmniReportFileAdapter {
         TODO("Not yet implemented")
     }
 
-    override fun toCodacy(sourceCodeFile: SourceCodeFile): CodacyFileReport? {
+    override fun toCodacy(sourceCodeFile: SourceCodeFile, language: Language): CodacyFileReport? {
         TODO("Not yet implemented")
     }
 }

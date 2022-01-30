@@ -178,7 +178,7 @@ private val Map.Entry<String, CoveragePyFile>.calculateLinePercentage: Int
 interface OmniReportFileAdapter {
     fun name(): String
     fun toCoveralls(sourceCodeFile: SourceCodeFile): CoverallsSourceFile?
-    fun toCodacy(sourceCodeFile: SourceCodeFile): CodacyFileReport?
+    fun toCodacy(sourceCodeFile: SourceCodeFile, language: Language): CodacyFileReport?
 }
 
 interface OmniReportParentFileAdapter {
@@ -197,7 +197,6 @@ class OmniJacocoReportParentFileAdapter(
     private val reportFile: Report,
     val root: File,
     private val includeBranchCoverage: Boolean = false,
-    private val language: Language? = null
 ) : OmniReportParentFileAdapter {
     override fun parseAllFiles(): Sequence<Pair<String, List<OmniReportFileAdapter>>> {
         return reportFile.packages
@@ -208,7 +207,6 @@ class OmniJacocoReportParentFileAdapter(
                         report,
                         root,
                         includeBranchCoverage,
-                        language
                     )
                 }
             }
@@ -222,7 +220,6 @@ class OmniJacocoReportFileAdapter(
     private val reportFile: OmniJacocoSourcefile,
     val root: File,
     private val includeBranchCoverage: Boolean = false,
-    private val language: Language? = null
 ) : OmniReportFileAdapter {
     override fun name() = reportFile.name
     override fun toCoveralls(sourceCodeFile: SourceCodeFile): CoverallsSourceFile? {
@@ -242,10 +239,10 @@ class OmniJacocoReportFileAdapter(
         }
     }
 
-    override fun toCodacy(sourceCodeFile: SourceCodeFile): CodacyFileReport? {
+    override fun toCodacy(sourceCodeFile: SourceCodeFile, language: Language): CodacyFileReport? {
         val coverage = reportFile.lines.fromJacocoToCodacyCoverage
         return if (coverage.isEmpty() || !reportFile.name.endsWith(
-                language?.ext ?: throw LanguageNotConfiguredException()
+                language.ext
             )
         ) {
             null
@@ -283,7 +280,6 @@ class OmniLCovReportFileAdapter(
     private val reportFile: OmniLCovReport,
     val root: File,
     private val includeBranchCoverage: Boolean = false,
-    private val language: Language? = null
 ) : OmniReportFileAdapter {
     override fun name(): String = reportFile.sourceFilePath
     override fun toCoveralls(sourceCodeFile: SourceCodeFile): CoverallsSourceFile? {
@@ -303,11 +299,9 @@ class OmniLCovReportFileAdapter(
         }
     }
 
-    override fun toCodacy(sourceCodeFile: SourceCodeFile): CodacyFileReport? {
+    override fun toCodacy(sourceCodeFile: SourceCodeFile, language: Language): CodacyFileReport? {
         val coverage = reportFile.lineData.fromLCovToCodacyCoverage
-        return if (coverage.isEmpty() || !reportFile.sourceFilePath.endsWith(
-                language?.ext ?: throw LanguageNotConfiguredException()
-            )
+        return if (coverage.isEmpty() || !reportFile.sourceFilePath.endsWith(language.ext)
         ) {
             null
         } else {
@@ -348,7 +342,6 @@ class OmniCloverReportFileAdapter(
     val root: File,
     val projectBuildDirectory: File,
     private val includeBranchCoverage: Boolean = false,
-    private val language: Language? = null
 ) : OmniReportFileAdapter {
     override fun name(): String =
         projectBuildDirectory.toPath()
@@ -373,11 +366,9 @@ class OmniCloverReportFileAdapter(
     }
 
 
-    override fun toCodacy(sourceCodeFile: SourceCodeFile): CodacyFileReport? {
+    override fun toCodacy(sourceCodeFile: SourceCodeFile, language: Language): CodacyFileReport? {
         val coverage = reportFile.cloverLines.fromCloverToCodacyCoverage
-        return if (coverage.isEmpty() || !reportFile.path.endsWith(
-                language?.ext ?: throw LanguageNotConfiguredException()
-            )
+        return if (coverage.isEmpty() || !reportFile.path.endsWith(language.ext)
         ) {
             null
         } else {
@@ -419,7 +410,6 @@ class OmniCoveragePyReportFileAdapter(
     private val reportFile: Map.Entry<String, CoveragePyFile>,
     val root: File,
     private val includeBranchCoverage: Boolean = false,
-    private val language: Language? = null
 ) : OmniReportFileAdapter {
     override fun name(): String = reportFile.key
 
@@ -444,11 +434,9 @@ class OmniCoveragePyReportFileAdapter(
     }
 
 
-    override fun toCodacy(sourceCodeFile: SourceCodeFile): CodacyFileReport? {
+    override fun toCodacy(sourceCodeFile: SourceCodeFile, language: Language): CodacyFileReport? {
         val coverage = reportFile.value.fromCoveragePyToCodacyCoverage
-        return if (coverage.isEmpty() || !reportFile.key.endsWith(
-                language?.ext ?: throw LanguageNotConfiguredException()
-            )
+        return if (coverage.isEmpty() || !reportFile.key.endsWith(language.ext)
         ) {
             null
         } else {
