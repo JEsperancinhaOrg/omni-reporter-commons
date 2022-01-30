@@ -19,7 +19,7 @@ val xmlObjectMapper: ObjectMapper = XmlMapper(JacksonXmlModule().apply {
     .configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true)
     .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
 
-private val snakeCaseJsonObjectMapper = jacksonObjectMapper().apply {
+val snakeCaseJsonObjectMapper = jacksonObjectMapper().apply {
     propertyNamingStrategy = PropertyNamingStrategies.SnakeCaseStrategy()
 }
 
@@ -55,10 +55,10 @@ internal val String.toFileDigest: String
         .uppercase()
 
 enum class Language(val ext: String, val lang: String) {
-    JAVA("java","Java"),
-    KOTLIN("kt","Kotlin"),
-    SCALA("scala","Scala"),
-    PYTHON("py","Python"),
-    JAVASCRIPT("js","JavaScript"),
-    TYPESCRIPT("ts","TypeScript")
+    JAVA("java", "Java"),
+    KOTLIN("kt", "Kotlin"),
+    SCALA("scala", "Scala"),
+    PYTHON("py", "Python"),
+    JAVASCRIPT("js", "JavaScript"),
+    TYPESCRIPT("ts", "TypeScript")
 }

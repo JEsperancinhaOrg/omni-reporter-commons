@@ -4,6 +4,7 @@ import OmniJacocoReportParserCommand
 import org.jesperancinha.plugins.omni.reporter.CodecovPackageNotFoundException
 import org.jesperancinha.plugins.omni.reporter.domain.api.TEMP_DIR_VARIABLE
 import org.jesperancinha.plugins.omni.reporter.parsers.readXmlValue
+import org.jesperancinha.plugins.omni.reporter.parsers.snakeCaseJsonObjectMapper
 import org.jesperancinha.plugins.omni.reporter.parsers.xmlObjectMapper
 import org.slf4j.LoggerFactory
 import java.io.File
@@ -61,7 +62,7 @@ class OmniJacocoFileAdapter(
 ) : OmniFileAdapter(report) {
     override fun getParentAdapter(): OmniReportParentFileAdapter =
         OmniJacocoReportParentFileAdapter(
-            report.inputStream().readJacocoReport(),
+            report.inputStream().readJacocoReport(failOnXmlParseError),
             root,
             includeBranchCoverage,
         )
@@ -196,6 +197,22 @@ class OmniCoveragePyFileAdapter(
         )
 
     override fun generatePayload(failOnUnknown: Boolean, compiledSourcesDirs: List<File>): String {
-        return report.readText()
+        val readCoveragePyReport = report.inputStream().readCoveragePyReport(false)
+        val coverage = readCoveragePyReport.files.entries.associate { (fileName, coveragePy) ->
+            fileName to Array<Int?>(
+                maxOf(
+                    coveragePy.missingLines.maxOfOrNull { it } ?: 0,
+                    coveragePy.executedLines.maxOfOrNull { it } ?: 0)
+            ) { null }
+                .apply {
+                    coveragePy.excludedLines.forEach { this[it - 1] = 1 }
+                    coveragePy.missingLines.forEach { this[it - 1] = 0 }
+                }.mapIndexed { index, value -> (index + 1).toString() to value }
+                .toMap()
+        }
+        val codecovReport = CodecovReport(
+            coverage
+        )
+        return snakeCaseJsonObjectMapper.writeValueAsString(codecovReport)
     }
 }
