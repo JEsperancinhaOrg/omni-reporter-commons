@@ -108,13 +108,13 @@ class OmniJacocoDomain {
 fun InputStream.readJacocoPackages() =
     readXmlValue<Report>(this).packages.apply {
         if (isEmpty()) {
-            logger.warn("Found empty package list for Jacoco File while reading packages")
+            logger.debug("Found empty package list for Jacoco File while reading packages")
         }
     }
 
 fun InputStream.readJacocoReport() =
     readXmlValue<Report>(this).apply {
         if (packages.isEmpty()) {
-            logger.warn("Found empty package list for Jacoco File while reading parent")
+            logger.debug("Found empty package list for Jacoco File while reading parent")
         }
     }

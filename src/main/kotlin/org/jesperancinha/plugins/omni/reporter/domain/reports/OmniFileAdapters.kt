@@ -136,14 +136,18 @@ class OmniLCovFileAdapter(
         val reportObject = report.inputStream().readLCovReport(false)
         val reportText = report.readText()
 
-        logger.debug("- Correcting LCov payload with source folders ${compiledSourcesDirs.joinToString(";")}}")
+        logger.debug("- Correcting LCov payload with source folders ${compiledSourcesDirs.joinToString(";")}")
+        logger.debug("- Project build directory is ${projectBuildDirectory.absoluteFile}")
         val allFiles = reportObject.map { it.sourceFilePath }
-            .map { sp ->
-                sp to root.toPath()
-                    .relativize(File(compiledSourcesDirs
-                        .first {
-                                cps -> File(cps, sp).exists() && File(cps, sp).absoluteFile.startsWith(projectBuildDirectory.absoluteFile)}, sp).toPath())
-                    .toString()
+            .mapNotNull { sp ->
+                compiledSourcesDirs
+                    .filter { cps -> File(cps, sp).exists() }
+                    .minByOrNull { it.relativeTo(report).toPath().nameCount }
+                    ?.let { match ->
+                        sp to root.toPath()
+                            .relativize(File(match, sp).toPath())
+                            .toString()
+                    }
             }
         return allFiles.fold(reportText) { text, replacePair ->
             text.replace(replacePair.first, replacePair.second)
