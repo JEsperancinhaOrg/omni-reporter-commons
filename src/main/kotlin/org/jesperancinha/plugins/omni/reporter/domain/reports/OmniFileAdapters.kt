@@ -8,6 +8,7 @@ import org.jesperancinha.plugins.omni.reporter.parsers.snakeCaseJsonObjectMapper
 import org.jesperancinha.plugins.omni.reporter.parsers.xmlObjectMapper
 import org.slf4j.LoggerFactory
 import java.io.File
+import java.nio.file.Path
 import java.util.*
 
 internal val JAR_FILE_PATTERNS = listOf(".*classes\\.jar$", ".*libs\\/.*\\.jar$")
@@ -177,7 +178,18 @@ class OmniCloverFileAdapter(
         )
 
     override fun generatePayload(failOnUnknown: Boolean, compiledSourcesDirs: List<File>): String {
-        return report.readText()
+        val cloverReport = report.inputStream().readCloverReport(false)
+        val coverage = cloverReport.project.files.associate { cloverFile ->
+            root.toPath().relativize(Path.of(cloverFile.path))
+                .toString() to Array<Int?>(File(cloverFile.path).readLines().size + 1) { null }
+                .apply { cloverFile.cloverLines.forEach { this[it.num - 1] = it.count } }
+                .mapIndexed { index, value -> (index + 1).toString() to value }
+                .toMap()
+        }
+        val codecovReport = CodecovReport(
+            coverage
+        )
+        return snakeCaseJsonObjectMapper.writeValueAsString(codecovReport)
     }
 }
 

@@ -14,7 +14,12 @@ private val CODECOV_SUPPORTED_REPORTS = arrayOf(
     "lcov" to "txt",
     "coverage" to "xml",
     "coverage" to "json",
-    "cobertura" to "xml"
+    "cobertura" to "xml",
+    "clover" to "xml"
+)
+
+private val CODECOV_UNSUPPORTED_REPORTS = arrayOf(
+    "coverage-final" to "json"
 )
 
 
@@ -119,6 +124,7 @@ internal fun List<OmniProject?>.toAllCodecovSupportedFiles(
                 .filter { report ->
                     report.isFile
                             && CODECOV_SUPPORTED_REPORTS.any { (name, ext) -> report.name.startsWith(name) && report.extension == ext }
+                            && !CODECOV_UNSUPPORTED_REPORTS.any { (name, ext) -> report.name.startsWith(name) && report.extension == ext }
                             && project.build?.let { build ->
                         supportedPredicate(
                             build.testOutputDirectory,
