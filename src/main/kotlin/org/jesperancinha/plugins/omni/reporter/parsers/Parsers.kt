@@ -58,6 +58,6 @@ enum class Language(val ext: String, val lang: String) {
     JAVA("java","Java"),
     KOTLIN("kt","Kotlin"),
     SCALA("scala","Scala"),
-    PYTHON("python","Python"),
-    JAVASCRIPT("javascript","JavaScript")
+    PYTHON("py","Python"),
+    JAVASCRIPT("js","JavaScript")
 }
