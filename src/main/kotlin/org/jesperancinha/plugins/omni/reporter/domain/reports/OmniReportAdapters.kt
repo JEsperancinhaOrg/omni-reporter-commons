@@ -158,13 +158,13 @@ private val OmniLCovReport.calculateLinePercentage: Int
  * Codacy Percentage Extension Function
  */
 private val OmniJacocoSourcefile.calculateLinePercentage: Int
-    get() = counters.first { it.type == "LINE" }.run { (covered * 100) / (covered + missed) }
+    get() = counters.firstOrNull { it.type == "LINE" }?.run { (covered * 100) / (covered + missed) } ?: 0
 
 /**
  * Codacy Total Percentage Extension Function
  */
 private val Report.calculateTotalPercentage: Int
-    get() = counters.first { it.type == "LINE" }.run { (covered * 100) / (covered + missed) }
+    get() = counters.firstOrNull { it.type == "LINE" }?.run { (covered * 100) / (covered + missed) } ?: 0
 
 /**
  * Codacy Total Percentage Extension Function

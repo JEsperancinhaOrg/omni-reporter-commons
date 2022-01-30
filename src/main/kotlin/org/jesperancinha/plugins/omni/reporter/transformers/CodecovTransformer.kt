@@ -31,18 +31,22 @@ class AllParserToCodecov(
 ) : OmniReporterParserImpl<InputStream, String>
     (token = token, pipeline = pipeline, root = root, includeBranchCoverage = includeBranchCoverage) {
     override fun parseInput(input: OmniFileAdapter, compiledSourcesDirs: List<File>): String {
-        val report: Report = readXmlValue(input.report.inputStream())
-        if (report.packages.isEmpty()) {
+        try {
+            val report: Report = readXmlValue(input.report.inputStream())
+            if (report.packages.isEmpty()) {
+                return input.report.bufferedReader().readText()
+            }
+            val copy = report.copy(
+                packages = report.packages.mapNotNull { p: Package ->
+                    val newName = findNewPackageName(p, compiledSourcesDirs)
+                    newName?.let { p.copy(name = newName) }
+                        ?: if (failOnUnknown) throw CodecovPackageNotFoundException(p.name) else null
+                }
+            )
+            return xmlObjectMapper.writeValueAsString(copy)
+        } catch (ex: Exception) {
             return input.report.bufferedReader().readText()
         }
-        val copy = report.copy(
-            packages = report.packages.mapNotNull { p: Package ->
-                val newName = findNewPackageName(p, compiledSourcesDirs)
-                newName?.let { p.copy(name = newName) }
-                    ?: if (failOnUnknown) throw CodecovPackageNotFoundException(p.name) else null
-            }
-        )
-        return xmlObjectMapper.writeValueAsString(copy)
     }
 
     internal fun findNewPackageName(p: Package, compiledSourcesDirs: List<File>) =
