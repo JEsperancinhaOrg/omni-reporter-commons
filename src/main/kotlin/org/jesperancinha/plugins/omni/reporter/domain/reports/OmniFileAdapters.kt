@@ -205,8 +205,8 @@ class OmniCoveragePyFileAdapter(
                     coveragePy.executedLines.maxOfOrNull { it } ?: 0)
             ) { null }
                 .apply {
-                    coveragePy.excludedLines.forEach { this[it - 1] = 1 }
                     coveragePy.missingLines.forEach { this[it - 1] = 0 }
+                    coveragePy.executedLines.forEach { this[it - 1] = 1 }
                 }.mapIndexed { index, value -> (index + 1).toString() to value }
                 .toMap()
         }

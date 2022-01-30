@@ -13,6 +13,7 @@ private val CODECOV_SUPPORTED_REPORTS = arrayOf(
     "golang" to "txt",
     "lcov" to "txt",
     "coverage" to "xml",
+    "coverage" to "json",
     "cobertura" to "xml"
 )
 
