@@ -4,7 +4,7 @@ import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.nulls.shouldNotBeNull
 import org.jesperancinha.plugins.omni.reporter.OmniBuild
 import org.jesperancinha.plugins.omni.reporter.OmniProject
-import org.jesperancinha.plugins.omni.reporter.processors.Processor.Companion.supportedPredicate
+import org.jesperancinha.plugins.omni.reporter.processors.Processor.Companion.nonTestDirectoryPredicate
 import org.junit.jupiter.api.Test
 import java.io.File
 import kotlin.io.path.toPath
@@ -19,7 +19,7 @@ internal class ProcessorKtTest {
         val test3Folder = File(rootFolder, "test3").absolutePath
         val omniProject = MavenOmniProject(listOf(test3Folder), MavenOmniBuild(test3Folder, test3Folder))
 
-        val supportedPredicate = { _:String, _:File -> true }
+        val supportedPredicate = { _: String, _: File -> true }
         val toReportFiles = listOf(omniProject).toReportFiles(supportedPredicate, false, rootFolder)
         toReportFiles.shouldNotBeNull()
         toReportFiles.entries.first().value.shouldHaveSize(1)
@@ -33,7 +33,7 @@ internal class ProcessorKtTest {
         val test3Folder = File(rootFolder, "test3").absolutePath
         val omniProject = MavenOmniProject(listOf(test3Folder), MavenOmniBuild(test3Folder, test3Folder))
 
-        val toReportFiles = listOf(omniProject).toReportFiles(supportedPredicate(true), false, rootFolder)
+        val toReportFiles = listOf(omniProject).toReportFiles(nonTestDirectoryPredicate, false, rootFolder)
         toReportFiles.shouldNotBeNull()
         toReportFiles.entries.first().value.shouldHaveSize(1)
     }

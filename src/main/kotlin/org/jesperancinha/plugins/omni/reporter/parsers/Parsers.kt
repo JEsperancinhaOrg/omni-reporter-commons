@@ -54,11 +54,11 @@ internal val String.toFileDigest: String
         .joinToString(separator = "") { byte -> "%02x".format(byte) }
         .uppercase()
 
-enum class Language(val ext: String, val lang: String) {
-    JAVA("java", "Java"),
-    KOTLIN("kt", "Kotlin"),
-    SCALA("scala", "Scala"),
-    PYTHON("py", "Python"),
-    JAVASCRIPT("js", "JavaScript"),
-    TYPESCRIPT("ts", "TypeScript")
+enum class Language(val ext: List<String>, val lang: String) {
+    JAVA(listOf("java"), "Java"),
+    KOTLIN(listOf("kt"), "Kotlin"),
+    SCALA(listOf("scala"), "Scala"),
+    PYTHON(listOf("py"), "Python"),
+    JAVASCRIPT(listOf("js"), "JavaScript"),
+    TYPESCRIPT(listOf("ts", "tsx"), "TypeScript")
 }

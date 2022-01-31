@@ -1,6 +1,5 @@
 package org.jesperancinha.plugins.omni.reporter.domain.reports
 
-import org.jesperancinha.plugins.omni.reporter.LanguageNotConfiguredException
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyFileReport
 import org.jesperancinha.plugins.omni.reporter.domain.api.CoverallsSourceFile
 import org.jesperancinha.plugins.omni.reporter.domain.api.isBranch
@@ -241,10 +240,7 @@ class OmniJacocoReportFileAdapter(
 
     override fun toCodacy(sourceCodeFile: SourceCodeFile, language: Language): CodacyFileReport? {
         val coverage = reportFile.lines.fromJacocoToCodacyCoverage
-        return if (coverage.isEmpty() || !reportFile.name.endsWith(
-                language.ext
-            )
-        ) {
+        return if (coverage.isEmpty() || language.ext.none { reportFile.name.endsWith(it) }) {
             null
         } else {
             CodacyFileReport(
@@ -301,7 +297,7 @@ class OmniLCovReportFileAdapter(
 
     override fun toCodacy(sourceCodeFile: SourceCodeFile, language: Language): CodacyFileReport? {
         val coverage = reportFile.lineData.fromLCovToCodacyCoverage
-        return if (coverage.isEmpty() || !reportFile.sourceFilePath.endsWith(language.ext)
+        return if (coverage.isEmpty() || language.ext.none { reportFile.sourceFilePath.endsWith(it) }
         ) {
             null
         } else {
@@ -368,7 +364,8 @@ class OmniCloverReportFileAdapter(
 
     override fun toCodacy(sourceCodeFile: SourceCodeFile, language: Language): CodacyFileReport? {
         val coverage = reportFile.cloverLines.fromCloverToCodacyCoverage
-        return if (coverage.isEmpty() || !reportFile.path.endsWith(language.ext)
+        return if (coverage.isEmpty() || language.ext.none { reportFile.path
+                .endsWith(it) }
         ) {
             null
         } else {
@@ -436,7 +433,7 @@ class OmniCoveragePyReportFileAdapter(
 
     override fun toCodacy(sourceCodeFile: SourceCodeFile, language: Language): CodacyFileReport? {
         val coverage = reportFile.value.fromCoveragePyToCodacyCoverage
-        return if (coverage.isEmpty() || !reportFile.key.endsWith(language.ext)
+        return if (coverage.isEmpty() || language.ext.none { reportFile.key.endsWith(it) }
         ) {
             null
         } else {

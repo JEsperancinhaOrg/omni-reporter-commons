@@ -18,6 +18,10 @@ private val CODECOV_SUPPORTED_REPORTS = arrayOf(
     "clover" to "xml"
 )
 
+
+private val KNOWN_TEST_DIRECTORIES = arrayOf(
+    "test-classes"
+)
 private val CODECOV_UNSUPPORTED_REPORTS = arrayOf(
     "coverage-final" to "json"
 )
@@ -39,10 +43,20 @@ abstract class Processor(
 
 
     companion object {
+
+        val nonGenericTestDirectoryPredicate =
+            { report: File -> KNOWN_TEST_DIRECTORIES.none { report.absolutePath.contains(it) } }
+
+
+        val nonTestDirectoryPredicate = { testDirectory: String, report: File ->
+            (report.parentFile.absolutePath == testDirectory ||
+                    !report.absolutePath.contains(testDirectory))
+        }
+
         fun supportedPredicate(ignoreTestBuildDirectory: Boolean) =
             if (ignoreTestBuildDirectory) { testDirectory: String, report: File ->
-                (report.parentFile.absolutePath == testDirectory ||
-                        !report.absolutePath.contains(testDirectory))
+                nonGenericTestDirectoryPredicate(report) &&
+                        nonTestDirectoryPredicate(testDirectory, report)
             } else { _, _ -> true }
     }
 }

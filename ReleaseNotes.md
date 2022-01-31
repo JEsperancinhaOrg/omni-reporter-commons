@@ -1,11 +1,21 @@
 # Omni Reporter Commons Release Notes
 
-#### Release 0.1.1 - Upcoming
+
+#### Release 0.1.2 - Upcoming
+
+###### Features
 
 1. ~~Reports in the same folder are merged and average, (We assume thart if there are different reports in the same folder, it only means that there are different brands in there.)~~ Unfortunately, by doing so, the results may become inconsistent for reports that do not report coverage for certain files. Please make sure not to have different report brands (i.e. Clover and LCov together) for the same files. In that case, line coverage will be reported duplicate.
 2. Exclude report option (Since the above, may be difficult to manage in some situations, we can then use this option to exclude a report that for some reason we don't want to consider for the overall coverage calculation)
 3. Support for Group Coverage with Branch Coverage (mostly Coveralls)
 4. Source encoding gets automatically chosen unless we configure flag `failOnNoEncoding` to `true`
+
+#### Release 0.1.1 - 2022/01/31
+
+###### Bugs
+
+1. Fix Reporting sending of test report files by default with `ignoreTestBuildDirectory`
+2. Fix Codacy not including TSX in TypeScript reports
 
 #### Release 0.1.0 - 2022/01/30
 
