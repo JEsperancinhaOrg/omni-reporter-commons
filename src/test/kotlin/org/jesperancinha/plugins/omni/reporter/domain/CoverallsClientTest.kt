@@ -23,7 +23,7 @@ internal class CoverallsClientTest {
         val jacocoReport = resource.toURI().toPath().toFile()
         jacocoReport.shouldNotBeNull()
         val jacocoParser = ReportingParserToCoveralls(
-            token = "token", LocalPipeline(), root,
+            token = "token", LocalPipeline(fetchBranchNameFromEnv = false), root,
             failOnUnknown = false,
             includeBranchCoverage = false,
             useCoverallsCount = false

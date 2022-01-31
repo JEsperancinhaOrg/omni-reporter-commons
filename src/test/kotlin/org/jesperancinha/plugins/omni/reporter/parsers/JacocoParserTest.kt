@@ -14,7 +14,7 @@ import java.io.File
 internal class JacocoParserTest {
     private val jacocoParser = ReportingParserToCoveralls(
         "token",
-        LocalPipeline(),
+        LocalPipeline(fetchBranchNameFromEnv = false),
         root,
         failOnUnknown = false,
         includeBranchCoverage = false,
@@ -81,7 +81,8 @@ internal class JacocoParserTest {
 
         jacocoParser.parseInput(OmniJacocoFileAdapter(jacocoResult, false, root, root), listOf(root))
 
-        val sourceFiles = jacocoParser.parseInput(OmniJacocoFileAdapter(jacocoResult, false, root, root)
+        val sourceFiles = jacocoParser.parseInput(
+            OmniJacocoFileAdapter(jacocoResult, false, root, root)
         ).sourceFiles
 
         sourceFiles.shouldNotBeNull()

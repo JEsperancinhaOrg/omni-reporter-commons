@@ -30,7 +30,7 @@ internal class AllParserToCodecovTest {
 
         val parseInput = AllParserToCodecov(
             token = "token",
-            pipeline = GitLabPipeline(),
+            pipeline = GitLabPipeline(fetchBranchNameFromEnv = false),
             root = root,
             failOnUnknown = false
         ).parseInput(

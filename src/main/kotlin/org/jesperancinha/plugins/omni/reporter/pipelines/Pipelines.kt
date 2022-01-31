@@ -2,6 +2,7 @@ package org.jesperancinha.plugins.omni.reporter.pipelines
 
 import org.jesperancinha.plugins.omni.reporter.domain.api.CUSTOM
 import org.jesperancinha.plugins.omni.reporter.domain.api.GITLAB
+import org.jesperancinha.plugins.omni.reporter.pipelines.GitHubPipeline.Companion.GITHUB_BASE_REF
 import org.jesperancinha.plugins.omni.reporter.pipelines.GitHubPipeline.Companion.GITHUB_REPOSITORY
 import org.jesperancinha.plugins.omni.reporter.pipelines.GitHubPipeline.Companion.GITHUB_RUN_ID
 import org.jesperancinha.plugins.omni.reporter.pipelines.GitHubPipeline.Companion.GITHUB_RUN_NUMBER
@@ -36,9 +37,10 @@ private val allEnv = listOf(
     CI_EXTERNAL_PULL_REQUEST_ID,
     CI_EXTERNAL_PULL_REQUEST_IID,
 
-    //GitHubs
+    //GitHub
     GITHUB_RUN_NUMBER,
     GITHUB_RUN_ID,
+    GITHUB_BASE_REF,
     GITHUB_SERVER_URL,
     GITHUB_REPOSITORY
 
@@ -54,11 +56,13 @@ interface Pipeline {
     val serviceJobId: String?
     val codecovServiceName: String?
     val buildUrl: String?
+    val fetchBranchNameFromEnv: Boolean
 }
 
 abstract class PipelineImpl(
     override val branchName: String? = null,
-    override val buildUrl: String? = null
+    override val buildUrl: String? = null,
+    override val fetchBranchNameFromEnv: Boolean = false,
 ) : Pipeline {
 
     override fun toString() = "* System Variables\n" +
@@ -68,11 +72,13 @@ abstract class PipelineImpl(
             "- Service Number (Build) = $serviceNumber\n" +
             "- Service Job Id = $serviceJobId"
 
+
     companion object {
-        val currentPipeline: Pipeline = when {
-            environment[GITHUB_RUN_ID] != null -> GitHubPipeline()
-            environment[CI_JOB_ID] != null -> GitLabPipeline()
-            else -> LocalPipeline()
+
+        fun currentPipeline(fetchBranchNameFromEnv: Boolean): Pipeline = when {
+            environment[GITHUB_RUN_ID] != null -> GitHubPipeline(fetchBranchNameFromEnv = fetchBranchNameFromEnv)
+            environment[CI_JOB_ID] != null -> GitLabPipeline(fetchBranchNameFromEnv = fetchBranchNameFromEnv)
+            else -> LocalPipeline(fetchBranchNameFromEnv = fetchBranchNameFromEnv)
         }.also {
             it.toString().lines().forEach { logLine -> logger.info(logLine) }
         }
@@ -104,17 +110,19 @@ class GitHubPipeline(
     override val serviceJobId: String? = findServiceJobId {
         findSystemVariableValue(GITHUB_RUN_ID)
     },
-    override val branchRef: String? = null,
+    override val fetchBranchNameFromEnv: Boolean,
+    override val branchRef: String? = if (fetchBranchNameFromEnv) findSystemVariableValue(GITHUB_BASE_REF) else null,
     override val codecovServiceName: String? = CUSTOM,
     override val buildUrl: String? = "${findSystemVariableValue(GITHUB_SERVER_URL)}/${
         findSystemVariableValue(
             GITHUB_REPOSITORY
         )
-    }/actions/runs/${findSystemVariableValue(GITHUB_RUN_ID)}"
+    }/actions/runs/${findSystemVariableValue(GITHUB_RUN_ID)}",
 ) : PipelineImpl() {
     companion object {
         const val GITHUB_RUN_NUMBER = "GITHUB_RUN_NUMBER"
         const val GITHUB_RUN_ID = "GITHUB_RUN_ID"
+        const val GITHUB_BASE_REF = "GITHUB_BASE_REF"
         const val GITHUB_SERVER_URL = "GITHUB_SERVER_URL"
         const val GITHUB_REPOSITORY = "GITHUB_REPOSITORY"
     }
@@ -122,13 +130,10 @@ class GitHubPipeline(
 
 class GitLabPipeline(
     override val serviceName: String = findServiceName { "gitlab-ci" },
-    override val serviceNumber: String? = findServiceNumber {
-        findSystemVariableValue(CI_CONCURRENT_ID)
-    },
-    override val serviceJobId: String? = findServiceJobId {
-        findSystemVariableValue(CI_JOB_ID)
-    },
-    override val branchRef: String? = null,
+    override val serviceNumber: String? = findServiceNumber { findSystemVariableValue(CI_CONCURRENT_ID) },
+    override val serviceJobId: String? = findServiceJobId { findSystemVariableValue(CI_JOB_ID) },
+    override val fetchBranchNameFromEnv: Boolean,
+    override val branchRef: String? = if (fetchBranchNameFromEnv) findSystemVariableValue(CI_COMMIT_REF_NAME) else null,
     override val branchName: String? = findSystemVariableValue(CI_COMMIT_REF_NAME),
     override val codecovServiceName: String? = GITLAB,
     override val buildUrl: String? = "${findSystemVariableValue(CI_PROJECT_URL)}/-/pipelines/${
@@ -136,7 +141,6 @@ class GitLabPipeline(
             CI_PIPELINE_ID
         )
     }"
-
 ) : PipelineImpl() {
     companion object {
         const val CI_CONCURRENT_ID = "CI_CONCURRENT_ID"
@@ -155,6 +159,7 @@ class LocalPipeline(
     override val serviceJobId: String? = findServiceJobId { null },
     override val branchRef: String? = null,
     override val codecovServiceName: String? = CUSTOM,
+    override val fetchBranchNameFromEnv: Boolean,
 ) : PipelineImpl() {
 
     companion object {
