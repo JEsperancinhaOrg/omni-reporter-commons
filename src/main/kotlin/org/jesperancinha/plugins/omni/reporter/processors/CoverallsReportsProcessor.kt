@@ -25,7 +25,8 @@ class CoverallsReportsProcessor(
     private val failOnXmlParseError: Boolean,
     private val branchCoverage: Boolean,
     private val useCoverallsCount: Boolean,
-    ignoreTestBuildDirectory: Boolean
+    private val ignoreTestBuildDirectory: Boolean,
+    private val reportRejectList: List<String>
 ) : Processor(ignoreTestBuildDirectory) {
 
     override fun processReports() {
@@ -39,10 +40,10 @@ class CoverallsReportsProcessor(
                 failOnUnknown = failOnUnknown,
                 includeBranchCoverage = branchCoverage,
                 useCoverallsCount = useCoverallsCount,
-                failOnXmlParseError = failOnXmlParseError
+                failOnXmlParseError = failOnXmlParseError,
             )
 
-        allProjects.toReportFiles(supportedPredicate, failOnXmlParseError, projectBaseDir)
+        allProjects.toReportFiles(supportedPredicate, failOnXmlParseError, projectBaseDir, reportRejectList)
             .filter { (project, _) -> project.compileSourceRoots != null }
             .forEach { (project, reports) ->
                 reports.forEach { report ->

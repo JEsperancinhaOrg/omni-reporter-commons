@@ -69,8 +69,10 @@ enum class ReportType(
 ) {
     JACOCO("xml",
         {
-            val readText = it.readText()
-            readText.contains("report name") && readText.contains("package name")
+            val readText = it.readText().trim()
+            readText.startsWith("<") && readText.endsWith(">") && readText.contains("report name") && readText.contains(
+                "package name"
+            )
         },
         { file,
           failOnXmlParseError,
@@ -113,8 +115,10 @@ enum class ReportType(
         }),
     CLOVER("xml",
         {
-            val readText = it.readText()
-            readText.contains("coverage generated") && readText.contains("project timestamp")
+            val readText = it.readText().trim()
+            readText.startsWith("<") && readText.endsWith(">") && readText.contains("coverage generated") && readText.contains(
+                "project timestamp"
+            )
         },
         { file,
           failOnXmlParseError,
@@ -129,8 +133,8 @@ enum class ReportType(
         }),
     COVERAGE_PY("json",
         {
-            val readText = it.readText()
-            readText.contains("\"meta\":") && readText.contains("\"files\":")
+            val readText = it.readText().trim()
+            readText.startsWith("{") && readText.endsWith("}") && readText.contains("\"meta\":") && readText.contains("\"files\":")
         },
         { file,
           failOnXmlParseError,
@@ -160,17 +164,48 @@ enum class ReportType(
 internal fun List<OmniProject?>.toReportFiles(
     supportedPredicate: (String, File) -> Boolean,
     failOnXmlParseError: Boolean,
-    root: File
+    root: File,
+    reportRejectList: List<String>
 ): Map<OmniProject, List<OmniFileAdapter>> =
     this.filterNotNull()
         .map { project ->
             project to File(project.build?.directory ?: throw ProjectDirectoryNotFoundException())
                 .walkTopDown()
                 .toList()
-                .mapNotNull { report -> mapReportFile(report, project, supportedPredicate, failOnXmlParseError, root) }
+                .filter { !reportRejectList.contains(it.name) }
+                .mapNotNull { report ->
+                    mapReportFile(report, project, supportedPredicate, failOnXmlParseError, root)
+                }
                 .distinct()
         }.distinct()
         .toMap()
+
+internal fun List<OmniProject?>.toAllCodecovSupportedFiles(
+    supportedPredicate: (String, File) -> Boolean,
+    root: File,
+    reportRejectList: List<String>
+): List<Pair<OmniProject, List<OmniFileAdapter>>> =
+    this.filterNotNull()
+        .map { project ->
+            project to File(project.build?.directory ?: throw ProjectDirectoryNotFoundException()).walkTopDown()
+                .toList()
+                .filter { !reportRejectList.contains(it.name) }
+                .filter { report ->
+                    report.isFile
+                            && CODECOV_SUPPORTED_REPORTS.any { (name, ext) -> report.name.startsWith(name) && report.extension == ext }
+                            && !CODECOV_UNSUPPORTED_REPORTS.any { (name, ext) -> report.name.startsWith(name) && report.extension == ext }
+                            && project.build?.let { build ->
+                        supportedPredicate(
+                            build.testOutputDirectory,
+                            report
+                        )
+                    } ?: false
+                }
+                .map { report ->
+                    mapReportFile(report, project, supportedPredicate, false, root) ?: OmniGenericFileAdapter(report)
+                }
+                .distinct()
+        }.distinct()
 
 private fun mapReportFile(
     report: File,
@@ -189,28 +224,3 @@ private fun mapReportFile(
         report, failOnXmlParseError, root, projectBuildDirectory
     )?.let { if (it.isValid()) it else null }
 } else null
-
-internal fun List<OmniProject?>.toAllCodecovSupportedFiles(
-    supportedPredicate: (String, File) -> Boolean,
-    root: File
-): List<Pair<OmniProject, List<OmniFileAdapter>>> =
-    this.filterNotNull()
-        .map { project ->
-            project to File(project.build?.directory ?: throw ProjectDirectoryNotFoundException()).walkTopDown()
-                .toList()
-                .filter { report ->
-                    report.isFile
-                            && CODECOV_SUPPORTED_REPORTS.any { (name, ext) -> report.name.startsWith(name) && report.extension == ext }
-                            && !CODECOV_UNSUPPORTED_REPORTS.any { (name, ext) -> report.name.startsWith(name) && report.extension == ext }
-                            && project.build?.let { build ->
-                        supportedPredicate(
-                            build.testOutputDirectory,
-                            report
-                        )
-                    } ?: false
-                }
-                .map { report ->
-                    mapReportFile(report, project, supportedPredicate, false, root) ?: OmniGenericFileAdapter(report)
-                }
-                .distinct()
-        }.distinct()

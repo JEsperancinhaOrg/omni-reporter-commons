@@ -2,7 +2,6 @@ package org.jesperancinha.plugins.omni.reporter.processors
 
 import org.eclipse.jgit.lib.Repository
 import org.eclipse.jgit.lib.RepositoryBuilder
-import org.jesperancinha.plugins.omni.reporter.CodacyReportNotGeneratedException
 import org.jesperancinha.plugins.omni.reporter.CodacyUrlNotConfiguredException
 import org.jesperancinha.plugins.omni.reporter.OmniProject
 import org.jesperancinha.plugins.omni.reporter.ProjectDirectoryNotFoundException
@@ -30,7 +29,8 @@ class CodacyProcessor(
     private val failOnReportSending: Boolean,
     private val failOnUnknown: Boolean,
     private val failOnXmlParseError: Boolean,
-    ignoreTestBuildDirectory: Boolean
+    private val ignoreTestBuildDirectory: Boolean,
+    private val reportRejectList: List<String>
 ) : Processor(ignoreTestBuildDirectory) {
     override fun processReports() {
         logger.info("* Omni Reporting to Codacy started!")
@@ -41,7 +41,8 @@ class CodacyProcessor(
             val reportsPerLanguage = allProjects.toReportFiles(
                 supportedPredicate,
                 failOnXmlParseError,
-                projectBaseDir ?: throw ProjectDirectoryNotFoundException()
+                projectBaseDir ?: throw ProjectDirectoryNotFoundException(),
+                reportRejectList
             )
                 .filter { (project, _) -> project.compileSourceRoots != null }
                 .flatMap { (project, reports) ->

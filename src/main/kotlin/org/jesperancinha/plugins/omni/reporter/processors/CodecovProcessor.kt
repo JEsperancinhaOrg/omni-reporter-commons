@@ -4,7 +4,6 @@ import org.eclipse.jgit.lib.RepositoryBuilder
 import org.jesperancinha.plugins.omni.reporter.CodacyReportNotGeneratedException
 import org.jesperancinha.plugins.omni.reporter.CodecovUrlNotConfiguredException
 import org.jesperancinha.plugins.omni.reporter.OmniProject
-import org.jesperancinha.plugins.omni.reporter.ProjectDirectoryNotFoundException
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodecovClient
 import org.jesperancinha.plugins.omni.reporter.domain.api.redact
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
@@ -27,13 +26,14 @@ class CodecovProcessor(
     private val failOnReportNotFound: Boolean,
     private val failOnReportSending: Boolean,
     private val failOnUnknown: Boolean,
-    ignoreTestBuildDirectory: Boolean
+    private val ignoreTestBuildDirectory: Boolean,
+    private val reportRejectList: List<String>
 ) : Processor(ignoreTestBuildDirectory) {
     override fun processReports() {
         logger.info("* Omni Reporting to Codecov started!")
 
         val repo = RepositoryBuilder().findGitDir(projectBaseDir).build()
-        val codacyReportsAggregate = allProjects.toAllCodecovSupportedFiles(supportedPredicate, projectBaseDir)
+        val codacyReportsAggregate = allProjects.toAllCodecovSupportedFiles(supportedPredicate, projectBaseDir, reportRejectList)
             .filter { (project, _) -> project.compileSourceRoots != null }
             .flatMap { (project, reports) ->
                 reports.map { report ->

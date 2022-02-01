@@ -20,7 +20,7 @@ internal class ProcessorKtTest {
         val omniProject = MavenOmniProject(listOf(test3Folder), MavenOmniBuild(test3Folder, test3Folder))
 
         val supportedPredicate = { _: String, _: File -> true }
-        val toReportFiles = listOf(omniProject).toReportFiles(supportedPredicate, false, rootFolder)
+        val toReportFiles = listOf(omniProject).toReportFiles(supportedPredicate, false, rootFolder, reportRejectList)
         toReportFiles.shouldNotBeNull()
         toReportFiles.entries.first().value.shouldHaveSize(1)
     }
@@ -33,7 +33,12 @@ internal class ProcessorKtTest {
         val test3Folder = File(rootFolder, "test3").absolutePath
         val omniProject = MavenOmniProject(listOf(test3Folder), MavenOmniBuild(test3Folder, test3Folder))
 
-        val toReportFiles = listOf(omniProject).toReportFiles(nonTestDirectoryPredicate, false, rootFolder)
+        val toReportFiles = listOf(omniProject).toReportFiles(
+            nonTestDirectoryPredicate,
+            false,
+            rootFolder,
+            reportRejectList
+        )
         toReportFiles.shouldNotBeNull()
         toReportFiles.entries.first().value.shouldHaveSize(1)
     }
