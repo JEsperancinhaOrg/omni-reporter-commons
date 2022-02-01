@@ -3,6 +3,7 @@ package org.jesperancinha.plugins.omni.reporter.pipelines
 import org.jesperancinha.plugins.omni.reporter.domain.api.CIRCLECI
 import org.jesperancinha.plugins.omni.reporter.domain.api.CUSTOM
 import org.jesperancinha.plugins.omni.reporter.domain.api.GITLAB
+import org.jesperancinha.plugins.omni.reporter.pipelines.BitBucketPipeline.Companion.BITBUCKET_BUILD_NUMBER
 import org.jesperancinha.plugins.omni.reporter.pipelines.CircleCIPipeline.Companion.CIRCLECI
 import org.jesperancinha.plugins.omni.reporter.pipelines.CircleCIPipeline.Companion.CIRCLE_BRANCH
 import org.jesperancinha.plugins.omni.reporter.pipelines.CircleCIPipeline.Companion.CIRCLE_BUILD_NUM
@@ -90,6 +91,7 @@ abstract class PipelineImpl(
 
         fun currentPipeline(fetchBranchNameFromEnv: Boolean): Pipeline = when {
             environment[CircleCIPipeline.CIRCLECI] != null -> CircleCIPipeline(fetchBranchNameFromEnv = fetchBranchNameFromEnv)
+            environment[BITBUCKET_BUILD_NUMBER] != null -> BitBucketPipeline(fetchBranchNameFromEnv = fetchBranchNameFromEnv)
             environment[GITHUB_RUN_ID] != null -> GitHubPipeline(fetchBranchNameFromEnv = fetchBranchNameFromEnv)
             environment[CI_JOB_ID] != null -> GitLabPipeline(fetchBranchNameFromEnv = fetchBranchNameFromEnv)
             else -> LocalPipeline(fetchBranchNameFromEnv = fetchBranchNameFromEnv)
@@ -183,6 +185,24 @@ class CircleCIPipeline(
         const val CIRCLE_BUILD_NUM = "CIRCLE_BUILD_NUM"
         const val CIRCLE_BRANCH = "CIRCLE_BRANCH"
         const val CIRCLE_BUILD_URL = "CIRCLE_BUILD_URL"
+    }
+}
+
+class BitBucketPipeline(
+    override val serviceName: String = findServiceName { "bitbucket-ci" },
+    override val serviceNumber: String? = findServiceNumber { findSystemVariableValue(BITBUCKET_BUILD_NUMBER) },
+    override val serviceJobId: String? = findServiceJobId { findSystemVariableValue(BITBUCKET_BUILD_NUMBER) },
+    override val fetchBranchNameFromEnv: Boolean,
+    override val branchRef: String? = if (fetchBranchNameFromEnv) findSystemVariableValue(BITBUCKET_BRANCH) else null,
+    override val branchName: String? = findSystemVariableValue(BITBUCKET_BRANCH),
+    override val codecovServiceName: String? = CUSTOM,
+    override val buildUrl: String? =
+       " ${findSystemVariableValue(BITBUCKET_GIT_HTTP_ORIGIN)}/addon/pipelines/home#!/results/$serviceJobId"
+) : PipelineImpl() {
+        companion object {
+            const val BITBUCKET_BUILD_NUMBER = "BITBUCKET_BUILD_NUMBER"
+            const val BITBUCKET_BRANCH = "BITBUCKET_BRANCH"
+            const val BITBUCKET_GIT_HTTP_ORIGIN = "BITBUCKET_GIT_HTTP_ORIGIN"
     }
 }
 
