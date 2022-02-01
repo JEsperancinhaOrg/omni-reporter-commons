@@ -10,8 +10,8 @@
 3. Support for Group Coverage with Branch Coverage (mostly Coveralls)
 4. Source encoding gets automatically chosen unless we configure flag `failOnNoEncoding` to `true`
 5. Change file detection to include content. The check should be based on text labels and parsing should be avoided.
-6. Remove files from the excluded list where applicable. Files in de excluded list are also used in a filename based algorithm. This needs to be changed.
-7. Add support for Circle CI builds
+6. Remove files from the excluded list where applicable (code wise). Files in de excluded list are also used in a filename based algorithm. This needs to be changed.
+7. Add support for Circle CI and BitBucket builds
 
 #### Release 0.1.2 - 2022/01/31
 
