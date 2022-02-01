@@ -11,7 +11,6 @@ import org.eclipse.jgit.revwalk.RevWalk
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodecovEndpoint.V4
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import org.slf4j.LoggerFactory
-import java.net.URLEncoder
 
 
 val TRAVIS = "travis"
@@ -69,7 +68,7 @@ class CodecovClient(
             genericUrl.set("job", this)
         }
         pipeline.buildUrl?.apply {
-            genericUrl.set("build_url", URLEncoder.encode(this, Charsets.UTF_8.name()))
+            genericUrl.set("build_url", this)
         }
         pipeline.codecovServiceName?.apply {
             genericUrl.set("service", this)
