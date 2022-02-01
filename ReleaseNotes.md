@@ -4,6 +4,7 @@
 
 1. Support for Group Coverage with Branch Coverage (mostly Coveralls)
 2. Source encoding gets automatically chosen unless we configure flag `failOnNoEncoding` to `true`
+3. Escape URL (Starting with BitBucket URL, this value appears to need to be encoded)
 
 #### Release 0.1.3 - 2022/02/1
 

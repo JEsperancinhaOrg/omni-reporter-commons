@@ -75,7 +75,7 @@ class CodecovProcessor(
             logger.info("- Response")
             logger.info(response)
         } catch (ex: Exception) {
-            val coverException = Exception(ex.message?.redact(token), ex.cause)
+                val coverException = Exception(ex.message?.redact(token), ex.cause)
             logger.error(reportNotSentErrorMessage(), coverException)
             if (failOnReportSending) {
                 throw coverException
