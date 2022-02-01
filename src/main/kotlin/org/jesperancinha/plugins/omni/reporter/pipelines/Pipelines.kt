@@ -197,7 +197,7 @@ class BitBucketPipeline(
     override val branchName: String? = findSystemVariableValue(BITBUCKET_BRANCH),
     override val codecovServiceName: String? = CUSTOM,
     override val buildUrl: String? =
-       " ${findSystemVariableValue(BITBUCKET_GIT_HTTP_ORIGIN)}/addon/pipelines/home#!/results/$serviceJobId"
+       "${findSystemVariableValue(BITBUCKET_GIT_HTTP_ORIGIN)}/addon/pipelines/home#!/results/$serviceJobId"
 ) : PipelineImpl() {
         companion object {
             const val BITBUCKET_BUILD_NUMBER = "BITBUCKET_BUILD_NUMBER"
