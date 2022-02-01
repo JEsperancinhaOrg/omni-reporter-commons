@@ -1,7 +1,13 @@
 package org.jesperancinha.plugins.omni.reporter.pipelines
 
+import org.jesperancinha.plugins.omni.reporter.domain.api.CIRCLECI
 import org.jesperancinha.plugins.omni.reporter.domain.api.CUSTOM
 import org.jesperancinha.plugins.omni.reporter.domain.api.GITLAB
+import org.jesperancinha.plugins.omni.reporter.pipelines.CircleCIPipeline.Companion.CIRCLECI
+import org.jesperancinha.plugins.omni.reporter.pipelines.CircleCIPipeline.Companion.CIRCLE_BRANCH
+import org.jesperancinha.plugins.omni.reporter.pipelines.CircleCIPipeline.Companion.CIRCLE_BUILD_NUM
+import org.jesperancinha.plugins.omni.reporter.pipelines.CircleCIPipeline.Companion.CIRCLE_BUILD_URL
+import org.jesperancinha.plugins.omni.reporter.pipelines.CircleCIPipeline.Companion.CIRCLE_WORKFLOW_ID
 import org.jesperancinha.plugins.omni.reporter.pipelines.GitHubPipeline.Companion.GITHUB_BASE_REF
 import org.jesperancinha.plugins.omni.reporter.pipelines.GitHubPipeline.Companion.GITHUB_REPOSITORY
 import org.jesperancinha.plugins.omni.reporter.pipelines.GitHubPipeline.Companion.GITHUB_RUN_ID
@@ -42,7 +48,14 @@ private val allEnv = listOf(
     GITHUB_RUN_ID,
     GITHUB_BASE_REF,
     GITHUB_SERVER_URL,
-    GITHUB_REPOSITORY
+    GITHUB_REPOSITORY,
+
+    //CircleCI
+    CircleCIPipeline.CIRCLECI,
+    CIRCLE_WORKFLOW_ID,
+    CIRCLE_BUILD_NUM,
+    CIRCLE_BRANCH,
+    CIRCLE_BUILD_URL
 
 )
 private val rejectWords = listOf("BUILD")
@@ -76,6 +89,7 @@ abstract class PipelineImpl(
     companion object {
 
         fun currentPipeline(fetchBranchNameFromEnv: Boolean): Pipeline = when {
+            environment[CircleCIPipeline.CIRCLECI] != null -> CircleCIPipeline(fetchBranchNameFromEnv = fetchBranchNameFromEnv)
             environment[GITHUB_RUN_ID] != null -> GitHubPipeline(fetchBranchNameFromEnv = fetchBranchNameFromEnv)
             environment[CI_JOB_ID] != null -> GitLabPipeline(fetchBranchNameFromEnv = fetchBranchNameFromEnv)
             else -> LocalPipeline(fetchBranchNameFromEnv = fetchBranchNameFromEnv)
@@ -150,6 +164,25 @@ class GitLabPipeline(
         const val CI_PIPELINE_ID = "CI_PIPELINE_ID"
         const val CI_EXTERNAL_PULL_REQUEST_ID = "CI_EXTERNAL_PULL_REQUEST_ID"
         const val CI_EXTERNAL_PULL_REQUEST_IID = "CI_EXTERNAL_PULL_REQUEST_IID"
+    }
+}
+
+class CircleCIPipeline(
+    override val serviceName: String = findServiceName { "circle-ci" },
+    override val serviceNumber: String? = findServiceNumber { findSystemVariableValue(CIRCLE_WORKFLOW_ID) },
+    override val serviceJobId: String? = findServiceJobId { findSystemVariableValue(CIRCLE_BUILD_NUM) },
+    override val fetchBranchNameFromEnv: Boolean,
+    override val branchRef: String? = if (fetchBranchNameFromEnv) findSystemVariableValue(CIRCLE_BRANCH) else null,
+    override val branchName: String? = findSystemVariableValue(CIRCLE_BRANCH),
+    override val codecovServiceName: String? = org.jesperancinha.plugins.omni.reporter.domain.api.CIRCLECI,
+    override val buildUrl: String? = findSystemVariableValue(CIRCLE_BUILD_URL)
+) : PipelineImpl() {
+    companion object {
+        const val CIRCLECI = "CIRCLECI"
+        const val CIRCLE_WORKFLOW_ID = "CIRCLE_WORKFLOW_ID"
+        const val CIRCLE_BUILD_NUM = "CIRCLE_BUILD_NUM"
+        const val CIRCLE_BRANCH = "CIRCLE_BRANCH"
+        const val CIRCLE_BUILD_URL = "CIRCLE_BUILD_URL"
     }
 }
 
