@@ -2,7 +2,7 @@
 
 [![Twitter URL](https://img.shields.io/twitter/url?logoColor=blue&style=social&url=https%3A%2F%2Fimg.shields.io%2Ftwitter%2Furl%3Fstyle%3Dsocial)](https://twitter.com/intent/tweet?text=%20Checkout%20this%20%40github%20repo%20by%20%40joaofse%20%F0%9F%91%A8%F0%9F%8F%BD%E2%80%8D%F0%9F%92%BB%3A%20https%3A//github.com/JEsperancinhaOrg/omni-reporter-commons)
 [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=omni-reporter-commons&color=informational)](https://github.com/JEsperancinhaOrg/omni-reporter-commons)
-[![GitHub release](https://img.shields.io/github/release-pre/JEsperancinhaOrg/omni-reporter-commons.svg)](#)
+[![GitHub release](https://img.shields.io/github/release/JEsperancinhaOrg/omni-reporter-commons.svg)](#)
 [![Maven Central](https://img.shields.io/maven-central/v/org.jesperancinha.plugins/omni-coveragereporter-commons)](https://mvnrepository.com/artifact/org.jesperancinha.plugins/omni-coveragereporter-commons)
 [![Sonatype Nexus](https://img.shields.io/nexus/r/https/oss.sonatype.org/org.jesperancinha.plugins/omni-coveragereporter-commons.svg)](https://search.maven.org/artifact/org.jesperancinha.plugins/omni-coveragereporter-commons)
 [![javadoc](https://javadoc.io/badge2/org.jesperancinha.plugins/omni-reporter-commons/javadoc.svg)](https://javadoc.io/doc/org.jesperancinha.plugins/omni-reporter-commons)
@@ -82,20 +82,20 @@ I hope you enjoyed this repository. If you did, you can optionally please buy me
 
 ## References
 
-- [Jacoco Open Source Code](https://github.com/jacoco/jacoco)
-- [What does each line of the lcov output file mean?](https://giters.com/linux-test-project/lcov/issues/113)
-- [Codacy Coverage Reporter](https://github.com/codacy/codacy-coverage-reporter)
-- [Jackson Module](https://medium.com/@foxjstephen/how-to-actually-parse-xml-in-java-kotlin-221a9309e6e8)
-- [XCode Environment Variable Reference](https://developer.apple.com/documentation/xcode/environment-variable-reference)
-- [Cross-CI reference](https://github.com/streamich/cross-ci)
-- [Coveralls API reference](https://docs.coveralls.io/api-reference)
-- [Git Hub Environment Variables](https://docs.github.com/en/actions/learn-github-actions/environment-variables)
-- [Git Lab Environment Variables](https://docs.gitlab.com/ee/ci/variables/predefined_variables.html)
-- [Check Run Reporter](https://github.com/marketplace/check-run-reporter)
-- [Codacy Maven Plugin](https://github.com/halkeye/codacy-maven-plugin)
-- [Coveralls Maven Plugin](https://github.com/trautonen/coveralls-maven-plugin)
-- [Example Java Maven for CodeCov](https://github.com/codecov/example-java-maven)
-- [CodeCov Maven Plugin](https://github.com/alexengrig/codecov-maven-plugin)
+-   [Jacoco Open Source Code](https://github.com/jacoco/jacoco)
+-   [What does each line of the lcov output file mean?](https://giters.com/linux-test-project/lcov/issues/113)
+-   [Codacy Coverage Reporter](https://github.com/codacy/codacy-coverage-reporter)
+-   [Jackson Module](https://medium.com/@foxjstephen/how-to-actually-parse-xml-in-java-kotlin-221a9309e6e8)
+-   [XCode Environment Variable Reference](https://developer.apple.com/documentation/xcode/environment-variable-reference)
+-   [Cross-CI reference](https://github.com/streamich/cross-ci)
+-   [Coveralls API reference](https://docs.coveralls.io/api-reference)
+-   [Git Hub Environment Variables](https://docs.github.com/en/actions/learn-github-actions/environment-variables)
+-   [Git Lab Environment Variables](https://docs.gitlab.com/ee/ci/variables/predefined_variables.html)
+-   [Check Run Reporter](https://github.com/marketplace/check-run-reporter)
+-   [Codacy Maven Plugin](https://github.com/halkeye/codacy-maven-plugin)
+-   [Coveralls Maven Plugin](https://github.com/trautonen/coveralls-maven-plugin)
+-   [Example Java Maven for CodeCov](https://github.com/codecov/example-java-maven)
+-   [CodeCov Maven Plugin](https://github.com/alexengrig/codecov-maven-plugin)
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 
