@@ -61,6 +61,102 @@ abstract class Processor(
     }
 }
 
+
+enum class ReportType(
+    val extension: String,
+    val validation: (File) -> Boolean,
+    val createTypedReportFileAdapter: (File, Boolean, File, File) -> OmniFileAdapter
+) {
+    JACOCO("xml",
+        {
+            val readText = it.readText()
+            readText.contains("report name") && readText.contains("package name")
+        },
+        { file,
+          failOnXmlParseError,
+          root,
+          projectBuildDirectory ->
+            OmniJacocoFileAdapter(
+                file,
+                failOnXmlParseError,
+                root,
+                projectBuildDirectory
+            )
+        }),
+    JACOCO_EXEC("exec", { true },
+        { file,
+          failOnXmlParseError,
+          root,
+          projectBuildDirectory ->
+            OmniJacocoExecFileAdapter(
+                file,
+                failOnXmlParseError,
+                root,
+                projectBuildDirectory
+            )
+        }),
+    LCOV("info",
+        {
+            val readText = it.readText()
+            readText.startsWith("TN") && readText.contains("\nSF:") && readText.contains("\nend_of_record")
+        },
+        { file,
+          failOnXmlParseError,
+          root,
+          projectBuildDirectory ->
+            OmniLCovFileAdapter(
+                file,
+                failOnXmlParseError,
+                root,
+                projectBuildDirectory
+            )
+        }),
+    CLOVER("xml",
+        {
+            val readText = it.readText()
+            readText.contains("coverage generated") && readText.contains("project timestamp")
+        },
+        { file,
+          failOnXmlParseError,
+          root,
+          projectBuildDirectory ->
+            OmniCloverFileAdapter(
+                file,
+                failOnXmlParseError,
+                root,
+                projectBuildDirectory
+            )
+        }),
+    COVERAGE_PY("json",
+        {
+            val readText = it.readText()
+            readText.contains("\"meta\":") && readText.contains("\"files\":")
+        },
+        { file,
+          failOnXmlParseError,
+          root,
+          projectBuildDirectory ->
+            OmniCoveragePyFileAdapter(
+                file,
+                failOnXmlParseError,
+                root,
+                projectBuildDirectory
+            )
+        });
+
+    companion object {
+        fun createReportFileAdapter(
+            file: File,
+            failOnXmlParseError: Boolean = false,
+            root: File,
+            projectBuildDirectory: File,
+        ): OmniFileAdapter? =
+            values().firstOrNull { file.extension == it.extension && it.validation(file) }?.let {
+                it.createTypedReportFileAdapter(file, failOnXmlParseError, root, projectBuildDirectory)
+            }
+    }
+}
+
 internal fun List<OmniProject?>.toReportFiles(
     supportedPredicate: (String, File) -> Boolean,
     failOnXmlParseError: Boolean,
@@ -88,43 +184,10 @@ private fun mapReportFile(
             report
         )
     } == true) {
-    val projectBuildDirectory =
-        File(project.build?.directory ?: throw ProjectDirectoryNotFoundException())
-    when {
-        report.name.startsWith("jacoco") && report.extension == "xml" -> {
-            OmniJacocoFileAdapter(
-                report,
-                failOnXmlParseError,
-                root,
-                projectBuildDirectory
-            )
-        }
-        report.name.startsWith("") && report.extension == "exec" -> OmniJacocoExecFileAdapter(
-            report,
-            failOnXmlParseError,
-            root,
-            projectBuildDirectory
-        )
-        report.name.startsWith("lcov") && report.extension == "info" -> OmniLCovFileAdapter(
-            report,
-            failOnXmlParseError,
-            root,
-            projectBuildDirectory
-        )
-        report.name.startsWith("clover") && report.extension == "xml" -> OmniCloverFileAdapter(
-            report,
-            failOnXmlParseError,
-            root,
-            projectBuildDirectory
-        )
-        report.name.startsWith("coverage") && report.extension == "json" -> OmniCoveragePyFileAdapter(
-            report,
-            failOnXmlParseError,
-            root,
-            projectBuildDirectory
-        )
-        else -> null
-    }?.let { if (it.isValid()) it else null }
+    val projectBuildDirectory = File(project.build?.directory ?: throw ProjectDirectoryNotFoundException())
+    ReportType.createReportFileAdapter(
+        report, failOnXmlParseError, root, projectBuildDirectory
+    )?.let { if (it.isValid()) it else null }
 } else null
 
 internal fun List<OmniProject?>.toAllCodecovSupportedFiles(
