@@ -49,6 +49,12 @@
 
 1. Root Path fix for internal elements
 
+---
+
+Support Upgrade Leap
+
+--- 
+
 #### Release 0.0.1 - 2022/01/22
 
 It was found that under certain circumstances (i.e. use of Gradle INFO level), the Http Google Clients lets client logs output go to the console. This represents a security risk because access keys to the coverage API's would be exposed in that way. This release covers that and avoids this way of
@@ -61,6 +67,10 @@ Below the stripped line, you'll find the release roadmap for the [omni-reporter-
 This library has its origins in this plugin. All the code has been moved to this library in order to be able to share code between the maven, gradle and future plugins.
 
 NOTE: Version 0.0.0 of this library is to be released as the inception version. Full test coverage and improvements will follow in upcoming versions.
+
+---
+
+Omni Reporter Plugin Releases
 
 ---
 
