@@ -5,7 +5,7 @@
 1. Support for Group Coverage with Branch Coverage (mostly Coveralls)
 2. Source encoding gets automatically chosen unless we configure flag `failOnNoEncoding` to `true`
 
-#### Release 0.1.5 - 2022/02/22
+#### Release 0.1.5 - 2022/02/02
 
 ###### Features
 
