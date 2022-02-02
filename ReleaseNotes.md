@@ -1,12 +1,16 @@
 # Omni Reporter Commons Release Notes
 
-
-#### Release 0.1.5 - Upcoming
-
-###### Features
+#### Release 0.1.6 - Upcoming
 
 1. Support for Group Coverage with Branch Coverage (mostly Coveralls)
 2. Source encoding gets automatically chosen unless we configure flag `failOnNoEncoding` to `true`
+
+#### Release 0.1.5 - 2022/02/22
+
+###### Features
+
+1. Remove possibility to send unknown reports in Omni to Codecov. Unfortunately Codecov crashes with unknown reports. The only way to check the correct format of the report is essentially to provide the implementation to do that. In this way report sending to Codecov becomes restricted to the known formats to Omni.
+2. Remove banned file name list - Since the algorithm no longer relies on the filename, it doesn't make sense anymore to keep doing that. Therefore, the banned list is removed.
 
 ###### Bugs
 

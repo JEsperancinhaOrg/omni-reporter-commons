@@ -5,27 +5,9 @@ import org.jesperancinha.plugins.omni.reporter.ProjectDirectoryNotFoundException
 import org.jesperancinha.plugins.omni.reporter.domain.reports.*
 import java.io.File
 
-private val CODECOV_SUPPORTED_REPORTS = arrayOf(
-    "jacoco" to "xml",
-    "lcov" to "txt",
-    "lcov" to "info",
-    "gcov" to "txt",
-    "golang" to "txt",
-    "lcov" to "txt",
-    "coverage" to "xml",
-    "coverage" to "json",
-    "cobertura" to "xml",
-    "clover" to "xml"
-)
-
-
 private val KNOWN_TEST_DIRECTORIES = arrayOf(
     "test-classes"
 )
-private val CODECOV_UNSUPPORTED_REPORTS = arrayOf(
-    "coverage-final" to "json"
-)
-
 
 /**
  * Created by jofisaes on 05/01/2022
@@ -192,8 +174,6 @@ internal fun List<OmniProject?>.toAllCodecovSupportedFiles(
                 .filter { !reportRejectList.contains(it.name) }
                 .filter { report ->
                     report.isFile
-                            && CODECOV_SUPPORTED_REPORTS.any { (name, ext) -> report.name.startsWith(name) && report.extension == ext }
-                            && !CODECOV_UNSUPPORTED_REPORTS.any { (name, ext) -> report.name.startsWith(name) && report.extension == ext }
                             && project.build?.let { build ->
                         supportedPredicate(
                             build.testOutputDirectory,
@@ -201,8 +181,8 @@ internal fun List<OmniProject?>.toAllCodecovSupportedFiles(
                         )
                     } ?: false
                 }
-                .map { report ->
-                    mapReportFile(report, project, supportedPredicate, false, root) ?: OmniGenericFileAdapter(report)
+                .mapNotNull { report ->
+                    mapReportFile(report, project, supportedPredicate, false, root)
                 }
                 .distinct()
         }.distinct()

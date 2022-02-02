@@ -52,7 +52,7 @@ class CodacyProcessor(
                             token = token,
                             apiToken = apiToken,
                             pipeline = currentPipeline,
-                            root = projectBaseDir ?: throw ProjectDirectoryNotFoundException(),
+                            root = projectBaseDir,
                             failOnUnknown = failOnUnknown,
                             failOnXmlParseError = failOnXmlParseError,
                             language = language

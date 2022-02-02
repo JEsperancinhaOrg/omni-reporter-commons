@@ -6,6 +6,7 @@ import org.jesperancinha.plugins.omni.reporter.domain.api.TEMP_DIR_VARIABLE
 import org.jesperancinha.plugins.omni.reporter.parsers.readXmlValue
 import org.jesperancinha.plugins.omni.reporter.parsers.snakeCaseJsonObjectMapper
 import org.jesperancinha.plugins.omni.reporter.parsers.xmlObjectMapper
+import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import java.io.File
 import java.nio.file.Path
@@ -92,31 +93,41 @@ class OmniJacocoExecFileAdapter(
 
     private val xmlReport = File(System.getProperty(TEMP_DIR_VARIABLE), "jacoco-${UUID.randomUUID()}.xml")
 
-    override fun getParentAdapter(): OmniReportParentFileAdapter {
+    private val innerParsedReport = OmniJacocoReportParserCommand(
+        execFiles = listOf(report),
+        classFiles = jarFile?.run { listOf(jarFile) } ?: emptyList(),
+        xmlReport = xmlReport
+    ).parse()
 
-        return OmniJacocoReportParserCommand(
-            execFiles = listOf(report),
-            classFiles = jarFile?.run { listOf(jarFile) } ?: emptyList(),
-            xmlReport = xmlReport
-        ).parse().let {
-            OmniJacocoReportParentFileAdapter(
-                it,
-                root,
-                includeBranchCoverage,
-            )
-        }
+    override fun getParentAdapter(): OmniReportParentFileAdapter {
+        logger.info("- Found jar file ${jarFile?.absolutePath} for jacoco exec file ${report.absolutePath}")
+        return OmniJacocoReportParentFileAdapter(
+            innerParsedReport,
+            root,
+            includeBranchCoverage,
+        )
     }
 
     override fun generatePayload(failOnUnknown: Boolean, compiledSourcesDirs: List<File>): String {
         val reportObject: Report = readXmlValue(xmlReport.inputStream())
-        val copy = reportObject.copy(
+        if (reportObject.packages.isEmpty()) {
+            logger.warn("- Jacoco Report XML generated file ${xmlReport.absolutePath} appears to be empty!")
+            logger.warn("- Actual file content is: ${xmlReport.readText()}")
+        }
+        val reportWithCorrectedPAths = reportObject.copy(
             packages = reportObject.packages.mapNotNull { p: Package ->
                 val newName = findNewPackageName(root, p, compiledSourcesDirs)
                 newName?.let { p.copy(name = newName) }
                     ?: if (failOnUnknown) throw CodecovPackageNotFoundException(p.name) else null
             }
         )
-        return xmlObjectMapper.writeValueAsString(copy)
+        val generatedReport = xmlObjectMapper.writeValueAsString(reportWithCorrectedPAths)
+        logger.debug("- Report payload of corrected generated Jacoco File ${xmlReport.absolutePath} is $generatedReport")
+        return generatedReport
+    }
+
+    companion object {
+        val logger: Logger = LoggerFactory.getLogger(OmniJacocoExecFileAdapter::class.java)
     }
 }
 

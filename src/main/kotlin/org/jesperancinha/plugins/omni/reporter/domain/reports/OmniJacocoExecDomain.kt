@@ -44,7 +44,9 @@ class OmniJacocoReportParserCommand(
         visitor.visitInfo(loader.sessionInfoStore.infos, loader.executionDataStore.contents)
         visitor.visitBundle(bundle, MultiSourceFileLocator(4))
         visitor.visitEnd()
-        return this.xmlReport.inputStream().readJacocoReport(failOnXmlParseError)
+        val readJacocoReport = this.xmlReport.inputStream().readJacocoReport(failOnXmlParseError)
+        logger.debug("- Generated XML Jacoco report with content ${this.xmlReport.readText()}")
+        return readJacocoReport
     }
 
     companion object {
