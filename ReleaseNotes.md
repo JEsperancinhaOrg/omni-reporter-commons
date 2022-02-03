@@ -5,6 +5,7 @@
 1. Support for Group Coverage with Branch Coverage (mostly Coveralls)
 2. Source encoding gets automatically chosen unless we configure flag `failOnNoEncoding` to `true`
 3. Overseer option: `overseer`. If this option is on, the plugin will look for external reports and sources automatically following the [Overseer.md](./Overseer.md) document rules
+4. GoLang Coverage Support (`.out` files)
 
 #### Release 0.1.5 - 2022/02/02
 
