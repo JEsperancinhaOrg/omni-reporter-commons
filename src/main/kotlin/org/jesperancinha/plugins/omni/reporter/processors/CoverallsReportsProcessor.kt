@@ -1,9 +1,6 @@
 package org.jesperancinha.plugins.omni.reporter.processors
 
-import org.jesperancinha.plugins.omni.reporter.CoverallsReportNotGeneratedException
-import org.jesperancinha.plugins.omni.reporter.CoverallsUrlNotConfiguredException
-import org.jesperancinha.plugins.omni.reporter.OmniProject
-import org.jesperancinha.plugins.omni.reporter.ProjectDirectoryNotFoundException
+import org.jesperancinha.plugins.omni.reporter.*
 import org.jesperancinha.plugins.omni.reporter.domain.api.CoverallsClient
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import org.jesperancinha.plugins.omni.reporter.pipelines.PipelineImpl
@@ -104,5 +101,39 @@ class CoverallsReportsProcessor(
 
     companion object {
         private val logger = LoggerFactory.getLogger(CoverallsReportsProcessor::class.java)
+        fun createProcessor(
+            coverallsToken: String?,
+            disableCoveralls: Boolean,
+            coverallsUrl: String?,
+            locationsCSV: String,
+            projectBaseDir: File?,
+            failOnUnknown: Boolean,
+            failOnReportNotFound: Boolean,
+            failOnReportSendingError: Boolean,
+            failOnXmlParsingError: Boolean,
+            fetchBranchNameFromEnv: Boolean,
+            branchCoverage: Boolean,
+            ignoreTestBuildDirectory: Boolean,
+            useCoverallsCount: Boolean,
+            reportRejectsCSV: String
+        ): CoverallsReportsProcessor {
+            val allOmniProjects = locationsCSV.toOmniProjects
+            return CoverallsReportsProcessor(
+                coverallsToken = coverallsToken,
+                disableCoveralls = disableCoveralls,
+                coverallsUrl = coverallsUrl,
+                allProjects = allOmniProjects,
+                projectBaseDir = projectBaseDir,
+                failOnUnknown = failOnUnknown,
+                failOnReportNotFound = failOnReportNotFound,
+                failOnReportSending = failOnReportSendingError,
+                failOnXmlParseError = failOnXmlParsingError,
+                fetchBranchNameFromEnv = fetchBranchNameFromEnv,
+                branchCoverage = branchCoverage,
+                ignoreTestBuildDirectory = ignoreTestBuildDirectory,
+                useCoverallsCount = useCoverallsCount,
+                reportRejectList = reportRejectsCSV.split(",")
+            )
+        }
     }
 }

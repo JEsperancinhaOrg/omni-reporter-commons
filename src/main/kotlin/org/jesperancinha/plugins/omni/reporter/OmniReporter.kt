@@ -27,6 +27,7 @@ class IncompleteCodacyApiTokenConfigurationException : RuntimeException()
 class CoverallsTokenNotFoundException : RuntimeException()
 
 class LanguageNotConfiguredException : RuntimeException()
+
 /**
  * Definition of the Project
  */
@@ -53,3 +54,13 @@ fun List<OmniProject>.injectExtraSourceFiles(extraSourceFolders: List<File>, roo
             .toMutableList())
         project
     }
+
+class OmniProjectGeneric(
+    override val compileSourceRoots: MutableList<String> = mutableListOf(),
+    override val build: OmniBuildGeneric? = null
+) : OmniProject
+
+class OmniBuildGeneric(
+    override val testOutputDirectory: String = "",
+    override val directory: String = ""
+) : OmniBuild

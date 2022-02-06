@@ -1,9 +1,24 @@
 package org.jesperancinha.plugins.omni.reporter.processors
 
+import org.jesperancinha.plugins.omni.reporter.OmniBuildGeneric
 import org.jesperancinha.plugins.omni.reporter.OmniProject
+import org.jesperancinha.plugins.omni.reporter.OmniProjectGeneric
 import org.jesperancinha.plugins.omni.reporter.ProjectDirectoryNotFoundException
 import org.jesperancinha.plugins.omni.reporter.domain.reports.*
 import java.io.File
+
+
+val String.toOmniProjects: List<OmniProject>
+    get() = split(",")
+        .map {
+            OmniProjectGeneric(
+                compileSourceRoots = this.split(",").toMutableList(),
+                build = OmniBuildGeneric(
+                    it,
+                    it
+                )
+            )
+        }
 
 private val KNOWN_TEST_DIRECTORIES = arrayOf(
     "test-classes"
