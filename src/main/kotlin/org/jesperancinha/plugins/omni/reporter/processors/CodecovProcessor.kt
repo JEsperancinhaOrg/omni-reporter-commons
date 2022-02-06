@@ -7,6 +7,7 @@ import org.jesperancinha.plugins.omni.reporter.OmniProject
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodecovClient
 import org.jesperancinha.plugins.omni.reporter.domain.api.redact
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
+import org.jesperancinha.plugins.omni.reporter.pipelines.PipelineImpl
 import org.jesperancinha.plugins.omni.reporter.transformers.AllParserToCodecov
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -18,70 +19,76 @@ private const val CODECOV_EOF = "\n<<<<<< EOF\n"
  * Created by jofisaes on 09/01/2022
  */
 class CodecovProcessor(
-    private val token: String,
+    private val codecovToken: String?,
+    private val disableCodecov: Boolean,
     private val codecovUrl: String?,
-    private val currentPipeline: Pipeline,
     private val allProjects: List<OmniProject?>,
     private val projectBaseDir: File,
     private val failOnReportNotFound: Boolean,
     private val failOnReportSending: Boolean,
     private val failOnUnknown: Boolean,
+    private val fetchBranchNameFromEnv: Boolean,
     private val ignoreTestBuildDirectory: Boolean,
-    private val reportRejectList: List<String>
+    private val reportRejectList: List<String>,
+    private val currentPipeline: Pipeline = PipelineImpl.currentPipeline(fetchBranchNameFromEnv)
 ) : Processor(ignoreTestBuildDirectory) {
     override fun processReports() {
-        logger.info("* Omni Reporting to Codecov started!")
+        codecovToken?.let { token ->
+            if (!disableCodecov)
+                logger.info("* Omni Reporting to Codecov started!")
 
-        val repo = RepositoryBuilder().findGitDir(projectBaseDir).build()
-        val codacyReportsAggregate = allProjects.toAllCodecovSupportedFiles(supportedPredicate, projectBaseDir, reportRejectList)
-            .filter { (project, _) -> project.compileSourceRoots != null }
-            .flatMap { (project, reports) ->
-                reports.map { report ->
-                    logger.info("- Parsing file: ${report.report.absolutePath}")
-                    AllParserToCodecov(
-                        token = token,
-                        pipeline = currentPipeline,
-                        root = projectBaseDir,
-                        failOnUnknown = failOnUnknown
-                    ).parseInput(
-                        report,
-                        project.compileSourceRoots?.map { file -> File(file) } ?: emptyList()
-                    )
+            val repo = RepositoryBuilder().findGitDir(projectBaseDir).build()
+            val codacyReportsAggregate =
+                allProjects.toAllCodecovSupportedFiles(supportedPredicate, projectBaseDir, reportRejectList)
+                    .filter { (project, _) -> project.compileSourceRoots != null }
+                    .flatMap { (project, reports) ->
+                        reports.map { report ->
+                            logger.info("- Parsing file: ${report.report.absolutePath}")
+                            AllParserToCodecov(
+                                token = token,
+                                pipeline = currentPipeline,
+                                root = projectBaseDir,
+                                failOnUnknown = failOnUnknown
+                            ).parseInput(
+                                report,
+                                project.compileSourceRoots?.map { file -> File(file) } ?: emptyList()
+                            )
+                        }
+                    }
+                    .joinToString(CODECOV_EOF)
+                    .plus(CODECOV_EOF)
+
+            if (codacyReportsAggregate.trim().isEmpty()) {
+                if (failOnReportNotFound) {
+                    throw CodacyReportNotGeneratedException(reportNotFoundErrorMessage())
+                } else {
+                    logger.warn(reportNotFoundErrorMessage())
+                    return
                 }
             }
-            .joinToString(CODECOV_EOF)
-            .plus(CODECOV_EOF)
+            val codecovClient = CodecovClient(
+                url = codecovUrl ?: throw CodecovUrlNotConfiguredException(),
+                token = token,
+                pipeline = currentPipeline,
+                repo = repo
+            )
 
-        if (codacyReportsAggregate.trim().isEmpty()) {
-            if (failOnReportNotFound) {
-                throw CodacyReportNotGeneratedException(reportNotFoundErrorMessage())
-            } else {
-                logger.warn(reportNotFoundErrorMessage())
-                return
-            }
-        }
-        val codecovClient = CodecovClient(
-            url = codecovUrl ?: throw CodecovUrlNotConfiguredException(),
-            token = token,
-            pipeline = currentPipeline,
-            repo = repo
-        )
+            try {
+                val response =
+                    codecovClient.submit(codacyReportsAggregate)
 
-        try {
-            val response =
-                codecovClient.submit(codacyReportsAggregate)
-
-            logger.info("* Omni Reporting to Codecov complete!")
-            logger.info("- Response")
-            logger.info(response)
-        } catch (ex: Exception) {
+                logger.info("* Omni Reporting to Codecov complete!")
+                logger.info("- Response")
+                logger.info(response)
+            } catch (ex: Exception) {
                 val coverException = Exception(ex.message?.redact(token), ex.cause)
-            logger.error(reportNotSentErrorMessage(), coverException)
-            if (failOnReportSending) {
-                throw coverException
+                logger.error(reportNotSentErrorMessage(), coverException)
+                if (failOnReportSending) {
+                    throw coverException
+                }
             }
-        }
 
+        }
     }
 
     override fun reportNotFoundErrorMessage(): String {

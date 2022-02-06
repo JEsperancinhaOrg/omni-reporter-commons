@@ -1,10 +1,8 @@
 package org.jesperancinha.plugins.omni.reporter.pipelines
 
-import org.jesperancinha.plugins.omni.reporter.domain.api.CIRCLECI
 import org.jesperancinha.plugins.omni.reporter.domain.api.CUSTOM
 import org.jesperancinha.plugins.omni.reporter.domain.api.GITLAB
 import org.jesperancinha.plugins.omni.reporter.pipelines.BitBucketPipeline.Companion.BITBUCKET_BUILD_NUMBER
-import org.jesperancinha.plugins.omni.reporter.pipelines.CircleCIPipeline.Companion.CIRCLECI
 import org.jesperancinha.plugins.omni.reporter.pipelines.CircleCIPipeline.Companion.CIRCLE_BRANCH
 import org.jesperancinha.plugins.omni.reporter.pipelines.CircleCIPipeline.Companion.CIRCLE_BUILD_NUM
 import org.jesperancinha.plugins.omni.reporter.pipelines.CircleCIPipeline.Companion.CIRCLE_BUILD_URL
@@ -89,6 +87,7 @@ abstract class PipelineImpl(
 
     companion object {
 
+        @JvmStatic
         fun currentPipeline(fetchBranchNameFromEnv: Boolean): Pipeline = when {
             environment[CircleCIPipeline.CIRCLECI] != null -> CircleCIPipeline(fetchBranchNameFromEnv = fetchBranchNameFromEnv)
             environment[BITBUCKET_BUILD_NUMBER] != null -> BitBucketPipeline(fetchBranchNameFromEnv = fetchBranchNameFromEnv)
@@ -197,12 +196,12 @@ class BitBucketPipeline(
     override val branchName: String? = findSystemVariableValue(BITBUCKET_BRANCH),
     override val codecovServiceName: String? = CUSTOM,
     override val buildUrl: String? =
-       "${findSystemVariableValue(BITBUCKET_GIT_HTTP_ORIGIN)}/addon/pipelines/home#!/results/$serviceJobId"
+        "${findSystemVariableValue(BITBUCKET_GIT_HTTP_ORIGIN)}/addon/pipelines/home#!/results/$serviceJobId"
 ) : PipelineImpl() {
-        companion object {
-            const val BITBUCKET_BUILD_NUMBER = "BITBUCKET_BUILD_NUMBER"
-            const val BITBUCKET_BRANCH = "BITBUCKET_BRANCH"
-            const val BITBUCKET_GIT_HTTP_ORIGIN = "BITBUCKET_GIT_HTTP_ORIGIN"
+    companion object {
+        const val BITBUCKET_BUILD_NUMBER = "BITBUCKET_BUILD_NUMBER"
+        const val BITBUCKET_BRANCH = "BITBUCKET_BRANCH"
+        const val BITBUCKET_GIT_HTTP_ORIGIN = "BITBUCKET_GIT_HTTP_ORIGIN"
     }
 }
 

@@ -6,6 +6,7 @@ import org.jesperancinha.plugins.omni.reporter.OmniProject
 import org.jesperancinha.plugins.omni.reporter.ProjectDirectoryNotFoundException
 import org.jesperancinha.plugins.omni.reporter.domain.api.CoverallsClient
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
+import org.jesperancinha.plugins.omni.reporter.pipelines.PipelineImpl
 import org.jesperancinha.plugins.omni.reporter.transformers.ReportingParserToCoveralls
 import org.slf4j.LoggerFactory
 import java.io.File
@@ -14,76 +15,84 @@ import java.io.File
  * Created by jofisaes on 06/01/2022
  */
 class CoverallsReportsProcessor(
-    private val coverallsToken: String,
+    private val coverallsToken: String?,
+    private val disableCoveralls: Boolean,
     private val coverallsUrl: String?,
-    private val currentPipeline: Pipeline,
     private val allProjects: List<OmniProject?>,
     private val projectBaseDir: File?,
     private val failOnUnknown: Boolean,
     private val failOnReportNotFound: Boolean,
     private val failOnReportSending: Boolean,
     private val failOnXmlParseError: Boolean,
+    private val fetchBranchNameFromEnv: Boolean,
     private val branchCoverage: Boolean,
     private val useCoverallsCount: Boolean,
     private val ignoreTestBuildDirectory: Boolean,
-    private val reportRejectList: List<String>
+    private val reportRejectList: List<String>,
+    private val currentPipeline: Pipeline = PipelineImpl.currentPipeline(fetchBranchNameFromEnv)
+
 ) : Processor(ignoreTestBuildDirectory) {
 
     override fun processReports() {
-        logger.info("* Omni Reporting to Coveralls started!")
+        coverallsToken?.let { token ->
+            if (!disableCoveralls) {
+                logger.info("* Omni Reporting to Coveralls started!")
 
-        val reportingParserToCoveralls =
-            ReportingParserToCoveralls(
-                token = coverallsToken,
-                pipeline = currentPipeline,
-                root = projectBaseDir ?: throw ProjectDirectoryNotFoundException(),
-                failOnUnknown = failOnUnknown,
-                includeBranchCoverage = branchCoverage,
-                useCoverallsCount = useCoverallsCount,
-                failOnXmlParseError = failOnXmlParseError,
-            )
 
-        allProjects.toReportFiles(supportedPredicate, failOnXmlParseError, projectBaseDir, reportRejectList)
-            .filter { (project, _) -> project.compileSourceRoots != null }
-            .forEach { (project, reports) ->
-                reports.forEach { report ->
-                    logger.info("- Parsing file: ${report.report.absolutePath}")
-                    reportingParserToCoveralls.parseInput(
-                        report,
-                        project.compileSourceRoots?.map { file -> File(file) } ?: emptyList()
+                val reportingParserToCoveralls =
+                    ReportingParserToCoveralls(
+                        token = token,
+                        pipeline = currentPipeline,
+                        root = projectBaseDir ?: throw ProjectDirectoryNotFoundException(),
+                        failOnUnknown = failOnUnknown,
+                        includeBranchCoverage = branchCoverage,
+                        useCoverallsCount = useCoverallsCount,
+                        failOnXmlParseError = failOnXmlParseError,
                     )
-                }
 
-            }
+                allProjects.toReportFiles(supportedPredicate, failOnXmlParseError, projectBaseDir, reportRejectList)
+                    .filter { (project, _) -> project.compileSourceRoots != null }
+                    .forEach { (project, reports) ->
+                        reports.forEach { report ->
+                            logger.info("- Parsing file: ${report.report.absolutePath}")
+                            reportingParserToCoveralls.parseInput(
+                                report,
+                                project.compileSourceRoots?.map { file -> File(file) } ?: emptyList()
+                            )
+                        }
 
-        val coverallsClient =
-            CoverallsClient(coverallsUrl ?: throw CoverallsUrlNotConfiguredException(), coverallsToken)
-        try {
-
-            val coverallsReport = reportingParserToCoveralls.coverallsReport
-
-            coverallsReport?.let {
-                if (it.sourceFiles.isEmpty()) return
-            }
-
-            val response =
-                coverallsClient.submit(coverallsReport ?: let {
-                    if (failOnReportNotFound) {
-                        throw CoverallsReportNotGeneratedException(reportNotFoundErrorMessage())
-                    } else {
-                        logger.warn(reportNotFoundErrorMessage())
-                        return
                     }
-                })
 
-            logger.info("* Omni Reporting to Coveralls complete!")
-            logger.info("- Response")
-            logger.info(response?.url)
-            logger.info(response?.message)
-        } catch (ex: Exception) {
-            logger.error("Failed sending Coveralls report!", ex)
-            if (failOnReportSending) {
-                throw ex
+                val coverallsClient =
+                    CoverallsClient(coverallsUrl ?: throw CoverallsUrlNotConfiguredException(), token)
+                try {
+
+                    val coverallsReport = reportingParserToCoveralls.coverallsReport
+
+                    coverallsReport?.let {
+                        if (it.sourceFiles.isEmpty()) return
+                    }
+
+                    val response =
+                        coverallsClient.submit(coverallsReport ?: let {
+                            if (failOnReportNotFound) {
+                                throw CoverallsReportNotGeneratedException(reportNotFoundErrorMessage())
+                            } else {
+                                logger.warn(reportNotFoundErrorMessage())
+                                return
+                            }
+                        })
+
+                    logger.info("* Omni Reporting to Coveralls complete!")
+                    logger.info("- Response")
+                    logger.info(response?.url)
+                    logger.info(response?.message)
+                } catch (ex: Exception) {
+                    logger.error("Failed sending Coveralls report!", ex)
+                    if (failOnReportSending) {
+                        throw ex
+                    }
+                }
             }
         }
     }
