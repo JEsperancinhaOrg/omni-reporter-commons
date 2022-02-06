@@ -17,7 +17,7 @@ internal class ProcessorKtTest {
         thisRoot.shouldNotBeNull()
         val rootFolder = thisRoot.toURI().toPath().toFile()
         val test3Folder = File(rootFolder, "test3").absolutePath
-        val omniProject = MavenOmniProject(listOf(test3Folder), MavenOmniBuild(test3Folder, test3Folder))
+        val omniProject = MavenOmniProject(mutableListOf(test3Folder), MavenOmniBuild(test3Folder, test3Folder))
         val supportedPredicate = { _: String, _: File -> true }
         val reportRejectList = emptyList<String>()
 
@@ -33,7 +33,7 @@ internal class ProcessorKtTest {
         thisRoot.shouldNotBeNull()
         val rootFolder = thisRoot.toURI().toPath().toFile()
         val test3Folder = File(rootFolder, "test3").absolutePath
-        val omniProject = MavenOmniProject(listOf(test3Folder), MavenOmniBuild(test3Folder, test3Folder))
+        val omniProject = MavenOmniProject(mutableListOf(test3Folder), MavenOmniBuild(test3Folder, test3Folder))
         val reportRejectList = emptyList<String>()
 
         val toReportFiles = listOf(omniProject).toReportFiles(
@@ -53,6 +53,6 @@ private class MavenOmniBuild(
 ) : OmniBuild
 
 private class MavenOmniProject(
-    override val compileSourceRoots: List<String>?,
+    override val compileSourceRoots: MutableList<String>?,
     override val build: OmniBuild?
 ) : OmniProject

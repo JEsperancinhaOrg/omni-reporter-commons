@@ -1,5 +1,7 @@
 package org.jesperancinha.plugins.omni.reporter
 
+import java.io.File
+
 class ProjectDirectoryNotFoundException : RuntimeException()
 
 class CoverallsUrlNotConfiguredException : RuntimeException()
@@ -29,7 +31,7 @@ class LanguageNotConfiguredException : RuntimeException()
  * Definition of the Project
  */
 interface OmniProject {
-    val compileSourceRoots: List<String>?
+    val compileSourceRoots: MutableList<String>?
     val build: OmniBuild?
 }
 
@@ -40,3 +42,14 @@ interface OmniBuild {
     val testOutputDirectory: String
     val directory: String
 }
+
+fun List<OmniProject>.injectExtraSourceFiles(extraSourceFolders: List<File>, root: File): List<OmniProject> =
+    this.map { project ->
+        val extraSourcesFoldersFound =
+            extraSourceFolders.filter { sourceFolder ->
+                !root.toPath().relativize(sourceFolder.toPath()).toString().contains("..")
+            }
+        project.compileSourceRoots?.addAll(extraSourcesFoldersFound.map { foundSourceFolder -> foundSourceFolder.absolutePath }
+            .toMutableList())
+        project
+    }

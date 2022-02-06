@@ -18,7 +18,7 @@ class CoverallsReportsProcessor(
     private val coverallsToken: String?,
     private val disableCoveralls: Boolean,
     private val coverallsUrl: String?,
-    private val allProjects: List<OmniProject?>,
+    private val allProjects: List<OmniProject>,
     private val projectBaseDir: File?,
     private val failOnUnknown: Boolean,
     private val failOnReportNotFound: Boolean,
