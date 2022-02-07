@@ -152,4 +152,4 @@ internal inline fun <reified T : Any> readXmlValue(inputStream: InputStream): T 
 }
 
 fun List<String>.lCovValue(param: String): String =
-    first { it.startsWith(param) }.split(":")[1]
+    firstOrNull { it.startsWith(param) }?.let { it.split(":")[1] } ?: "0"

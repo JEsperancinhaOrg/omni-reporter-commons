@@ -44,8 +44,19 @@ internal class ReportTypeTest {
     }
 
     @Test
-    fun `should detect LCov Report`() {
+    fun `should detect LCov Report 1`() {
         val resource = javaClass.getResource("/all.reports/lcov.info")
+        resource.shouldNotBeNull()
+        val testFile = resource.toURI().toPath().toFile()
+
+        createReportFileAdapter(testFile, false, root, root)
+            .shouldBeInstanceOf<OmniLCovFileAdapter>()
+
+    }
+
+    @Test
+    fun `should detect LCov Report 2`() {
+        val resource = javaClass.getResource("/all.reports/lcov2.info")
         resource.shouldNotBeNull()
         val testFile = resource.toURI().toPath().toFile()
 

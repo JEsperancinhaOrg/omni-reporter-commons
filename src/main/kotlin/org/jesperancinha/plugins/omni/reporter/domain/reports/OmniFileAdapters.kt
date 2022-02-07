@@ -30,13 +30,6 @@ abstract class OmniFileAdapter(
     open val report: File
 ) {
     abstract fun getParentAdapter(): OmniReportParentFileAdapter
-    fun isValid() = try {
-        getParentAdapter()
-        true
-    } catch (ex: Exception) {
-        false
-    }
-
     abstract fun generatePayload(failOnUnknown: Boolean, compiledSourcesDirs: List<File>): String
 }
 
@@ -168,7 +161,7 @@ class OmniLCovFileAdapter(
     }
 
     companion object {
-        val logger: org.slf4j.Logger = LoggerFactory.getLogger(OmniLCovFileAdapter::class.java)
+        val logger: Logger = LoggerFactory.getLogger(OmniLCovFileAdapter::class.java)
     }
 }
 

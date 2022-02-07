@@ -217,5 +217,5 @@ private fun mapReportFile(
     val projectBuildDirectory = File(project.build?.directory ?: throw ProjectDirectoryNotFoundException())
     ReportType.createReportFileAdapter(
         report, failOnXmlParseError, root, projectBuildDirectory
-    )?.let { if (it.isValid()) it else null }
+    )
 } else null

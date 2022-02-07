@@ -8,8 +8,18 @@ import org.junit.jupiter.api.Assertions.*
 internal class OmniLCovDomainKtTest {
 
     @Test
-    fun readLCovReport() {
+    fun `should read LCov report 1`() {
         val lcovFileStream = javaClass.getResourceAsStream("/lcov.info")
+
+        lcovFileStream.shouldNotBeNull()
+        val readLCovReport = lcovFileStream.readLCovReport()
+
+        readLCovReport.shouldNotBeNull()
+    }
+
+    @Test
+    fun `should read LCov report 2`() {
+        val lcovFileStream = javaClass.getResourceAsStream("/all.reports/lcov2.info")
 
         lcovFileStream.shouldNotBeNull()
         val readLCovReport = lcovFileStream.readLCovReport()

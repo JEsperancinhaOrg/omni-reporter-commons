@@ -53,6 +53,7 @@ data class CodacyApiTokenConfig(
     val codacyProjectName: String
 ) {
     companion object {
+        @JvmStatic
         fun isApiTokenConfigure(
             codacyApiToken: String?,
             codacyOrganizationProvider: String?,
