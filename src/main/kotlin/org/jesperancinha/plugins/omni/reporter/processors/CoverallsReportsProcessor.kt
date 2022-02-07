@@ -101,6 +101,7 @@ class CoverallsReportsProcessor(
 
     companion object {
         private val logger = LoggerFactory.getLogger(CoverallsReportsProcessor::class.java)
+        @JvmStatic
         fun createProcessor(
             coverallsToken: String?,
             disableCoveralls: Boolean,
