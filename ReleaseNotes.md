@@ -7,7 +7,7 @@
 3. Overseer option: `overseer`. If this option is on, the plugin will look for external reports and sources automatically following the [Overseer.md](./Overseer.md) document rules
 4. GoLang Coverage Support (`.out` files)
 
-#### Release 0.2.0 - 2022/02/07 ** On Hold
+#### Release 0.2.0 - 2022/02/07
 
 1. Interoperability
 - Important Static methods made available to `Clojure` and `Java`
@@ -16,10 +16,6 @@
 4. Clojure's language support
 
 > This release contains breaking changes because it now supports interoperability between Kotlin and other JVM languages
-
----
-
-2022/02/07 - Release is on hold due to Coveralls not seeming to be able to interpret reports coming from GitLab.
 
 #### Release 0.1.5 - 2022/02/02
 
