@@ -55,6 +55,14 @@ fun List<OmniProject>.injectExtraSourceFiles(extraSourceFolders: List<File>, roo
         project
     }
 
+fun List<File>.toExtraProjects(extraSourceFolders: List<File>): List<OmniProject> =
+    map {
+        OmniProjectGeneric(
+            extraSourceFolders.map { src -> src.absolutePath }.toMutableList(),
+            OmniBuildGeneric(it.absolutePath, it.absolutePath)
+        )
+    }
+
 class OmniProjectGeneric(
     override val compileSourceRoots: MutableList<String> = mutableListOf(),
     override val build: OmniBuildGeneric? = null

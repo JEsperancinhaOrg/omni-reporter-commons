@@ -37,7 +37,9 @@ class CodacyProcessor(
     private val fetchBranchNameFromEnv: Boolean,
     private val ignoreTestBuildDirectory: Boolean,
     private val reportRejectList: List<String>,
-    private val currentPipeline: Pipeline = PipelineImpl.currentPipeline(fetchBranchNameFromEnv)
+    private val currentPipeline: Pipeline = PipelineImpl.currentPipeline(fetchBranchNameFromEnv),
+    extraSourceFolders: List<File>,
+    extraReportFolders: List<File>
 ) : Processor(ignoreTestBuildDirectory) {
     override fun processReports() {
         logger.info("Codacy API fully configured: ${this.isCodacyAPIConfigured}")

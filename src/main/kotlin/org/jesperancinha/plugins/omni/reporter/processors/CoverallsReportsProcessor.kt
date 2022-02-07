@@ -1,6 +1,9 @@
 package org.jesperancinha.plugins.omni.reporter.processors
 
-import org.jesperancinha.plugins.omni.reporter.*
+import org.jesperancinha.plugins.omni.reporter.CoverallsReportNotGeneratedException
+import org.jesperancinha.plugins.omni.reporter.CoverallsUrlNotConfiguredException
+import org.jesperancinha.plugins.omni.reporter.OmniProject
+import org.jesperancinha.plugins.omni.reporter.ProjectDirectoryNotFoundException
 import org.jesperancinha.plugins.omni.reporter.domain.api.CoverallsClient
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import org.jesperancinha.plugins.omni.reporter.pipelines.PipelineImpl
@@ -26,7 +29,9 @@ class CoverallsReportsProcessor(
     private val useCoverallsCount: Boolean,
     private val ignoreTestBuildDirectory: Boolean,
     private val reportRejectList: List<String>,
-    private val currentPipeline: Pipeline = PipelineImpl.currentPipeline(fetchBranchNameFromEnv)
+    private val currentPipeline: Pipeline = PipelineImpl.currentPipeline(fetchBranchNameFromEnv),
+    extraSourceFolders: List<File>,
+    extraReportFolders: List<File>
 
 ) : Processor(ignoreTestBuildDirectory) {
 
@@ -101,6 +106,7 @@ class CoverallsReportsProcessor(
 
     companion object {
         private val logger = LoggerFactory.getLogger(CoverallsReportsProcessor::class.java)
+
         @JvmStatic
         fun createProcessor(
             coverallsToken: String?,
@@ -116,6 +122,8 @@ class CoverallsReportsProcessor(
             branchCoverage: Boolean,
             ignoreTestBuildDirectory: Boolean,
             useCoverallsCount: Boolean,
+            extraSourceFoldersCSV: String = "",
+            extraReportFoldersCSV: String = "",
             reportRejectsCSV: String
         ): CoverallsReportsProcessor {
             val allOmniProjects = locationsCSV.toOmniProjects
@@ -123,7 +131,6 @@ class CoverallsReportsProcessor(
                 coverallsToken = coverallsToken,
                 disableCoveralls = disableCoveralls,
                 coverallsUrl = coverallsUrl,
-                allProjects = allOmniProjects,
                 projectBaseDir = projectBaseDir,
                 failOnUnknown = failOnUnknown,
                 failOnReportNotFound = failOnReportNotFound,
@@ -131,8 +138,11 @@ class CoverallsReportsProcessor(
                 failOnXmlParseError = failOnXmlParsingError,
                 fetchBranchNameFromEnv = fetchBranchNameFromEnv,
                 branchCoverage = branchCoverage,
-                ignoreTestBuildDirectory = ignoreTestBuildDirectory,
                 useCoverallsCount = useCoverallsCount,
+                ignoreTestBuildDirectory = ignoreTestBuildDirectory,
+                allProjects = allOmniProjects,
+                extraSourceFolders = extraSourceFoldersCSV.split(",").map { File(it) },
+                extraReportFolders = extraReportFoldersCSV.split(",").map { File(it) },
                 reportRejectList = reportRejectsCSV.split(",")
             )
         }
