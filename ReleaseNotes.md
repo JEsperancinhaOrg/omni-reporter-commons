@@ -1,19 +1,21 @@
 # Omni Reporter Commons Release Notes
 
-#### Release 0.1.7 - Upcoming
+#### Release 0.2.1 - Upcoming
 
 1. Support for Group Coverage with Branch Coverage (mostly Coveralls)
 2. Source encoding gets automatically chosen unless we configure flag `failOnNoEncoding` to `true`
 3. Overseer option: `overseer`. If this option is on, the plugin will look for external reports and sources automatically following the [Overseer.md](./Overseer.md) document rules
+4. GoLang Coverage Support (`.out` files)
 
-#### Release 0.1.6 - Upcoming
+#### Release 0.2.0 - 2022/02/07
 
-1. GoLang Coverage Support (`.out` files)
-2. Interoperability
+1. Interoperability
 - Important Static methods made available to `Clojure` and `Java`
 - Reduction of the need to create instances on the fly.
 3. LCov Expected Values Parsing Improvements - The absence of some values would generate an unwanted exception
 4. Clojure's language support
+
+> This release contains breaking changes because it now supports interoperability between Kotlin and other JVM languages
 
 #### Release 0.1.5 - 2022/02/02
 
