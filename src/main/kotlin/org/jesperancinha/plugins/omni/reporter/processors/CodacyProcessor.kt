@@ -2,10 +2,7 @@ package org.jesperancinha.plugins.omni.reporter.processors
 
 import org.eclipse.jgit.lib.Repository
 import org.eclipse.jgit.lib.RepositoryBuilder
-import org.jesperancinha.plugins.omni.reporter.CodacyUrlNotConfiguredException
-import org.jesperancinha.plugins.omni.reporter.IncompleteCodacyApiTokenConfigurationException
-import org.jesperancinha.plugins.omni.reporter.OmniProject
-import org.jesperancinha.plugins.omni.reporter.ProjectDirectoryNotFoundException
+import org.jesperancinha.plugins.omni.reporter.*
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyApiTokenConfig
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyClient
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyReport
@@ -44,7 +41,7 @@ class CodacyProcessor(
         if ((this.isCodacyAPIConfigured || codacyToken != null) && !disableCodacy) {
             val apiToken = codacyApiToken?.let {
                 CodacyApiTokenConfig(
-                    codacyApiToken = codacyApiToken ?: throw IncompleteCodacyApiTokenConfigurationException(),
+                    codacyApiToken = codacyApiToken,
                     codacyOrganizationProvider = codacyOrganizationProvider
                         ?: throw IncompleteCodacyApiTokenConfigurationException(),
                     codacyUsername = codacyUsername ?: throw IncompleteCodacyApiTokenConfigurationException(),
@@ -86,7 +83,15 @@ class CodacyProcessor(
 
                 logger.info("- Found ${reportsPerLanguage.size} reports for language ${language.lang}")
                 if (reportsPerLanguage.size > 1) {
-                    reportsPerLanguage.forEach { codacyReport -> sendCodacyReport(language, repo, codacyReport,apiToken, true) }
+                    reportsPerLanguage.forEach { codacyReport ->
+                        sendCodacyReport(
+                            language,
+                            repo,
+                            codacyReport,
+                            apiToken,
+                            true
+                        )
+                    }
                     val response = CodacyClient(
                         token = codacyToken,
                         apiToken = apiToken,
@@ -139,6 +144,51 @@ class CodacyProcessor(
 
     companion object {
         private val logger = LoggerFactory.getLogger(CodacyProcessor::class.java)
+
+        @JvmStatic
+        fun createProcessor(
+            codacyToken: String?,
+            codacyApiToken: String?,
+            codacyOrganizationProvider: String?,
+            codacyUsername: String?,
+            codacyProjectName: String?,
+            disableCodacy: Boolean,
+            codacyUrl: String?,
+            locationsCSV: String,
+            projectBaseDir: String?,
+            failOnReportNotFound: Boolean,
+            failOnReportSendingError: Boolean,
+            failOnXmlParsingError: Boolean,
+            failOnUnknown: Boolean,
+            fetchBranchNameFromEnv: Boolean,
+            ignoreTestBuildDirectory: Boolean,
+            extraSourceFoldersCSV: String = "",
+            extraReportFoldersCSV: String = "",
+            reportRejectsCSV: String = ""
+        ): CodacyProcessor {
+            val extraSourceFolders = extraSourceFoldersCSV.split(",").map { File(it) }
+            val extraReportFolders = extraReportFoldersCSV.split(",").map { File(it) }
+            val allOmniProjects =
+                locationsCSV.toOmniProjects.plus(extraReportFolders.toExtraProjects(extraSourceFolders))
+            return CodacyProcessor(
+                codacyToken = codacyToken,
+                codacyApiToken = codacyApiToken,
+                codacyOrganizationProvider = codacyOrganizationProvider,
+                codacyUsername = codacyUsername,
+                codacyProjectName = codacyProjectName,
+                disableCodacy = disableCodacy,
+                codacyUrl = codacyUrl,
+                projectBaseDir = projectBaseDir?.let { File(it) } ?: throw ProjectDirectoryNotFoundException(),
+                failOnReportNotFound = failOnReportNotFound,
+                failOnReportSending = failOnReportSendingError,
+                failOnXmlParseError = failOnXmlParsingError,
+                failOnUnknown = failOnUnknown,
+                fetchBranchNameFromEnv = fetchBranchNameFromEnv,
+                ignoreTestBuildDirectory = ignoreTestBuildDirectory,
+                allProjects = allOmniProjects,
+                reportRejectList = reportRejectsCSV.split(",")
+            )
+        }
     }
 }
 

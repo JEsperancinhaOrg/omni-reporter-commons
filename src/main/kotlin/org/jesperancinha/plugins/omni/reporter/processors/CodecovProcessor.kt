@@ -1,9 +1,7 @@
 package org.jesperancinha.plugins.omni.reporter.processors
 
 import org.eclipse.jgit.lib.RepositoryBuilder
-import org.jesperancinha.plugins.omni.reporter.CodacyReportNotGeneratedException
-import org.jesperancinha.plugins.omni.reporter.CodecovUrlNotConfiguredException
-import org.jesperancinha.plugins.omni.reporter.OmniProject
+import org.jesperancinha.plugins.omni.reporter.*
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodecovClient
 import org.jesperancinha.plugins.omni.reporter.domain.api.redact
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
@@ -95,11 +93,47 @@ class CodecovProcessor(
         return "Codacy report was not generated! This usually means that no reports have been found."
     }
 
-    override fun reportNotSentErrorMessage(): String? {
+    override fun reportNotSentErrorMessage(): String {
         return "Failed sending Codacy report!"
     }
 
     companion object {
         val logger: Logger = LoggerFactory.getLogger(CodecovProcessor::class.java)
+
+        @JvmStatic
+        fun createProcessor(
+            codecovToken: String?,
+            disableCodecov: Boolean,
+            codecovUrl: String?,
+            locationsCSV: String,
+            projectBaseDir: String?,
+            failOnReportNotFound: Boolean,
+            failOnReportSendingError: Boolean,
+            failOnUnknown: Boolean,
+            fetchBranchNameFromEnv: Boolean,
+            ignoreTestBuildDirectory: Boolean,
+            extraSourceFoldersCSV: String = "",
+            extraReportFoldersCSV: String = "",
+            reportRejectsCSV: String = ""
+        ): CodecovProcessor {
+            val extraSourceFolders = extraSourceFoldersCSV.split(",").map { File(it) }
+            val extraReportFolders = extraReportFoldersCSV.split(",").map { File(it) }
+            val allOmniProjects =
+                locationsCSV.toOmniProjects.plus(extraReportFolders.toExtraProjects(extraSourceFolders))
+
+            return CodecovProcessor(
+                codecovToken = codecovToken,
+                disableCodecov = disableCodecov,
+                codecovUrl = codecovUrl,
+                projectBaseDir = projectBaseDir?.let { File(it) } ?: throw ProjectDirectoryNotFoundException(),
+                failOnReportNotFound = failOnReportNotFound,
+                failOnReportSending = failOnReportSendingError,
+                failOnUnknown = failOnUnknown,
+                fetchBranchNameFromEnv = fetchBranchNameFromEnv,
+                ignoreTestBuildDirectory = ignoreTestBuildDirectory,
+                allProjects = allOmniProjects,
+                reportRejectList = reportRejectsCSV.split(",")
+            )
+        }
     }
 }
