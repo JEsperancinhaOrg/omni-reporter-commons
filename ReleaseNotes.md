@@ -13,6 +13,8 @@
 - Important Static methods made available to `Clojure` and `Java`
 - Reduction of the need to create instances on the fly.
 3. LCov Expected Values Parsing Improvements - The absence of some values would generate an unwanted exception
+4. Clojure's language support
+
 #### Release 0.1.5 - 2022/02/02
 
 ###### Features

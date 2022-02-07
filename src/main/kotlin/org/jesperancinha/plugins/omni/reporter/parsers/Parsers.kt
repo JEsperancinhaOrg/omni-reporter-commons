@@ -60,5 +60,6 @@ enum class Language(val ext: List<String>, val lang: String) {
     SCALA(listOf("scala"), "Scala"),
     PYTHON(listOf("py"), "Python"),
     JAVASCRIPT(listOf("js"), "JavaScript"),
-    TYPESCRIPT(listOf("ts", "tsx"), "TypeScript")
+    TYPESCRIPT(listOf("ts", "tsx"), "TypeScript"),
+    CLOJURE(listOf("clj"), "Clojure")
 }
