@@ -1,9 +1,6 @@
 package org.jesperancinha.plugins.omni.reporter.processors
 
-import org.jesperancinha.plugins.omni.reporter.CoverallsReportNotGeneratedException
-import org.jesperancinha.plugins.omni.reporter.CoverallsUrlNotConfiguredException
-import org.jesperancinha.plugins.omni.reporter.OmniProject
-import org.jesperancinha.plugins.omni.reporter.ProjectDirectoryNotFoundException
+import org.jesperancinha.plugins.omni.reporter.*
 import org.jesperancinha.plugins.omni.reporter.domain.api.CoverallsClient
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import org.jesperancinha.plugins.omni.reporter.pipelines.PipelineImpl
@@ -30,9 +27,6 @@ class CoverallsReportsProcessor(
     private val ignoreTestBuildDirectory: Boolean,
     private val reportRejectList: List<String>,
     private val currentPipeline: Pipeline = PipelineImpl.currentPipeline(fetchBranchNameFromEnv),
-    extraSourceFolders: List<File>,
-    extraReportFolders: List<File>
-
 ) : Processor(ignoreTestBuildDirectory) {
 
     override fun processReports() {
@@ -124,9 +118,12 @@ class CoverallsReportsProcessor(
             useCoverallsCount: Boolean,
             extraSourceFoldersCSV: String = "",
             extraReportFoldersCSV: String = "",
-            reportRejectsCSV: String
+            reportRejectsCSV: String = ""
         ): CoverallsReportsProcessor {
-            val allOmniProjects = locationsCSV.toOmniProjects
+            val extraSourceFolders = extraSourceFoldersCSV.split(",").map { File(it) }
+            val extraReportFolders = extraReportFoldersCSV.split(",").map { File(it) }
+            val allOmniProjects =
+                locationsCSV.toOmniProjects.plus(extraReportFolders.toExtraProjects(extraSourceFolders))
             return CoverallsReportsProcessor(
                 coverallsToken = coverallsToken,
                 disableCoveralls = disableCoveralls,
@@ -141,8 +138,6 @@ class CoverallsReportsProcessor(
                 useCoverallsCount = useCoverallsCount,
                 ignoreTestBuildDirectory = ignoreTestBuildDirectory,
                 allProjects = allOmniProjects,
-                extraSourceFolders = extraSourceFoldersCSV.split(",").map { File(it) },
-                extraReportFolders = extraReportFoldersCSV.split(",").map { File(it) },
                 reportRejectList = reportRejectsCSV.split(",")
             )
         }

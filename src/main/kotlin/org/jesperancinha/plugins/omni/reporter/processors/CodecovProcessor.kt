@@ -22,17 +22,15 @@ class CodecovProcessor(
     private val codecovToken: String?,
     private val disableCodecov: Boolean,
     private val codecovUrl: String?,
-    private val allProjects: List<OmniProject?>,
     private val projectBaseDir: File,
     private val failOnReportNotFound: Boolean,
     private val failOnReportSending: Boolean,
     private val failOnUnknown: Boolean,
     private val fetchBranchNameFromEnv: Boolean,
     private val ignoreTestBuildDirectory: Boolean,
-    private val reportRejectList: List<String>,
     private val currentPipeline: Pipeline = PipelineImpl.currentPipeline(fetchBranchNameFromEnv),
-    extraSourceFolders: List<File>,
-    extraReportFolders: List<File>
+    private val allProjects: List<OmniProject?>,
+    private val reportRejectList: List<String>,
 ) : Processor(ignoreTestBuildDirectory) {
     override fun processReports() {
         codecovToken?.let { token ->
