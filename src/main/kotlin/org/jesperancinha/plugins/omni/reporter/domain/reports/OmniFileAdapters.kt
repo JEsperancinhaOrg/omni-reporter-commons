@@ -12,7 +12,7 @@ import java.io.File
 import java.nio.file.Path
 import java.util.*
 
-internal val JAR_FILE_PATTERNS = listOf(".*classes\\.jar$", ".*libs\\/.*\\.jar$")
+internal val JAR_FILE_PATTERNS = listOf(".*classes\\.jar$", ".*libs\\/.*\\.jar$","scala.*/.*\\.jar","scala.*/sbt.*/.*\\.jar")
 
 /**
  * Searches for a compatible Jar file to extract Jacoco.xml data

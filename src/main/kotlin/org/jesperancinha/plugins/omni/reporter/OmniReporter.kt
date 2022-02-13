@@ -1,6 +1,6 @@
 package org.jesperancinha.plugins.omni.reporter
 
-import org.jesperancinha.plugins.omni.reporter.parsers.readJsonValue
+import org.jesperancinha.plugins.omni.reporter.parsers.readCamelCaseJsonValue
 import org.jesperancinha.plugins.omni.reporter.processors.CodacyProcessor
 import org.jesperancinha.plugins.omni.reporter.processors.CodecovProcessor
 import org.jesperancinha.plugins.omni.reporter.processors.CoverallsReportsProcessor
@@ -71,7 +71,10 @@ fun List<File>.toExtraProjects(extraSourceFolders: List<File>): List<OmniProject
 class OmniProjectGeneric(
     override val compileSourceRoots: MutableList<String> = mutableListOf(),
     override val build: OmniBuildGeneric? = null
-) : OmniProject
+) : OmniProject {
+    constructor(compileSourceRootsString: String, omniBuildGeneric: OmniBuildGeneric?)
+            : this(compileSourceRootsString.split(",").toMutableList(), omniBuildGeneric)
+}
 
 class OmniBuildGeneric(
     override val testOutputDirectory: String = "",
@@ -107,6 +110,35 @@ open class OmniReporterCommon(
     val extraReportFolders: List<File> = emptyList(),
     val reportRejectList: List<String> = emptyList()
 ) {
+    constructor(omniConfig: OmniConfig) : this(
+        omniConfig.coverallsUrl,
+        omniConfig.codacyUrl,
+        omniConfig.codecovUrl,
+        omniConfig.sourceEncoding,
+        omniConfig.projectBaseDir?.let { File(it) } ?: File("."),
+        omniConfig.failOnNoEncoding ?: false,
+        omniConfig.failOnUnknown ?: false,
+        omniConfig.failOnReportNotFound ?: false,
+        omniConfig.failOnReportSendingError ?: false,
+        omniConfig.failOnXmlParsingError ?: false,
+        omniConfig.disableCoveralls ?: false,
+        omniConfig.disableCodacy ?: false,
+        omniConfig.disableCodecov ?: false,
+        omniConfig.ignoreTestBuildDirectory ?: false,
+        omniConfig.useCoverallsCount ?: true,
+        omniConfig.branchCoverage ?: false,
+        omniConfig.fetchBranchNameFromEnv ?: false,
+        omniConfig.coverallsToken,
+        omniConfig.codecovToken,
+        omniConfig.codacyToken,
+        omniConfig.codacyApiToken,
+        omniConfig.codacyOrganizationProvider,
+        omniConfig.codacyUsername,
+        omniConfig.codacyProjectName,
+        omniConfig.extraSourceFolder?.let { it.split(",").map { path -> File(path) } } ?: emptyList(),
+        omniConfig.extraReportFolders?.let { it.split(",").map { path -> File(path) } } ?: emptyList(),
+        omniConfig.reportRejectList?.split(",") ?: emptyList()
+    )
 
     fun execute(allOmniProjects: List<OmniProject>) {
         logLine()
@@ -209,6 +241,9 @@ open class OmniReporterCommon(
         private val logger = LoggerFactory.getLogger(OmniReporterCommon::class.java)
 
         private const val OMNI_CHARACTER_LINE_NUMBER = 150
+
+        @JvmStatic
+        fun readOmniConfig() = readCamelCaseJsonValue<OmniConfig>(File("./omni-config.json").inputStream())
     }
 }
 
@@ -235,7 +270,7 @@ data class OmniConfig(
     val codacyToken: String? = null,
     val codacyApiToken: String? = null,
     val codacyOrganizationProvider: String? = null,
-    val codacyUserName: String? = null,
+    val codacyUsername: String? = null,
     val codacyProjectName: String? = null,
     val extraSourceFolder: String? = null,
     val extraReportFolders: String? = null,

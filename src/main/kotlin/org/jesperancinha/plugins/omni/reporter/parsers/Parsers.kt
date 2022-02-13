@@ -35,6 +35,10 @@ internal inline fun <reified T : Any> readJsonValue(inputStream: InputStream): T
     return snakeCaseJsonObjectMapper.readValue(inputStream)
 }
 
+internal inline fun <reified T : Any> readCamelCaseJsonValue(inputStream: InputStream): T {
+    return camelCaseJsonObjectMapper.readValue(inputStream)
+}
+
 internal inline fun <reified T : Any> readJsonValue(byteArray: ByteArray): T {
     return snakeCaseJsonObjectMapper.readValue(byteArray)
 }
