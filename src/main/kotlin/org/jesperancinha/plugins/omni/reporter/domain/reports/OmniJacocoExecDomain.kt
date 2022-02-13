@@ -7,8 +7,7 @@ import org.jacoco.report.MultiSourceFileLocator
 import org.jacoco.report.xml.XMLFormatter
 import org.jesperancinha.plugins.omni.reporter.domain.reports.Report
 import org.jesperancinha.plugins.omni.reporter.domain.reports.readJacocoReport
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
+import org.jesperancinha.plugins.omni.reporter.logger.OmniLoggerConfig
 import java.io.File
 import java.io.FileOutputStream
 
@@ -50,7 +49,7 @@ class OmniJacocoReportParserCommand(
     }
 
     companion object {
-        val logger: Logger = LoggerFactory.getLogger(OmniJacocoReportParserCommand::class.java)
+        val logger = OmniLoggerConfig.getLogger(OmniJacocoReportParserCommand::class.java)
     }
 }
 

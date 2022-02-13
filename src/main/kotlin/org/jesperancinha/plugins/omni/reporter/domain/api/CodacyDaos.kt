@@ -7,10 +7,10 @@ import org.apache.http.entity.ContentType
 import org.eclipse.jgit.lib.Constants
 import org.eclipse.jgit.lib.Repository
 import org.eclipse.jgit.revwalk.RevWalk
+import org.jesperancinha.plugins.omni.reporter.logger.OmniLoggerConfig
 import org.jesperancinha.plugins.omni.reporter.parsers.Language
 import org.jesperancinha.plugins.omni.reporter.parsers.readJsonValue
 import org.jesperancinha.plugins.omni.reporter.parsers.writeCamelCaseJsonValueAsString
-import org.slf4j.LoggerFactory
 
 
 data class CodacyResponse(
@@ -135,7 +135,8 @@ open class CodacyClient(
     }
 
     private fun submitEndReportWithApiToken(commitId: String?): CodacyResponse {
-        val codacyReportUrl = "$url/2.0/${apiToken?.codacyOrganizationProvider}/${apiToken?.codacyUsername}/${apiToken?.codacyProjectName}/commit/$commitId/coverageFinal"
+        val codacyReportUrl =
+            "$url/2.0/${apiToken?.codacyOrganizationProvider}/${apiToken?.codacyUsername}/${apiToken?.codacyProjectName}/commit/$commitId/coverageFinal"
         logger.info("Sending Final ${language.name.lowercase()} report to codacy at $codacyReportUrl")
         val httpRequest = httpRequestFactory.buildPostRequest(
             GenericUrl(codacyReportUrl),
@@ -167,6 +168,6 @@ open class CodacyClient(
     }
 
     companion object {
-        private val logger = LoggerFactory.getLogger(CoverallsClient::class.java)
+        private val logger = OmniLoggerConfig.getLogger(CoverallsClient::class.java)
     }
 }

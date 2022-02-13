@@ -2,9 +2,8 @@ package org.jesperancinha.plugins.omni.reporter.domain.reports
 
 import org.jesperancinha.plugins.omni.reporter.JacocoXmlParsingErrorException
 import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniCoveragePyDomain.Companion.logger
+import org.jesperancinha.plugins.omni.reporter.logger.OmniLoggerConfig
 import org.jesperancinha.plugins.omni.reporter.parsers.readJsonValue
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 import java.io.InputStream
 
 
@@ -51,7 +50,7 @@ data class OmniCoveragePy(
 
 class OmniCoveragePyDomain {
     companion object {
-        val logger: Logger = LoggerFactory.getLogger(OmniCoveragePyDomain::class.java)
+        val logger = OmniLoggerConfig.getLogger(OmniCoveragePyDomain::class.java)
     }
 }
 

@@ -29,4 +29,11 @@ internal class OmniFileAdaptersKtTest {
         jarFile.name shouldBe "string-paradigm-expression-api-0.0.0-SNAPSHOT.jar"
     }
 
+    @Test
+    fun `should find scala file classes jar`() {
+        val jarFile = File(root, "jacoco/exec/four").findJarFile()
+        jarFile.shouldNotBeNull()
+        jarFile.name shouldBe "math-service-scala_2.13-1.0.jar"
+    }
+
 }

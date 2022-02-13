@@ -7,11 +7,11 @@ import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyApiTokenConfig
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyClient
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyReport
 import org.jesperancinha.plugins.omni.reporter.domain.api.redact
+import org.jesperancinha.plugins.omni.reporter.logger.OmniLoggerConfig
 import org.jesperancinha.plugins.omni.reporter.parsers.Language
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import org.jesperancinha.plugins.omni.reporter.pipelines.PipelineImpl
 import org.jesperancinha.plugins.omni.reporter.transformers.JacocoParserToCodacy
-import org.slf4j.LoggerFactory
 import java.io.File
 
 /**
@@ -143,7 +143,7 @@ class CodacyProcessor(
     }
 
     companion object {
-        private val logger = LoggerFactory.getLogger(CodacyProcessor::class.java)
+        private val logger = OmniLoggerConfig.getLogger(CodacyProcessor::class.java)
 
         @JvmStatic
         fun createProcessor(

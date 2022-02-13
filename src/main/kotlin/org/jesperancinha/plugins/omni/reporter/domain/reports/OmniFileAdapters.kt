@@ -3,16 +3,16 @@ package org.jesperancinha.plugins.omni.reporter.domain.reports
 import OmniJacocoReportParserCommand
 import org.jesperancinha.plugins.omni.reporter.CodecovPackageNotFoundException
 import org.jesperancinha.plugins.omni.reporter.domain.api.TEMP_DIR_VARIABLE
+import org.jesperancinha.plugins.omni.reporter.logger.OmniLoggerConfig
 import org.jesperancinha.plugins.omni.reporter.parsers.readXmlValue
 import org.jesperancinha.plugins.omni.reporter.parsers.snakeCaseJsonObjectMapper
 import org.jesperancinha.plugins.omni.reporter.parsers.xmlObjectMapper
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 import java.io.File
 import java.nio.file.Path
 import java.util.*
 
-internal val JAR_FILE_PATTERNS = listOf(".*classes\\.jar$", ".*libs\\/.*\\.jar$","scala.*/.*\\.jar","scala.*/sbt.*/.*\\.jar")
+internal val JAR_FILE_PATTERNS =
+    listOf(".*classes\\.jar$", ".*libs\\/.*\\.jar$", ".*scala.*\\/.*\\.jar", ".*scala.*\\/sbt.*\\/.*\\.jar")
 
 /**
  * Searches for a compatible Jar file to extract Jacoco.xml data
@@ -21,7 +21,11 @@ internal fun File.findJarFile(): File? =
     JAR_FILE_PATTERNS.firstNotNullOfOrNull { pattern ->
         val first = this.walkTopDown()
             .toList().firstOrNull { file ->
-                file.absolutePath.matches(Regex(pattern))
+                val absolutePath = file.absolutePath.lowercase()
+                absolutePath.matches(Regex(pattern)) &&
+                        !absolutePath.contains("assembly") &&
+                        !absolutePath.endsWith("sources.jar") &&
+                        !absolutePath.endsWith("javadoc.jar")
             }
         first
     }
@@ -120,7 +124,7 @@ class OmniJacocoExecFileAdapter(
     }
 
     companion object {
-        val logger: Logger = LoggerFactory.getLogger(OmniJacocoExecFileAdapter::class.java)
+        val logger = OmniLoggerConfig.getLogger(OmniJacocoExecFileAdapter::class.java)
     }
 }
 
@@ -161,7 +165,7 @@ class OmniLCovFileAdapter(
     }
 
     companion object {
-        val logger: Logger = LoggerFactory.getLogger(OmniLCovFileAdapter::class.java)
+        val logger = OmniLoggerConfig.getLogger(OmniLCovFileAdapter::class.java)
     }
 }
 

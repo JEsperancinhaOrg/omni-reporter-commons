@@ -1,10 +1,10 @@
 package org.jesperancinha.plugins.omni.reporter
 
+import org.jesperancinha.plugins.omni.reporter.logger.OmniLoggerConfig
 import org.jesperancinha.plugins.omni.reporter.parsers.readCamelCaseJsonValue
 import org.jesperancinha.plugins.omni.reporter.processors.CodacyProcessor
 import org.jesperancinha.plugins.omni.reporter.processors.CodecovProcessor
 import org.jesperancinha.plugins.omni.reporter.processors.CoverallsReportsProcessor
-import org.slf4j.LoggerFactory
 import java.io.File
 
 class ProjectDirectoryNotFoundException : RuntimeException()
@@ -238,7 +238,7 @@ open class OmniReporterCommon(
     private fun checkToken(token: String?) = token?.let { "found" } ?: "not found"
 
     companion object {
-        private val logger = LoggerFactory.getLogger(OmniReporterCommon::class.java)
+        private val logger = OmniLoggerConfig.getLogger(OmniReporterCommon::class.java)
 
         private const val OMNI_CHARACTER_LINE_NUMBER = 150
 

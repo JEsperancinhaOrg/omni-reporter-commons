@@ -8,9 +8,9 @@ import com.google.api.client.http.HttpHeaders
 import com.google.api.client.http.MultipartContent
 import org.apache.http.entity.ContentType.APPLICATION_OCTET_STREAM
 import org.jesperancinha.plugins.omni.reporter.domain.reports.Line
+import org.jesperancinha.plugins.omni.reporter.logger.OmniLoggerConfig
 import org.jesperancinha.plugins.omni.reporter.parsers.readJsonValue
 import org.jesperancinha.plugins.omni.reporter.parsers.writeSnakeCaseJsonValueAsString
-import org.slf4j.LoggerFactory
 import java.io.File
 
 
@@ -128,7 +128,7 @@ open class CoverallsClient(
 
     companion object {
         private const val COVERALLS_FILE = "coveralls.json"
-        private val logger = LoggerFactory.getLogger(CoverallsClient::class.java)
+        private val logger = OmniLoggerConfig.getLogger(CoverallsClient::class.java)
     }
 }
 

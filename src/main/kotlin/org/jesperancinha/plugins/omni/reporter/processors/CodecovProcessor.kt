@@ -4,11 +4,10 @@ import org.eclipse.jgit.lib.RepositoryBuilder
 import org.jesperancinha.plugins.omni.reporter.*
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodecovClient
 import org.jesperancinha.plugins.omni.reporter.domain.api.redact
+import org.jesperancinha.plugins.omni.reporter.logger.OmniLoggerConfig
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import org.jesperancinha.plugins.omni.reporter.pipelines.PipelineImpl
 import org.jesperancinha.plugins.omni.reporter.transformers.AllParserToCodecov
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 import java.io.File
 
 private const val CODECOV_EOF = "\n<<<<<< EOF\n"
@@ -98,7 +97,7 @@ class CodecovProcessor(
     }
 
     companion object {
-        val logger: Logger = LoggerFactory.getLogger(CodecovProcessor::class.java)
+        val logger = OmniLoggerConfig.getLogger(CodecovProcessor::class.java)
 
         @JvmStatic
         fun createProcessor(

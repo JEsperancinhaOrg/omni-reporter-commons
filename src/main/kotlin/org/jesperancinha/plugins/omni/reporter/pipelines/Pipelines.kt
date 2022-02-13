@@ -2,6 +2,7 @@ package org.jesperancinha.plugins.omni.reporter.pipelines
 
 import org.jesperancinha.plugins.omni.reporter.domain.api.CUSTOM
 import org.jesperancinha.plugins.omni.reporter.domain.api.GITLAB
+import org.jesperancinha.plugins.omni.reporter.logger.OmniLoggerConfig
 import org.jesperancinha.plugins.omni.reporter.pipelines.BitBucketPipeline.Companion.BITBUCKET_BUILD_NUMBER
 import org.jesperancinha.plugins.omni.reporter.pipelines.CircleCIPipeline.Companion.CIRCLE_BRANCH
 import org.jesperancinha.plugins.omni.reporter.pipelines.CircleCIPipeline.Companion.CIRCLE_BUILD_NUM
@@ -22,10 +23,8 @@ import org.jesperancinha.plugins.omni.reporter.pipelines.GitLabPipeline.Companio
 import org.jesperancinha.plugins.omni.reporter.pipelines.LocalPipeline.Companion.CI_BUILD_NUMBER
 import org.jesperancinha.plugins.omni.reporter.pipelines.LocalPipeline.Companion.CI_NAME
 import org.jesperancinha.plugins.omni.reporter.pipelines.LocalPipeline.Companion.JOB_NUM
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 
-private val logger: Logger = LoggerFactory.getLogger(Pipeline::class.java)
+private val logger = OmniLoggerConfig.getLogger(Pipeline::class.java)
 private val environment: MutableMap<String, String> = System.getenv()
 private val allEnv = listOf(
     // General

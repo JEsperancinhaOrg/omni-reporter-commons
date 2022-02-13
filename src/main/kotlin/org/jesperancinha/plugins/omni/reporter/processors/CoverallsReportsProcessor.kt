@@ -2,10 +2,10 @@ package org.jesperancinha.plugins.omni.reporter.processors
 
 import org.jesperancinha.plugins.omni.reporter.*
 import org.jesperancinha.plugins.omni.reporter.domain.api.CoverallsClient
+import org.jesperancinha.plugins.omni.reporter.logger.OmniLoggerConfig
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import org.jesperancinha.plugins.omni.reporter.pipelines.PipelineImpl
 import org.jesperancinha.plugins.omni.reporter.transformers.ReportingParserToCoveralls
-import org.slf4j.LoggerFactory
 import java.io.File
 
 /**
@@ -99,7 +99,7 @@ class CoverallsReportsProcessor(
     }
 
     companion object {
-        private val logger = LoggerFactory.getLogger(CoverallsReportsProcessor::class.java)
+        private val logger = OmniLoggerConfig.getLogger(CoverallsReportsProcessor::class.java)
 
         @JvmStatic
         fun createProcessor(

@@ -3,13 +3,13 @@ package org.jesperancinha.plugins.omni.reporter.domain
 import io.kotest.matchers.nulls.shouldNotBeNull
 import org.jesperancinha.plugins.omni.reporter.domain.api.CoverallsClient
 import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniJacocoFileAdapter
+import org.jesperancinha.plugins.omni.reporter.logger.OmniLoggerConfig
 import org.jesperancinha.plugins.omni.reporter.parsers.writeSnakeCaseJsonValueAsString
 import org.jesperancinha.plugins.omni.reporter.pipelines.LocalPipeline
 import org.jesperancinha.plugins.omni.reporter.transformers.ReportingParserToCoveralls
 import org.jesperancinha.plugins.omni.reporter.utils.Utils.Companion.root
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
-import org.slf4j.LoggerFactory
 import kotlin.io.path.toPath
 
 internal class CoverallsClientTest {
@@ -38,6 +38,6 @@ internal class CoverallsClientTest {
     }
 
     companion object {
-        val logger = LoggerFactory.getLogger(CoverallsClientTest::class.java)
+        val logger = OmniLoggerConfig.getLogger(CoverallsClientTest::class.java)
     }
 }

@@ -3,10 +3,10 @@ package org.jesperancinha.plugins.omni.reporter.domain.reports
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyFileReport
 import org.jesperancinha.plugins.omni.reporter.domain.api.CoverallsSourceFile
 import org.jesperancinha.plugins.omni.reporter.domain.api.isBranch
+import org.jesperancinha.plugins.omni.reporter.logger.OmniLoggerConfig
 import org.jesperancinha.plugins.omni.reporter.parsers.Language
 import org.jesperancinha.plugins.omni.reporter.parsers.toFileDigest
 import org.jesperancinha.plugins.omni.reporter.transformers.SourceCodeFile
-import org.slf4j.LoggerFactory
 import java.io.File
 import kotlin.math.max
 
@@ -364,8 +364,10 @@ class OmniCloverReportFileAdapter(
 
     override fun toCodacy(sourceCodeFile: SourceCodeFile, language: Language): CodacyFileReport? {
         val coverage = reportFile.cloverLines.fromCloverToCodacyCoverage
-        return if (coverage.isEmpty() || language.ext.none { reportFile.path
-                .endsWith(it) }
+        return if (coverage.isEmpty() || language.ext.none {
+                reportFile.path
+                    .endsWith(it)
+            }
         ) {
             null
         } else {
@@ -378,7 +380,7 @@ class OmniCloverReportFileAdapter(
     }
 
     companion object {
-        val logger: org.slf4j.Logger = LoggerFactory.getLogger(OmniCloverReportFileAdapter::class.java)
+        val logger = OmniLoggerConfig.getLogger(OmniCloverReportFileAdapter::class.java)
     }
 }
 

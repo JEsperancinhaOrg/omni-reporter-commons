@@ -9,8 +9,8 @@ import org.eclipse.jgit.lib.Constants
 import org.eclipse.jgit.lib.Repository
 import org.eclipse.jgit.revwalk.RevWalk
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodecovEndpoint.V4
+import org.jesperancinha.plugins.omni.reporter.logger.OmniLoggerConfig
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
-import org.slf4j.LoggerFactory
 
 
 val TRAVIS = "travis"
@@ -101,6 +101,6 @@ class CodecovClient(
     }
 
     companion object {
-        private val logger = LoggerFactory.getLogger(CodecovClient::class.java)
+        private val logger = OmniLoggerConfig.getLogger(CodecovClient::class.java)
     }
 }

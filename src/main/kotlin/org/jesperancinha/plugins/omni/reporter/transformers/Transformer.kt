@@ -3,17 +3,16 @@ package org.jesperancinha.plugins.omni.reporter.transformers
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyApiTokenConfig
 import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniFileAdapter
 import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniReportFileAdapter
+import org.jesperancinha.plugins.omni.reporter.logger.OmniLoggerConfig
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import org.jesperancinha.plugins.omni.reporter.repository.GitRepository
 import org.jesperancinha.plugins.omni.reporter.transformers.SourceCodeFile.Companion.logger
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 import java.io.File
 import java.io.FileNotFoundException
 
 class SourceCodeFile(sourcesDir: File, val packageName: String?, sourceFile: OmniReportFileAdapter) :
     File(
-        (sourceFile.name().split("../").size-2)
+        (sourceFile.name().split("../").size - 2)
             .let {
                 var dir = sourcesDir
                 for (i in 0 until it) {
@@ -26,7 +25,7 @@ class SourceCodeFile(sourcesDir: File, val packageName: String?, sourceFile: Omn
         }"
     ) {
     companion object {
-        val logger: Logger = LoggerFactory.getLogger(SourceCodeFile::class.java)
+        val logger = OmniLoggerConfig.getLogger(SourceCodeFile::class.java)
     }
 }
 
@@ -66,7 +65,7 @@ abstract class OmniReporterParserImpl<INPUT, OUTPUT>(
     val gitRepository = GitRepository(root, pipeline)
 
     companion object {
-        private val logger = LoggerFactory.getLogger(OmniReporterParserImpl::class.java)
+        private val logger = OmniLoggerConfig.getLogger(OmniReporterParserImpl::class.java)
 
         internal fun createFailOnUnknownPredicateFilePack(failOnUnknown: Boolean) =
             { foundSources: List<Pair<SourceCodeFile, OmniReportFileAdapter>>, sourceFiles: List<OmniReportFileAdapter> ->

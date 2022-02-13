@@ -6,9 +6,8 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement
 import org.jesperancinha.plugins.omni.reporter.JacocoXmlParsingErrorException
 import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniJacocoDomain.Companion.logger
+import org.jesperancinha.plugins.omni.reporter.logger.OmniLoggerConfig
 import org.jesperancinha.plugins.omni.reporter.parsers.readXmlValue
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 import java.io.InputStream
 
 /**
@@ -102,7 +101,7 @@ data class Report(
 
 class OmniJacocoDomain {
     companion object {
-        val logger: Logger = LoggerFactory.getLogger(OmniJacocoDomain::class.java)
+        val logger = OmniLoggerConfig.getLogger(OmniJacocoDomain::class.java)
     }
 }
 
