@@ -247,6 +247,9 @@ open class OmniReporterCommon(
 
         @JvmStatic
         fun readOmniConfig() = readCamelCaseJsonValue<OmniConfig>(File("./omni-config.json").inputStream())
+
+        @JvmStatic
+        fun createReporterFromJsonConfig() = OmniReporterCommon(readOmniConfig())
     }
 }
 
