@@ -82,9 +82,9 @@ class OmniBuildGeneric(
 ) : OmniBuild
 
 open class OmniReporterCommon(
-    private var coverallsUrl: String? = null,
-    private var codacyUrl: String? = null,
-    private var codecovUrl: String? = null,
+    private var coverallsUrl: String = HTTPS_COVERALLS_IO_API_V_1_JOBS,
+    private var codacyUrl: String = HTTPS_API_CODACY_COM,
+    private var codecovUrl: String = HTTPS_CODECOV_IO_UPLOAD,
     var sourceEncoding: String? = null,
     var projectBaseDir: File? = null,
     var failOnNoEncoding: Boolean = false,
@@ -111,9 +111,9 @@ open class OmniReporterCommon(
     val reportRejectList: List<String> = emptyList()
 ) {
     constructor(omniConfig: OmniConfig) : this(
-        omniConfig.coverallsUrl,
-        omniConfig.codacyUrl,
-        omniConfig.codecovUrl,
+        omniConfig.coverallsUrl ?: HTTPS_COVERALLS_IO_API_V_1_JOBS,
+        omniConfig.codacyUrl ?: HTTPS_API_CODACY_COM,
+        omniConfig.codecovUrl ?: HTTPS_CODECOV_IO_UPLOAD,
         omniConfig.sourceEncoding,
         omniConfig.projectBaseDir?.let { File(it) } ?: File("."),
         omniConfig.failOnNoEncoding ?: false,
@@ -241,6 +241,9 @@ open class OmniReporterCommon(
         private val logger = OmniLoggerConfig.getLogger(OmniReporterCommon::class.java)
 
         private const val OMNI_CHARACTER_LINE_NUMBER = 150
+        const val HTTPS_COVERALLS_IO_API_V_1_JOBS = "https://coveralls.io/api/v1/jobs"
+        const val HTTPS_API_CODACY_COM = "https://api.codacy.com"
+        const val HTTPS_CODECOV_IO_UPLOAD = "https://codecov.io/upload"
 
         @JvmStatic
         fun readOmniConfig() = readCamelCaseJsonValue<OmniConfig>(File("./omni-config.json").inputStream())
