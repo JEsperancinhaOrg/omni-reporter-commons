@@ -10,6 +10,8 @@
 #### Release 0.3.0 - Upcoming
 
 1. Refactoring - Current version still has a lot of code that can be reused.
+2. Option `OMNI_LOG` with environment variable. Logs everything into `target/omni.log` file (Not configurable yet)
+3. Read JSON configuration method
 
 #### Release 0.2.0 - 2022/02/07
 
