@@ -10,6 +10,8 @@
 
 1. GoLang Coverage Support (`.out` files)
 2. Fix double parent phenomenon for Codecov specific projects where the path fix algorithm doubles the parent folder. Example is [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Vertext%20Test%20Drives&color=informational)](https://github.com/jesperancinha/jeorg-vertex-osgi-testdrives).
+- Difficult to fix - The jacoco report being sent does have the path in a correct way, so this seems to be a divergent behaviour that happens in some Codecov corner cases. Nonetheless a solution will be investigated. Perhaps an extra option
+
 #### Release 0.3.0 - 2022/02/14
 
 1. Refactoring - Current version still has a lot of code that can be reused.
