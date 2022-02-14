@@ -13,3 +13,6 @@ buildNumber.properties
 # Intellij
 .idea
 *.iml
+
+!src/test/resources/multi-module/vertx-module/target
+!src/test/resources/multi-module/vertx-module/target/site/jacoco/jacoco.xml

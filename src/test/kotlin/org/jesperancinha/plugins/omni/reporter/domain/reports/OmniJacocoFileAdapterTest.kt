@@ -86,4 +86,34 @@ internal class OmniJacocoFileAdapterTest {
         generatePayload.shouldStartWith("<")
         generatePayload.shouldEndWith(">")
     }
+
+    @Test
+    fun `should generate report with correct paths`() {
+        val resource = javaClass.getResource("/multi-module")
+        resource.shouldNotBeNull()
+
+        val jacocoResource = javaClass.getResource("/multi-module/vertx-module/target/site/jacoco/jacoco.xml")
+        jacocoResource.shouldNotBeNull()
+
+        val buildResource = javaClass.getResource("/multi-module/vertx-module/target")
+        buildResource.shouldNotBeNull()
+
+        val srcResource = javaClass.getResource("/multi-module/vertx-module/src/main/java/")
+        srcResource.shouldNotBeNull()
+
+        val reportFileAdapter = ReportType.createReportFileAdapter(
+            jacocoResource.toFile(),
+            false,
+            resource.toFile(),
+            buildResource.toFile()
+        )
+
+        reportFileAdapter.shouldNotBeNull()
+        reportFileAdapter.shouldBeInstanceOf<OmniJacocoFileAdapter>()
+
+        val generatePayload = reportFileAdapter.generatePayload(false, listOf(srcResource.toFile()))
+
+        generatePayload.shouldNotBeNull()
+
+    }
 }
