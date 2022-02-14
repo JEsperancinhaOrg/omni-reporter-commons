@@ -7,7 +7,7 @@
 3. Overseer option: `overseer`. If this option is on, the plugin will look for external reports and sources automatically following the [Overseer.md](./Overseer.md) document rules
 4. GoLang Coverage Support (`.out` files)
 
-#### Release 0.3.0 - Upcoming
+#### Release 0.3.0 - 2022/02/14
 
 1. Refactoring - Current version still has a lot of code that can be reused.
 2. Option `OMNI_LOG` with environment variable. Logs everything into `target/omni.log` file (Not configurable yet)

@@ -19,14 +19,16 @@ internal val JAR_FILE_PATTERNS =
  */
 internal fun File.findJarFile(): File? =
     JAR_FILE_PATTERNS.firstNotNullOfOrNull { pattern ->
-        val first = this.walkTopDown()
-            .toList().firstOrNull { file ->
+        val allMatches = this.walkTopDown()
+            .toList().filter { file ->
                 val absolutePath = file.absolutePath.lowercase()
                 absolutePath.matches(Regex(pattern)) &&
                         !absolutePath.contains("assembly") &&
                         !absolutePath.endsWith("sources.jar") &&
                         !absolutePath.endsWith("javadoc.jar")
             }
+        val plains = allMatches.filter { it.absolutePath.endsWith("plain.jar") }
+        val first = if (plains.isEmpty()) allMatches.firstOrNull() else plains[0]
         first
     }
 
