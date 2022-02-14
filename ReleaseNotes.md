@@ -1,12 +1,15 @@
 # Omni Reporter Commons Release Notes
 
-#### Release 0.3.1 - Upcoming
+#### Release 0.3.2 - Upcoming
 
 1. Support for Group Coverage with Branch Coverage (mostly Coveralls)
 2. Source encoding gets automatically chosen unless we configure flag `failOnNoEncoding` to `true`
 3. Overseer option: `overseer`. If this option is on, the plugin will look for external reports and sources automatically following the [Overseer.md](./Overseer.md) document rules
-4. GoLang Coverage Support (`.out` files)
 
+#### Release 0.3.1 - Upcoming
+
+1. GoLang Coverage Support (`.out` files)
+2. Fix double parent phenomenon for Codecov specific projects where the path fix algorithm doubles the parent folder. Example is [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Vertext%20Test%20Drives&color=informational)](https://github.com/jesperancinha/jeorg-vertex-osgi-testdrives).
 #### Release 0.3.0 - 2022/02/14
 
 1. Refactoring - Current version still has a lot of code that can be reused.
