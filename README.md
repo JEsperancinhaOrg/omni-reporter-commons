@@ -12,7 +12,7 @@
 [![GitHub License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
 
 [![Snyk Score](https://snyk-widget.herokuapp.com/badge/mvn/org.jesperancinha.plugins/omni-coveragereporter-commons/badge.svg)](https://github.com/JEsperancinhaOrg/omni-reporter-commons)
-[![Known Vulnerabilities](https://snyk.io/test/github/JEsperancinhaOrg/omni-reporter-commons/badge.svg)](https://snyk.io/test/github/JEsperancinhaOrg/omni-coveragereporter-commons)
+[![Known Vulnerabilities](https://snyk.io/test/github/JEsperancinhaOrg/omni-reporter-commons/badge.svg)](https://github.com/JEsperancinhaOrg/omni-reporter-commons)
 
 [![omni-reporter-commons](https://github.com/JEsperancinhaOrg/omni-reporter-commons/actions/workflows/omni-reporter-commons.yml/badge.svg)](https://github.com/JEsperancinhaOrg/omni-reporter-commons/actions/workflows/omni-reporter-commons.yml)
 
@@ -81,20 +81,21 @@ To be up to date with the changes please check the [ReleaseNotes](./ReleaseNotes
 
 ## References
 
--   [Jacoco Open Source Code](https://github.com/jacoco/jacoco)
--   [What does each line of the lcov output file mean?](https://giters.com/linux-test-project/lcov/issues/113)
--   [Codacy Coverage Reporter](https://github.com/codacy/codacy-coverage-reporter)
--   [Jackson Module](https://medium.com/@foxjstephen/how-to-actually-parse-xml-in-java-kotlin-221a9309e6e8)
--   [XCode Environment Variable Reference](https://developer.apple.com/documentation/xcode/environment-variable-reference)
--   [Cross-CI reference](https://github.com/streamich/cross-ci)
--   [Coveralls API reference](https://docs.coveralls.io/api-reference)
--   [Git Hub Environment Variables](https://docs.github.com/en/actions/learn-github-actions/environment-variables)
--   [Git Lab Environment Variables](https://docs.gitlab.com/ee/ci/variables/predefined_variables.html)
--   [Check Run Reporter](https://github.com/marketplace/check-run-reporter)
--   [Codacy Maven Plugin](https://github.com/halkeye/codacy-maven-plugin)
--   [Coveralls Maven Plugin](https://github.com/trautonen/coveralls-maven-plugin)
--   [Example Java Maven for CodeCov](https://github.com/codecov/example-java-maven)
--   [CodeCov Maven Plugin](https://github.com/alexengrig/codecov-maven-plugin)
+- [Snyk Security Information](https://snyk.io/blog/instant-security-information-with-the-snyk-security-badge/)
+- [Jacoco Open Source Code](https://github.com/jacoco/jacoco)
+- [What does each line of the lcov output file mean?](https://giters.com/linux-test-project/lcov/issues/113)
+- [Codacy Coverage Reporter](https://github.com/codacy/codacy-coverage-reporter)
+- [Jackson Module](https://medium.com/@foxjstephen/how-to-actually-parse-xml-in-java-kotlin-221a9309e6e8)
+- [XCode Environment Variable Reference](https://developer.apple.com/documentation/xcode/environment-variable-reference)
+- [Cross-CI reference](https://github.com/streamich/cross-ci)
+- [Coveralls API reference](https://docs.coveralls.io/api-reference)
+- [Git Hub Environment Variables](https://docs.github.com/en/actions/learn-github-actions/environment-variables)
+- [Git Lab Environment Variables](https://docs.gitlab.com/ee/ci/variables/predefined_variables.html)
+- [Check Run Reporter](https://github.com/marketplace/check-run-reporter)
+- [Codacy Maven Plugin](https://github.com/halkeye/codacy-maven-plugin)
+- [Coveralls Maven Plugin](https://github.com/trautonen/coveralls-maven-plugin)
+- [Example Java Maven for CodeCov](https://github.com/codecov/example-java-maven)
+- [CodeCov Maven Plugin](https://github.com/alexengrig/codecov-maven-plugin)
 
 ## Buy me a coffee
 
