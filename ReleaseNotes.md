@@ -11,7 +11,7 @@
 
 #### Release 0.3.1 - 2022/03/01
 
-1. Share extra older and report algorithm
+1. Share extra `source` and `report` algorithm
 2. Ignore `node_modules` folder
 
 #### Release 0.3.0 - 2022/02/14
