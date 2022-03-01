@@ -24,6 +24,8 @@ private val KNOWN_TEST_DIRECTORIES = arrayOf(
     "test-classes"
 )
 
+private val STATIC_REJECT_FOLDERS = arrayOf("node_modules")
+
 /**
  * Created by jofisaes on 05/01/2022
  */
@@ -158,6 +160,9 @@ enum class ReportType(
     }
 }
 
+private fun notRejectable(file: File) =
+    STATIC_REJECT_FOLDERS.none { rejectFolder -> file.absolutePath.contains(rejectFolder) }
+
 internal fun List<OmniProject?>.toReportFiles(
     supportedPredicate: (String, File) -> Boolean,
     failOnXmlParseError: Boolean,
@@ -168,6 +173,7 @@ internal fun List<OmniProject?>.toReportFiles(
         .map { project ->
             project to File(project.build?.directory ?: throw ProjectDirectoryNotFoundException())
                 .walkTopDown()
+                .filter { notRejectable(it) }
                 .toList()
                 .filter { !reportRejectList.contains(it.name) }
                 .mapNotNull { report ->
@@ -184,7 +190,9 @@ internal fun List<OmniProject?>.toAllCodecovSupportedFiles(
 ): List<Pair<OmniProject, List<OmniFileAdapter>>> =
     this.filterNotNull()
         .map { project ->
-            project to File(project.build?.directory ?: throw ProjectDirectoryNotFoundException()).walkTopDown()
+            project to File(project.build?.directory ?: throw ProjectDirectoryNotFoundException())
+                .walkTopDown()
+                .filter { notRejectable(it) }
                 .toList()
                 .filter { !reportRejectList.contains(it.name) }
                 .filter { report ->

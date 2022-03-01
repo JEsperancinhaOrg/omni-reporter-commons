@@ -11,7 +11,7 @@ import java.io.File
 /**
  * Created by jofisaes on 06/01/2022
  */
-class CoverallsReportsProcessor(
+class CoverallsProcessor(
     private val coverallsToken: String?,
     private val disableCoveralls: Boolean,
     private val coverallsUrl: String?,
@@ -99,7 +99,7 @@ class CoverallsReportsProcessor(
     }
 
     companion object {
-        private val logger = OmniLoggerConfig.getLogger(CoverallsReportsProcessor::class.java)
+        private val logger = OmniLoggerConfig.getLogger(CoverallsProcessor::class.java)
 
         @JvmStatic
         fun createProcessor(
@@ -119,12 +119,12 @@ class CoverallsReportsProcessor(
             extraSourceFoldersCSV: String = "",
             extraReportFoldersCSV: String = "",
             reportRejectsCSV: String = ""
-        ): CoverallsReportsProcessor {
+        ): CoverallsProcessor {
             val extraSourceFolders = extraSourceFoldersCSV.split(",").map { File(it) }
             val extraReportFolders = extraReportFoldersCSV.split(",").map { File(it) }
             val allOmniProjects =
                 locationsCSV.toOmniProjects.plus(extraReportFolders.toExtraProjects(extraSourceFolders))
-            return CoverallsReportsProcessor(
+            return CoverallsProcessor(
                 coverallsToken = coverallsToken,
                 disableCoveralls = disableCoveralls,
                 coverallsUrl = coverallsUrl,

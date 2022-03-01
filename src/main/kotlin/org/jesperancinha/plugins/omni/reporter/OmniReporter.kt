@@ -4,7 +4,7 @@ import org.jesperancinha.plugins.omni.reporter.logger.OmniLoggerConfig
 import org.jesperancinha.plugins.omni.reporter.parsers.readCamelCaseJsonValue
 import org.jesperancinha.plugins.omni.reporter.processors.CodacyProcessor
 import org.jesperancinha.plugins.omni.reporter.processors.CodecovProcessor
-import org.jesperancinha.plugins.omni.reporter.processors.CoverallsReportsProcessor
+import org.jesperancinha.plugins.omni.reporter.processors.CoverallsProcessor
 import java.io.File
 
 class ProjectDirectoryNotFoundException : RuntimeException()
@@ -135,15 +135,18 @@ open class OmniReporterCommon(
         omniConfig.codacyOrganizationProvider,
         omniConfig.codacyUsername,
         omniConfig.codacyProjectName,
-        omniConfig.extraSourceFolder?.let { it.split(",").map { path -> File(path) } } ?: emptyList(),
+        omniConfig.extraSourceFolders?.let { it.split(",").map { path -> File(path) } } ?: emptyList(),
         omniConfig.extraReportFolders?.let { it.split(",").map { path -> File(path) } } ?: emptyList(),
         omniConfig.reportRejectList?.split(",") ?: emptyList()
     )
 
-    fun execute(allOmniProjects: List<OmniProject>) {
+    fun execute(inputOmniProjects: List<OmniProject>) {
         logLine()
         logger.info(javaClass.getResourceAsStream("/banner.txt")?.bufferedReader().use { it?.readText() })
         logLine()
+
+        val extraProjects = extraReportFolders.toExtraProjects(extraSourceFolders)
+        val allOmniProjects = inputOmniProjects.plus(extraProjects)
 
         val environment = System.getenv()
         coverallsToken = (coverallsToken ?: environment["COVERALLS_REPO_TOKEN"]) ?: environment["COVERALLS_TOKEN"]
@@ -171,6 +174,7 @@ open class OmniReporterCommon(
         logger.info("failOnXmlParsingError: $failOnXmlParsingError")
         logger.info("disableCoveralls: $disableCoveralls")
         logger.info("disableCodacy: $disableCodacy")
+        logger.info("disableCodecov: $disableCodecov")
         logger.info("ignoreTestBuildDirectory: $ignoreTestBuildDirectory")
         logger.info("branchCoverage: $branchCoverage")
         logger.info("useCoverallsCount: $useCoverallsCount")
@@ -179,7 +183,7 @@ open class OmniReporterCommon(
         logger.info("reportRejectList: ${reportRejectList.joinToString(";")}")
         logLine()
 
-        CoverallsReportsProcessor(
+        CoverallsProcessor(
             coverallsToken = coverallsToken,
             disableCoveralls = disableCoveralls,
             coverallsUrl = coverallsUrl,
@@ -278,7 +282,7 @@ data class OmniConfig(
     val codacyOrganizationProvider: String? = null,
     val codacyUsername: String? = null,
     val codacyProjectName: String? = null,
-    val extraSourceFolder: String? = null,
+    val extraSourceFolders: String? = null,
     val extraReportFolders: String? = null,
     val reportRejectList: String? = null
 )

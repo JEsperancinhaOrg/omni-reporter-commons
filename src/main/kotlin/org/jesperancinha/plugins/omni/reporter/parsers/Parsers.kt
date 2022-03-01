@@ -54,7 +54,7 @@ internal inline fun <reified T : Any> writeCamelCaseJsonValueAsString(objectValu
 internal val messageDigester: MessageDigest = MessageDigest.getInstance("MD5")
 
 internal val String.toFileDigest: String
-    get() = messageDigester.digest(toByteArray())
+    get() = if (this.isEmpty()) "" else messageDigester.digest(toByteArray())
         .joinToString(separator = "") { byte -> "%02x".format(byte) }
         .uppercase()
 

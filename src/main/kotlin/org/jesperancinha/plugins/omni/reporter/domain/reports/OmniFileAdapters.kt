@@ -43,7 +43,13 @@ internal fun findNewPackageName(root: File, p: Package, compiledSourcesDirs: Lis
     compiledSourcesDirs
         .map { File(it, p.name) }
         .filter { file -> file.exists() }
-        .map { file -> file.toRelativeString(root) }
+        .map { file ->
+            try {
+                file.toRelativeString(root)
+            } catch (ex: IllegalArgumentException) {
+                null
+            }
+        }
         .firstOrNull()
 
 

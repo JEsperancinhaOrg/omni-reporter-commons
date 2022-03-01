@@ -229,12 +229,17 @@ class OmniJacocoReportFileAdapter(
         return if (coverage.isEmpty()) {
             null
         } else {
-            CoverallsSourceFile(
-                name = sourceCodeFile.toRelativeString(root),
-                coverage = coverage,
-                branches = if (includeBranchCoverage) branchCoverage else emptyArray(),
-                sourceDigest = sourceCodeText.toFileDigest,
-            )
+            try {
+                val relativeName = sourceCodeFile.toRelativeString(root)
+                CoverallsSourceFile(
+                    name = relativeName,
+                    coverage = coverage,
+                    branches = if (includeBranchCoverage) branchCoverage else emptyArray(),
+                    sourceDigest = sourceCodeText.toFileDigest,
+                )
+            } catch (ex: IllegalArgumentException) {
+                null
+            }
         }
     }
 
@@ -286,12 +291,16 @@ class OmniLCovReportFileAdapter(
         return if (coverage.isEmpty()) {
             null
         } else {
-            CoverallsSourceFile(
-                name = sourceCodeFile.toRelativeString(root),
-                coverage = coverage,
-                branches = if (includeBranchCoverage) branchCoverage else emptyArray(),
-                sourceDigest = sourceCodeText.toFileDigest,
-            )
+            try {
+                CoverallsSourceFile(
+                    name = sourceCodeFile.toRelativeString(root),
+                    coverage = coverage,
+                    branches = if (includeBranchCoverage) branchCoverage else emptyArray(),
+                    sourceDigest = sourceCodeText.toFileDigest,
+                )
+            } catch (ex: IllegalArgumentException) {
+                null
+            }
         }
     }
 
@@ -352,12 +361,16 @@ class OmniCloverReportFileAdapter(
         return if (coverage.isEmpty()) {
             null
         } else {
-            CoverallsSourceFile(
-                name = sourceCodeFile.toRelativeString(root),
-                coverage = coverage,
-                branches = if (includeBranchCoverage) branchCoverage else emptyArray(),
-                sourceDigest = sourceCodeText.toFileDigest,
-            )
+            try {
+                CoverallsSourceFile(
+                    name = sourceCodeFile.toRelativeString(root),
+                    coverage = coverage,
+                    branches = if (includeBranchCoverage) branchCoverage else emptyArray(),
+                    sourceDigest = sourceCodeText.toFileDigest,
+                )
+            } catch (ex: java.lang.IllegalArgumentException) {
+                null
+            }
         }
     }
 
