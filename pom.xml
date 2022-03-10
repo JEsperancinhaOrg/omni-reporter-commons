@@ -84,7 +84,7 @@
         <nexus-staging-maven-plugin.version>1.6.12</nexus-staging-maven-plugin.version>
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
-        <junit-pioneer.version>1.6.1</junit-pioneer.version>
+        <junit-pioneer.version>1.6.2</junit-pioneer.version>
         <jacoco.version>0.8.7</jacoco.version>
         <coverage-parser_2.12.version>4.4.2</coverage-parser_2.12.version>
         <codacy-coverage-reporter.version>7.1.0</codacy-coverage-reporter.version>
