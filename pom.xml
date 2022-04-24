@@ -68,7 +68,7 @@
         <junit-jupiter.version>5.8.2</junit-jupiter.version>
         <kotest.version>5.2.3</kotest.version>
         <mockk.version>1.12.3</mockk.version>
-        <jackson.version>2.13.2</jackson.version>
+        <jackson.version>2.13.2.2</jackson.version>
         <wiremock.version>2.27.2</wiremock.version>
         <commons-codec.version>1.15</commons-codec.version>
         <slf4j.version>2.0.0-alpha7</slf4j.version>
