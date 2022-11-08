@@ -53,7 +53,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-compiler-plugin.target>${java.version}</maven-compiler-plugin.target>
         <maven-compiler-plugin.source>${java.version}</maven-compiler-plugin.source>
-        <maven-plugin.version>3.6.4</maven-plugin.version>
+        <maven-plugin.version>3.7.0</maven-plugin.version>
         <maven-javadoc-plugin.version>3.4.1</maven-javadoc-plugin.version>
         <maven-checkstyle-plugin.version>3.2.0</maven-checkstyle-plugin.version>
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
@@ -90,7 +90,7 @@
         <codacy-coverage-reporter.version>7.1.0</codacy-coverage-reporter.version>
         <logback-classic.version>1.4.4</logback-classic.version>
         <omni-coveragereporter-maven-plugin.version>0.3.0</omni-coveragereporter-maven-plugin.version>
-        <jackson-databind.version>2.13.4.2</jackson-databind.version>
+        <jackson-databind.version>2.14.0</jackson-databind.version>
     </properties>
 
     <dependencies>
