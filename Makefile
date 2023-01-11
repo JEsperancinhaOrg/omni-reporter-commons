@@ -7,8 +7,12 @@ local:
 	mkdir -p bin
 no-test:
 	mvn clean install -DskipTests
-release:
+release-old:
 	export GPG_TTY=$(tty)
 	export MAVEN_OPTS=--illegal-access=permit
+	mvn clean deploy -Prelease
+	mvn nexus-staging:release -Prelease
+release:
+	export GPG_TTY=$(tty)
 	mvn clean deploy -Prelease
 	mvn nexus-staging:release -Prelease
