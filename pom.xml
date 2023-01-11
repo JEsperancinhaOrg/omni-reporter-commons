@@ -6,7 +6,7 @@
 
     <groupId>org.jesperancinha.plugins</groupId>
     <artifactId>omni-coveragereporter-commons</artifactId>
-    <version>0.3.1</version>
+    <version>0.3.2</version>
 
     <packaging>jar</packaging>
 
@@ -36,7 +36,7 @@
         <connection>scm:git:git://github.com/JEsperancinhaOrg.git</connection>
         <developerConnection>scm:git:git://github.com/JEsperancinhaOrg.git</developerConnection>
         <url>https://github.com/JEsperancinhaOrg/omni-reporter-commons</url>
-        <tag>0.3.1</tag>
+        <tag>0.3.2</tag>
     </scm>
     <distributionManagement>
         <snapshotRepository>
@@ -49,7 +49,7 @@
         </repository>
     </distributionManagement>
     <properties>
-        <java.version>11</java.version>
+        <java.version>19</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-compiler-plugin.target>${java.version}</maven-compiler-plugin.target>
         <maven-compiler-plugin.source>${java.version}</maven-compiler-plugin.source>

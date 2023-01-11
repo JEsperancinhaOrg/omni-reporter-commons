@@ -1,4 +1,4 @@
-name: Dependabot auto-merge
+name: OMNI_COMMONS Dependabot auto-merge
 on: pull_request
 
 permissions:

@@ -18,7 +18,6 @@
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/b69f88ded9114d0797dd68c0ca51f0c5)](https://www.codacy.com/gh/JEsperancinhaOrg/omni-reporter-commons/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JEsperancinhaOrg/omni-reporter-commons&amp;utm_campaign=Badge_Grade)
 [![codebeat badge](https://codebeat.co/badges/6b8bd101-109d-4bf1-8ba1-7e9b28da73a8)](https://codebeat.co/projects/github-com-jesperancinhaorg-omni-reporter-commons-main)
-[![BCH compliance](https://bettercodehub.com/edge/badge/JEsperancinhaOrg/omni-reporter-commons?branch=main)](https://bettercodehub.com/results/JEsperancinhaOrg/omni-reporter-commons)
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/b69f88ded9114d0797dd68c0ca51f0c5)](https://www.codacy.com/gh/JEsperancinhaOrg/omni-reporter-commons/dashboard?utm_source=github.com&utm_medium=referral&utm_content=JEsperancinhaOrg/omni-reporter-commons&utm_campaign=Badge_Coverage)
 [![codecov](https://codecov.io/gh/JEsperancinhaOrg/omni-reporter-commons/branch/main/graph/badge.svg?token=v0fqcS93fY)](https://codecov.io/gh/JEsperancinhaOrg/omni-reporter-commons)
