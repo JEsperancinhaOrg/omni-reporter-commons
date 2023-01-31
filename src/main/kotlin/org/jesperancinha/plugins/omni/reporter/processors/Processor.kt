@@ -209,11 +209,18 @@ internal fun List<OmniProject?>.toAllCodecovSupportedFiles(
                 .walkTopDown()
                 .let { walk ->
                     runBlocking {
-                        walk
-                            .chunked(parallelization)
+                        walk.chunked(parallelization)
                             .map { fileList ->
                                 async {
-                                    fileList.filter { notRejectable(it) && !reportRejectList.contains(it.name) }
+                                    fileList.filter { reportFile ->
+                                        notRejectable(reportFile) && !reportRejectList.contains(reportFile.name) && reportFile.isFile
+                                                && project.build?.let { build ->
+                                            supportedPredicate(
+                                                build.testOutputDirectory,
+                                                reportFile
+                                            )
+                                        } ?: false
+                                    }
                                 }
                             }.toList().awaitAll()
                     }
@@ -221,15 +228,6 @@ internal fun List<OmniProject?>.toAllCodecovSupportedFiles(
                 .asSequence()
                 .flatten()
                 .toList()
-                .filter { report ->
-                    report.isFile
-                            && project.build?.let { build ->
-                        supportedPredicate(
-                            build.testOutputDirectory,
-                            report
-                        )
-                    } ?: false
-                }
                 .mapNotNull { report ->
                     mapReportFile(report, project, supportedPredicate, false, root)
                 }
