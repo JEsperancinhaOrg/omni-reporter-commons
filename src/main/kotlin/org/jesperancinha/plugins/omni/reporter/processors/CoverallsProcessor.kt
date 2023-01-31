@@ -31,7 +31,14 @@ class CoverallsProcessor (
     private val reportRejectList: List<String>,
     private val currentPipeline: Pipeline = PipelineImpl.currentPipeline(fetchBranchNameFromEnv),
     private val parallelization: Int
-) : Processor(ignoreTestBuildDirectory) {
+) : Processor(
+    ignoreTestBuildDirectory,
+    allProjects,
+    failOnXmlParseError,
+    projectBaseDir,
+    reportRejectList,
+    parallelization
+) {
 
     override fun processReports() {
         coverallsToken?.let { token ->
@@ -50,7 +57,7 @@ class CoverallsProcessor (
                         failOnXmlParseError = failOnXmlParseError,
                     )
 
-                allProjects.toReportFiles(supportedPredicate, failOnXmlParseError, projectBaseDir, reportRejectList, parallelization)
+                allReportFiles
                     .filter { (project, _) -> project.compileSourceRoots != null }
                     .forEach { (project, reports) ->
                         runBlocking {
@@ -66,9 +73,7 @@ class CoverallsProcessor (
                                 }.awaitAll()
                             }
                         }
-
                     }
-
                 val coverallsClient =
                     CoverallsClient(coverallsUrl ?: throw CoverallsUrlNotConfiguredException(), token)
                 try {

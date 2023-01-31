@@ -39,7 +39,8 @@ class CodacyProcessor(
     private val reportRejectList: List<String>,
     private val currentPipeline: Pipeline = PipelineImpl.currentPipeline(fetchBranchNameFromEnv),
     private val parallelization: Int
-) : Processor(ignoreTestBuildDirectory) {
+) : Processor(ignoreTestBuildDirectory, allProjects, failOnXmlParseError, projectBaseDir, reportRejectList, parallelization) {
+
     override fun processReports() {
         logger.info("Codacy API fully configured: ${this.isCodacyAPIConfigured}")
         if ((this.isCodacyAPIConfigured || codacyToken != null) && !disableCodacy) {
@@ -57,13 +58,7 @@ class CodacyProcessor(
             val repo = RepositoryBuilder().findGitDir(projectBaseDir).build()
 
             Language.values().forEach { language ->
-                val reportsPerLanguage = allProjects.toReportFiles(
-                    supportedPredicate,
-                    failOnXmlParseError,
-                    projectBaseDir ?: throw ProjectDirectoryNotFoundException(),
-                    reportRejectList,
-                    parallelization
-                )
+                val reportsPerLanguage = allReportFiles
                     .filter { (project, _) -> project.compileSourceRoots != null }
                     .flatMap { (project, reports) ->
                         runBlocking {
@@ -75,7 +70,7 @@ class CodacyProcessor(
                                             token = codacyToken,
                                             apiToken = apiToken,
                                             pipeline = currentPipeline,
-                                            root = projectBaseDir,
+                                            root = requireNotNull(projectBaseDir),
                                             failOnUnknown = failOnUnknown,
                                             failOnXmlParseError = failOnXmlParseError,
                                             language = language

@@ -7,6 +7,7 @@ import org.eclipse.jgit.lib.RepositoryBuilder
 import org.jesperancinha.plugins.omni.reporter.*
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodecovClient
 import org.jesperancinha.plugins.omni.reporter.domain.api.redact
+import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniFileAdapter
 import org.jesperancinha.plugins.omni.reporter.logger.OmniLoggerConfig
 import org.jesperancinha.plugins.omni.reporter.pipelines.Pipeline
 import org.jesperancinha.plugins.omni.reporter.pipelines.PipelineImpl
@@ -32,7 +33,21 @@ class CodecovProcessor(
     private val allProjects: List<OmniProject?>,
     private val reportRejectList: List<String>,
     private val parallelization: Int
-) : Processor(ignoreTestBuildDirectory) {
+) : Processor(
+    ignoreTestBuildDirectory,
+    allProjects,
+    projectBaseDir=  projectBaseDir,
+    reportRejectList= reportRejectList,
+    parallelization= parallelization
+) {
+    private val allCodecovSupportedFiles: List<Pair<OmniProject, List<OmniFileAdapter>>> by lazy {
+        allProjects.toAllCodecovSupportedFiles(
+            supportedPredicate,
+            projectBaseDir,
+            reportRejectList,
+            parallelization
+        )
+    }
     override fun processReports() {
         codecovToken?.let { token ->
             if (!disableCodecov)
@@ -40,7 +55,7 @@ class CodecovProcessor(
 
             val repo = RepositoryBuilder().findGitDir(projectBaseDir).build()
             val codacyReportsAggregate =
-                allProjects.toAllCodecovSupportedFiles(supportedPredicate, projectBaseDir, reportRejectList, parallelization)
+                allCodecovSupportedFiles
                     .filter { (project, _) -> project.compileSourceRoots != null }
                     .flatMap { (project, reports) ->
                         runBlocking {
@@ -105,6 +120,45 @@ class CodecovProcessor(
     override fun reportNotSentErrorMessage(): String {
         return "Failed sending Codacy report!"
     }
+
+
+    internal fun List<OmniProject?>.toAllCodecovSupportedFiles(
+        supportedPredicate: (String, File) -> Boolean,
+        root: File,
+        reportRejectList: List<String>,
+        parallelization: Int
+    ): List<Pair<OmniProject, List<OmniFileAdapter>>> =
+        this.filterNotNull()
+            .map { project ->
+                project to File(project.build?.directory ?: throw ProjectDirectoryNotFoundException())
+                    .walkTopDown()
+                    .let { walk ->
+                        runBlocking {
+                            walk.chunked(parallelization)
+                                .map { fileList ->
+                                    async {
+                                        fileList.filter { reportFile ->
+                                            notRejectable(reportFile) && !reportRejectList.contains(reportFile.name) && reportFile.isFile
+                                                    && project.build?.let { build ->
+                                                supportedPredicate(
+                                                    build.testOutputDirectory,
+                                                    reportFile
+                                                )
+                                            } ?: false
+                                        }
+                                    }
+                                }.toList().awaitAll()
+                        }
+                    }
+                    .asSequence()
+                    .flatten()
+                    .toList()
+                    .mapNotNull { report ->
+                        mapReportFile(report, project, supportedPredicate, false, root)
+                    }
+                    .distinct()
+                    .toList()
+            }.distinct()
 
     companion object {
         val logger = OmniLoggerConfig.getLogger(CodecovProcessor::class.java)

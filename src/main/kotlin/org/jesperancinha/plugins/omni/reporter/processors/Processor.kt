@@ -34,6 +34,11 @@ private val STATIC_REJECT_FOLDERS = arrayOf("node_modules")
  */
 abstract class Processor(
     ignoreTestBuildDirectory: Boolean,
+    allProjects: List<OmniProject?>,
+    failOnXmlParseError: Boolean = false,
+    projectBaseDir: File?,
+    reportRejectList: List<String>,
+    parallelization: Int,
 ) {
     abstract fun processReports()
 
@@ -43,6 +48,13 @@ abstract class Processor(
 
     internal val supportedPredicate = supportedPredicate(ignoreTestBuildDirectory)
 
+    val allReportFiles by lazy { allProjects.toReportFiles(
+        supportedPredicate,
+        failOnXmlParseError,
+        projectBaseDir ?: throw ProjectDirectoryNotFoundException(),
+        reportRejectList,
+        parallelization
+    ) }
 
     companion object {
 
@@ -163,7 +175,7 @@ enum class ReportType(
     }
 }
 
-private fun notRejectable(file: File) =
+internal fun notRejectable(file: File) =
     STATIC_REJECT_FOLDERS.none { rejectFolder -> file.absolutePath.contains(rejectFolder) }
 
 internal fun List<OmniProject?>.toReportFiles(
@@ -197,45 +209,7 @@ internal fun List<OmniProject?>.toReportFiles(
         }.distinct()
         .toMap()
 
-internal fun List<OmniProject?>.toAllCodecovSupportedFiles(
-    supportedPredicate: (String, File) -> Boolean,
-    root: File,
-    reportRejectList: List<String>,
-    parallelization: Int
-): List<Pair<OmniProject, List<OmniFileAdapter>>> =
-    this.filterNotNull()
-        .map { project ->
-            project to File(project.build?.directory ?: throw ProjectDirectoryNotFoundException())
-                .walkTopDown()
-                .let { walk ->
-                    runBlocking {
-                        walk.chunked(parallelization)
-                            .map { fileList ->
-                                async {
-                                    fileList.filter { reportFile ->
-                                        notRejectable(reportFile) && !reportRejectList.contains(reportFile.name) && reportFile.isFile
-                                                && project.build?.let { build ->
-                                            supportedPredicate(
-                                                build.testOutputDirectory,
-                                                reportFile
-                                            )
-                                        } ?: false
-                                    }
-                                }
-                            }.toList().awaitAll()
-                    }
-                }
-                .asSequence()
-                .flatten()
-                .toList()
-                .mapNotNull { report ->
-                    mapReportFile(report, project, supportedPredicate, false, root)
-                }
-                .distinct()
-                .toList()
-        }.distinct()
-
-private fun mapReportFile(
+internal fun mapReportFile(
     report: File,
     project: OmniProject,
     supportedPredicate: (String, File) -> Boolean,
