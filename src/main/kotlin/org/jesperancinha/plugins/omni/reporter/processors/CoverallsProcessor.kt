@@ -14,11 +14,10 @@ import java.io.File
 /**
  * Created by jofisaes on 06/01/2022
  */
-class CoverallsProcessor (
+class CoverallsProcessor(
     private val coverallsToken: String?,
     private val disableCoveralls: Boolean,
     private val coverallsUrl: String?,
-    private val allProjects: List<OmniProject>,
     private val projectBaseDir: File?,
     private val failOnUnknown: Boolean,
     private val failOnReportNotFound: Boolean,
@@ -27,20 +26,11 @@ class CoverallsProcessor (
     private val fetchBranchNameFromEnv: Boolean,
     private val branchCoverage: Boolean,
     private val useCoverallsCount: Boolean,
-    private val ignoreTestBuildDirectory: Boolean,
-    private val reportRejectList: List<String>,
     private val currentPipeline: Pipeline = PipelineImpl.currentPipeline(fetchBranchNameFromEnv),
     private val parallelization: Int
-) : Processor(
-    ignoreTestBuildDirectory,
-    allProjects,
-    failOnXmlParseError,
-    projectBaseDir,
-    reportRejectList,
-    parallelization
-) {
+) : Processor() {
 
-    override fun processReports() {
+    override fun processReports(reportFilesContainer: ReportFilesContainer) {
         coverallsToken?.let { token ->
             if (!disableCoveralls) {
                 logger.info("* Omni Reporting to Coveralls started!")
@@ -57,7 +47,7 @@ class CoverallsProcessor (
                         failOnXmlParseError = failOnXmlParseError,
                     )
 
-                allReportFiles
+                reportFilesContainer.allReportFiles
                     .filter { (project, _) -> project.compileSourceRoots != null }
                     .forEach { (project, reports) ->
                         runBlocking {
@@ -152,9 +142,6 @@ class CoverallsProcessor (
                 fetchBranchNameFromEnv = fetchBranchNameFromEnv,
                 branchCoverage = branchCoverage,
                 useCoverallsCount = useCoverallsCount,
-                ignoreTestBuildDirectory = ignoreTestBuildDirectory,
-                allProjects = allOmniProjects,
-                reportRejectList = reportRejectsCSV.split(","),
                 parallelization = parallelization
             )
         }

@@ -28,20 +28,16 @@ class CodacyProcessor(
     val codacyProjectName: String?,
     val disableCodacy: Boolean,
     private val codacyUrl: String?,
-    private val allProjects: List<OmniProject?>,
     private val projectBaseDir: File?,
-    private val failOnReportNotFound: Boolean,
     private val failOnReportSending: Boolean,
     private val failOnUnknown: Boolean,
     private val failOnXmlParseError: Boolean,
     private val fetchBranchNameFromEnv: Boolean,
-    private val ignoreTestBuildDirectory: Boolean,
-    private val reportRejectList: List<String>,
     private val currentPipeline: Pipeline = PipelineImpl.currentPipeline(fetchBranchNameFromEnv),
     private val parallelization: Int
-) : Processor(ignoreTestBuildDirectory, allProjects, failOnXmlParseError, projectBaseDir, reportRejectList, parallelization) {
+) : Processor() {
 
-    override fun processReports() {
+    override fun processReports(reportFilesContainer: ReportFilesContainer) {
         logger.info("Codacy API fully configured: ${this.isCodacyAPIConfigured}")
         if ((this.isCodacyAPIConfigured || codacyToken != null) && !disableCodacy) {
             val apiToken = codacyApiToken?.let {
@@ -58,7 +54,7 @@ class CodacyProcessor(
             val repo = RepositoryBuilder().findGitDir(projectBaseDir).build()
 
             Language.values().forEach { language ->
-                val reportsPerLanguage = allReportFiles
+                val reportsPerLanguage = reportFilesContainer.allReportFiles
                     .filter { (project, _) -> project.compileSourceRoots != null }
                     .flatMap { (project, reports) ->
                         runBlocking {
@@ -186,14 +182,10 @@ class CodacyProcessor(
                 disableCodacy = disableCodacy,
                 codacyUrl = codacyUrl,
                 projectBaseDir = projectBaseDir?.let { File(it) } ?: throw ProjectDirectoryNotFoundException(),
-                failOnReportNotFound = failOnReportNotFound,
                 failOnReportSending = failOnReportSendingError,
-                failOnXmlParseError = failOnXmlParsingError,
                 failOnUnknown = failOnUnknown,
+                failOnXmlParseError = failOnXmlParsingError,
                 fetchBranchNameFromEnv = fetchBranchNameFromEnv,
-                ignoreTestBuildDirectory = ignoreTestBuildDirectory,
-                allProjects = allOmniProjects,
-                reportRejectList = reportRejectsCSV.split(","),
                 parallelization = parallelization
             )
         }

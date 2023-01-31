@@ -27,34 +27,20 @@ private val KNOWN_TEST_DIRECTORIES = arrayOf(
     "test-classes"
 )
 
-private val STATIC_REJECT_FOLDERS = arrayOf("node_modules")
+private val STATIC_REJECT_FOLDERS =
+    arrayOf("node_modules")
 
+internal val NON_REPORT_FOLDERS =
+    arrayOf("maven-status", "maven-archiver", "generated-sources", "generated-test-sources", "surefire-reports", "src", ".github")
 /**
  * Created by jofisaes on 05/01/2022
  */
-abstract class Processor(
-    ignoreTestBuildDirectory: Boolean,
-    allProjects: List<OmniProject?>,
-    failOnXmlParseError: Boolean = false,
-    projectBaseDir: File?,
-    reportRejectList: List<String>,
-    parallelization: Int,
-) {
-    abstract fun processReports()
+abstract class Processor {
+    abstract fun processReports(reportFilesContainer: ReportFilesContainer)
 
     open fun reportNotFoundErrorMessage(): String? = null
 
     open fun reportNotSentErrorMessage(): String? = null
-
-    internal val supportedPredicate = supportedPredicate(ignoreTestBuildDirectory)
-
-    val allReportFiles by lazy { allProjects.toReportFiles(
-        supportedPredicate,
-        failOnXmlParseError,
-        projectBaseDir ?: throw ProjectDirectoryNotFoundException(),
-        reportRejectList,
-        parallelization
-    ) }
 
     companion object {
 
@@ -178,17 +164,17 @@ enum class ReportType(
 internal fun notRejectable(file: File) =
     STATIC_REJECT_FOLDERS.none { rejectFolder -> file.absolutePath.contains(rejectFolder) }
 
-internal fun List<OmniProject?>.toReportFiles(
+internal fun List<OmniProject>.toReportFiles(
     supportedPredicate: (String, File) -> Boolean,
     failOnXmlParseError: Boolean,
     root: File,
     reportRejectList: List<String>,
     parallelization: Int
 ): Map<OmniProject, List<OmniFileAdapter>> =
-    this.filterNotNull()
-        .map { project ->
+    this.map { project ->
             project to File(project.build?.directory ?: throw ProjectDirectoryNotFoundException())
                 .walkTopDown()
+                .onEnter { !(it.isDirectory && NON_REPORT_FOLDERS.contains(it.name)) }
                 .let { walk ->
                     runBlocking {
                         walk
@@ -209,6 +195,44 @@ internal fun List<OmniProject?>.toReportFiles(
         }.distinct()
         .toMap()
 
+fun List<OmniProject>.toAllCodecovSupportedFiles(
+    supportedPredicate: (String, File) -> Boolean,
+    root: File,
+    reportRejectList: List<String>,
+    parallelization: Int
+): Map<OmniProject, List<OmniFileAdapter>> =
+    this.map { project ->
+            project to File(project.build?.directory ?: throw ProjectDirectoryNotFoundException())
+                .walkTopDown()
+                .onEnter { !(it.isDirectory && NON_REPORT_FOLDERS.contains(it.name)) }
+                .let { walk ->
+                    runBlocking {
+                        walk.chunked(parallelization)
+                            .map { fileList ->
+                                async {
+                                    fileList.filter { reportFile ->
+                                        notRejectable(reportFile) && !reportRejectList.contains(reportFile.name) && reportFile.isFile
+                                                && project.build?.let { build ->
+                                            supportedPredicate(
+                                                build.testOutputDirectory,
+                                                reportFile
+                                            )
+                                        } ?: false
+                                    }
+                                }
+                            }.toList().awaitAll()
+                    }
+                }
+                .asSequence()
+                .flatten()
+                .toList()
+                .mapNotNull { report ->
+                    mapReportFile(report, project, supportedPredicate, false, root)
+                }
+                .distinct()
+                .toList()
+        }.distinct()
+        .toMap()
 internal fun mapReportFile(
     report: File,
     project: OmniProject,

@@ -5,6 +5,7 @@ import org.jesperancinha.plugins.omni.reporter.parsers.readCamelCaseJsonValue
 import org.jesperancinha.plugins.omni.reporter.processors.CodacyProcessor
 import org.jesperancinha.plugins.omni.reporter.processors.CodecovProcessor
 import org.jesperancinha.plugins.omni.reporter.processors.CoverallsProcessor
+import org.jesperancinha.plugins.omni.reporter.processors.ReportFilesContainer
 import java.io.File
 
 class ProjectDirectoryNotFoundException : RuntimeException()
@@ -186,6 +187,15 @@ open class OmniReporterCommon(
         logger.info("reportRejectList: ${reportRejectList.joinToString(";")}")
         logLine()
 
+        val reportFilesContainer = ReportFilesContainer(
+            allProjects = allOmniProjects,
+            ignoreTestBuildDirectory = ignoreTestBuildDirectory,
+            failOnXmlParsingError = failOnXmlParsingError,
+            projectBaseDir = projectBaseDir,
+            reportRejectList = reportRejectList,
+            parallelization = parallelization
+        )
+
         CoverallsProcessor(
             coverallsToken = coverallsToken,
             disableCoveralls = disableCoveralls,
@@ -197,12 +207,9 @@ open class OmniReporterCommon(
             failOnXmlParseError = failOnXmlParsingError,
             fetchBranchNameFromEnv = fetchBranchNameFromEnv,
             branchCoverage = branchCoverage,
-            ignoreTestBuildDirectory = ignoreTestBuildDirectory,
             useCoverallsCount = useCoverallsCount,
-            allProjects = allOmniProjects,
-            reportRejectList = reportRejectList,
             parallelization = parallelization
-        ).processReports()
+        ).processReports(reportFilesContainer)
 
         CodacyProcessor(
             codacyToken = codacyToken,
@@ -213,16 +220,12 @@ open class OmniReporterCommon(
             disableCodacy = disableCodacy,
             codacyUrl = codacyUrl,
             projectBaseDir = projectBaseDir,
-            failOnReportNotFound = failOnReportNotFound,
             failOnReportSending = failOnReportSendingError,
-            failOnXmlParseError = failOnXmlParsingError,
             failOnUnknown = failOnUnknown,
+            failOnXmlParseError = failOnXmlParsingError,
             fetchBranchNameFromEnv = fetchBranchNameFromEnv,
-            ignoreTestBuildDirectory = ignoreTestBuildDirectory,
-            allProjects = allOmniProjects,
-            reportRejectList = reportRejectList,
             parallelization = parallelization
-        ).processReports()
+        ).processReports(reportFilesContainer)
 
         CodecovProcessor(
             codecovToken = codecovToken,
@@ -237,7 +240,7 @@ open class OmniReporterCommon(
             allProjects = allOmniProjects,
             reportRejectList = reportRejectList,
             parallelization = parallelization
-        ).processReports()
+        ).processReports(reportFilesContainer)
 
     }
 
