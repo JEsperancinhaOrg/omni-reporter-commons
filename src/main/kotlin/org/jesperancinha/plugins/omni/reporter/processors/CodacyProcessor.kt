@@ -61,7 +61,8 @@ class CodacyProcessor(
                     supportedPredicate,
                     failOnXmlParseError,
                     projectBaseDir ?: throw ProjectDirectoryNotFoundException(),
-                    reportRejectList
+                    reportRejectList,
+                    parallelization
                 )
                     .filter { (project, _) -> project.compileSourceRoots != null }
                     .flatMap { (project, reports) ->

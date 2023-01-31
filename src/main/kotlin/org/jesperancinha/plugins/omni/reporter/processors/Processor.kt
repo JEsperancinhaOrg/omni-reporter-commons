@@ -1,5 +1,8 @@
 package org.jesperancinha.plugins.omni.reporter.processors
 
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.runBlocking
 import org.jesperancinha.plugins.omni.reporter.OmniBuildGeneric
 import org.jesperancinha.plugins.omni.reporter.OmniProject
 import org.jesperancinha.plugins.omni.reporter.OmniProjectGeneric
@@ -167,15 +170,26 @@ internal fun List<OmniProject?>.toReportFiles(
     supportedPredicate: (String, File) -> Boolean,
     failOnXmlParseError: Boolean,
     root: File,
-    reportRejectList: List<String>
+    reportRejectList: List<String>,
+    parallelization: Int
 ): Map<OmniProject, List<OmniFileAdapter>> =
     this.filterNotNull()
         .map { project ->
             project to File(project.build?.directory ?: throw ProjectDirectoryNotFoundException())
                 .walkTopDown()
-                .filter { notRejectable(it) }
+                .let { walk ->
+                    runBlocking {
+                        walk
+                            .chunked(parallelization)
+                            .map { fileList ->
+                                async {
+                                    fileList.filter { notRejectable(it) && !reportRejectList.contains(it.name) }
+                                }
+                            }.toList().awaitAll()
+                    }
+                }
+                .flatten()
                 .toList()
-                .filter { !reportRejectList.contains(it.name) }
                 .mapNotNull { report ->
                     mapReportFile(report, project, supportedPredicate, failOnXmlParseError, root)
                 }
@@ -186,15 +200,27 @@ internal fun List<OmniProject?>.toReportFiles(
 internal fun List<OmniProject?>.toAllCodecovSupportedFiles(
     supportedPredicate: (String, File) -> Boolean,
     root: File,
-    reportRejectList: List<String>
+    reportRejectList: List<String>,
+    parallelization: Int
 ): List<Pair<OmniProject, List<OmniFileAdapter>>> =
     this.filterNotNull()
         .map { project ->
             project to File(project.build?.directory ?: throw ProjectDirectoryNotFoundException())
                 .walkTopDown()
-                .filter { notRejectable(it) }
+                .let { walk ->
+                    runBlocking {
+                        walk
+                            .chunked(parallelization)
+                            .map { fileList ->
+                                async {
+                                    fileList.filter { notRejectable(it) && !reportRejectList.contains(it.name) }
+                                }
+                            }.toList().awaitAll()
+                    }
+                }
+                .asSequence()
+                .flatten()
                 .toList()
-                .filter { !reportRejectList.contains(it.name) }
                 .filter { report ->
                     report.isFile
                             && project.build?.let { build ->
@@ -208,6 +234,7 @@ internal fun List<OmniProject?>.toAllCodecovSupportedFiles(
                     mapReportFile(report, project, supportedPredicate, false, root)
                 }
                 .distinct()
+                .toList()
         }.distinct()
 
 private fun mapReportFile(

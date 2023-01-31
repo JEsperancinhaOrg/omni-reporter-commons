@@ -50,7 +50,7 @@ class CoverallsProcessor (
                         failOnXmlParseError = failOnXmlParseError,
                     )
 
-                allProjects.toReportFiles(supportedPredicate, failOnXmlParseError, projectBaseDir, reportRejectList)
+                allProjects.toReportFiles(supportedPredicate, failOnXmlParseError, projectBaseDir, reportRejectList, parallelization)
                     .filter { (project, _) -> project.compileSourceRoots != null }
                     .forEach { (project, reports) ->
                         runBlocking {

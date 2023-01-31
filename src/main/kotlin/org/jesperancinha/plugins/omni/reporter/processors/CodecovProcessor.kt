@@ -40,7 +40,7 @@ class CodecovProcessor(
 
             val repo = RepositoryBuilder().findGitDir(projectBaseDir).build()
             val codacyReportsAggregate =
-                allProjects.toAllCodecovSupportedFiles(supportedPredicate, projectBaseDir, reportRejectList)
+                allProjects.toAllCodecovSupportedFiles(supportedPredicate, projectBaseDir, reportRejectList, parallelization)
                     .filter { (project, _) -> project.compileSourceRoots != null }
                     .flatMap { (project, reports) ->
                         runBlocking {

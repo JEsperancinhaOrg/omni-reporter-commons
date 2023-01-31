@@ -21,10 +21,10 @@ internal class ProcessorKtTest {
         val supportedPredicate = { _: String, _: File -> true }
         val reportRejectList = emptyList<String>()
 
-        val toReportFiles = listOf(omniProject).toReportFiles(supportedPredicate, false, rootFolder, reportRejectList)
+        val toReportFiles = listOf(omniProject).toReportFiles(supportedPredicate, false, rootFolder, reportRejectList, 4)
 
         toReportFiles.shouldNotBeNull()
-        toReportFiles.entries.first().value.shouldHaveSize(1)
+            .entries.first().value.shouldHaveSize(1)
     }
 
     @Test
@@ -40,7 +40,8 @@ internal class ProcessorKtTest {
             nonTestDirectoryPredicate,
             false,
             rootFolder,
-            reportRejectList
+            reportRejectList,
+            4
         )
         toReportFiles.shouldNotBeNull()
         toReportFiles.entries.first().value.shouldHaveSize(1)
