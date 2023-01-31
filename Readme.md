@@ -66,7 +66,7 @@ Please have a look at the documentation in these repos to see the possibilities 
 23. If there are two reports with the same file reported, the result will be a sum.
 24. Coveralls support (*1)
 25. Line Coverage
-26. Parallization support with `parallelization` parameter
+26. Parallelization support with `parallelization` parameter
 
 To be up to date with the changes please check the [ReleaseNotes](./ReleaseNotes.md) document.
 
