@@ -180,6 +180,7 @@ open class OmniReporterCommon(
         logger.info("ignoreTestBuildDirectory: $ignoreTestBuildDirectory")
         logger.info("branchCoverage: $branchCoverage")
         logger.info("useCoverallsCount: $useCoverallsCount")
+        logger.info("parallelization: $parallelization")
         logger.info("extraSourceFolders: ${extraSourceFolders.joinToString(";")}")
         logger.info("extraReportFolders: ${extraReportFolders.joinToString(";")}")
         logger.info("reportRejectList: ${reportRejectList.joinToString(";")}")
