@@ -1,5 +1,8 @@
 package org.jesperancinha.plugins.omni.reporter.processors
 
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.runBlocking
 import org.jesperancinha.plugins.omni.reporter.*
 import org.jesperancinha.plugins.omni.reporter.domain.api.CoverallsClient
 import org.jesperancinha.plugins.omni.reporter.logger.OmniLoggerConfig
@@ -11,7 +14,7 @@ import java.io.File
 /**
  * Created by jofisaes on 06/01/2022
  */
-class CoverallsProcessor(
+class CoverallsProcessor (
     private val coverallsToken: String?,
     private val disableCoveralls: Boolean,
     private val coverallsUrl: String?,
@@ -27,6 +30,7 @@ class CoverallsProcessor(
     private val ignoreTestBuildDirectory: Boolean,
     private val reportRejectList: List<String>,
     private val currentPipeline: Pipeline = PipelineImpl.currentPipeline(fetchBranchNameFromEnv),
+    private val parallelization: Int
 ) : Processor(ignoreTestBuildDirectory) {
 
     override fun processReports() {
@@ -49,12 +53,18 @@ class CoverallsProcessor(
                 allProjects.toReportFiles(supportedPredicate, failOnXmlParseError, projectBaseDir, reportRejectList)
                     .filter { (project, _) -> project.compileSourceRoots != null }
                     .forEach { (project, reports) ->
-                        reports.forEach { report ->
-                            logger.info("- Parsing file: ${report.report.absolutePath}")
-                            reportingParserToCoveralls.parseInput(
-                                report,
-                                project.compileSourceRoots?.map { file -> File(file) } ?: emptyList()
-                            )
+                        runBlocking {
+                            reports.chunked(parallelization).flatMap {
+                                it.map { report ->
+                                    async {
+                                        logger.info("- Parsing file: ${report.report.absolutePath}")
+                                        reportingParserToCoveralls.parseInput(
+                                            report,
+                                            project.compileSourceRoots?.map { file -> File(file) } ?: emptyList()
+                                        )
+                                    }
+                                }.awaitAll()
+                            }
                         }
 
                     }
@@ -116,6 +126,7 @@ class CoverallsProcessor(
             branchCoverage: Boolean,
             ignoreTestBuildDirectory: Boolean,
             useCoverallsCount: Boolean,
+            parallelization: Int,
             extraSourceFoldersCSV: String = "",
             extraReportFoldersCSV: String = "",
             reportRejectsCSV: String = ""
@@ -138,7 +149,8 @@ class CoverallsProcessor(
                 useCoverallsCount = useCoverallsCount,
                 ignoreTestBuildDirectory = ignoreTestBuildDirectory,
                 allProjects = allOmniProjects,
-                reportRejectList = reportRejectsCSV.split(",")
+                reportRejectList = reportRejectsCSV.split(","),
+                parallelization = parallelization
             )
         }
     }

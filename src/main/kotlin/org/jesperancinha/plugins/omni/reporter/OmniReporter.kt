@@ -106,6 +106,7 @@ open class OmniReporterCommon(
     var codacyOrganizationProvider: String? = null,
     var codacyUsername: String? = null,
     var codacyProjectName: String? = null,
+    val parallelization: Int = 4,
     val extraSourceFolders: List<File> = emptyList(),
     val extraReportFolders: List<File> = emptyList(),
     val reportRejectList: List<String> = emptyList()
@@ -135,6 +136,7 @@ open class OmniReporterCommon(
         omniConfig.codacyOrganizationProvider,
         omniConfig.codacyUsername,
         omniConfig.codacyProjectName,
+        omniConfig.parallelization,
         omniConfig.extraSourceFolders?.let { it.split(",").map { path -> File(path) } } ?: emptyList(),
         omniConfig.extraReportFolders?.let { it.split(",").map { path -> File(path) } } ?: emptyList(),
         omniConfig.reportRejectList?.split(",") ?: emptyList()
@@ -197,7 +199,8 @@ open class OmniReporterCommon(
             ignoreTestBuildDirectory = ignoreTestBuildDirectory,
             useCoverallsCount = useCoverallsCount,
             allProjects = allOmniProjects,
-            reportRejectList = reportRejectList
+            reportRejectList = reportRejectList,
+            parallelization = parallelization
         ).processReports()
 
         CodacyProcessor(
@@ -216,7 +219,8 @@ open class OmniReporterCommon(
             fetchBranchNameFromEnv = fetchBranchNameFromEnv,
             ignoreTestBuildDirectory = ignoreTestBuildDirectory,
             allProjects = allOmniProjects,
-            reportRejectList = reportRejectList
+            reportRejectList = reportRejectList,
+            parallelization = parallelization
         ).processReports()
 
         CodecovProcessor(
@@ -230,7 +234,8 @@ open class OmniReporterCommon(
             fetchBranchNameFromEnv = fetchBranchNameFromEnv,
             ignoreTestBuildDirectory = ignoreTestBuildDirectory,
             allProjects = allOmniProjects,
-            reportRejectList = reportRejectList
+            reportRejectList = reportRejectList,
+            parallelization = parallelization
         ).processReports()
 
     }
@@ -282,6 +287,7 @@ data class OmniConfig(
     val codacyOrganizationProvider: String? = null,
     val codacyUsername: String? = null,
     val codacyProjectName: String? = null,
+    val parallelization: Int = 4,
     val extraSourceFolders: String? = null,
     val extraReportFolders: String? = null,
     val reportRejectList: String? = null

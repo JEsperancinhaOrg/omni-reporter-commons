@@ -1,6 +1,6 @@
 # Omni Reporter Commons Release Notes
 
-#### Release 0.3.3 - Upcoming
+#### Release 0.4.1 - Upcoming
 
 1. Support for Group Coverage with Branch Coverage (mostly Coveralls)
 2. Source encoding gets automatically chosen unless we configure flag `failOnNoEncoding` to `true`
@@ -10,6 +10,11 @@
 - Difficult to fix - The jacoco report being sent does have the path in a correct way, so this seems to be a divergent behaviour that happens in some Codecov corner cases. Nonetheless, a solution will be investigated. Perhaps an extra option
 6. Define where the name and location of the original jar when jacoco reports are being used as described in the [Troubleshooting](https://github.com/JEsperancinhaOrg/omni-reporter-maven-plugin/blob/main/Troubleshooting.md) document.
 7. Add dynamic search for common source folder standards (from `src/main/java` to all known languages. i.e. add `src/main/scala` to `src/main/java`) 
+
+#### Release 0.4.0 - Upcoming
+
+1. Parallelization support
+
 
 #### Release 0.3.2 - 2023/01/11
 

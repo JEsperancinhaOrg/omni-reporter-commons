@@ -6,7 +6,7 @@
 
     <groupId>org.jesperancinha.plugins</groupId>
     <artifactId>omni-coveragereporter-commons</artifactId>
-    <version>0.3.2</version>
+    <version>0.4.0</version>
 
     <packaging>jar</packaging>
 
@@ -36,7 +36,7 @@
         <connection>scm:git:git://github.com/JEsperancinhaOrg.git</connection>
         <developerConnection>scm:git:git://github.com/JEsperancinhaOrg.git</developerConnection>
         <url>https://github.com/JEsperancinhaOrg/omni-reporter-commons</url>
-        <tag>0.3.2</tag>
+        <tag>0.4.0</tag>
     </scm>
     <distributionManagement>
         <snapshotRepository>
@@ -89,8 +89,9 @@
         <coverage-parser_2.12.version>4.4.2</coverage-parser_2.12.version>
         <codacy-coverage-reporter.version>7.1.0</codacy-coverage-reporter.version>
         <logback-classic.version>1.4.5</logback-classic.version>
-        <omni-coveragereporter-maven-plugin.version>0.3.2</omni-coveragereporter-maven-plugin.version>
+        <omni-coveragereporter-maven-plugin.version>0.4.0</omni-coveragereporter-maven-plugin.version>
         <jackson-databind.version>2.14.2</jackson-databind.version>
+        <kotlinx-coroutines-core-jvm.version>1.6.4</kotlinx-coroutines-core-jvm.version>
     </properties>
 
     <dependencies>
@@ -172,6 +173,11 @@
             <artifactId>jackson-dataformat-xml</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlinx</groupId>
+            <artifactId>kotlinx-coroutines-core-jvm</artifactId>
+            <version>${kotlinx-coroutines-core-jvm.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>com.github.tomakehurst</groupId>
@@ -181,7 +187,7 @@
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-test</artifactId>
+            <artifactId>kotlin-test-junit</artifactId>
             <version>${kotlin.version}</version>
             <scope>test</scope>
         </dependency>

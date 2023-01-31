@@ -1,5 +1,8 @@
 package org.jesperancinha.plugins.omni.reporter.processors
 
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.runBlocking
 import org.eclipse.jgit.lib.Repository
 import org.eclipse.jgit.lib.RepositoryBuilder
 import org.jesperancinha.plugins.omni.reporter.*
@@ -35,6 +38,7 @@ class CodacyProcessor(
     private val ignoreTestBuildDirectory: Boolean,
     private val reportRejectList: List<String>,
     private val currentPipeline: Pipeline = PipelineImpl.currentPipeline(fetchBranchNameFromEnv),
+    private val parallelization: Int
 ) : Processor(ignoreTestBuildDirectory) {
     override fun processReports() {
         logger.info("Codacy API fully configured: ${this.isCodacyAPIConfigured}")
@@ -61,20 +65,26 @@ class CodacyProcessor(
                 )
                     .filter { (project, _) -> project.compileSourceRoots != null }
                     .flatMap { (project, reports) ->
-                        reports.map { report ->
-                            logger.info("- Parsing file: ${report.report.absolutePath}")
-                            JacocoParserToCodacy(
-                                token = codacyToken,
-                                apiToken = apiToken,
-                                pipeline = currentPipeline,
-                                root = projectBaseDir,
-                                failOnUnknown = failOnUnknown,
-                                failOnXmlParseError = failOnXmlParseError,
-                                language = language
-                            ).parseInput(
-                                report,
-                                project.compileSourceRoots?.map { file -> File(file) } ?: emptyList()
-                            )
+                        runBlocking {
+                            reports.chunked(parallelization).flatMap {
+                                it.map { report ->
+                                    async {
+                                        logger.info("- Parsing file: ${report.report.absolutePath}")
+                                        JacocoParserToCodacy(
+                                            token = codacyToken,
+                                            apiToken = apiToken,
+                                            pipeline = currentPipeline,
+                                            root = projectBaseDir,
+                                            failOnUnknown = failOnUnknown,
+                                            failOnXmlParseError = failOnXmlParseError,
+                                            language = language
+                                        ).parseInput(
+                                            report,
+                                            project.compileSourceRoots?.map { file -> File(file) } ?: emptyList()
+                                        )
+                                    }
+                                }.awaitAll()
+                            }
                         }
                     }
                     .filter {
@@ -162,6 +172,7 @@ class CodacyProcessor(
             failOnXmlParsingError: Boolean,
             fetchBranchNameFromEnv: Boolean,
             ignoreTestBuildDirectory: Boolean,
+            parallelization: Int,
             extraSourceFoldersCSV: String = "",
             extraReportFoldersCSV: String = "",
             reportRejectsCSV: String = ""
@@ -186,7 +197,8 @@ class CodacyProcessor(
                 fetchBranchNameFromEnv = fetchBranchNameFromEnv,
                 ignoreTestBuildDirectory = ignoreTestBuildDirectory,
                 allProjects = allOmniProjects,
-                reportRejectList = reportRejectsCSV.split(",")
+                reportRejectList = reportRejectsCSV.split(","),
+                parallelization = parallelization
             )
         }
     }
