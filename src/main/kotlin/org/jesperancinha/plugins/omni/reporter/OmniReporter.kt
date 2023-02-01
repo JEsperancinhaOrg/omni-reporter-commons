@@ -108,6 +108,7 @@ open class OmniReporterCommon(
     var codacyUsername: String? = null,
     var codacyProjectName: String? = null,
     val parallelization: Int = 4,
+    val httpRequestParallelization: Int = 1,
     val extraSourceFolders: List<File> = emptyList(),
     val extraReportFolders: List<File> = emptyList(),
     val reportRejectList: List<String> = emptyList()
@@ -138,6 +139,7 @@ open class OmniReporterCommon(
         omniConfig.codacyUsername,
         omniConfig.codacyProjectName,
         omniConfig.parallelization,
+        omniConfig.httpRequestParallelization,
         omniConfig.extraSourceFolders?.let { it.split(",").map { path -> File(path) } } ?: emptyList(),
         omniConfig.extraReportFolders?.let { it.split(",").map { path -> File(path) } } ?: emptyList(),
         omniConfig.reportRejectList?.split(",") ?: emptyList()
@@ -224,7 +226,8 @@ open class OmniReporterCommon(
             failOnUnknown = failOnUnknown,
             failOnXmlParseError = failOnXmlParsingError,
             fetchBranchNameFromEnv = fetchBranchNameFromEnv,
-            parallelization = parallelization
+            parallelization = parallelization,
+            httpRequestParallelization = httpRequestParallelization
         ).processReports(reportFilesContainer)
 
         CodecovProcessor(
@@ -292,6 +295,7 @@ data class OmniConfig(
     val codacyUsername: String? = null,
     val codacyProjectName: String? = null,
     val parallelization: Int = 4,
+    val httpRequestParallelization: Int = 4,
     val extraSourceFolders: String? = null,
     val extraReportFolders: String? = null,
     val reportRejectList: String? = null

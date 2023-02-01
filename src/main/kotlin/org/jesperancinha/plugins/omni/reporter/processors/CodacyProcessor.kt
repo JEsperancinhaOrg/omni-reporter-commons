@@ -34,7 +34,8 @@ class CodacyProcessor(
     private val failOnXmlParseError: Boolean,
     private val fetchBranchNameFromEnv: Boolean,
     private val currentPipeline: Pipeline = PipelineImpl.currentPipeline(fetchBranchNameFromEnv),
-    private val parallelization: Int
+    private val parallelization: Int,
+    private val httpRequestParallelization: Int,
 ) : Processor() {
 
     override fun processReports(reportFilesContainer: ReportFilesContainer) {
@@ -83,30 +84,33 @@ class CodacyProcessor(
                         it.fileReports.isNotEmpty()
                     }
 
-                logger.info("- Found ${reportsPerLanguage.size} reports for language ${language.lang}")
-                if (reportsPerLanguage.size > 1) {
-                    reportsPerLanguage.forEach { codacyReport ->
-                        sendCodacyReport(
-                            language,
-                            repo,
-                            codacyReport,
-                            apiToken,
-                            true
-                        )
+                runBlocking {
+                    logger.info("- Found ${reportsPerLanguage.size} reports for language ${language.lang}")
+                    if (reportsPerLanguage.size > 1) {
+                        reportsPerLanguage.map { codacyReport ->
+                            async {
+                                sendCodacyReport(
+                                    language,
+                                    repo,
+                                    codacyReport,
+                                    apiToken,
+                                    true
+                                )
+                            }
+                        }.awaitAll()
+                        val response = CodacyClient(
+                            token = codacyToken,
+                            apiToken = apiToken,
+                            language = language,
+                            url = codacyUrl ?: throw CodacyUrlNotConfiguredException(),
+                            repo = repo
+                        ).submitEndReport()
+                        logger.info("- Response")
+                        logger.info(response.success)
+                    } else if (reportsPerLanguage.size == 1) {
+                        sendCodacyReport(language, repo, reportsPerLanguage[0], apiToken, false)
                     }
-                    val response = CodacyClient(
-                        token = codacyToken,
-                        apiToken = apiToken,
-                        language = language,
-                        url = codacyUrl ?: throw CodacyUrlNotConfiguredException(),
-                        repo = repo
-                    ).submitEndReport()
-                    logger.info("- Response")
-                    logger.info(response.success)
-                } else if (reportsPerLanguage.size == 1) {
-                    sendCodacyReport(language, repo, reportsPerLanguage[0], apiToken, false)
                 }
-
                 logger.info("* Omni Reporting processing for Codacy complete!")
             }
 
@@ -119,7 +123,7 @@ class CodacyProcessor(
         repo: Repository,
         codacyReport: CodacyReport,
         apiToken: CodacyApiTokenConfig?,
-        partial: Boolean
+        partial: Boolean,
     ) {
         try {
             val codacyClient = CodacyClient(
@@ -165,9 +169,10 @@ class CodacyProcessor(
             fetchBranchNameFromEnv: Boolean,
             ignoreTestBuildDirectory: Boolean,
             parallelization: Int,
+            httpRequestParallelization: Int,
             extraSourceFoldersCSV: String = "",
             extraReportFoldersCSV: String = "",
-            reportRejectsCSV: String = ""
+            reportRejectsCSV: String = "",
         ): CodacyProcessor {
             val extraSourceFolders = extraSourceFoldersCSV.split(",").map { File(it) }
             val extraReportFolders = extraReportFoldersCSV.split(",").map { File(it) }
@@ -186,7 +191,8 @@ class CodacyProcessor(
                 failOnUnknown = failOnUnknown,
                 failOnXmlParseError = failOnXmlParsingError,
                 fetchBranchNameFromEnv = fetchBranchNameFromEnv,
-                parallelization = parallelization
+                parallelization = parallelization,
+                httpRequestParallelization = httpRequestParallelization
             )
         }
     }
