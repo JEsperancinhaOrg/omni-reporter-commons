@@ -67,6 +67,7 @@ Please have a look at the documentation in these repos to see the possibilities 
 24. Coveralls support (*1)
 25. Line Coverage
 26. Parallelization support with `parallelization` parameter
+27. HttpRequestParallelization support with `httpRequestParallelization` parameter
 
 To be up to date with the changes please check the [ReleaseNotes](./ReleaseNotes.md) document.
 
