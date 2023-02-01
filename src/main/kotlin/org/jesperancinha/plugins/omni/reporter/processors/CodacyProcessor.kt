@@ -1,8 +1,6 @@
 package org.jesperancinha.plugins.omni.reporter.processors
 
-import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 import org.eclipse.jgit.lib.Repository
 import org.eclipse.jgit.lib.RepositoryBuilder
 import org.jesperancinha.plugins.omni.reporter.*
@@ -59,24 +57,26 @@ class CodacyProcessor(
                     .filter { (project, _) -> project.compileSourceRoots != null }
                     .flatMap { (project, reports) ->
                         runBlocking {
-                            reports.chunked(parallelization).flatMap {
-                                it.map { report ->
-                                    async {
-                                        logger.info("- Parsing file: ${report.report.absolutePath}")
-                                        JacocoParserToCodacy(
-                                            token = codacyToken,
-                                            apiToken = apiToken,
-                                            pipeline = currentPipeline,
-                                            root = requireNotNull(projectBaseDir),
-                                            failOnUnknown = failOnUnknown,
-                                            failOnXmlParseError = failOnXmlParseError,
-                                            language = language
-                                        ).parseInput(
-                                            report,
-                                            project.compileSourceRoots?.map { file -> File(file) } ?: emptyList()
-                                        )
-                                    }
-                                }.awaitAll()
+                            withContext(Dispatchers.IO) {
+                                reports.chunked(parallelization).flatMap {
+                                    it.map { report ->
+                                        async {
+                                            logger.info("- Parsing file: ${report.report.absolutePath}")
+                                            JacocoParserToCodacy(
+                                                token = codacyToken,
+                                                apiToken = apiToken,
+                                                pipeline = currentPipeline,
+                                                root = requireNotNull(projectBaseDir),
+                                                failOnUnknown = failOnUnknown,
+                                                failOnXmlParseError = failOnXmlParseError,
+                                                language = language
+                                            ).parseInput(
+                                                report,
+                                                project.compileSourceRoots?.map { file -> File(file) } ?: emptyList()
+                                            )
+                                        }
+                                    }.awaitAll()
+                                }
                             }
                         }
                     }
@@ -87,20 +87,22 @@ class CodacyProcessor(
                 runBlocking {
                     logger.info("- Found ${reportsPerLanguage.size} reports for language ${language.lang}")
                     if (reportsPerLanguage.size > 1) {
-                        reportsPerLanguage.chunked(httpRequestParallelization)
-                            .flatMap {
-                                it.map { codacyReport ->
-                                    async {
-                                        sendCodacyReport(
-                                            language,
-                                            repo,
-                                            codacyReport,
-                                            apiToken,
-                                            true
-                                        )
+                        withContext(Dispatchers.IO) {
+                            reportsPerLanguage.chunked(httpRequestParallelization)
+                                .flatMap {
+                                    it.map { codacyReport ->
+                                        async {
+                                            sendCodacyReport(
+                                                language,
+                                                repo,
+                                                codacyReport,
+                                                apiToken,
+                                                true
+                                            )
+                                        }
                                     }
-                                }
-                            }.awaitAll()
+                                }.awaitAll()
+                        }
                         val response = CodacyClient(
                             token = codacyToken,
                             apiToken = apiToken,

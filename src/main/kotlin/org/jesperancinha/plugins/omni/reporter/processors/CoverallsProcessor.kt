@@ -1,8 +1,6 @@
 package org.jesperancinha.plugins.omni.reporter.processors
 
-import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 import org.jesperancinha.plugins.omni.reporter.*
 import org.jesperancinha.plugins.omni.reporter.domain.api.CoverallsClient
 import org.jesperancinha.plugins.omni.reporter.logger.OmniLoggerConfig
@@ -51,16 +49,18 @@ class CoverallsProcessor(
                     .filter { (project, _) -> project.compileSourceRoots != null }
                     .forEach { (project, reports) ->
                         runBlocking {
-                            reports.chunked(parallelization).flatMap {
-                                it.map { report ->
-                                    async {
-                                        logger.info("- Parsing file: ${report.report.absolutePath}")
-                                        reportingParserToCoveralls.parseInput(
-                                            report,
-                                            project.compileSourceRoots?.map { file -> File(file) } ?: emptyList()
-                                        )
-                                    }
-                                }.awaitAll()
+                            withContext(Dispatchers.IO) {
+                                reports.chunked(parallelization).flatMap {
+                                    it.map { report ->
+                                        async {
+                                            logger.info("- Parsing file: ${report.report.absolutePath}")
+                                            reportingParserToCoveralls.parseInput(
+                                                report,
+                                                project.compileSourceRoots?.map { file -> File(file) } ?: emptyList()
+                                            )
+                                        }
+                                    }.awaitAll()
+                                }
                             }
                         }
                     }

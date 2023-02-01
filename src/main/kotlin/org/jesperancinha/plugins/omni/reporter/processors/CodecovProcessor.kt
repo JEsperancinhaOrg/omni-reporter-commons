@@ -1,8 +1,6 @@
 package org.jesperancinha.plugins.omni.reporter.processors
 
-import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 import org.eclipse.jgit.lib.RepositoryBuilder
 import org.jesperancinha.plugins.omni.reporter.*
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodecovClient
@@ -31,7 +29,7 @@ class CodecovProcessor(
     private val currentPipeline: Pipeline = PipelineImpl.currentPipeline(fetchBranchNameFromEnv),
     private val allProjects: List<OmniProject?>,
     private val reportRejectList: List<String>,
-    private val parallelization: Int
+    private val parallelization: Int,
 ) : Processor() {
     override fun processReports(reportFilesContainer: ReportFilesContainer) {
         codecovToken?.let { token ->
@@ -44,21 +42,23 @@ class CodecovProcessor(
                     .filter { (project, _) -> project.compileSourceRoots != null }
                     .flatMap { (project, reports) ->
                         runBlocking {
-                            reports.chunked(parallelization).flatMap {
-                                it.map { report ->
-                                    async {
-                                        logger.info("- Parsing file: ${report.report.absolutePath}")
-                                        AllParserToCodecov(
-                                            token = token,
-                                            pipeline = currentPipeline,
-                                            root = projectBaseDir,
-                                            failOnUnknown = failOnUnknown
-                                        ).parseInput(
-                                            report,
-                                            project.compileSourceRoots?.map { file -> File(file) } ?: emptyList()
-                                        )
-                                    }
-                                }.awaitAll()
+                            withContext(Dispatchers.IO) {
+                                reports.chunked(parallelization).flatMap {
+                                    it.map { report ->
+                                        async {
+                                            logger.info("- Parsing file: ${report.report.absolutePath}")
+                                            AllParserToCodecov(
+                                                token = token,
+                                                pipeline = currentPipeline,
+                                                root = projectBaseDir,
+                                                failOnUnknown = failOnUnknown
+                                            ).parseInput(
+                                                report,
+                                                project.compileSourceRoots?.map { file -> File(file) } ?: emptyList()
+                                            )
+                                        }
+                                    }.awaitAll()
+                                }
                             }
                         }
                     }
@@ -124,7 +124,7 @@ class CodecovProcessor(
             parallelization: Int,
             extraSourceFoldersCSV: String = "",
             extraReportFoldersCSV: String = "",
-            reportRejectsCSV: String = ""
+            reportRejectsCSV: String = "",
         ): CodecovProcessor {
             val extraSourceFolders = extraSourceFoldersCSV.split(",").map { File(it) }
             val extraReportFolders = extraReportFoldersCSV.split(",").map { File(it) }
