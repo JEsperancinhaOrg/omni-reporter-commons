@@ -87,17 +87,20 @@ class CodacyProcessor(
                 runBlocking {
                     logger.info("- Found ${reportsPerLanguage.size} reports for language ${language.lang}")
                     if (reportsPerLanguage.size > 1) {
-                        reportsPerLanguage.map { codacyReport ->
-                            async {
-                                sendCodacyReport(
-                                    language,
-                                    repo,
-                                    codacyReport,
-                                    apiToken,
-                                    true
-                                )
-                            }
-                        }.awaitAll()
+                        reportsPerLanguage.chunked(httpRequestParallelization)
+                            .flatMap {
+                                it.map { codacyReport ->
+                                    async {
+                                        sendCodacyReport(
+                                            language,
+                                            repo,
+                                            codacyReport,
+                                            apiToken,
+                                            true
+                                        )
+                                    }
+                                }
+                            }.awaitAll()
                         val response = CodacyClient(
                             token = codacyToken,
                             apiToken = apiToken,
