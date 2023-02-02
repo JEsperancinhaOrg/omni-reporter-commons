@@ -100,8 +100,8 @@ class CodacyProcessor(
                                                 true
                                             )
                                         }
-                                    }
-                                }.awaitAll()
+                                    }.awaitAll()
+                                }
                         }
                         val response = CodacyClient(
                             token = codacyToken,
