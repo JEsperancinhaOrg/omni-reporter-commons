@@ -66,7 +66,7 @@
 
         <kotlin.version>1.8.10</kotlin.version>
         <junit-jupiter.version>5.9.2</junit-jupiter.version>
-        <kotest.version>5.5.4</kotest.version>
+        <kotest.version>5.5.5</kotest.version>
         <mockk.version>1.13.4</mockk.version>
         <jackson.version>2.14.2</jackson.version>
         <wiremock.version>2.27.2</wiremock.version>
