@@ -72,7 +72,7 @@
         <wiremock.version>2.27.2</wiremock.version>
         <commons-codec.version>1.15</commons-codec.version>
         <slf4j.version>2.0.6</slf4j.version>
-        <plexus-utils.version>3.5.0</plexus-utils.version>
+        <plexus-utils.version>3.5.1</plexus-utils.version>
         <org.eclipse.jgit.version>6.4.0.202211300538-r</org.eclipse.jgit.version>
         <jaxb-api.version>2.4.0-b180830.0359</jaxb-api.version>
         <jakarta.activation-api.version>2.0.1</jakarta.activation-api.version>
