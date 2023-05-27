@@ -22,7 +22,7 @@ jobs:
           cache: maven
 
       - name: Build and Test
-        run:  mvn clean install
+        run:  make b
 
       - name: Coverage
         run: make coverage
