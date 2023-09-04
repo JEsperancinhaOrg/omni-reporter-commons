@@ -71,7 +71,7 @@
         <jackson.version>2.15.2</jackson.version>
         <wiremock.version>2.27.2</wiremock.version>
         <commons-codec.version>1.16.0</commons-codec.version>
-        <slf4j.version>2.0.7</slf4j.version>
+        <slf4j.version>2.0.9</slf4j.version>
         <plexus-utils.version>4.0.0</plexus-utils.version>
         <org.eclipse.jgit.version>6.6.1.202309021850-r</org.eclipse.jgit.version>
         <jaxb-api.version>2.4.0-b180830.0359</jaxb-api.version>
