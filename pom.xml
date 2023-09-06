@@ -73,7 +73,7 @@
         <commons-codec.version>1.16.0</commons-codec.version>
         <slf4j.version>2.0.9</slf4j.version>
         <plexus-utils.version>4.0.0</plexus-utils.version>
-        <org.eclipse.jgit.version>6.6.1.202309021850-r</org.eclipse.jgit.version>
+        <org.eclipse.jgit.version>6.7.0.202309050840-r</org.eclipse.jgit.version>
         <jaxb-api.version>2.4.0-b180830.0359</jaxb-api.version>
         <jakarta.activation-api.version>2.0.1</jakarta.activation-api.version>
         <google-http-client-jackson2.version>1.43.3</google-http-client-jackson2.version>
