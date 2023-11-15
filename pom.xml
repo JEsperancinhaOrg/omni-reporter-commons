@@ -90,7 +90,7 @@
         <codacy-coverage-reporter.version>7.1.0</codacy-coverage-reporter.version>
         <logback-classic.version>1.4.11</logback-classic.version>
         <omni-coveragereporter-maven-plugin.version>0.4.3</omni-coveragereporter-maven-plugin.version>
-        <jackson-databind.version>2.15.3</jackson-databind.version>
+        <jackson-databind.version>2.16.0</jackson-databind.version>
         <kotlinx-coroutines-core-jvm.version>1.7.3</kotlinx-coroutines-core-jvm.version>
     </properties>
 
