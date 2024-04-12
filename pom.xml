@@ -53,10 +53,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-compiler-plugin.target>${java.version}</maven-compiler-plugin.target>
         <maven-compiler-plugin.source>${java.version}</maven-compiler-plugin.source>
-        <maven-plugin.version>3.11.0</maven-plugin.version>
+        <maven-plugin.version>3.12.0</maven-plugin.version>
         <maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
         <maven-checkstyle-plugin.version>3.3.1</maven-checkstyle-plugin.version>
-        <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
         <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
         <maven.version>3.8.4</maven.version>
@@ -66,9 +66,9 @@
 
         <kotlin.version>1.9.23</kotlin.version>
         <junit-jupiter.version>5.10.2</junit-jupiter.version>
-        <kotest.version>5.8.0</kotest.version>
+        <kotest.version>5.8.1</kotest.version>
         <mockk.version>1.13.10</mockk.version>
-        <jackson.version>2.16.2</jackson.version>
+        <jackson.version>2.17.0</jackson.version>
         <wiremock.version>2.27.2</wiremock.version>
         <commons-codec.version>1.16.1</commons-codec.version>
         <slf4j.version>2.0.12</slf4j.version>
@@ -80,17 +80,17 @@
         <jaxb.version>3.0.1</jaxb.version>
         <jaxb2-maven-plugin.version>2.5.0</jaxb2-maven-plugin.version>
         <jaxb-impl.version>2.3.1</jaxb-impl.version>
-        <maven-gpg-plugin.version>3.1.0</maven-gpg-plugin.version>
+        <maven-gpg-plugin.version>3.2.3</maven-gpg-plugin.version>
         <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
         <maven-release-plugin.version>3.0.1</maven-release-plugin.version>
-        <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
+        <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
         <junit-pioneer.version>2.2.0</junit-pioneer.version>
-        <jacoco.version>0.8.11</jacoco.version>
+        <jacoco.version>0.8.12</jacoco.version>
         <coverage-parser_2.12.version>4.4.2</coverage-parser_2.12.version>
         <codacy-coverage-reporter.version>7.1.0</codacy-coverage-reporter.version>
-        <logback-classic.version>1.5.3</logback-classic.version>
+        <logback-classic.version>1.5.4</logback-classic.version>
         <omni-coveragereporter-maven-plugin.version>0.4.3</omni-coveragereporter-maven-plugin.version>
-        <jackson-databind.version>2.16.1</jackson-databind.version>
+        <jackson-databind.version>2.17.0</jackson-databind.version>
         <kotlinx-coroutines-core-jvm.version>1.8.0</kotlinx-coroutines-core-jvm.version>
     </properties>
 
