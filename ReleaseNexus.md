@@ -69,6 +69,7 @@ mvn nexus-staging:release -Prelease
             </activation>
             <properties>
                 <gpg.executable>gpg</gpg.executable>
+                <gpg.keyname>${{keyname}}</gpg.keyname>
                 <gpg.passphrase>{{password}}</gpg.passphrase>
             </properties>
         </profile>
