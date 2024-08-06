@@ -1,5 +1,8 @@
 package org.jesperancinha.plugins.omni.reporter.domain.reports
 
+import com.fasterxml.jackson.annotation.JsonIgnore
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonProperty
 import org.jesperancinha.plugins.omni.reporter.JacocoXmlParsingErrorException
 import org.jesperancinha.plugins.omni.reporter.domain.reports.OmniCoveragePyDomain.Companion.logger
 import org.jesperancinha.plugins.omni.reporter.logger.OmniLoggerConfig
@@ -16,11 +19,13 @@ data class Summary(
     val excluded_lines: Int = 0
 )
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class Meta(
     val version: String,
     val timestamp: String,
     val branchCoverage: Boolean,
-    val showContexts: Boolean
+    val showContexts: Boolean,
+    val format: String? = null
 )
 
 data class Totals(
