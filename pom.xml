@@ -80,7 +80,7 @@
         <jaxb.version>3.0.1</jaxb.version>
         <jaxb2-maven-plugin.version>2.5.0</jaxb2-maven-plugin.version>
         <jaxb-impl.version>2.3.1</jaxb-impl.version>
-        <maven-gpg-plugin.version>3.2.4</maven-gpg-plugin.version>
+        <maven-gpg-plugin.version>3.2.5</maven-gpg-plugin.version>
         <nexus-staging-maven-plugin.version>1.7.0</nexus-staging-maven-plugin.version>
         <maven-release-plugin.version>3.1.1</maven-release-plugin.version>
         <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
