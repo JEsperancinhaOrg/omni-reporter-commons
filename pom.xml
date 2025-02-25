@@ -76,7 +76,7 @@
         <org.eclipse.jgit.version>7.1.0.202411261347-r</org.eclipse.jgit.version>
         <jaxb-api.version>2.4.0-b180830.0359</jaxb-api.version>
         <jakarta.activation-api.version>2.0.1</jakarta.activation-api.version>
-        <google-http-client-jackson2.version>1.46.2</google-http-client-jackson2.version>
+        <google-http-client-jackson2.version>1.46.3</google-http-client-jackson2.version>
         <jaxb.version>3.0.1</jaxb.version>
         <jaxb2-maven-plugin.version>2.5.0</jaxb2-maven-plugin.version>
         <jaxb-impl.version>2.3.1</jaxb-impl.version>
