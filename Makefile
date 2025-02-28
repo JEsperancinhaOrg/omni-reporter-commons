@@ -24,3 +24,5 @@ release:
 	export GPG_TTY=$(tty); \
 	mvn clean deploy -Prelease; \
 	mvn nexus-staging:release -Prelease
+update-repo-prs:
+	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/update-all-repo-prs.sh | bash
