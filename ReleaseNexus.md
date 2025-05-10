@@ -20,6 +20,21 @@ Make sure maven looks like bellow
 </settings>
 ```
 
+```shell
+mvn clean deploy -Prelease
+```
+
+For gradle.properties:
+
+```properties
+ossrhUsername=your-username
+ossrhPassword=your-token
+```
+
+```shell
+gradle clean build test
+./gradlew publishMavenPublicationToOSSRHRepository
+```
 ---
 
 > DEPRECATED INFO
