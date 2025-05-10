@@ -7,7 +7,7 @@
 3. Overseer option: `overseer`. If this option is on, the plugin will look for external reports and sources automatically following the [Overseer.md](./Overseer.md) document rules
 4. GoLang Coverage Support (`.out` files)
 5. Fix double parent phenomenon for Codecov specific projects where the path fix algorithm doubles the parent folder. Example is [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Vertext%20Test%20Drives&color=informational)](https://github.com/jesperancinha/jeorg-vertex-osgi-testdrives).
-- Difficult to fix - The jacoco report being sent does have the path in a correct way, so this seems to be a divergent behaviour that happens in some Codecov corner cases. Nonetheless, a solution will be investigated. Perhaps an extra option
+   - Difficult to fix - The jacoco report being sent does have the path in a correct way, so this seems to be a divergent behaviour that happens in some Codecov corner cases. Nonetheless, a solution will be investigated. Perhaps an extra option
 6. Define where the name and location of the original jar when jacoco reports are being used as described in the [Troubleshooting](https://github.com/JEsperancinhaOrg/omni-reporter-maven-plugin/blob/main/Troubleshooting.md) document.
 7. Add dynamic search for common source folder standards (from `src/main/java` to all known languages. i.e. add `src/main/scala` to `src/main/java`) 
 
