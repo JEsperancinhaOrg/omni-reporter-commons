@@ -36,7 +36,7 @@ data class Totals(
     val missingLines: Int = 0,
     val excludedLines: Int = 0
 )
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class CoveragePyFile(
     val executedLines: List<Int> = emptyList(),
     val summary: Summary,
