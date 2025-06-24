@@ -61,7 +61,7 @@
         <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
         <maven.version>3.8.4</maven.version>
 
-        <license-maven-plugin.version>2.5.0</license-maven-plugin.version>
+        <license-maven-plugin.version>2.6.0</license-maven-plugin.version>
         <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
 
         <kotlin.version>2.1.21</kotlin.version>
