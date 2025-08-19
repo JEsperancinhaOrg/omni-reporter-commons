@@ -362,6 +362,9 @@
                 <configuration>
                     <source>${maven-compiler-plugin.source}</source>
                     <target>${maven-compiler-plugin.target}</target>
+                    <compilerArgs>
+                        <arg>-Xannotation-default-target=param-property</arg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
             <plugin>
