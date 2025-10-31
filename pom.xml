@@ -90,7 +90,7 @@
         <logback-classic.version>1.5.20</logback-classic.version>
         <omni-coveragereporter-maven-plugin.version>0.4.5</omni-coveragereporter-maven-plugin.version>
         <kotlinx-coroutines-core-jvm.version>1.10.2</kotlinx-coroutines-core-jvm.version>
-        <jackson-bom.version>2.20.0</jackson-bom.version>
+        <jackson-bom.version>2.20.1</jackson-bom.version>
     </properties>
 
     <dependencyManagement>
