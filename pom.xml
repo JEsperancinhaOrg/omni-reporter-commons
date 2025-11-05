@@ -69,7 +69,7 @@
         <kotest.version>6.0.4</kotest.version>
         <mockk.version>1.14.6</mockk.version>
         <wiremock.version>2.27.2</wiremock.version>
-        <commons-codec.version>1.19.0</commons-codec.version>
+        <commons-codec.version>1.20.0</commons-codec.version>
         <slf4j.version>2.0.17</slf4j.version>
         <plexus-utils.version>4.0.2</plexus-utils.version>
         <org.eclipse.jgit.version>7.4.0.202509020913-r</org.eclipse.jgit.version>
