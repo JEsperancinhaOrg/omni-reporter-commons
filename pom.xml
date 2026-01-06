@@ -87,7 +87,7 @@
         <jacoco.version>0.8.14</jacoco.version>
         <coverage-parser_2.12.version>4.4.2</coverage-parser_2.12.version>
         <codacy-coverage-reporter.version>7.1.0</codacy-coverage-reporter.version>
-        <logback-classic.version>1.5.23</logback-classic.version>
+        <logback-classic.version>1.5.24</logback-classic.version>
         <omni-coveragereporter-maven-plugin.version>0.4.5</omni-coveragereporter-maven-plugin.version>
         <kotlinx-coroutines-core-jvm.version>1.10.2</kotlinx-coroutines-core-jvm.version>
         <jackson-bom.version>2.20.1</jackson-bom.version>
